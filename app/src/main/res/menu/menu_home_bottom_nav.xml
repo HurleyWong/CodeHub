@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_index"
+        android:icon="@drawable/ic_selector_home_index"
+        android:title="@string/home_nav_index"/>
+
+    <item
+        android:id="@+id/home_system"
+        android:icon="@drawable/ic_selector_home_system"
+        android:title="@string/home_nav_system"/>
+
+    <item
+        android:id="@+id/home_wechat"
+        android:icon="@drawable/ic_selector_home_official_accounts"
+        android:title="@string/home_nav_wechat"/>
+
+    <item
+        android:id="@+id/home_project"
+        android:icon="@drawable/ic_selector_home_project"
+        android:title="@string/home_nav_project"/>
+
+    <item
+        android:id="@+id/home_user"
+        android:icon="@drawable/ic_selector_home_user"
+        android:title="@string/home_nav_user"/>
+</menu>

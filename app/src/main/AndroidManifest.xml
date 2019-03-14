@@ -1,0 +1,75 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hurley.wanandroid">
+
+    <!-- 外部存储读写权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- 拍照权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- 允许程序访问有关网络信息 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 允许程序访问Wi-Fi网络状态信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 联网权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".app.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+
+        <!-- 启动界面 -->
+        <activity
+            android:name=".module.main.HomeActivity"
+            android:alwaysRetainTaskState="true"
+            android:launchMode="singleTop" >
+
+            <!-- 程序入口 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- 主页界面 -->
+
+
+        <!-- 登录界面 -->
+        <activity
+            android:name=".module.user.login.LoginActivity"
+            android:launchMode="singleTop" />
+
+        <!-- 注册界面 -->
+        <activity
+            android:name=".module.user.register.RegisterActivity"
+            android:launchMode="singleTop" />
+
+        <!-- 设置界面 -->
+        <activity
+            android:name=".module.user.SettingActivity"
+            android:launchMode="singleTop" />
+
+        <!-- 关于界面 -->
+        <activity
+            android:name=".module.user.AboutActivity"
+            android:launchMode="singleTop" />
+
+        <!-- 浏览器界面 -->
+        <activity
+            android:name=".module.main.WebActivity"
+            android:launchMode="singleTop" />
+
+        <!-- 开源协议界面 -->
+        <activity
+            android:name=".module.user.OpenSourceActivity"
+            android:launchMode="singleTop" />
+    </application>
+</manifest>

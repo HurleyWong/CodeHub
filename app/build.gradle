@@ -1,0 +1,142 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.hurley.wanandroid"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    testOptions {
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+}
+
+
+greendao {
+    //数据库版本号
+    schemaVersion 1
+    //设置DaoMaster、DaoSession、Dao目录
+    //这行代码与高版本gradle冲突，会报API 'variant.getJavaCompiler()'的warn，将在2019年末移除
+    targetGenDir 'src/main/java'
+    //设置DaoMaster、DaoSession、Dao包名
+    daoPackage 'com.hurley.wanandroid.dao'
+    //设置生成单元测试目录
+    //targetGenDirTest
+    //设置自动生成单元测试用例
+    //generateTests
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //Recyclerview包
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    //ButterKnife包 https://github.com/JakeWharton/butterknife
+    implementation 'com.jakewharton:butterknife:9.0.0-rc1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
+
+    //OkHttp包：https://github.com/square/okhttp
+    implementation "com.squareup.okhttp3:okhttp:3.13.1"
+    //LoggingInterceptor包：https://github.com/ihsanbal/LoggingInterceptor
+    implementation ('com.github.ihsanbal:LoggingInterceptor:3.0.0') {
+        exclude group: 'org.json', module: 'json'
+    }
+    //Stetho包：https://github.com/facebook/stetho
+    //利用OkHttp拦截器功能，调试接口
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+    //PersistentCookieJar for OkHttp3：https://github.com/franmontiel/PersistentCookieJar
+    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+
+    //Retrofit包：https://github.com/square/retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    //Gson转换器，将网络响应使用Gson转换成Java Bean
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+
+    //RxJava包：https://github.com/ReactiveX/RxJava
+    implementation "io.reactivex.rxjava2:rxjava:2.2.7"
+    //RxAndroid包：https://github.com/ReactiveX/RxAndroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    //RxBinding包：https://github.com/JakeWharton/RxBinding
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.0'
+    implementation 'com.trello.rxlifecycle3:rxlifecycle:3.0.0'
+    implementation "com.trello.rxlifecycle2:rxlifecycle:2.1.0"
+    implementation "com.trello.rxlifecycle2:rxlifecycle-components:2.1.0"
+
+    //dagger包：https://github.com/google/dagger
+    implementation 'com.google.dagger:dagger:2.21'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.21'
+    implementation 'com.google.dagger:dagger-android:2.21'
+    implementation 'com.google.dagger:dagger-android-support:2.21'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.21'
+
+    //ARoute阿里巴巴路由跳转包：
+    implementation "com.alibaba:arouter-api:1.3.1"
+    annotationProcessor "com.alibaba:arouter-compiler:1.1.4"
+
+    //greenDAO包：https://github.com/greenrobot/greenDAO
+    implementation 'org.greenrobot:greendao:3.2.2'
+
+    //Fragmentation包：https://github.com/YoKeyword/Fragmentation
+    implementation 'me.yokeyword:fragmentation:1.3.6'
+    //MultipleStatusView：https://github.com/qyxxjd/MultipleStatusView
+    implementation 'com.classic.common:multiple-status-view:1.5.1'
+    //BaseQuickAdapter：https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45'
+    //UtilCode：https://github.com/Blankj/AndroidUtilCode
+    implementation 'com.blankj:utilcode:1.11.1'
+    //SmartRefreshLayout：https://github.com/scwang90/SmartRefreshLayout
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-20'
+    //Fragmentation：https://github.com/YoKeyword/Fragmentation
+    implementation 'me.yokeyword:fragmentation:1.3.6'
+
+    //状态栏沉浸：https://github.com/gyf-dev/ImmersionBar
+    implementation 'com.gyf.immersionbar:immersionbar:2.3.3-beta09'
+    //侧滑功能：https://github.com/bingoogolapple/BGASwipeBackLayout-Android
+    implementation 'cn.bingoogolapple:bga-swipebacklayout:1.2.0@aar'
+    //标题栏：https://github.com/getActivity/TitleBar
+    implementation 'com.hjq:titlebar:5.0'
+    //吐司工具类：https://github.com/getActivity/ToastUtils
+    implementation 'com.hjq:toast:5.5'
+    //权限请求框架：https://github.com/getActivity/XXPermissions
+    implementation 'com.hjq:xxpermissions:5.2'
+
+    //空祖家的Dialog：https://github.com/kongzue/Dialog
+    implementation 'com.kongzue.dialog:dialog:2.4.7'
+    //BasePopup：https://github.com/razerdp/BasePopup
+    implementation 'com.github.razerdp:BasePopup:2.1.8'
+    //EasyPopup：https://github.com/zyyoona7/EasyPopup
+    implementation 'com.github.zyyoona7:EasyPopup:1.1.2'
+    //FlowLayout包：https://github.com/hongyangAndroid/FlowLayout
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
+
+}

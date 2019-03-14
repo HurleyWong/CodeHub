@@ -1,0 +1,129 @@
+<resources>
+    <string name="app_name">MyWanAndroid</string>
+
+    <!-- 主界面Fragment -->
+    <string name="home_nav_index">首页</string>
+    <string name="home_nav_system">体系</string>
+    <string name="home_nav_wechat">公众号</string>
+    <string name="home_nav_project">项目</string>
+    <string name="home_nav_user">我的</string>
+
+    <string name="home_hotkey">热词</string>
+    <string name="home_website">常用网站</string>
+    <string name="home_search">搜索</string>
+
+    <!-- 通用 -->
+    <string name="http_error">网络君乘404航班去追寻诗和远方了</string>
+    <string name="unknown_error">未知错误</string>
+
+    <!-- 登录 -->
+    <string name="login_text">登录</string>
+    <string name="click_login">点击登录</string>
+    <string name="login_username_input_hint">请输入用户名</string>
+    <string name="login_password_input_hint">请输入密码</string>
+    <string name="login_forget">忘记密码</string>
+    <string name="login_username_password_null">用户名或密码不能为空</string>
+    <string name="login_success">登录成功</string>
+    <string name="login_fail">登录失败</string>
+
+    <!-- 注册 -->
+    <string name="register_text">注册</string>
+    <string name="register_mail_phone_input_hint">请输入邮箱/手机号</string>
+    <string name="register_password_input_hint">请输入密码</string>
+    <string name="register_confirm_password_input_hint">请确认密码</string>
+    <string name="confirm_password_input_error">两次密码输入不一致，请重新输入</string>
+
+    <!-- 收藏 -->
+    <string name="collect_text">收藏</string>
+
+    <!-- 关于 -->
+    <string name="about_text">关于</string>
+    <string name="about_content">简介</string>
+    <string name="about_wan_android">玩Android网站</string>
+    <string name="about_open_source">开源相关</string>
+    <string name="about_open_source_name">LeakCanary</string>
+    <string name="about_open_source_author">square</string>
+    <string name="about_open_source_detail">A memory leak detection library for Android and Java.</string>
+    <string name="about_github">Github</string>
+    <string name="about_weibo">微博</string>
+    <string name="about_thanks">致谢</string>
+    <string name="about_support">支持</string>
+    <string name="wan_android_address">http://www.wanandroid.com</string>
+    <string name="github_address">https://github.com/HurleyJames</string>
+    <string name="weibo_address">https://weibo.com/u/5628559861</string>
+
+    <!-- 更多 -->
+    <string name="more_refresh">刷新</string>
+    <string name="more_share">分享</string>
+    <string name="more_copy_links">复制链接</string>
+    <string name="more_copy_links_success">链接已复制</string>
+    <string name="more_open_by_browser">用浏览器打开</string>
+    <string name="more_clear_cache">清理缓存</string>
+    <string name="more_clear_cache_success">清除缓存成功</string>
+
+    <!-- 开源协议名称 -->
+    <string name="license_ButterKnife">ButterKnife</string>
+    <string name="license_Retrofit">Retrofit</string>
+    <string name="license_BaseRecyclerViewAdapterHelper">BaseRecyclerViewAdapterHelper</string>
+    <string name="license_SmartRefreshLayout">SmartRefreshLayout</string>
+    <string name="license_ImmersionBar">ImmersionBar</string>
+    <string name="license_Dialog">Dialog</string>
+    <string name="license_TitleBar">TitleBar</string>
+    <string name="license_ToastUtils">ToastUtils</string>
+    <string name="license_XXPermissions">XXPermissions</string>
+    <string name="license_AndroidUtilCode">AndroidUtilCode</string>
+    <string name="license_MultipleStatusView">MultipleStatusView</string>
+    <string name="license_BGASwipeBackLayout_Android">BGASwipeBackLayout-Android</string>
+
+    <!-- 开源协议作者 -->
+    <string name="author_ButterKnife">JakeWharton</string>
+    <string name="author_Retrofit">square</string>
+    <string name="author_BaseRecyclerViewAdapterHelper">CymChad</string>
+    <string name="author_SmartRefreshLayout">scwang90</string>
+    <string name="author_ImmersionBar">gyf-dev</string>
+    <string name="author_Dialog">kongzue</string>
+    <string name="author_TitleBar">getActivity</string>
+    <string name="author_ToastUtils">getActivity</string>
+    <string name="author_XXPermissions">getActivity</string>
+    <string name="author_AndroidUtilCode">Blankj</string>
+    <string name="author_MultipleStatusView">qyxxjd</string>
+    <string name="author_BGASwipeBackLayout_Android">bingoogolapple</string>
+
+    <!-- 开源协议介绍 -->
+    <string name="detail_ButterKnife">Bind Android views and callbacks to fields and methods.</string>
+    <string name="detail_Retrofit">Type-safe HTTP client for Android and Java by Square, Inc.</string>
+    <string name="detail_BaseRecyclerViewAdapterHelper">BRVAH:Powerful and flexible RecyclerAdapter</string>
+    <string name="detail_SmartRefreshLayout">🔥下拉刷新、上拉加载、二级刷新、淘宝二楼、RefreshLayout、OverScroll，Android智能下拉刷新框架，支持越界回弹、越界拖动，具有极强的扩展性，集成了几十种炫酷的Header和 Footer。</string>
+    <string name="detail_ImmersionBar">android 4.4以上沉浸式状态栏和沉浸式导航栏管理，包括状态栏字体颜色，适用于Activity、Fragment、DialogFragment、Dialog，并且适配刘海屏，适配软键盘弹出等问题，一句代码轻松实现，以及对bar的其他设置，详见README</string>
+    <string name="detail_Dialog">🔥空祖家的对话框工具</string>
+    <string name="detail_TitleBar">A simple generic title bar</string>
+    <string name="detail_ToastUtils">This is a very functional Toast</string>
+    <string name="detail_XXPermissions">Android 6.0 permissions adaptation framework</string>
+    <string name="detail_AndroidUtilCode">🔥 Android developers should collect the following utils(updating).</string>
+    <string name="detail_MultipleStatusView">一个支持多种状态的自定义View,可以方便的切换到：加载中视图、错误视图、空数据视图、网络异常视图、内容视图。</string>
+    <string name="detail_BGASwipeBackLayout_Android">Android Activity 滑动返回。支持微信滑动返回样式、横屏滑动返回、全屏滑动返回</string>
+
+    <!-- 设置 -->
+    <string name="setting_text">设置</string>
+    <string name="setting_normal_text">基本设置</string>
+    <string name="setting_other_text">其它设置</string>
+    <string name="setting_auto_cache">自动缓存</string>
+    <string name="setting_no_image">无图模式</string>
+    <string name="setting_night">夜间模式</string>
+    <string name="setting_theme_color">主题颜色</string>
+    <string name="setting_language">多语言</string>
+    <string name="setting_check_update">检查更新</string>
+    <string name="setting_clear_cache">清除缓存</string>
+    <string name="setting_cache_num">0KB</string>
+    <string name="setting_feedback">意见反馈</string>
+    <string name="support_text">支持</string>
+
+    <!-- 语言 -->
+    <string name="language_auto">跟随系统</string>
+    <string name="language_simplified">简体中文</string>
+    <string name="language_traditional">繁體中文</string>
+    <string name="language_english">English</string>
+
+    <!-- 提示 -->
+    <string name="home_exit">再按一次退出</string>
+</resources>

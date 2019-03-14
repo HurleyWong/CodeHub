@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".module.user.login.LoginActivity">
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/tb_login_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightColor="@color/colorAccent"
+        app:backButton="true"
+        app:title="@string/login_text"
+        app:rightTitle="@string/register_text" />
+s
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="30dp"
+        android:src="@mipmap/ic_logo" />
+
+    <com.example.hurley.wanandroid.widget.ClearEditText
+        android:id="@+id/et_login_username"
+        style="@style/EditTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="40dp"
+        android:hint="@string/login_username_input_hint"
+        android:maxLines="1" />
+
+    <View
+        style="@style/HorizontalLineStyle"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp" />
+
+    <com.example.hurley.wanandroid.widget.ClearEditText
+        android:id="@+id/et_login_password"
+        style="@style/EditTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:hint="@string/login_password_input_hint"
+        android:inputType="textPassword"
+        android:maxLength="20"
+        android:maxLines="1" />
+
+    <View
+        style="@style/HorizontalLineStyle"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp" />
+
+    <TextView
+        android:id="@+id/tv_login_forget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginLeft="@dimen/dp40"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="60dp"
+        android:text="@string/login_forget"
+        android:textColor="@color/colorAccent" />
+
+    <Button
+        android:id="@+id/btn_login_commit"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp40"
+        android:layout_marginTop="@dimen/dp30"
+        android:layout_marginRight="@dimen/dp40"
+        android:text="@string/login_text" />
+</LinearLayout>
