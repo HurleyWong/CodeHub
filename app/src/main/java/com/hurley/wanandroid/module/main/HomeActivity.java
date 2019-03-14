@@ -30,6 +30,8 @@ import me.yokeyword.fragmentation.ISupportFragment;
 @Route(path = "/wanandroid/HomeActivity")
 public class HomeActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
+    //TODO 沉浸式状态栏
+
     @BindView(R.id.bv_home_navigation)
     BottomNavigationView mBottomNavigationView;
 
@@ -61,20 +63,16 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
                     mFragments[0],
                     mFragments[1],
                     mFragments[2],
-                    mFragments[3]);
+                    mFragments[3],
+                    mFragments[4]);
         } else {
             mFragments[0] = indexFragment;
-            mFragments[1] = SystemFragment.newInstance();
-            mFragments[2] = WechatFragment.newInstance();
-            mFragments[3] = ProjectFragment.newInstance();
-            mFragments[4] = UserFragment.newInstance();
+            mFragments[1] = findFragment(SystemFragment.class);
+            mFragments[2] = findFragment(WechatFragment.class);
+            mFragments[3] = findFragment(ProjectFragment.class);
+            mFragments[4] = findFragment(UserFragment.class);
         }
 
-        //不使用图标默认变色
-        //mBottomNavigationView.setItemIconTintList(null);
-
-        //修复在ViewPager中点击EditText弹出软键盘导致BottomNavigationView还显示在ViewPager下面的问题
-        //postEventDelayed(this, 1000);
     }
 
     /**
@@ -135,6 +133,7 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.home_website) {
             //点击热搜以及常用网站
+
         } else if (item.getItemId() == R.id.home_search) {
             //点击搜索
 

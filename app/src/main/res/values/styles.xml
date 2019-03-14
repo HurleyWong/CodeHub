@@ -11,11 +11,6 @@
         <!-- 应用的强调色，CheckBox，RadioButton，SwitchCompat等一般控件的选中效果默认采用该颜色 -->
         <item name="colorAccent">@color/colorAccent</item>
 
-        <!-- ActionMode覆盖ActionBar -->
-        <item name="windowActionModeOverlay">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <!-- ActionMode的颜色 -->
-        <item name="actionModeBackground">@color/colorPrimary</item>
     </style>
 
     <!-- Toolbar的主题 -->
@@ -23,6 +18,11 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/dp54</item>
         <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <!-- ActionBar -->

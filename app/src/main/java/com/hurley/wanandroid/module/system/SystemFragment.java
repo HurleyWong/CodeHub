@@ -43,7 +43,7 @@ public class SystemFragment extends BaseFragment<SystemPresenter> implements Sys
 
     @Override
     protected void initInjector() {
-
+        mFragmentComponent.inject(this);
     }
 
     @Override

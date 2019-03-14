@@ -28,7 +28,7 @@ public class ProjectFragment extends BaseFragment<ProjectPresent> implements Pro
 
     @Override
     protected void initInjector() {
-
+        mFragmentComponent.inject(this);
     }
 
     @Override

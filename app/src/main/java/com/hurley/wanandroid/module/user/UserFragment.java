@@ -42,7 +42,7 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
 
     @Override
     protected void initInjector() {
-
+        mFragmentComponent.inject(this);
     }
 
     @Override
