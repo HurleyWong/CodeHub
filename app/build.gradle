@@ -52,6 +52,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:preference-v14:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -81,6 +82,10 @@ dependencies {
     //Gson转换器，将网络响应使用Gson转换成Java Bean
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+
+    //AgentWeb包：https://github.com/Justson/AgentWeb
+    implementation 'com.just.agentweb:agentweb:4.0.2'
+
 
     //RxJava包：https://github.com/ReactiveX/RxJava
     implementation "io.reactivex.rxjava2:rxjava:2.2.7"
@@ -116,19 +121,17 @@ dependencies {
     implementation 'com.blankj:utilcode:1.11.1'
     //SmartRefreshLayout：https://github.com/scwang90/SmartRefreshLayout
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-20'
-    //Fragmentation：https://github.com/YoKeyword/Fragmentation
-    implementation 'me.yokeyword:fragmentation:1.3.6'
 
     //状态栏沉浸：https://github.com/gyf-dev/ImmersionBar
-    implementation 'com.gyf.immersionbar:immersionbar:2.3.3-beta09'
+    implementation 'com.gyf.immersionbar:immersionbar:2.3.3'
     //侧滑功能：https://github.com/bingoogolapple/BGASwipeBackLayout-Android
     implementation 'cn.bingoogolapple:bga-swipebacklayout:1.2.0@aar'
     //标题栏：https://github.com/getActivity/TitleBar
     implementation 'com.hjq:titlebar:5.0'
     //吐司工具类：https://github.com/getActivity/ToastUtils
-    implementation 'com.hjq:toast:5.5'
+    implementation 'com.hjq:toast:5.6'
     //权限请求框架：https://github.com/getActivity/XXPermissions
-    implementation 'com.hjq:xxpermissions:5.2'
+    implementation 'com.hjq:xxpermissions:5.3'
 
     //空祖家的Dialog：https://github.com/kongzue/Dialog
     implementation 'com.kongzue.dialog:dialog:2.4.7'

@@ -7,6 +7,7 @@ import android.content.Context;
 import com.hurley.wanandroid.di.module.ActivityModule;
 import com.hurley.wanandroid.di.scope.ActivityScope;
 import com.hurley.wanandroid.di.scope.ContextLifeCycle;
+import com.hurley.wanandroid.module.main.WebActivity;
 
 import dagger.Component;
 
@@ -32,4 +33,5 @@ public interface ActivityComponent {
 
     //TODO 添加inject(Activity)
 
+    void inject(WebActivity activity);
 }

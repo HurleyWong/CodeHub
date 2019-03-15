@@ -15,11 +15,6 @@ public class Constants {
     public static final String MY_SHARED_PREFERENCE = "my_shared_preference";
 
     /**
-     * 每页数量
-     */
-    public static final int PAGE_SIZE = 20;
-
-    /**
      * 事件Action
      */
     public static final String EVENT_ACTION_REFRESH_DATA = "refresh_list_item";
@@ -56,11 +51,15 @@ public class Constants {
     /**
      * 主要功能常量
      */
-    public static final String ARTICLE_LINK = "article_link";
+    public static final String CONTENT_ID_KEY = "id";
 
-    public static final String ARTICLE_TITLE = "article_title";
+    public static final String CONTENT_CID_KEY = "cid";
 
-    public static final String ARTICLE_ID = "article_id";
+    public static final String CONTENT_URL_KEY = "url";
+
+    public static final String CONTENT_TITLE_KEY = "title";
+
+    public static final String CONTENT_AUTHOR_KEY = "author";
 
     public static final String IS_COLLECT = "is_collect";
 
@@ -87,15 +86,24 @@ public class Constants {
     public static final String NIGHT_MODE = "night_mode";
 
     /**
+     * 每页数量
+     */
+    public static final int PAGE_SIZE = 20;
+
+    /**
      * 避免多次点击区域
      */
     public static final long CLICK_TIME_AREA = 1000;
-
     public static final long DOUBLE_INTERVAL_TIME = 2000;
 
     /**
      * 动画时间
      */
     public static final int ANIM_TIME = 1000;
+
+    /**
+     * 退出间隔时间（ms）
+     */
+    public static final int INTERVAL_TIME = 2000;
 
 }

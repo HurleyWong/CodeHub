@@ -1,14 +1,20 @@
-package com.hurley.wanandroid.module.user;
+package com.hurley.wanandroid.module.user.about;
 
 import android.content.pm.PackageManager;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.base.BaseActivity;
+import com.hurley.wanandroid.module.main.WebActivity;
+import com.just.agentweb.AgentWeb;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * <pre>
@@ -18,6 +24,7 @@ import butterknife.BindView;
  *      desc   : 关于界面
  * </pre>
  */
+@Route(path = "/about/AboutActivity")
 public class AboutActivity extends BaseActivity {
 
     private static final String TAG = "AboutActivity";
@@ -30,8 +37,6 @@ public class AboutActivity extends BaseActivity {
     LinearLayout mLlAboutOpenSource;
     @BindView(R.id.about_github)
     LinearLayout mLlAboutGithub;
-    @BindView(R.id.about_weibo)
-    LinearLayout mLlAboutWeibo;
 
     @Override
     protected int getLayoutId() {
@@ -46,7 +51,35 @@ public class AboutActivity extends BaseActivity {
     @Override
     protected void initView() {
         showAboutContent();
+    }
 
+    /**
+     * 显示返回键
+     * @return
+     */
+    @Override
+    protected boolean showHomeAsUp() {
+        return true;
+    }
+
+    @OnClick({R.id.about_wan_android, R.id.about_open_source, R.id.about_github})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.about_wan_android:
+                //打开玩Android网页
+                WebActivity.startWeb(getString(R.string.wan_android_address));
+                break;
+            case R.id.about_open_source:
+                //跳转至开源框架界面
+                ARouter.getInstance().build("/about/OpenSourceActivity").navigation();
+                break;
+            case R.id.about_github:
+                //打开Github主页
+                WebActivity.startWeb(getString(R.string.github_address));
+                break;
+            default:
+                break;
+        }
     }
 
     /**

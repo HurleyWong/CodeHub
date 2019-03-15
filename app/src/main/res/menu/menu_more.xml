@@ -10,6 +10,10 @@
         android:title="@string/more_share"/>
 
     <item
+        android:id="@+id/more_collect"
+        android:title="@string/collect_text"/>
+
+    <item
         android:id="@+id/more_copy_links"
         android:title="@string/more_copy_links"/>
 

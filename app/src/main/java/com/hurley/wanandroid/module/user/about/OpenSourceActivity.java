@@ -1,10 +1,11 @@
-package com.hurley.wanandroid.module.user;
+package com.hurley.wanandroid.module.user.about;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
 
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.bean.OpenSourceBean;
@@ -23,9 +24,10 @@ import butterknife.BindView;
  *      @author hurley
  *      date   : 2019/2/21 下午1:27
  *      github : https://github.com/HurleyJames
- *      desc   : 开源相关界面
+ *      desc   : 开源框架界面
  * </pre>
  */
+@Route(path = "/about/OpenSourceActivity")
 public class OpenSourceActivity extends BaseActivity {
 
     private static final String TAG = "OpenSourceActivity";
@@ -76,4 +78,12 @@ public class OpenSourceActivity extends BaseActivity {
         ));
     }
 
+    /**
+     * 显示返回键
+     * @return
+     */
+    @Override
+    protected boolean showHomeAsUp() {
+        return true;
+    }
 }

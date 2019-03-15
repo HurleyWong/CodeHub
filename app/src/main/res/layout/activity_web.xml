@@ -7,23 +7,22 @@
     android:orientation="vertical"
     tools:context=".module.main.WebActivity">
 
-    <com.hjq.bar.TitleBar
-        android:id="@+id/tb_web_title"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:rightIcon="@mipmap/ic_more"/>
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-    <ProgressBar
-        android:id="@+id/pb_web_progress"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="3dip"
-        android:progressDrawable="@drawable/bg_web_progress_bar"
-        android:visibility="gone" />
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/ActionBar"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
-    <WebView
-        android:id="@+id/wv_web_view"
+    <FrameLayout
+        android:id="@+id/web_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
 </LinearLayout>

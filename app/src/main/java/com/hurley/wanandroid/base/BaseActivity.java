@@ -14,6 +14,7 @@ import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
+import com.gyf.barlibrary.ImmersionBar;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.app.App;
 import com.hurley.wanandroid.app.Constants;

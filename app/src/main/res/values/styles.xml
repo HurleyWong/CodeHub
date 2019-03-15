@@ -2,15 +2,21 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- 窗口背景颜色 -->
-        <item name="android:windowBackground">@color/transparent</item>
         <!-- 应用的主色调，actionBar默认使用该颜色，Toolbar导航栏的底色 -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <!-- 应用的主要暗色调，statusBarColor默认使用该颜色 -->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <!-- 应用的强调色，CheckBox，RadioButton，SwitchCompat等一般控件的选中效果默认采用该颜色 -->
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="preferenceTheme">@style/PreferenceScreen</item>
 
+        <item name="android:statusBarColor">@color/colorAccent</item>
+    </style>
+
+    <style name="PreferenceScreen" parent="PreferenceThemeOverlay.v14.Material">
+        <item name="android:fadeScrollbars">true</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:scrollbarFadeDuration">1</item>
     </style>
 
     <!-- Toolbar的主题 -->
@@ -33,6 +39,8 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
     <!-- 解决启动页白屏的问题 -->
     <style name="LauncherTheme" parent="AppTheme">

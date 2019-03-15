@@ -6,15 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".module.user.OpenSourceActivity">
+    tools:context=".module.user.about.OpenSourceActivity">
 
-    <com.hjq.bar.TitleBar
-        android:id="@+id/tb_open_source_title"
+
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:rightColor="@color/colorAccent"
-        app:backButton="true"
-        app:title="@string/about_open_source" />
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/ActionBar"
+            app:title="@string/about_open_source">
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_open_source"

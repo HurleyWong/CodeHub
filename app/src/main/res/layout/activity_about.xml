@@ -7,14 +7,20 @@
     android:background="@color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".module.user.AboutActivity">
+    tools:context=".module.user.about.AboutActivity">
 
-    <com.hjq.bar.TitleBar
-        android:id="@+id/tb_about_title"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:backButton="true"
-        app:title="@string/about_text" />
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/ActionBar"
+            app:title="@string/about_text">
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
 
     <TextView
         android:id="@+id/about_version_text"
@@ -155,31 +161,6 @@
         style="@style/HorizontalLineStyle"
         android:layout_marginStart="@dimen/dp12"
         android:layout_marginEnd="@dimen/dp12" />
-
-    <LinearLayout
-        android:id="@+id/about_weibo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/dp12">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@null"
-            android:src="@mipmap/ic_weibo" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp10"
-            android:layout_weight="1"
-            android:drawableRight="@mipmap/ic_right_arrow"
-            android:text="@string/about_weibo"
-            android:textColor="@color/text"
-            android:textSize="@dimen/sp20" />
-    </LinearLayout>
 
     <View
         style="@style/HorizontalLineStyle"

@@ -8,7 +8,11 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
+import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
@@ -17,12 +21,22 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.utils.WebViewLifecycleUtils;
+import com.just.agentweb.AgentWeb;
+import com.just.agentweb.DefaultWebClient;
 import com.zyyoona7.popup.EasyPopup;
 
 import butterknife.BindView;
@@ -35,24 +49,22 @@ import butterknife.BindView;
  *      desc   : 浏览器界面
  * </pre>
  */
-public class WebActivity extends BaseActivity {
+@Route(path = "/main/WebActivity")
+public class WebActivity extends BaseActivity<WebPresenter> implements WebContract.View {
 
-    //TODO 清除缓存
+    @Autowired
+    public int id;
+    @Autowired
+    public String url;
+    @Autowired
+    public String title;
+    @Autowired
+    public String author;
 
-    private static final String TAG = "WebActivity";
+    @BindView(R.id.web_content)
+    FrameLayout mFlWebContent;
 
-    @BindView(R.id.pb_web_progress)
-    ProgressBar mProgressBar;
-    @BindView(R.id.wv_web_view)
-    WebView mWebView;
-
-    /**
-     * 当前url
-     * @return
-     */
-    private String mCurrentUrl;
-
-    private EasyPopup mPopup;
+    AgentWeb mAgentWeb;
 
     @Override
     protected int getLayoutId() {
@@ -61,25 +73,116 @@ public class WebActivity extends BaseActivity {
 
     @Override
     protected void initInjector() {
-
+        mActivityComponent.inject(this);
     }
 
     @Override
     protected void initView() {
-        //显示滚动条
-        mWebView.setVerticalScrollBarEnabled(true);
-        mWebView.setHorizontalScrollBarEnabled(true);
+        //传入Activity
+        mAgentWeb = AgentWeb.with(this)
+                //传入AgentWeb 的父控件 ，如果父控件为 RelativeLayout ， 那么第二参数需要传入 RelativeLayout.LayoutParams
+                .setAgentWebParent(mFlWebContent, new LinearLayout.LayoutParams(-1, -1))
+                //使用默认进度条
+                .useDefaultIndicator()
+                .setWebChromeClient(mWebChromeClient)
+                .setWebViewClient(mWebViewClient)
+                .setMainFrameErrorView(R.layout.agentweb_error_page, -1)
+                .setSecurityType(AgentWeb.SecurityType.STRICT_CHECK)
+                //打开其他应用时，弹窗咨询用户是否前往其他应用
+                .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.ASK)
+                .interceptUnkownUrl() //拦截找不到相关页面的Scheme
+                .createAgentWeb()
+                .ready()
+                .go(url);
+        setWebDisplay();
+    }
 
-        WebSettings settings = mWebView.getSettings();
-        //允许文件访问
-        settings.setAllowFileAccess(true);
-        //支持JavaScript，默认为false
-        settings.setJavaScriptEnabled(true);
-        //允许网页定位
-        settings.setGeolocationEnabled(true);
+    /**
+     * 显示返回键
+     * @return
+     */
+    @Override
+    protected boolean showHomeAsUp() {
+        return true;
+    }
 
-        //设置缓存模式
-        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_more, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.more_refresh:
+                //刷新
+                break;
+            case R.id.more_share:
+                //分享
+                break;
+            case R.id.more_collect:
+                //收藏
+                break;
+            case R.id.more_copy_links:
+                //复制链接
+                break;
+            case R.id.more_open_by_browser:
+                //用浏览器打开
+                break;
+            case R.id.more_clear_cache:
+                //清理缓存
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * 返回上一页而不是finish Activity
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (mAgentWeb != null && mAgentWeb.handleKeyEvent(keyCode, event)) {
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private WebViewClient mWebViewClient = new WebViewClient() {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+            return super.shouldOverrideUrlLoading(view, request);
+        }
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+
+        }
+    };
+
+    private WebChromeClient mWebChromeClient = new WebChromeClient() {
+        @Override
+        public void onProgressChanged(WebView view, int newProgress) {
+        }
+
+        @Override
+        public void onReceivedTitle(WebView view, String title) {
+            super.onReceivedTitle(view, title);
+            //设置标题
+            setToolbarTitle(title);
+        }
+    };
+
+    /**
+     * 设置网页显示效果
+     */
+    private void setWebDisplay() {
+        WebSettings settings = mAgentWeb.getWebCreator().getWebView().getSettings();
 
         //是否支持ViewPoint属性，默认值false
         //自适应手机屏幕
@@ -117,167 +220,32 @@ public class WebActivity extends BaseActivity {
     }
 
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && mWebView.canGoBack()) {
-            //后退网页并且拦截该事件
-            mWebView.goBack();
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
-
-    @Override
-    protected void onResume() {
-        WebViewLifecycleUtils.onResume(mWebView);
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        WebViewLifecycleUtils.onPause(mWebView);
-        super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        WebViewLifecycleUtils.onDestroy(mWebView);
-        super.onDestroy();
+    /**
+     * 点击文章打开网页
+     * @param id            文章id
+     * @param url           文章链接
+     * @param title         文章标题
+     * @param author        文章作者
+     */
+    public static void startWeb(int id, String url, String title, String author) {
+        ARouter.getInstance().build("/main/WebActivity")
+                .withInt(Constants.CONTENT_ID_KEY, id)
+                .withString(Constants.CONTENT_URL_KEY, url)
+                .withString(Constants.CONTENT_TITLE_KEY, title)
+                .withString(Constants.CONTENT_AUTHOR_KEY, author)
+                .navigation();
     }
 
     /**
-     * 点击分享按钮
-     * 调用系统自带分享功能
+     * 直接打开网页
+     * @param url
      */
-    private void clickShare() {
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT, mCurrentUrl);
-        startActivity(Intent.createChooser(intent, getString(R.string.more_share)));
+    public static void startWeb(String url) {
+        ARouter.getInstance().build("/main/WebActivity")
+                .withString(Constants.CONTENT_URL_KEY, url)
+                .navigation();
     }
 
-    /**
-     * 复制链接
-     * @param content
-     */
-    private void clickCopy(CharSequence content) {
-        ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
-        if (clipboard != null) {
-            //参数一：标签，可为空，参数二：要复制到剪贴板的文本
-            clipboard.setPrimaryClip(ClipData.newPlainText(null, content));
-            if (clipboard.hasPrimaryClip()) {
-                clipboard.getPrimaryClip().getItemAt(0).getText();
-            }
-        }
-    }
 
-    /**
-     * 用浏览器打开网页
-     */
-    private void clickExplorer() {
-        Uri uri = Uri.parse(mCurrentUrl);
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        startActivity(intent);
-    }
 
-    private class MyWebViewClient extends WebViewClient {
-        /**
-         * 网页加载错误时回调，这个方法会在onPageFinished之前调用
-         * @param webView
-         * @param request
-         * @param error
-         */
-        @Override
-        public void onReceivedError(WebView webView, WebResourceRequest request, WebResourceError error) {
-            super.onReceivedError(webView, request, error);
-        }
-
-        /**
-         * 开始加载网页
-         * @param view
-         * @param url
-         * @param favicon
-         */
-        @Override
-        public void onPageStarted(final WebView view, final String url, Bitmap favicon) {
-            //显示网页加载界面
-            mProgressBar.setVisibility(View.VISIBLE);
-            mCurrentUrl = url;
-        }
-
-        /**
-         * 完成加载网页
-         * @param view
-         * @param url
-         */
-        @Override
-        public void onPageFinished(WebView view, String url) {
-            //隐藏网页加载界面
-            mProgressBar.setVisibility(View.GONE);
-        }
-
-        @Override
-        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-            //一定要去除这行代码，否则设置无效
-            //super.onReceivedSslError(view, handler, error);
-
-            //Android默认的处理方式
-            //handler.cancel();
-
-            //接受所有网站的证书
-            handler.proceed();
-
-            //进行其它处理
-            //handleMessage(Message msg);
-        }
-
-        /**
-         * 跳转到其它链接
-         * @param webView
-         * @param request
-         * @return
-         */
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView webView, WebResourceRequest request) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                String scheme = Uri.parse(request.getUrl().toString()).getScheme();
-                if (scheme != null) {
-                    scheme = scheme.toLowerCase();
-                }
-                if ("http".equalsIgnoreCase(scheme) || "https".equalsIgnoreCase(scheme)) {
-                    mWebView.loadUrl(request.getUrl().toString());
-                }
-            }
-            //已经处理该链接请求
-            return true;
-        }
-    }
-
-    private class MyWebChromeClient extends WebChromeClient {
-
-        /**
-         * 收到网页标题
-         * @param view
-         * @param title
-         */
-        @Override
-        public void onReceivedTitle(WebView view, String title) {
-            super.onReceivedTitle(view, title);
-            if (title != null) {
-                //访问微信公众号文章会收到两次标题名
-                setTitle(title);
-            }
-        }
-
-        /**
-         * 收到加载进度变化
-         * @param view
-         * @param newProgress
-         */
-        @Override
-        public void onProgressChanged(WebView view, int newProgress) {
-            mProgressBar.setProgress(newProgress);
-        }
-    }
 }

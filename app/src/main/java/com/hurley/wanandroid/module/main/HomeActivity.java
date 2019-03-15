@@ -2,12 +2,18 @@ package com.hurley.wanandroid.module.main;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.content.ContextCompat;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.blankj.utilcode.util.ToastUtils;
+import com.blankj.utilcode.util.Utils;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.module.index.IndexFragment;
 import com.hurley.wanandroid.module.project.ProjectFragment;
@@ -27,10 +33,8 @@ import me.yokeyword.fragmentation.ISupportFragment;
  *      desc   : 主页界面
  * </pre>
  */
-@Route(path = "/wanandroid/HomeActivity")
+@Route(path = "/main/HomeActivity")
 public class HomeActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-
-    //TODO 沉浸式状态栏
 
     @BindView(R.id.bv_home_navigation)
     BottomNavigationView mBottomNavigationView;
@@ -141,10 +145,24 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         return super.onOptionsItemSelected(item);
     }
 
-    //TODO 再按一次退出
-
+    /**
+     * 再按一次退出
+     * @param keyCode
+     * @param event
+     * @return
+     */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - mExitTime > Constants.INTERVAL_TIME)) {
+                ToastUtils.setBgColor(ContextCompat.getColor(this, R.color.gray));
+                ToastUtils.showShort(R.string.home_exit);
+                mExitTime = System.currentTimeMillis();
+            } else {
+                System.exit(0);
+            }
+            return true;
+        }
         return super.onKeyDown(keyCode, event);
     }
 
