@@ -155,8 +155,7 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if ((System.currentTimeMillis() - mExitTime > Constants.INTERVAL_TIME)) {
-                ToastUtils.setBgColor(ContextCompat.getColor(this, R.color.gray));
-                ToastUtils.showShort(R.string.home_exit);
+                toast(R.string.home_exit);
                 mExitTime = System.currentTimeMillis();
             } else {
                 System.exit(0);

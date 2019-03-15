@@ -36,6 +36,7 @@ import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.utils.WebViewLifecycleUtils;
 import com.just.agentweb.AgentWeb;
+import com.just.agentweb.AgentWebConfig;
 import com.just.agentweb.DefaultWebClient;
 import com.zyyoona7.popup.EasyPopup;
 
@@ -117,21 +118,31 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
         switch (item.getItemId()) {
             case R.id.more_refresh:
                 //刷新
+                mAgentWeb.getWebCreator().getWebView().loadUrl(url);
                 break;
             case R.id.more_share:
                 //分享
+                shareWeb();
                 break;
             case R.id.more_collect:
                 //收藏
                 break;
             case R.id.more_copy_links:
                 //复制链接
+                copyLink(url);
+                //提示复制链接成功
+                toast(R.string.more_copy_links_success);
                 break;
             case R.id.more_open_by_browser:
                 //用浏览器打开
+                openByBrowser();
                 break;
             case R.id.more_clear_cache:
+                //TODO 显示缓存占用多少
                 //清理缓存
+                AgentWebConfig.clearDiskCache(this);
+                //提示清除缓存成功
+                toast(R.string.more_clear_cache_success);
                 break;
             default:
                 break;
@@ -152,6 +163,7 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
         }
         return super.onKeyDown(keyCode, event);
     }
+
 
     private WebViewClient mWebViewClient = new WebViewClient() {
         @Override
@@ -238,7 +250,7 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
 
     /**
      * 直接打开网页
-     * @param url
+     * @param url           网页链接
      */
     public static void startWeb(String url) {
         ARouter.getInstance().build("/main/WebActivity")
@@ -246,6 +258,40 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
                 .navigation();
     }
 
+    /**
+     * 分享
+     * 调用系统自带分享功能
+     */
+    private void shareWeb() {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, url);
+        startActivity(Intent.createChooser(intent, getString(R.string.more_share)));
+    }
 
+    /**
+     * 复制链接
+     * @param content
+     */
+    private void copyLink(CharSequence content) {
+        ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard != null) {
+            //参数一：标签，可为空，参数二：要复制到剪贴板的文本
+            clipboard.setPrimaryClip(ClipData.newPlainText(null, content));
+            if (clipboard.hasPrimaryClip()) {
+                clipboard.getPrimaryClip().getItemAt(0).getText();
+            }
+        }
+    }
+
+    /**
+     * 用浏览器打开
+     */
+    private void openByBrowser() {
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
 
 }

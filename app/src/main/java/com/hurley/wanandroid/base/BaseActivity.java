@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -409,6 +410,23 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
         }
     }
 
+    /**
+     * 显示Toast
+     * @param text
+     */
+    protected void toast(CharSequence text) {
+        ToastUtils.setBgColor(ContextCompat.getColor(this, R.color.gray));
+        ToastUtils.showShort(text);
+    }
+
+    /**
+     * 显示Toast
+     * @param id
+     */
+    protected void toast(int id) {
+        ToastUtils.setBgColor(ContextCompat.getColor(this, R.color.gray));
+        ToastUtils.showShort(id);
+    }
 
 }
 
