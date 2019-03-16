@@ -18,7 +18,7 @@ import java.util.List;
 public interface SystemContract {
 
     interface View extends BaseContract.BaseView {
-        void setSystems(List<SystemBean> knowledgeSystems);
+        void setSystems(List<SystemBean> systems);
     }
 
     interface Presenter extends BaseContract.BasePresenter<SystemContract.View> {

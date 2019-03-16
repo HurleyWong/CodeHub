@@ -7,44 +7,15 @@
     android:orientation="vertical"
     tools:context=".module.project.ProjectFragment">
 
-
-
-    <!--<RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="#2f2f2f"
-            android:text="@string/project_text"
-            android:layout_marginLeAft="10dp"
-            android:gravity="center_vertical"
-            android:textSize="18sp"/>
-
-        <ImageView
-            android:id="@+id/homesearch"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_alignParentRight="true"
-            android:background="@mipmap/ic_search"
-            android:layout_marginTop="7.5dp"
-            android:layout_marginRight="7.5dp" />
-    </RelativeLayout>-->
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#dddddd"/>
-
     <android.support.design.widget.TabLayout
-        android:id="@+id/tabLayout_project"
+        android:id="@+id/tl_project"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
         app:tabGravity="center"
-        app:tabIndicatorColor="@color/colorPrimary"
-        app:tabIndicatorHeight="1.25dp"
+        app:tabIndicatorColor="@color/white50"
+        app:tabSelectedTextColor="@color/white"
+        app:tabIndicatorHeight="@dimen/dp2"
         app:tabTextColor="@color/colorPrimary"
         app:tabMode="scrollable">
     </android.support.design.widget.TabLayout>
@@ -52,8 +23,6 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_project"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
-
+        android:layout_height="match_parent" />
 
 </LinearLayout>

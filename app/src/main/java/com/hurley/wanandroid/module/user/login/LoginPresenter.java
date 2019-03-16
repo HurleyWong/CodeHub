@@ -43,8 +43,8 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
                     if (response.getErrorCode() == BaseBean.SUCCESS) {
                         mView.loginSuccess(response.getData());
                     } else {
-                        mView.showFaild(response.getErrorMsg());
+                        mView.showFailed(response.getErrorMsg());
                     }
-                }, throwable -> mView.showFaild(throwable.getMessage()));
+                }, throwable -> mView.showFailed(throwable.getMessage()));
     }
 }

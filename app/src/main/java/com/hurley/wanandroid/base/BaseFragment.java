@@ -124,7 +124,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
     }
 
     @Override
-    public void showFaild(String errorMsg) {
+    public void showFailed(String errorMsg) {
         ToastUtils.showShort(errorMsg);
     }
 

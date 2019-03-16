@@ -9,6 +9,8 @@ import com.hurley.wanandroid.bean.SystemBean;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * <pre>
  *      @author hurley
@@ -19,17 +21,19 @@ import java.util.List;
  */
 public class SystemAdapter extends BaseQuickAdapter<SystemBean, BaseViewHolder> {
 
-    public SystemAdapter(int layoutResId, @Nullable List<SystemBean> data) {
-        super(layoutResId, data);
+    @Inject
+    public SystemAdapter() {
+        super(R.layout.item_system, null);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, SystemBean item) {
         helper.setText(R.id.tv_system_title, item.getName());
-        StringBuffer childrenName = new StringBuffer();
-        for (SystemBean.Children children : item.getChildren()) {
-            childrenName.append(children.getName() + "  ");
+        StringBuffer stringBuffer = new StringBuffer();
+        for (SystemBean.Children systemBean : item.getChildren()) {
+            //设置两者之间的间隔
+            stringBuffer.append(systemBean.getName()+ "     ");
         }
-        helper.setText(R.id.tv_system_content, childrenName.toString());
+        helper.setText(R.id.tv_system_subtitle, stringBuffer.toString());
     }
 }

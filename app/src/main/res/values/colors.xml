@@ -22,7 +22,7 @@
     <!-- 主题颜色 -->
     <color name="themePrimary">#303F9F</color>
 
-    <color name="text">#5B5D5C</color>
+    <color name="text">#000000</color>
 
     <color name="transparent">#00000000</color>
 

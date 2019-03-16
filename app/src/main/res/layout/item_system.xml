@@ -1,45 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#dddddd"/>
-
+    style="@style/CardViewStyle">
+    
     <LinearLayout
-        android:id="@+id/ll_system_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingTop="12.5dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="12.5dp">
-
-        <TextView
-            android:id="@+id/tv_system_title"
-            android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="@dimen/dp10">
+        
+        <LinearLayout
+            android:layout_width="@dimen/dp0"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:maxLines="2"
-            android:text="标题"
-            android:textSize="18sp"
-            android:textColor="#2f2f2f"/>
-
-        <TextView
-            android:id="@+id/tv_system_content"
-            android:layout_width="match_parent"
+            android:layout_weight="8"
+            android:orientation="vertical">
+            
+            <TextView
+                android:id="@+id/tv_system_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp8"
+                android:text="一级目录"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp18"/>
+            
+            <TextView
+                android:id="@+id/tv_system_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp8"
+                android:text="二级目录"
+                android:textColor="@color/text" />
+        </LinearLayout>
+        
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_marginTop="3dp"
-            android:maxLines="3"
-            android:text="内容"
-            android:ellipsize="end"
-            android:textSize="16sp"
-            android:textColor="#999999"/>
+            android:src="@mipmap/ic_right_arrow"/>
     </LinearLayout>
-</LinearLayout>
+</android.support.v7.widget.CardView>

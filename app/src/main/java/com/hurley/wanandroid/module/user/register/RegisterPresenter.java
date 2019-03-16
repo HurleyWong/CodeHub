@@ -35,8 +35,8 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View> impl
                     if (response.getErrorCode() == BaseBean.SUCCESS) {
                         mView.registerSuccess(response.getData());
                     } else {
-                        mView.showFaild(response.getErrorMsg());
+                        mView.showFailed(response.getErrorMsg());
                     }
-                }, throwable -> mView.showFaild(throwable.getMessage()));
+                }, throwable -> mView.showFailed(throwable.getMessage()));
     }
 }
