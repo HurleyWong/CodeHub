@@ -93,6 +93,20 @@ public class RetrofitManager {
         }
     };
 
+    private static final Interceptor mHeaderInterceptor = new Interceptor() {
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request request = chain.request()
+                    .newBuilder()
+                    .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
+                    .addHeader("Accept-Encoding", "gzip, deflate")
+                    .addHeader("Connection", "keep-alive")
+                    .addHeader("Accept", "*/*")
+                    .build();
+            return chain.proceed(request);
+        }
+    };
+
     /**
      * 获取OkHttpClient实例
      *

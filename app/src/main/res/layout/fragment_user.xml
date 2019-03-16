@@ -24,6 +24,7 @@
             android:background="@mipmap/ic_user_img"/>
 
         <TextView
+            android:id="@+id/tv_login_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/dp_10"
@@ -67,6 +68,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="@string/about_text" />
+
+            <Button
+                android:id="@+id/btn_user_logout"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/logout_text"
+                android:visibility="gone"/>
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

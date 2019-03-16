@@ -1,16 +1,28 @@
 package com.hurley.wanandroid.module.user;
 
+import android.annotation.SuppressLint;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.SPUtils;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseFragment;
+import com.hurley.wanandroid.event.LoginEvent;
+import com.hurley.wanandroid.event.LogoutEvent;
+import com.hurley.wanandroid.module.user.login.LoginActivity;
+import com.hurley.wanandroid.net.CookiesManager;
+import com.hurley.wanandroid.net.callback.RxBus;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.functions.Consumer;
 
 /**
  * <pre>
@@ -26,12 +38,16 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
 
     @BindView(R.id.ll_login)
     LinearLayout mLlLogin;
+    @BindView(R.id.tv_login_status)
+    TextView mTvLoginStatus;
     @BindView(R.id.btn_user_collect)
     Button mBtnCollect;
     @BindView(R.id.btn_user_setting)
     Button mBtnSetting;
     @BindView(R.id.btn_user_about)
     Button mBtnAbout;
+    @BindView(R.id.btn_user_logout)
+    Button mBtnLogout;
 
     /**
      * 是否登录
@@ -52,27 +68,71 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
         mFragmentComponent.inject(this);
     }
 
+    @SuppressLint("CheckResult")
     @Override
     protected void initView(View view) {
-
+        setUserStatus();
+        //登录成功后需重新设置用户状态
+        RxBus.getInstance().toFlowable(LoginEvent.class).subscribe(loginEvent -> setUserStatus());
     }
 
-    @OnClick({R.id.ll_login, R.id.btn_user_collect, R.id.btn_user_setting, R.id.btn_user_about})
+    @OnClick({R.id.ll_login, R.id.btn_user_collect, R.id.btn_user_setting, R.id.btn_user_about, R.id.btn_user_logout})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_login:
+                //登录界面
+                if (!isLogin) {
+                    //未登录
+                    ARouter.getInstance().build("/login/LoginActivity").navigation();
+                }
                 break;
             case R.id.btn_user_collect:
+                //收藏界面
                 break;
             case R.id.btn_user_setting:
+                //设置界面
+                ARouter.getInstance().build("/setting/SettingActivity").navigation();
                 break;
             case R.id.btn_user_about:
+                //关于界面
                 ARouter.getInstance().build("/about/AboutActivity").navigation();
+                break;
+            case R.id.btn_user_logout:
+                logout();
                 break;
             default:
                 break;
         }
     }
 
+    /**
+     * 设置用户状态
+     */
+    private void setUserStatus() {
+        isLogin = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS);
+        if (isLogin) {
+            //已登录
+            LogUtils.e("已登录");
+            mTvLoginStatus.setText(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getString(Constants.USERNAME));
+            mBtnLogout.setVisibility(View.VISIBLE);
+        } else {
+            //未登录
+            LogUtils.e("未登录");
+            mTvLoginStatus.setText(R.string.click_login);
+            mBtnLogout.setVisibility(View.GONE);
+        }
+    }
 
+    /**
+     * 退出登录
+     */
+    private void logout() {
+        //退出登录
+        SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).clear();
+        setUserStatus();
+        //清除Cookies
+        CookiesManager.clearAllCookies();
+        //发送退出登录的消息
+        RxBus.getInstance().post(new LogoutEvent());
+    }
 }

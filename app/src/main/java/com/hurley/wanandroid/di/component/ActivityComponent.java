@@ -8,6 +8,8 @@ import com.hurley.wanandroid.di.module.ActivityModule;
 import com.hurley.wanandroid.di.scope.ActivityScope;
 import com.hurley.wanandroid.di.scope.ContextLifeCycle;
 import com.hurley.wanandroid.module.main.WebActivity;
+import com.hurley.wanandroid.module.user.login.LoginActivity;
+import com.hurley.wanandroid.module.user.register.RegisterActivity;
 
 import dagger.Component;
 
@@ -34,4 +36,8 @@ public interface ActivityComponent {
     //TODO 添加inject(Activity)
 
     void inject(WebActivity activity);
+
+    void inject(LoginActivity activity);
+
+    void inject(RegisterActivity activity);
 }

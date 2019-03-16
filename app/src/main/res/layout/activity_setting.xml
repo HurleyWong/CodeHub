@@ -6,15 +6,19 @@
     android:background="@color/colorBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".module.user.SettingActivity">
+    tools:context=".module.user.setting.SettingActivity">
 
-    <com.hjq.bar.TitleBar
-        android:id="@+id/tb_setting_title"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:rightColor="@color/colorAccent"
-        app:backButton="true"
-        app:title="@string/setting_text" />
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/ActionBar"
+            app:title="@string/setting_text">
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
     <TextView
         android:id="@+id/setting_normal"

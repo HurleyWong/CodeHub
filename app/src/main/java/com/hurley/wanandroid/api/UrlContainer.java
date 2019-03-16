@@ -12,7 +12,7 @@ public class UrlContainer {
 
     private static final String TAG = "UrlContainer";
 
-    public static final String baseUrl = "http://www.wanandroid.com/";
+    public static final String baseUrl = "https://www.wanandroid.com/";
 
 
     //1.登录与注册

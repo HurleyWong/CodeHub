@@ -60,7 +60,6 @@ public class DataManager implements HttpHelper, DbHelper, PreferenceHelper {
 
     @Override
     public Observable<BaseBean<UserBean>> login(String username, String password) {
-        LogUtil.e("黄1111");
         return mHttpHelper.login(username, password);
     }
 

@@ -22,18 +22,13 @@ public class BaseBean<T> {
     /**
      * 服务器返回的成功或失败的提示
      */
-    public int errorMsg;
+    public String errorMsg;
 
     /**
      * 服务器返回的数据
      */
     public T data;
 
-    public BaseBean(int errorCode, int errorMsg, T data) {
-        this.errorCode = errorCode;
-        this.errorMsg = errorMsg;
-        this.data = data;
-    }
 
     public int getErrorCode() {
         return errorCode;
@@ -43,11 +38,11 @@ public class BaseBean<T> {
         this.errorCode = errorCode;
     }
 
-    public int getErrorMsg() {
+    public String getErrorMsg() {
         return errorMsg;
     }
 
-    public void setErrorMsg(int errorMsg) {
+    public void setErrorMsg(String errorMsg) {
         this.errorMsg = errorMsg;
     }
 
@@ -57,14 +52,5 @@ public class BaseBean<T> {
 
     public void setData(T data) {
         this.data = data;
-    }
-
-    @Override
-    public String toString() {
-        return "BaseBean{" +
-                "errorCode=" + errorCode +
-                ", errorMsg='" + errorMsg + '\'' +
-                ", data=" + data +
-                '}';
     }
 }
