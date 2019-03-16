@@ -61,6 +61,14 @@ public class Constants {
 
     public static final String CONTENT_AUTHOR_KEY = "author";
 
+    public static final String CONTENT_CHILDREN_KEY = "children";
+
+    public static final String USER_KEY = "user";
+
+    public static final String BANNER_KEY = "banner";
+
+    public static final String ARTICLE_KEY = "article";
+
     public static final String IS_COLLECT = "is_collect";
 
     public static final String IS_COLLECT_PAGE = "is_collect_page";

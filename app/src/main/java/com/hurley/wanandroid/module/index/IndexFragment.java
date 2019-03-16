@@ -1,18 +1,35 @@
 package com.hurley.wanandroid.module.index;
 
+import android.annotation.SuppressLint;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hjq.bar.TitleBar;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.base.BaseFragment;
 import com.hurley.wanandroid.bean.ArticleBean;
 import com.hurley.wanandroid.bean.BannerBean;
 import com.hurley.wanandroid.bean.PageBean;
+import com.hurley.wanandroid.event.LoginEvent;
+import com.hurley.wanandroid.module.adapter.ArticleAdapter;
+import com.hurley.wanandroid.module.main.WebActivity;
+import com.hurley.wanandroid.net.callback.RxBus;
+import com.hurley.wanandroid.widget.GlideImageLoader;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
+import io.reactivex.functions.Consumer;
 
 /**
  * <pre>
@@ -22,7 +39,20 @@ import butterknife.BindView;
  *      desc   : 首页界面
  * </pre>
  */
-public class IndexFragment extends BaseFragment<IndexPresenter> implements IndexContract.View {
+public class IndexFragment extends BaseFragment<IndexPresenter>
+        implements IndexContract.View, ArticleAdapter.OnItemClickListener, ArticleAdapter.OnItemChildClickListener,
+                    ArticleAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
+
+    @BindView(R.id.srl_index)
+    SwipeRefreshLayout mSrlIndex;
+    @BindView(R.id.rv_index)
+    RecyclerView mRvIndex;
+
+    @Inject
+    ArticleAdapter mArticleAdapter;
+
+    private Banner mBanner;
+    private View mBannerView;
 
     public static IndexFragment newInstance() {
         return new IndexFragment();
@@ -35,26 +65,99 @@ public class IndexFragment extends BaseFragment<IndexPresenter> implements Index
 
     @Override
     protected void initInjector() {
-
+        mFragmentComponent.inject(this);
     }
 
+    @SuppressLint("CheckResult")
     @Override
     protected void initView(View view) {
+        mRvIndex.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRvIndex.setAdapter(mArticleAdapter);
 
+        //设置Banner
+        mBannerView = LayoutInflater.from(getContext()).inflate(R.layout.banner_index, null);
+        mBanner = mBannerView.findViewById(R.id.banner_index);
+        mArticleAdapter.addHeaderView(mBannerView);
+
+        mArticleAdapter.setOnItemClickListener(this);
+        mArticleAdapter.setOnItemChildClickListener(this);
+        //TODO BaseQuickAdapter方法过时
+        mArticleAdapter.setOnLoadMoreListener(this);
+        mSrlIndex.setOnRefreshListener(this);
+
+        mPresenter.loadData();
+        onRefresh();
+
+        RxBus.getInstance().toFlowable(LoginEvent.class)
+                .subscribe(loginEvent -> mPresenter.refresh());
     }
 
     @Override
     public void setBanners(List<BannerBean> banners) {
+        List<String> images = new ArrayList<>();
+        List<String> titles = new ArrayList<>();
 
+        for (BannerBean banner : banners) {
+            images.add(banner.getImagePath());
+            titles.add(banner.getTitle());
+        }
+
+        mBanner.setImages(images)
+                .setBannerTitles(titles)
+                //设置Banner样式
+                .setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
+                //设置图片加载器
+                .setImageLoader(new GlideImageLoader())
+                .start();
+
+        //设置Banner的点击事件
+        mBanner.setOnBannerListener(position -> {
+            WebActivity.startWeb(banners.get(position).getId(),
+                    banners.get(position).getUrl(),
+                    banners.get(position).getTitle(),
+                    null);
+        });
     }
 
     @Override
     public void setArticles(PageBean pageBean, int loadType) {
-
+        setLoadDataResult(mArticleAdapter, mSrlIndex, pageBean.getDatas(), loadType);
     }
 
     @Override
     public void collectArticleSuccess(int position, ArticleBean articleBean) {
 
     }
+
+    @Override
+    public void onRefresh() {
+        mPresenter.refresh();
+    }
+
+    @Override
+    public void showLoading() {
+        mSrlIndex.setRefreshing(true);
+    }
+
+    @Override
+    public void showFailed(String errorMsg) {
+        mSrlIndex.setRefreshing(false);
+    }
+
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+
+    }
+
+    @Override
+    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+
+    }
+
+    @Override
+    public void onLoadMoreRequested() {
+        //加载更多内容
+        mPresenter.loadMore();
+    }
+
 }

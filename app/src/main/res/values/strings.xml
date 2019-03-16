@@ -23,6 +23,7 @@
     <string name="login_password_input_hint">请输入密码</string>
     <string name="login_forget">忘记密码</string>
     <string name="login_username_password_null">用户名或密码不能为空</string>
+    <string name="login_auto_success">自动登录成功</string>
     <string name="login_success">登录成功</string>
     <string name="login_fail">登录失败</string>
     <string name="logout_text">退出登录</string>

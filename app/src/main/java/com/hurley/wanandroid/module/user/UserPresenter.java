@@ -10,7 +10,7 @@ import javax.inject.Inject;
  *      @author hurley
  *      date    : 2019/3/9 6:28 PM
  *      github  : https://github.com/HurleyJames
- *      desc    :
+ *      desc    : 用户 Presenter类
  * </pre>
  */
 public class UserPresenter extends BasePresenter<UserContract.View> implements UserContract.Presenter {

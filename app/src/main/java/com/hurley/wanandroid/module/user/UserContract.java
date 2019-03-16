@@ -8,7 +8,7 @@ import com.hurley.wanandroid.base.BaseContract;
  *      @author hurley
  *      date    : 2019/3/9 6:28 PM
  *      github  : https://github.com/HurleyJames
- *      desc    :
+ *      desc    : 用户 Contract类
  * </pre>
  *
  */
