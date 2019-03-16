@@ -109,7 +109,6 @@ public class RetrofitManager {
 
     /**
      * 获取OkHttpClient实例
-     *
      * @return
      */
     private static OkHttpClient getOkHttpClient() {
@@ -134,7 +133,6 @@ public class RetrofitManager {
 
     /**
      * 获取Service
-     *
      * @param clazz
      * @param <T>
      * @return

@@ -1,4 +1,4 @@
-package com.hurley.wanandroid.utils;
+package com.hurley.wanandroid.helper;
 
 import android.text.Editable;
 import android.text.TextWatcher;

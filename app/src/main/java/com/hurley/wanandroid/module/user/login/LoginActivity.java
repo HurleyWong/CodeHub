@@ -8,17 +8,15 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.StringUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.bean.UserBean;
 import com.hurley.wanandroid.event.LoginEvent;
 import com.hurley.wanandroid.net.callback.RxBus;
-import com.hurley.wanandroid.utils.EditTextInputHelper;
+import com.hurley.wanandroid.helper.EditTextInputHelper;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -60,12 +58,15 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     protected void initView() {
         setToolbarTitle("");
+        mEditTextInputHelper = new EditTextInputHelper(mBtnCommit);
+        mEditTextInputHelper.addViews(mEtUsername, mEtPassword);
         mEtUsername.setText(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getString(Constants.USERNAME));
         mEtPassword.setText(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getString(Constants.PASSWORD));
     }
 
     @Override
     public void loginSuccess(UserBean userBean) {
+        toast(R.string.login_success);
         SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.LOGIN_STATUS, true);
         SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.USERNAME, userBean.getUsername());
         SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.PASSWORD, userBean.getPassword());
