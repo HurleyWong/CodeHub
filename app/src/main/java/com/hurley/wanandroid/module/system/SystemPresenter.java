@@ -17,7 +17,7 @@ import javax.inject.Inject;
  *      @author hurley
  *      date    : 2019/3/9 6:40 PM
  *      github  : https://github.com/HurleyJames
- *      desc    :
+ *      desc    : 体系 Presenter类
  * </pre>
  */
 public class SystemPresenter extends BasePresenter<SystemContract.View> implements SystemContract.Presenter {

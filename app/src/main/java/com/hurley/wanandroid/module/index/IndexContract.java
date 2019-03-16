@@ -14,7 +14,7 @@ import java.util.List;
  *      @author hurley
  *      date    : 2019/3/9 6:34 PM
  *      github  : https://github.com/HurleyJames
- *      desc    :
+ *      desc    : 首页 Contract类
  * </pre>
  */
 public interface IndexContract {

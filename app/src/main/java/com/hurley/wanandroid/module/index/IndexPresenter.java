@@ -34,7 +34,7 @@ import io.reactivex.functions.Function3;
  *      @author hurley
  *      date    : 2019/3/9 6:36 PM
  *      github  : https://github.com/HurleyJames
- *      desc    :
+ *      desc    : 首页 Presenter类
  * </pre>
  */
 public class IndexPresenter extends BasePresenter<IndexContract.View> implements IndexContract.Presenter {

@@ -7,8 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseFragment;
 import com.hurley.wanandroid.bean.SystemBean;
 import com.hurley.wanandroid.module.adapter.SystemAdapter;
@@ -93,7 +95,10 @@ public class SystemFragment extends BaseFragment<SystemPresenter>
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+        /*ARouter.getInstance().build("/system/SystemDetailActivity")
+                .withString(Constants.CONTENT_TITLE_KEY, mSystemAdapter.getItem(position).getName())
+                .withObject(Constants.CONTENT_CHILDREN_KEY, mSystemAdapter.getItem(position).getChildren())
+                .navigation();*/
     }
 
 }
