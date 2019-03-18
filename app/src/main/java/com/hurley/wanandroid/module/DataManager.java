@@ -1,7 +1,6 @@
 package com.hurley.wanandroid.module;
 
 
-import com.facebook.stetho.common.LogUtil;
 import com.hurley.wanandroid.base.BaseBean;
 import com.hurley.wanandroid.bean.ArticleBean;
 import com.hurley.wanandroid.bean.BannerBean;
@@ -74,7 +73,7 @@ public class DataManager implements HttpHelper, DbHelper, PreferenceHelper {
     }
 
     @Override
-    public Observable<BaseBean<PageBean<ArticleBean>>> getIndexArticles(int page) {
+    public Observable<BaseBean<ArticleBean>> getIndexArticles(int page) {
         return mHttpHelper.getIndexArticles(page);
     }
 
@@ -99,7 +98,7 @@ public class DataManager implements HttpHelper, DbHelper, PreferenceHelper {
     }
 
     @Override
-    public Observable<BaseBean<PageBean<ArticleBean>>> getSystemArticles(int page, int cid) {
+    public Observable<BaseBean<ArticleBean>> getSystemArticles(int page, int cid) {
         return mHttpHelper.getSystemArticles(page, cid);
     }
 
@@ -124,12 +123,12 @@ public class DataManager implements HttpHelper, DbHelper, PreferenceHelper {
     }
 
     @Override
-    public Observable<BaseBean<PageBean<CollectArticleBean>>> getCollectArticles(int page) {
+    public Observable<BaseBean<ArticleBean>> getCollectArticles(int page) {
         return mHttpHelper.getCollectArticles(page);
     }
 
     @Override
-    public Observable<BaseBean<String>> collectInsideArticle(int id) {
+    public Observable<BaseBean> collectInsideArticle(int id) {
         return mHttpHelper.collectInsideArticle(id);
     }
 
@@ -144,7 +143,7 @@ public class DataManager implements HttpHelper, DbHelper, PreferenceHelper {
     }
 
     @Override
-    public Observable<BaseBean<String>> unCollectArticle2(int id, int originId) {
+    public Observable<BaseBean> unCollectArticle2(int id, int originId) {
         return mHttpHelper.unCollectArticle2(id, originId);
     }
 

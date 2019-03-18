@@ -4,10 +4,12 @@ import android.annotation.SuppressLint;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
 
+import com.blankj.utilcode.util.LogUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hjq.bar.TitleBar;
 import com.hurley.wanandroid.R;
@@ -85,9 +87,11 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         mArticleAdapter.setOnLoadMoreListener(this);
         mSrlIndex.setOnRefreshListener(this);
 
+        //加载数据
         mPresenter.loadData();
         onRefresh();
 
+        //登录成功后刷新
         RxBus.getInstance().toFlowable(LoginEvent.class)
                 .subscribe(loginEvent -> mPresenter.refresh());
     }
@@ -120,12 +124,12 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
     }
 
     @Override
-    public void setArticles(PageBean pageBean, int loadType) {
-        setLoadDataResult(mArticleAdapter, mSrlIndex, pageBean.getDatas(), loadType);
+    public void setArticles(ArticleBean articleBean, int loadType) {
+        setLoadDataResult(mArticleAdapter, mSrlIndex, articleBean.getDatas(), loadType);
     }
 
     @Override
-    public void collectArticleSuccess(int position, ArticleBean articleBean) {
+    public void collectArticleSuccess(int position, ArticleBean.DatasBean articleBean) {
 
     }
 
@@ -144,14 +148,41 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         mSrlIndex.setRefreshing(false);
     }
 
+    /**
+     * 点击item每条文章
+     * @param adapter
+     * @param view
+     * @param position
+     */
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+        WebActivity.startWeb(mArticleAdapter.getItem(position).getId(),
+                mArticleAdapter.getItem(position).getLink(),
+                mArticleAdapter.getItem(position).getTitle(),
+                mArticleAdapter.getItem(position).getAuthor());
     }
 
+    /**
+     * 点击item的子元素
+     * @param adapter
+     * @param view
+     * @param position
+     */
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+        switch (view.getId()) {
+            case R.id.iv_article_collect:
+                //点击收藏
+                LogUtils.e("点击收藏");
+                mPresenter.collectArticle(position, mArticleAdapter.getItem(position));
+                break;
+            case R.id.tv_article_chapter:
+                //点击所属体系
 
+                break;
+            default:
+                break;
+        }
     }
 
     @Override

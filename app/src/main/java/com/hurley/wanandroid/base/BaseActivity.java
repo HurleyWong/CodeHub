@@ -263,10 +263,14 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
                 refreshLayout.setRefreshing(false);
                 break;
             case LoadType.TYPE_LOAD_MORE_SUCCESS:
-                if (list != null) baseQuickAdapter.addData(list);
+                if (list != null) {
+                    baseQuickAdapter.addData(list);
+                }
                 break;
             case LoadType.TYPE_LOAD_MORE_ERROR:
                 baseQuickAdapter.loadMoreFail();
+                break;
+            default:
                 break;
         }
         if (list == null || list.isEmpty() || list.size() < Constants.PAGE_SIZE) {

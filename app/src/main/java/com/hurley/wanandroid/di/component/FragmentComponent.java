@@ -7,6 +7,7 @@ import android.content.Context;
 import com.hurley.wanandroid.di.module.FragmentModule;
 import com.hurley.wanandroid.di.scope.ContextLifeCycle;
 import com.hurley.wanandroid.di.scope.FragmentScope;
+import com.hurley.wanandroid.module.article.ArticleListFragment;
 import com.hurley.wanandroid.module.index.IndexFragment;
 import com.hurley.wanandroid.module.project.ProjectFragment;
 import com.hurley.wanandroid.module.system.SystemFragment;
@@ -44,4 +45,6 @@ public interface FragmentComponent {
     void inject(ProjectFragment fragment);
 
     void inject(UserFragment fragment);
+
+    void inject(ArticleListFragment fragment);
 }

@@ -50,6 +50,16 @@
             android:name=".module.user.register.RegisterActivity"
             android:launchMode="singleTop" />
 
+        <!-- 知识体系详情界面 -->
+        <activity
+            android:name=".module.system.SystemDetailActivity"
+            android:launchMode="singleTop" />
+
+        <!-- 我的收藏界面 -->
+        <activity
+            android:name=".module.user.collect.CollectionActivity"
+            android:launchMode="singleTop" />
+
         <!-- 设置界面 -->
         <activity
             android:name=".module.user.setting.SettingActivity"

@@ -1,5 +1,12 @@
 package com.hurley.wanandroid.bean;
 
+import android.content.Context;
+
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.facade.service.SerializationService;
+import com.hurley.wanandroid.utils.GsonUtils;
+
+import java.lang.reflect.Type;
 import java.util.List;
 
 /**
@@ -10,7 +17,8 @@ import java.util.List;
  *      desc   : 体系实体类
  * </pre>
  */
-public class SystemBean {
+@Route(path = "/service/json")
+public class SystemBean implements SerializationService {
 
     private int courseId;
     private int id;
@@ -85,7 +93,27 @@ public class SystemBean {
         this.children = children;
     }
 
-    public static class Children {
+    @Override
+    public <T> T json2Object(String input, Class<T> clazz) {
+        return GsonUtils.convertObj(input, clazz);
+    }
+
+    @Override
+    public String object2Json(Object instance) {
+        return GsonUtils.toJson(instance);
+    }
+
+    @Override
+    public <T> T parseObject(String input, Type clazz) {
+        return GsonUtils.convertObj(input, clazz);
+    }
+
+    @Override
+    public void init(Context context) {
+
+    }
+
+    public static class Children implements SerializationService{
         /**
          * children : []
          * courseId : 13
@@ -104,7 +132,7 @@ public class SystemBean {
         private int parentChapterId;
         private boolean userControlSetTop;
         private int visible;
-        private List<?> children;
+        private List<Children> children;
 
         public int getCourseId() {
             return courseId;
@@ -162,12 +190,37 @@ public class SystemBean {
             this.visible = visible;
         }
 
-        public List<?> getChildren() {
+        public List<Children> getChildren() {
             return children;
         }
 
-        public void setChildren(List<?> children) {
+        public void setChildren(List<Children> children) {
             this.children = children;
+        }
+
+        @Override
+        public <T> T json2Object(String input, Class<T> clazz) {
+            return GsonUtils.convertObj(input, clazz);
+        }
+
+        @Override
+        public String object2Json(Object instance) {
+            return GsonUtils.toJson(instance);
+        }
+
+        @Override
+        public <T> T parseObject(String input, Type clazz) {
+            return GsonUtils.convertObj(input, clazz);
+        }
+
+        @Override
+        public void init(Context context) {
+
+        }
+
+        public Children(int id, String name) {
+            this.id = id;
+            this.name = name;
         }
     }
 

@@ -84,7 +84,6 @@ public class SettingActivity extends BaseActivity {
     protected void initView() {
         //Dialog风格为Kongzue风格
         DialogSettings.style = STYLE_KONGZUE;
-
     }
 
     /**

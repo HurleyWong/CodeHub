@@ -1,5 +1,6 @@
 package com.hurley.wanandroid.module.adapter;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.hurley.wanandroid.R;
@@ -15,7 +16,7 @@ import javax.inject.Inject;
  *      desc    : 文章列表适配器
  * </pre>
  */
-public class ArticleAdapter extends BaseQuickAdapter<ArticleBean, BaseViewHolder> {
+public class ArticleAdapter extends BaseQuickAdapter<ArticleBean.DatasBean, BaseViewHolder> {
 
     /**
      * 文章所属体系是否可见，默认可见
@@ -33,7 +34,7 @@ public class ArticleAdapter extends BaseQuickAdapter<ArticleBean, BaseViewHolder
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, ArticleBean item) {
+    protected void convert(BaseViewHolder helper, ArticleBean.DatasBean item) {
         helper.setText(R.id.tv_article_author, item.getAuthor());
         helper.setText(R.id.tv_article_date, item.getNiceDate());
         //TODO Html.fromHtml

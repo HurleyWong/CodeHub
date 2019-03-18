@@ -60,7 +60,7 @@ public interface HttpHelper {
      * @param page          页码
      * @return              文章列表数据
      */
-    Observable<BaseBean<PageBean<ArticleBean>>> getIndexArticles(int page);
+    Observable<BaseBean<ArticleBean>> getIndexArticles(int page);
 
     /**
      * 首页Banner
@@ -97,7 +97,7 @@ public interface HttpHelper {
      * @param cid           分类的id
      * @return
      */
-    Observable<BaseBean<PageBean<ArticleBean>>> getSystemArticles(int page, int cid);
+    Observable<BaseBean<ArticleBean>> getSystemArticles(int page, int cid);
 
     /**
      * 导航数据
@@ -136,7 +136,7 @@ public interface HttpHelper {
      * @param page          页码
      * @return              收藏文章数据
      */
-    Observable<BaseBean<PageBean<CollectArticleBean>>> getCollectArticles(int page);
+    Observable<BaseBean<ArticleBean>> getCollectArticles(int page);
 
     /**
      * 收藏站内文章
@@ -144,7 +144,7 @@ public interface HttpHelper {
      * @param id            文章id
      * @return              收藏站内文章数据
      */
-    Observable<BaseBean<String>> collectInsideArticle(int id);
+    Observable<BaseBean> collectInsideArticle(int id);
 
     /**
      * 收藏站外文章
@@ -172,7 +172,7 @@ public interface HttpHelper {
      * @param originId
      * @return
      */
-    Observable<BaseBean<String>> unCollectArticle2(int id, int originId);
+    Observable<BaseBean> unCollectArticle2(int id, int originId);
 
     /**
      * 搜索

@@ -22,9 +22,9 @@ public interface IndexContract {
     interface View extends BaseContract.BaseView {
         void setBanners(List<BannerBean> banners);
 
-        void setArticles(PageBean pageBean, @LoadType.checker int loadType);
+        void setArticles(ArticleBean articleBean, @LoadType.checker int loadType);
 
-        void collectArticleSuccess(int position, ArticleBean articleBean);
+        void collectArticleSuccess(int position, ArticleBean.DatasBean articleBean);
 
     }
 
@@ -37,7 +37,7 @@ public interface IndexContract {
 
         void loadMore();
 
-        void collectArticle(int position, ArticleBean articleBean);
+        void collectArticle(int position, ArticleBean.DatasBean articleBean);
 
         void loadData();
     }

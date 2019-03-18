@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -538,6 +539,23 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
         return SupportHelper.findFragment(getChildFragmentManager(), fragmentClass);
     }
 
+    /**
+     * 显示Toast
+     * @param text
+     */
+    protected void toast(CharSequence text) {
+        ToastUtils.setBgColor(ContextCompat.getColor(getContext(), R.color.gray));
+        ToastUtils.showShort(text);
+    }
+
+    /**
+     * 显示Toast
+     * @param id
+     */
+    protected void toast(int id) {
+        ToastUtils.setBgColor(ContextCompat.getColor(getContext(), R.color.gray));
+        ToastUtils.showShort(id);
+    }
 }
 
 

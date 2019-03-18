@@ -23,7 +23,7 @@ public class ProjectFragment extends BaseFragment<ProjectPresent> implements Pro
     private static final String TAG = "ProjectFragment";
 
     @BindView(R.id.tl_project)
-    TabLayout mTbProject;
+    TabLayout mTlProject;
     @BindView(R.id.vp_project)
     ViewPager mVpProject;
 
@@ -45,7 +45,7 @@ public class ProjectFragment extends BaseFragment<ProjectPresent> implements Pro
     protected void initView(View view) {
 
         //将TabLayout与ViewPager绑定
-        mTbProject.setupWithViewPager(mVpProject);
+        mTlProject.setupWithViewPager(mVpProject);
     }
 
 

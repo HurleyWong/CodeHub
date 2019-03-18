@@ -77,7 +77,7 @@ public class HttpHelperImpl implements HttpHelper{
      * @return
      */
     @Override
-    public Observable<BaseBean<PageBean<ArticleBean>>> getIndexArticles(int page) {
+    public Observable<BaseBean<ArticleBean>> getIndexArticles(int page) {
         return mApiService.getIndexArticles(page);
     }
 
@@ -124,7 +124,7 @@ public class HttpHelperImpl implements HttpHelper{
      * @return
      */
     @Override
-    public Observable<BaseBean<PageBean<ArticleBean>>> getSystemArticles(int page, int cid) {
+    public Observable<BaseBean<ArticleBean>> getSystemArticles(int page, int cid) {
         return mApiService.getSystemArticles(page, cid);
     }
 
@@ -173,7 +173,7 @@ public class HttpHelperImpl implements HttpHelper{
      * @return
      */
     @Override
-    public Observable<BaseBean<PageBean<CollectArticleBean>>> getCollectArticles(int page) {
+    public Observable<BaseBean<ArticleBean>> getCollectArticles(int page) {
         return mApiService.getCollectArticles(page);
     }
 
@@ -183,7 +183,7 @@ public class HttpHelperImpl implements HttpHelper{
      * @return
      */
     @Override
-    public Observable<BaseBean<String>> collectInsideArticle(int id) {
+    public Observable<BaseBean> collectInsideArticle(int id) {
         return mApiService.collectInsideArticle(id);
     }
 
@@ -217,7 +217,7 @@ public class HttpHelperImpl implements HttpHelper{
      * @return
      */
     @Override
-    public Observable<BaseBean<String>> unCollectArticle2(int id, int originId) {
+    public Observable<BaseBean> unCollectArticle2(int id, int originId) {
         return mApiService.unCollectArticle2(id, originId);
     }
 

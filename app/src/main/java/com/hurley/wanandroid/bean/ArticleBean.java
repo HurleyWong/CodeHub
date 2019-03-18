@@ -11,237 +11,245 @@ import java.util.List;
  * </pre>
  */
 public class ArticleBean {
+
     /**
-     * apkLink :
-     * author :  coder-pig
-     * chapterId : 60
-     * chapterName : Android Studio相关
-     * collect : false
-     * courseId : 13
-     * desc :
-     * envelopePic :
-     * fresh : false
-     * id : 7654
-     * link : https://juejin.im/post/5c09f9daf265da61193ba4f2
-     * niceDate : 2018-12-13
-     * origin :
-     * projectLink :
-     * publishTime : 1544631421000
-     * superChapterId : 60
-     * superChapterName : 开发环境
-     * tags : []
-     * title : 逮虾户！Android程序调试竟简单如斯
-     * type : 0
-     * userId : -1
-     * visible : 1
-     * zan : 0
+     * curPage : 1
+     * offset : 0
+     * over : false
+     * pageCount : 2
+     * size : 20
+     * total : 38
      */
 
-    private String apkLink;
-    private String author;
-    private int chapterId;
-    private String chapterName;
-    private boolean collect;
-    private int courseId;
-    private String desc;
-    private String envelopePic;
-    private boolean fresh;
-    private int id;
-    private String link;
-    private String niceDate;
-    private String origin;
-    private String projectLink;
-    private long publishTime;
-    private int superChapterId;
-    private String superChapterName;
-    private String title;
-    private int type;
-    private int userId;
-    private int visible;
-    private int zan;
-    private List<?> tags;
+    private int curPage;
+    private int offset;
+    private boolean over;
+    private int pageCount;
+    private int size;
+    private int total;
+    private List<DatasBean> datas;
 
-    public String getApkLink() {
-        return apkLink;
+    public int getCurPage() {
+        return curPage;
     }
 
-    public void setApkLink(String apkLink) {
-        this.apkLink = apkLink;
+    public void setCurPage(int curPage) {
+        this.curPage = curPage;
     }
 
-    public String getAuthor() {
-        return author;
+    public int getOffset() {
+        return offset;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setOffset(int offset) {
+        this.offset = offset;
     }
 
-    public int getChapterId() {
-        return chapterId;
+    public boolean isOver() {
+        return over;
     }
 
-    public void setChapterId(int chapterId) {
-        this.chapterId = chapterId;
+    public void setOver(boolean over) {
+        this.over = over;
     }
 
-    public String getChapterName() {
-        return chapterName;
+    public int getPageCount() {
+        return pageCount;
     }
 
-    public void setChapterName(String chapterName) {
-        this.chapterName = chapterName;
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
     }
 
-    public boolean isCollect() {
-        return collect;
+    public int getSize() {
+        return size;
     }
 
-    public void setCollect(boolean collect) {
-        this.collect = collect;
+    public void setSize(int size) {
+        this.size = size;
     }
 
-    public int getCourseId() {
-        return courseId;
+    public int getTotal() {
+        return total;
     }
 
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
+    public void setTotal(int total) {
+        this.total = total;
     }
 
-    public String getDesc() {
-        return desc;
+    public List<DatasBean> getDatas() {
+        return datas;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDatas(List<DatasBean> datas) {
+        this.datas = datas;
     }
 
-    public String getEnvelopePic() {
-        return envelopePic;
-    }
+    public static class DatasBean {
 
-    public void setEnvelopePic(String envelopePic) {
-        this.envelopePic = envelopePic;
-    }
+        /**
+         * author : xxq2dream
+         * chapterId : 10
+         * chapterName : Activity
+         * courseId : 13
+         * desc :
+         * envelopePic :
+         * id : 48029
+         * link : https://juejin.im/post/5c19a1236fb9a04a102f39aa
+         * niceDate : 刚刚
+         * origin :
+         * originId : 7784
+         * publishTime : 1551235950000
+         * title : Fragment中调用startActivityForResult的那些坑
+         * userId : 965
+         * visible : 0
+         * zan : 0
+         */
 
-    public boolean isFresh() {
-        return fresh;
-    }
+        private int id;
+        private String title;
+        private int chapterId;
+        private String chapterName;
+        private String superChapterName;
+        private String envelopePic;
+        private String link;
+        private String author;
+        private String origin;
+        private long publishTime;
+        private String zan;
+        private String desc;
+        private int visible;
+        private String niceDate;
+        private int courseId;
+        private boolean collect;
 
-    public void setFresh(boolean fresh) {
-        this.fresh = fresh;
-    }
+        public int getId() {
+            return id;
+        }
 
-    public int getId() {
-        return id;
-    }
+        public void setId(int id) {
+            this.id = id;
+        }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+        public String getTitle() {
+            return title;
+        }
 
-    public String getLink() {
-        return link;
-    }
+        public void setTitle(String title) {
+            this.title = title;
+        }
 
-    public void setLink(String link) {
-        this.link = link;
-    }
+        public int getChapterId() {
+            return chapterId;
+        }
 
-    public String getNiceDate() {
-        return niceDate;
-    }
+        public void setChapterId(int chapterId) {
+            this.chapterId = chapterId;
+        }
 
-    public void setNiceDate(String niceDate) {
-        this.niceDate = niceDate;
-    }
+        public String getChapterName() {
+            return chapterName;
+        }
 
-    public String getOrigin() {
-        return origin;
-    }
+        public void setChapterName(String chapterName) {
+            this.chapterName = chapterName;
+        }
 
-    public void setOrigin(String origin) {
-        this.origin = origin;
-    }
+        public String getsuperChapterName() {
+            return superChapterName;
+        }
 
-    public String getProjectLink() {
-        return projectLink;
-    }
+        public void setsuperChapterName(String superChapterName) {
+            this.superChapterName = superChapterName;
+        }
 
-    public void setProjectLink(String projectLink) {
-        this.projectLink = projectLink;
-    }
 
-    public long getPublishTime() {
-        return publishTime;
-    }
+        public String getEnvelopePic() {
+            return envelopePic;
+        }
 
-    public void setPublishTime(long publishTime) {
-        this.publishTime = publishTime;
-    }
+        public void setEnvelopePic(String envelopePic) {
+            this.envelopePic = envelopePic;
+        }
 
-    public int getSuperChapterId() {
-        return superChapterId;
-    }
+        public String getLink() {
+            return link;
+        }
 
-    public void setSuperChapterId(int superChapterId) {
-        this.superChapterId = superChapterId;
-    }
+        public void setLink(String link) {
+            this.link = link;
+        }
 
-    public String getSuperChapterName() {
-        return superChapterName;
-    }
+        public String getAuthor() {
+            return author;
+        }
 
-    public void setSuperChapterName(String superChapterName) {
-        this.superChapterName = superChapterName;
-    }
+        public void setAuthor(String author) {
+            this.author = author;
+        }
 
-    public String getTitle() {
-        return title;
-    }
+        public String getOrigin() {
+            return origin;
+        }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+        public void setOrigin(String origin) {
+            this.origin = origin;
+        }
 
-    public int getType() {
-        return type;
-    }
+        public long getPublishTime() {
+            return publishTime;
+        }
 
-    public void setType(int type) {
-        this.type = type;
-    }
+        public void setPublishTime(long publishTime) {
+            this.publishTime = publishTime;
+        }
 
-    public int getUserId() {
-        return userId;
-    }
+        public String getZan() {
+            return zan;
+        }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+        public void setZan(String zan) {
+            this.zan = zan;
+        }
 
-    public int getVisible() {
-        return visible;
-    }
+        public String getDesc() {
+            return desc;
+        }
 
-    public void setVisible(int visible) {
-        this.visible = visible;
-    }
+        public void setDesc(String desc) {
+            this.desc = desc;
+        }
 
-    public int getZan() {
-        return zan;
-    }
+        public int getVisible() {
+            return visible;
+        }
 
-    public void setZan(int zan) {
-        this.zan = zan;
-    }
+        public void setVisible(int visible) {
+            this.visible = visible;
+        }
 
-    public List<?> getTags() {
-        return tags;
-    }
+        public String getNiceDate() {
+            return niceDate;
+        }
 
-    public void setTags(List<?> tags) {
-        this.tags = tags;
+        public void setNiceDate(String niceDate) {
+            this.niceDate = niceDate;
+        }
+
+        public int getCourseId() {
+            return courseId;
+        }
+
+        public void setCourseId(int courseId) {
+            this.courseId = courseId;
+        }
+
+        public boolean isCollect() {
+            return collect;
+        }
+
+        public void setCollect(boolean collect) {
+            this.collect = collect;
+        }
     }
 }

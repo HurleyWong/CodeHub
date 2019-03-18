@@ -77,7 +77,7 @@ public interface ApiService {
      * @return
      */
     @GET(UrlContainer.INDEX_ARTICLE_LIST)
-    Observable<BaseBean<PageBean<ArticleBean>>> getIndexArticles(@Path("page") int page);
+    Observable<BaseBean<ArticleBean>> getIndexArticles(@Path("page") int page);
 
     /**
      * 首页Banner
@@ -119,7 +119,7 @@ public interface ApiService {
      * @return
      */
     @GET(UrlContainer.TREE_ARTICLE_LIST)
-    Observable<BaseBean<PageBean<ArticleBean>>> getSystemArticles(@Path("page") int page,
+    Observable<BaseBean<ArticleBean>> getSystemArticles(@Path("page") int page,
                                                                   @Query("cid") int cid);
 
     /**
@@ -165,7 +165,7 @@ public interface ApiService {
      * @return
      */
     @GET(UrlContainer.COLLECT_ARTICLE_LIST)
-    Observable<BaseBean<PageBean<CollectArticleBean>>> getCollectArticles(@Path("page") int page);
+    Observable<BaseBean<ArticleBean>> getCollectArticles(@Path("page") int page);
 
     /**
      * 收藏站内文章
@@ -178,7 +178,7 @@ public interface ApiService {
      * @return
      */
     @POST(UrlContainer.COLLECT_INSIDE_ARTICLE)
-    Observable<BaseBean<String>> collectInsideArticle(@Path("id") int id);
+    Observable<BaseBean> collectInsideArticle(@Path("id") int id);
 
     /**
      * 收藏站外文章
@@ -222,7 +222,7 @@ public interface ApiService {
      * @return
      */
     @POST(UrlContainer.UNCOLLECT_ARTICLE_2)
-    Observable<BaseBean<String>> unCollectArticle2(@Path("id") int id,
+    Observable<BaseBean> unCollectArticle2(@Path("id") int id,
                                                    @Field("originId") int originId);
 
     /**

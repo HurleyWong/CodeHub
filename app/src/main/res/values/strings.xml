@@ -27,6 +27,7 @@
     <string name="login_success">登录成功</string>
     <string name="login_fail">登录失败</string>
     <string name="logout_text">退出登录</string>
+    <string name="login_please">请先登录</string>
 
     <!-- 注册 -->
     <string name="register_text">注册</string>
@@ -39,6 +40,11 @@
 
     <!-- 收藏 -->
     <string name="collect_text">收藏</string>
+    <string name="collect_success">收藏成功</string>
+    <string name="collect_failed">收藏失败</string>
+    <string name="uncollect_success">取消收藏成功</string>
+    <string name="uncollect_failed">取消收藏失败</string>
+    <string name="collection">我的收藏</string>
 
     <!-- 关于 -->
     <string name="about_text">关于</string>

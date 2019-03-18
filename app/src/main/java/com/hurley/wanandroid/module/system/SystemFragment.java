@@ -8,6 +8,7 @@ import android.view.View;
 
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.LogUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.app.Constants;
@@ -41,10 +42,7 @@ public class SystemFragment extends BaseFragment<SystemPresenter>
     SystemAdapter mSystemAdapter;
 
     public static SystemFragment newInstance() {
-        Bundle args = new Bundle();
-        SystemFragment fragment = new SystemFragment();
-        fragment.setArguments(args);
-        return fragment;
+        return new SystemFragment();
     }
 
     @Override
@@ -95,10 +93,10 @@ public class SystemFragment extends BaseFragment<SystemPresenter>
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        /*ARouter.getInstance().build("/system/SystemDetailActivity")
+        ARouter.getInstance().build("/system/SystemDetailActivity")
                 .withString(Constants.CONTENT_TITLE_KEY, mSystemAdapter.getItem(position).getName())
                 .withObject(Constants.CONTENT_CHILDREN_KEY, mSystemAdapter.getItem(position).getChildren())
-                .navigation();*/
+                .navigation();
     }
 
 }
