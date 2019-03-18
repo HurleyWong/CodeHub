@@ -42,6 +42,16 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+    <!-- 引导页 -->
+    <style name="GuideTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:scaleType"/>
+        <item name="banner_aspectRatio" format="float"/>
+    </style>
+
     <!-- 解决启动页白屏的问题 -->
     <style name="LauncherTheme" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>

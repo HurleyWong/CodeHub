@@ -24,9 +24,10 @@
 
         <!-- 启动界面 -->
         <activity
-            android:name=".module.main.HomeActivity"
+            android:name=".module.main.GuideActivity"
             android:alwaysRetainTaskState="true"
-            android:launchMode="singleTop" >
+            android:launchMode="singleTop"
+            android:theme="@style/GuideTheme">
 
             <!-- 程序入口 -->
             <intent-filter>
@@ -39,6 +40,10 @@
 
         <!-- 主页界面 -->
 
+        <!-- 引导页 -->
+        <activity
+            android:name=".module.main.HomeActivity"
+            android:launchMode="singleTop" />
 
         <!-- 登录界面 -->
         <activity

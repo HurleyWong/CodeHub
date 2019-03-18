@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".module.main.GuideActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:visibility="gone">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/ActionBar"
+            app:title="@string/setting_text">
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <cn.bingoogolapple.bgabanner.BGAGuideLinkageLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <cn.bingoogolapple.bgabanner.BGABanner
+            android:id="@+id/banner_guide"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:banner_pageChangeDuration="1000"
+            app:banner_pointAutoPlayAble="false"
+            app:banner_pointContainerBackground="@color/transparent"
+            app:banner_transitionEffect="alpha">
+        </cn.bingoogolapple.bgabanner.BGABanner>
+    </cn.bingoogolapple.bgabanner.BGAGuideLinkageLayout>
+
+    <TextView
+        android:id="@+id/tv_guide_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp10"
+        android:padding="@dimen/dp5"
+        android:clickable="true"
+        android:text="@string/click_skip"
+        android:textSize="@dimen/sp18"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/btn_guide_enter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp50"
+        android:padding="@dimen/dp5"
+        android:background="@drawable/ic_selector_btn_enter"
+        android:text="@string/click_enter"
+        android:textSize="@dimen/sp20"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+</RelativeLayout>

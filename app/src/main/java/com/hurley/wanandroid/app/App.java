@@ -55,8 +55,10 @@ public class App extends Application {
         ToastUtils.init(this);
         initARouter();
 
+        //初始化Fragmentation
         Fragmentation.builder()
-                .stackViewMode(Fragmentation.BUBBLE)
+                //BUBBLE：显示悬浮球 | SHAKE：摇一摇换出悬浮球 | NONE：隐藏悬浮球
+                .stackViewMode(Fragmentation.NONE)
                 .debug(BuildConfig.DEBUG)
                 .install();
 

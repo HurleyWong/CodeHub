@@ -15,6 +15,8 @@
     <!-- 通用 -->
     <string name="http_error">网络君乘404航班去追寻诗和远方了</string>
     <string name="unknown_error">未知错误</string>
+    <string name="click_skip">跳过</string>
+    <string name="click_enter">进入主界面</string>
 
     <!-- 登录 -->
     <string name="login_text">登录</string>
