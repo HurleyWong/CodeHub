@@ -2,6 +2,7 @@ package com.hurley.wanandroid.app;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.v7.app.AppCompatDelegate;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
@@ -30,6 +31,11 @@ public class App extends Application {
     private static App instance;
     private ApplicationComponent mApplicationComponent;
     private DaoSession mDaoSession;
+
+    //static代码段可以防止内存泄露, 全局设置刷新头部及尾部，优先级最低
+    static {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+    }
 
     public static App getInstance() {
         return instance;
@@ -67,6 +73,7 @@ public class App extends Application {
         if (ConfigUtil.DEBUG) {
             Stetho.initializeWithDefaults(this);
         }
+
     }
 
     /**

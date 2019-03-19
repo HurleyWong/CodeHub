@@ -12,6 +12,7 @@ import com.hurley.wanandroid.module.system.SystemDetailActivity;
 import com.hurley.wanandroid.module.user.collect.CollectionActivity;
 import com.hurley.wanandroid.module.user.login.LoginActivity;
 import com.hurley.wanandroid.module.user.register.RegisterActivity;
+import com.hurley.wanandroid.module.user.setting.SettingActivity;
 
 import dagger.Component;
 
@@ -44,4 +45,6 @@ public interface ActivityComponent {
     void inject(RegisterActivity activity);
 
     void inject(CollectionActivity activity);
+
+    void inject(SettingActivity activity);
 }

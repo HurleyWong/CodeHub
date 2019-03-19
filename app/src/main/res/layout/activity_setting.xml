@@ -83,7 +83,7 @@
             <!--<include layout="@layout/divide_line" />-->
 
             <LinearLayout
-                android:id="@+id/setting_image"
+                android:id="@+id/setting_no_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -105,7 +105,7 @@
                     android:textSize="@dimen/sp16"/>
 
                 <android.support.v7.widget.AppCompatCheckBox
-                    android:id="@+id/cb_setting_image"
+                    android:id="@+id/cb_setting_no_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@drawable/abc_btn_check_material"

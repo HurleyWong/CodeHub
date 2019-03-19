@@ -19,7 +19,7 @@ import javax.inject.Inject;
  *      desc    : 数据库基本操作的实现细节类
  * </pre>
  */
-public class DBHelperImpl implements DbHelper{
+public class DbHelperImpl implements DbHelper{
 
     private static final int HISTORY_LIST_SIZE = 10;
 
@@ -29,7 +29,7 @@ public class DBHelperImpl implements DbHelper{
     private HistoryBean mHistoryBean;
 
     @Inject
-    DBHelperImpl() {
+    DbHelperImpl() {
         mDaoSession = App.getInstance().getDaoSession();
     }
 

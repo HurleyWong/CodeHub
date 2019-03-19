@@ -1,8 +1,11 @@
 package com.hurley.wanandroid.module.user.setting;
 
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.CardView;
+import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -11,12 +14,15 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.base.BaseActivity;
+import com.hurley.wanandroid.event.NightModeEvent;
+import com.hurley.wanandroid.net.callback.RxBus;
 import com.kongzue.dialog.v2.DialogSettings;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 import static com.kongzue.dialog.v2.DialogSettings.STYLE_KONGZUE;
 
@@ -29,7 +35,8 @@ import static com.kongzue.dialog.v2.DialogSettings.STYLE_KONGZUE;
  * </pre>
  */
 @Route(path = PathContainer.SETTING)
-public class SettingActivity extends BaseActivity {
+public class SettingActivity extends BaseActivity<SettingPresenter>
+        implements SettingContract.View, CompoundButton.OnCheckedChangeListener {
 
     //TODO 左侧小图标
 
@@ -43,10 +50,10 @@ public class SettingActivity extends BaseActivity {
     LinearLayout mLlAutoCache;
     @BindView(R.id.cb_setting_auto_cache)
     AppCompatCheckBox mCbAutoCache;
-    @BindView(R.id.setting_image)
-    LinearLayout mLlImage;
-    @BindView(R.id.cb_setting_image)
-    AppCompatCheckBox mCbImage;
+    @BindView(R.id.setting_no_image)
+    LinearLayout mLlNoImage;
+    @BindView(R.id.cb_setting_no_image)
+    AppCompatCheckBox mCbNoImage;
     @BindView(R.id.setting_night)
     LinearLayout mLlNight;
     @BindView(R.id.cb_setting_night)
@@ -78,7 +85,7 @@ public class SettingActivity extends BaseActivity {
 
     @Override
     protected void initInjector() {
-
+        mActivityComponent.inject(this);
     }
 
     @Override
@@ -96,16 +103,33 @@ public class SettingActivity extends BaseActivity {
         return true;
     }
 
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        switch (buttonView.getId()) {
+            case R.id.cb_setting_auto_cache:
+                break;
+            case R.id.cb_setting_no_image:
+                break;
+            case R.id.cb_setting_night:
+                mPresenter.setNightModeState(isChecked);
+                RxBus.getInstance().post(new NightModeEvent(isChecked));
+                break;
+            default:
+                break;
+        }
+    }
+
     /**
-     * 判断CheckBox是否选中
+     * 设置CheckBox是否选中
      * @param checkBox
      */
-    private void isChecked(CheckBox checkBox) {
+    private void setChecked(CheckBox checkBox) {
         if (checkBox.isChecked()) {
             checkBox.setChecked(false);
         } else {
             checkBox.setChecked(true);
         }
     }
+
 
 }

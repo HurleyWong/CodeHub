@@ -78,14 +78,24 @@ public class RecyclerViewDivider extends RecyclerView.ItemDecoration{
         paint.setStyle(Paint.Style.FILL);
     }
 
-    //获取分割线尺寸
+    /**
+     * 获取分割线尺寸
+     * @param outRect
+     * @param view
+     * @param parent
+     * @param state
+     */
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state){
         super.getItemOffsets(outRect,view,parent,state);
         outRect.set(0,0,0,mDividerHeight);
     }
 
-    //绘制横向item分割线
+    /**
+     * 绘制横向item分割线
+     * @param canvas
+     * @param parent
+     */
     private void drawHorizontal(Canvas canvas, RecyclerView parent){
         final int left=parent.getPaddingLeft();
         final int right=parent.getMeasuredWidth()-parent.getPaddingRight();

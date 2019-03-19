@@ -1,5 +1,7 @@
 package com.hurley.wanandroid.base;
 
+import com.hurley.wanandroid.net.DataManager;
+
 /**
  * <pre>
  *      @author hurley
@@ -11,6 +13,8 @@ package com.hurley.wanandroid.base;
 public class BasePresenter<T extends BaseContract.BaseView> implements BaseContract.BasePresenter<T> {
 
     protected T mView;
+
+    private DataManager mDataManager;
 
     @Override
     public void attachView(T view) {
