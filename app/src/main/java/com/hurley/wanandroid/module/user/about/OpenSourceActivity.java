@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.bean.OpenSourceBean;
 import com.hurley.wanandroid.module.adapter.OpenSourceAdapter;
@@ -27,7 +28,7 @@ import butterknife.BindView;
  *      desc   : 开源框架界面
  * </pre>
  */
-@Route(path = "/about/OpenSourceActivity")
+@Route(path = PathContainer.OPEN_SOURCE)
 public class OpenSourceActivity extends BaseActivity {
 
     private static final String TAG = "OpenSourceActivity";

@@ -81,17 +81,16 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
         setContentView(layoutId);
         initInjector();
         unbinder = ButterKnife.bind(this);
-        ImmersionBar.with(this)
-                .statusBarColor(R.color.colorAccent)
-                .fitsSystemWindows(true)
-                .init();
         initToolBar();
         attachView();
         initView();
         if (!NetworkUtils.isConnected()) {
             showNoNet();
         }
-
+        ImmersionBar.with(this)
+                .statusBarColor(R.color.colorAccent)
+                .fitsSystemWindows(true)
+                .init();
     }
 
     @Override

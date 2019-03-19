@@ -2,6 +2,8 @@ package com.hurley.wanandroid.module.main;
 
 import android.app.Activity;
 import android.app.LauncherActivity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.animation.AlphaAnimation;
@@ -20,6 +22,7 @@ import com.hjq.permissions.OnPermission;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.utils.SharedPreferencesUtil;
@@ -39,7 +42,7 @@ import site.gemus.openingstartanimation.RedYellowBlueDrawStrategy;
  *      desc    : 闪屏页面
  * </pre>
  */
-@Route(path = "/main/SplashActivity")
+@Route(path = PathContainer.SPLASH)
 public class SplashActivity extends AppCompatActivity implements OnPermission, Animation.AnimationListener {
 
     @BindView(R.id.iv_splash_bg)
@@ -49,11 +52,26 @@ public class SplashActivity extends AppCompatActivity implements OnPermission, A
     @BindView(R.id.tv_splash_name)
     TextView mTvSplashName;
 
+    private SharedPreferences mSharedPreference;
+    private SharedPreferences.Editor mEditor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //判断是否是第一次打开应用
+        mSharedPreference = getSharedPreferences("GuideActivity", MODE_PRIVATE);
+        if (mSharedPreference.getBoolean("first_open", true)) {
+            mEditor = mSharedPreference.edit();
+            mEditor.putBoolean("first_open", false);
+            mEditor.apply();
+
+            Intent intent = new Intent();
+            intent.setClass(this, GuideActivity.class);
+            this.startActivity(intent);
+            finish();
+        }
+
         /*boolean isFirstOpen = SharedPreferencesUtil.getBoolean(this,
                 SharedPreferencesUtil.FIRST_OPEN, true);
         if (isFirstOpen) {
@@ -82,7 +100,12 @@ public class SplashActivity extends AppCompatActivity implements OnPermission, A
 
     @Override
     public void hasPermission(List<String> granted, boolean isAll) {
-        ARouter.getInstance().build("/main/HomeActivity").navigation();
+        Intent intent = new Intent();
+        intent.setClass(this, HomeActivity.class);
+        this.startActivity(intent);
+
+        //使用ARouter会加载变慢，出现一个短暂的白屏效果
+        //ARouter.getInstance().build("/main/HomeActivity").navigation();
         finish();
     }
 
@@ -106,7 +129,7 @@ public class SplashActivity extends AppCompatActivity implements OnPermission, A
      * 启动动画
      */
     private void initStartAnim() {
-        // 渐变展示启动屏
+        //渐变展示启动屏
         AlphaAnimation aa = new AlphaAnimation(0.4f, 1.0f);
         aa.setDuration(Constants.ANIM_TIME * 2);
         aa.setAnimationListener(this);

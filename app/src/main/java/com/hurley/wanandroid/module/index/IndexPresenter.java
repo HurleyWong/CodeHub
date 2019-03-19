@@ -9,6 +9,7 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.api.ApiService;
+import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.app.App;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.app.LoadType;
@@ -164,7 +165,7 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
             }
         } else {
             //如果未登录，跳转至登录界面
-            ARouter.getInstance().build("/login/LoginActivity").navigation();
+            ARouter.getInstance().build(PathContainer.LOGIN).navigation();
         }
     }
 

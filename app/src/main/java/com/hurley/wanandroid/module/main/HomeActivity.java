@@ -13,6 +13,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.ToastUtils;
 import com.blankj.utilcode.util.Utils;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.module.index.IndexFragment;
@@ -33,7 +34,7 @@ import me.yokeyword.fragmentation.ISupportFragment;
  *      desc   : 主页界面
  * </pre>
  */
-@Route(path = "/main/HomeActivity")
+@Route(path = PathContainer.HOME)
 public class HomeActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.bv_home_navigation)

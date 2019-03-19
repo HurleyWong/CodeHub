@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.LogUtils;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.bean.SystemBean;
 import com.hurley.wanandroid.module.adapter.SystemDetailAdapter;
@@ -23,7 +24,7 @@ import butterknife.BindView;
  *      desc    : 体系二级目录界面
  * </pre>
  */
-@Route(path = "/system/SystemDetailActivity")
+@Route(path = PathContainer.SYSTEM_DETAIL)
 public class SystemDetailActivity extends BaseActivity {
 
     @Autowired

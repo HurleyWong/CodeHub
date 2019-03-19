@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.module.main.WebActivity;
 import com.just.agentweb.AgentWeb;
@@ -24,7 +25,7 @@ import butterknife.OnClick;
  *      desc   : 关于界面
  * </pre>
  */
-@Route(path = "/about/AboutActivity")
+@Route(path = PathContainer.ABOUT)
 public class AboutActivity extends BaseActivity {
 
     private static final String TAG = "AboutActivity";
@@ -71,7 +72,7 @@ public class AboutActivity extends BaseActivity {
                 break;
             case R.id.about_open_source:
                 //跳转至开源框架界面
-                ARouter.getInstance().build("/about/OpenSourceActivity").navigation();
+                ARouter.getInstance().build(PathContainer.OPEN_SOURCE).navigation();
                 break;
             case R.id.about_github:
                 //打开Github主页

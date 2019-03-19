@@ -11,6 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.bean.UserBean;
@@ -29,7 +30,7 @@ import butterknife.OnClick;
  *      desc   : 登录界面
  * </pre>
  */
-@Route(path = "/login/LoginActivity")
+@Route(path = PathContainer.LOGIN)
 public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View {
 
     @BindView(R.id.et_login_username)
@@ -99,7 +100,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 break;
             case R.id.tv_register:
                 //跳转至注册界面
-                ARouter.getInstance().build("/register/RegisterActivity").navigation();
+                ARouter.getInstance().build(PathContainer.REGISTER).navigation();
                 break;
             case R.id.tv_login_forget:
                 break;

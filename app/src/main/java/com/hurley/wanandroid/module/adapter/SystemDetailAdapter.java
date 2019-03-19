@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.LogUtils;
+import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.bean.SystemBean;
 import com.hurley.wanandroid.module.article.ArticleListFragment;
@@ -41,7 +42,7 @@ public class SystemDetailAdapter extends FragmentPagerAdapter {
         }
         for (SystemBean.Children childrenBean : mChildrenList) {
             ArticleListFragment articleListFragment = (ArticleListFragment) ARouter.getInstance()
-                    .build("/article/ArticleListFragment")
+                    .build(PathContainer.ARTICLE_LIST)
                     .withInt(Constants.CONTENT_CID_KEY, childrenBean.getId())
                     .navigation();
             mArticleListFragments.add(articleListFragment);

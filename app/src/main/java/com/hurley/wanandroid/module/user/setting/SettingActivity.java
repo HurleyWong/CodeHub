@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.kongzue.dialog.v2.DialogSettings;
 
@@ -27,7 +28,7 @@ import static com.kongzue.dialog.v2.DialogSettings.STYLE_KONGZUE;
  *      desc   : 设置界面
  * </pre>
  */
-@Route(path = "/setting/SettingActivity")
+@Route(path = PathContainer.SETTING)
 public class SettingActivity extends BaseActivity {
 
     //TODO 左侧小图标

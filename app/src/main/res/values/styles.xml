@@ -10,6 +10,13 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="preferenceTheme">@style/PreferenceScreen</item>
 
+        <!-- ActionMode覆盖Actionbar，不顶下来 -->
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- ActionMode的颜色 -->
+        <item name="actionModeBackground">@color/colorPrimary</item>
+        <!-- 解决 Android 5.1 及以上版本 Button 英文字符串自动变大写的问题 -->
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="PreferenceScreen" parent="PreferenceThemeOverlay.v14.Material">

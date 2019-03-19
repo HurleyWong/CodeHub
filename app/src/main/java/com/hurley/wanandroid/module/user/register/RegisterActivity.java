@@ -7,6 +7,7 @@ import android.widget.EditText;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.StringUtils;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.bean.UserBean;
 import com.hurley.wanandroid.event.LoginEvent;
@@ -25,7 +26,7 @@ import butterknife.OnClick;
  *      desc   : 注册界面
  * </pre>
  */
-@Route(path = "/register/RegisterActivity")
+@Route(path = PathContainer.REGISTER)
 public class RegisterActivity extends BaseActivity<RegisterPresenter> implements RegisterContract.View {
 
     private static final String TAG = "RegisterActivity";

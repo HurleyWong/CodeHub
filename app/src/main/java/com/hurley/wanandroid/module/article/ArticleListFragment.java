@@ -12,6 +12,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.LogUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.base.BaseFragment;
 import com.hurley.wanandroid.bean.ArticleBean;
 import com.hurley.wanandroid.event.LoginEvent;
@@ -30,7 +31,7 @@ import butterknife.BindView;
  *      desc    : 文章列表页面
  * </pre>
  */
-@Route(path = "/article/ArticleListFragment")
+@Route(path = PathContainer.ARTICLE_LIST)
 public class ArticleListFragment extends BaseFragment<ArticleListPresenter>
         implements ArticleListContract.View,
                 ArticleAdapter.OnItemClickListener,

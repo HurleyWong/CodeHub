@@ -12,6 +12,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseFragment;
 import com.hurley.wanandroid.event.LoginEvent;
@@ -83,14 +84,14 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
                 //登录界面
                 if (!isLogin) {
                     //未登录
-                    ARouter.getInstance().build("/login/LoginActivity").navigation();
+                    ARouter.getInstance().build(PathContainer.LOGIN).navigation();
                 }
                 break;
             case R.id.btn_user_collect:
                 //收藏界面
                 if (isLogin) {
                     //已登录
-                    ARouter.getInstance().build("/collect/CollectionActivity").navigation();
+                    ARouter.getInstance().build(PathContainer.COLLECTION).navigation();
                 } else {
                     //未登录
                     toast(R.string.login_please);
@@ -98,11 +99,11 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
                 break;
             case R.id.btn_user_setting:
                 //设置界面
-                ARouter.getInstance().build("/setting/SettingActivity").navigation();
+                ARouter.getInstance().build(PathContainer.SETTING).navigation();
                 break;
             case R.id.btn_user_about:
                 //关于界面
-                ARouter.getInstance().build("/about/AboutActivity").navigation();
+                ARouter.getInstance().build(PathContainer.ABOUT).navigation();
                 break;
             case R.id.btn_user_logout:
                 logout();

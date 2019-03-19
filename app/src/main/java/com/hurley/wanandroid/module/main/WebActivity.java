@@ -23,6 +23,7 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.just.agentweb.AgentWeb;
@@ -39,7 +40,7 @@ import butterknife.BindView;
  *      desc   : 浏览器界面
  * </pre>
  */
-@Route(path = "/main/WebActivity")
+@Route(path = PathContainer.WEB)
 public class WebActivity extends BaseActivity<WebPresenter> implements WebContract.View {
 
     @Autowired
@@ -229,7 +230,7 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
      * @param author        文章作者
      */
     public static void startWeb(int id, String url, String title, String author) {
-        ARouter.getInstance().build("/main/WebActivity")
+        ARouter.getInstance().build(PathContainer.WEB)
                 .withInt(Constants.CONTENT_ID_KEY, id)
                 .withString(Constants.CONTENT_URL_KEY, url)
                 .withString(Constants.CONTENT_TITLE_KEY, title)
@@ -242,7 +243,7 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
      * @param url           网页链接
      */
     public static void startWeb(String url) {
-        ARouter.getInstance().build("/main/WebActivity")
+        ARouter.getInstance().build(PathContainer.WEB)
                 .withString(Constants.CONTENT_URL_KEY, url)
                 .navigation();
     }
