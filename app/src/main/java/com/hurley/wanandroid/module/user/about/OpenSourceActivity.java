@@ -11,7 +11,7 @@ import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.bean.OpenSourceBean;
 import com.hurley.wanandroid.module.adapter.OpenSourceAdapter;
 import com.hurley.wanandroid.module.main.WebActivity;
-import com.hurley.wanandroid.utils.IntentUtils;
+import com.hurley.wanandroid.utils.IntentUtil;
 import com.hurley.wanandroid.widget.RecyclerViewDivider;
 
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class OpenSourceActivity extends BaseActivity {
         //item点击事件
         mAdapter.setOnItemClickListener(((adapter, view, position) ->
                 //打开对应框架的Github链接
-                IntentUtils.getInstance(WebActivity.class)
+                IntentUtil.getInstance(WebActivity.class)
                         .putString("https://github.com/" + mList.get(position).getAuthor() + "/" + mList.get(position).getName())
                         .startActivity(this)
         ));

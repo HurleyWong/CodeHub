@@ -2,6 +2,7 @@ package com.hurley.wanandroid.module.main;
 
 import android.widget.ImageView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.base.BaseActivity;
@@ -18,6 +19,7 @@ import cn.bingoogolapple.bgabanner.BGALocalImageSize;
  *      desc    : 首次打开应用的引导页面
  * </pre>
  */
+@Route(path = "/main/GuideActivity")
 public class GuideActivity extends BaseActivity {
 
     private static final String TAG = "GuideActivity";

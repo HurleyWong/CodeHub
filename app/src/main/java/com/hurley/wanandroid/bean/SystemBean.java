@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.facade.service.SerializationService;
-import com.hurley.wanandroid.utils.GsonUtils;
+import com.hurley.wanandroid.utils.GsonUtil;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -95,17 +95,17 @@ public class SystemBean implements SerializationService {
 
     @Override
     public <T> T json2Object(String input, Class<T> clazz) {
-        return GsonUtils.convertObj(input, clazz);
+        return GsonUtil.convertObj(input, clazz);
     }
 
     @Override
     public String object2Json(Object instance) {
-        return GsonUtils.toJson(instance);
+        return GsonUtil.toJson(instance);
     }
 
     @Override
     public <T> T parseObject(String input, Type clazz) {
-        return GsonUtils.convertObj(input, clazz);
+        return GsonUtil.convertObj(input, clazz);
     }
 
     @Override
@@ -200,17 +200,17 @@ public class SystemBean implements SerializationService {
 
         @Override
         public <T> T json2Object(String input, Class<T> clazz) {
-            return GsonUtils.convertObj(input, clazz);
+            return GsonUtil.convertObj(input, clazz);
         }
 
         @Override
         public String object2Json(Object instance) {
-            return GsonUtils.toJson(instance);
+            return GsonUtil.toJson(instance);
         }
 
         @Override
         public <T> T parseObject(String input, Type clazz) {
-            return GsonUtils.convertObj(input, clazz);
+            return GsonUtil.convertObj(input, clazz);
         }
 
         @Override

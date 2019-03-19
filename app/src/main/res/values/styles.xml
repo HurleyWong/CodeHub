@@ -10,7 +10,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="preferenceTheme">@style/PreferenceScreen</item>
 
-        <item name="android:statusBarColor">@color/colorAccent</item>
     </style>
 
     <style name="PreferenceScreen" parent="PreferenceThemeOverlay.v14.Material">
@@ -53,7 +52,7 @@
     </style>
 
     <!-- 解决启动页白屏的问题 -->
-    <style name="LauncherTheme" parent="AppTheme">
+    <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>

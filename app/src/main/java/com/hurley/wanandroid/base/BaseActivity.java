@@ -81,12 +81,17 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
         setContentView(layoutId);
         initInjector();
         unbinder = ButterKnife.bind(this);
+        ImmersionBar.with(this)
+                .statusBarColor(R.color.colorAccent)
+                .fitsSystemWindows(true)
+                .init();
         initToolBar();
         attachView();
         initView();
         if (!NetworkUtils.isConnected()) {
             showNoNet();
         }
+
     }
 
     @Override
@@ -95,6 +100,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
         mDelegate.onDestroy();
         unbinder.unbind();
         detachView();
+        ImmersionBar.with(this).destroy();
     }
 
     @Override
@@ -383,7 +389,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
      * 初始化toolbar
      */
     private void initToolBar() {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = findViewById(R.id.toolbar);
         if (mToolbar == null) {
             throw new NullPointerException("toolbar can not be null");
         }

@@ -88,6 +88,13 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
                 break;
             case R.id.btn_user_collect:
                 //收藏界面
+                if (isLogin) {
+                    //已登录
+                    ARouter.getInstance().build("/collect/CollectionActivity").navigation();
+                } else {
+                    //未登录
+                    toast(R.string.login_please);
+                }
                 break;
             case R.id.btn_user_setting:
                 //设置界面

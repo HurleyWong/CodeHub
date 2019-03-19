@@ -129,6 +129,8 @@ dependencies {
     //BGABanner-Android包：https://github.com/bingoogolapple/BGABanner-Android
     implementation 'cn.bingoogolapple:bga-banner:2.2.5@aar'
 
+    //启动动画：https://github.com/wongzy/FancyView
+    implementation 'site.gemus:openingstartanimation:1.0.0'
     //状态栏沉浸：https://github.com/gyf-dev/ImmersionBar
     implementation 'com.gyf.immersionbar:immersionbar:2.3.3'
     //侧滑功能：https://github.com/bingoogolapple/BGASwipeBackLayout-Android

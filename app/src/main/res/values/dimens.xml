@@ -21,9 +21,11 @@
     <dimen name="dp200">200dp</dimen>
     <dimen name="dp240">240dp</dimen>
     <dimen name="dp340">340dp</dimen>
+    <dimen name="dp400">400dp</dimen>
 
     <!-- sp -->
     <dimen name="sp16">16sp</dimen>
     <dimen name="sp18">18sp</dimen>
     <dimen name="sp20">20sp</dimen>
+    <dimen name="sp40">40sp</dimen>
 </resources>
