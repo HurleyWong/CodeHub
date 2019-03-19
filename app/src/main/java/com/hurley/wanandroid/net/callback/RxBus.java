@@ -9,37 +9,56 @@ import io.reactivex.processors.PublishProcessor;
  *      @author hurley
  *      date    : 2019/3/15 5:23 PM
  *      github  : https://github.com/HurleyJames
- *      desc    :
+ *      desc    : 事件总线类，代替EventBus和otto
  * </pre>
  */
 public class RxBus {
-    private static volatile RxBus sRxBus;
-    // 主题
+    private static volatile RxBus rxBus;
+
+    /**
+     * 主题
+     */
     private final FlowableProcessor<Object> mBus;
 
-    // PublishSubject只会把在订阅发生的时间点之后来自原始Observable的数据发射给观察者
+    /**
+     * 🔥PublishSubject只会把在订阅发生的时间点之后来自原始Observable的数据发射给观察者
+     * 🔥RxJava的Subject有 PublishSubject | BehaviorSubject | ReplaySubject | AsyncSubject
+     */
     public RxBus() {
         mBus = PublishProcessor.create().toSerialized();
     }
 
-    // 单例RxBus
+    /**
+     * 获得RxBus的实例
+     * 单例模式的双重检查模式
+     * @return
+     */
     public static RxBus getInstance() {
-        if (sRxBus == null) {
+        if (rxBus == null) {
             synchronized (RxBus.class) {
-                if (sRxBus == null) {
-                    sRxBus = new RxBus();
+                if (rxBus == null) {
+                    rxBus = new RxBus();
                 }
             }
         }
-        return sRxBus;
+        return rxBus;
     }
 
-    // 提供了一个新的事件
+    /**
+     * 发送事件
+     * @param o
+     */
     public void post(Object o) {
         mBus.onNext(o);
     }
 
-    // 根据传递的 eventType 类型返回特定类型(eventType)的 被观察者
+    /**
+     * 接受事件
+     * 根据传递的 eventType 类型返回特定类型(eventType)的 被观察者
+     * @param eventType
+     * @param <T>
+     * @return
+     */
     public <T> Flowable<T> toFlowable(Class<T> eventType) {
         return mBus.ofType(eventType);
     }

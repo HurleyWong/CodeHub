@@ -11,7 +11,7 @@ import okhttp3.HttpUrl;
  *      @author hurley
  *      date    : 2019/3/8 12:53 PM
  *      github  : https://github.com/HurleyJames
- *      desc    :
+ *      desc    : Cookies管理类
  * </pre>
  */
 public class CookiesManager implements CookieJar {
@@ -42,7 +42,6 @@ public class CookiesManager implements CookieJar {
 
     /**
      * 清除指定cookie
-     *
      * @param url
      * @param cookie
      * @return
@@ -53,7 +52,6 @@ public class CookiesManager implements CookieJar {
 
     /**
      * 获取cookies
-     *
      * @return
      */
     public static List<Cookie> getCookies() {

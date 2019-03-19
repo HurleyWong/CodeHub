@@ -5,7 +5,7 @@ package com.hurley.wanandroid.base;
  *      @author hurley
  *      date    : 2019/3/9 6:02 PM
  *      github  : https://github.com/HurleyJames
- *      desc    :
+ *      desc    : Presenter基类
  * </pre>
  */
 public class BasePresenter<T extends BaseContract.BaseView> implements BaseContract.BasePresenter<T> {

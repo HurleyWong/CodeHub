@@ -5,7 +5,7 @@ package com.hurley.wanandroid.event;
  *      @author hurley
  *      date    : 2019/3/16 10:36 AM
  *      github  : https://github.com/HurleyJames
- *      desc    :
+ *      desc    : 退出登录事件类
  * </pre>
  */
 public class LogoutEvent {

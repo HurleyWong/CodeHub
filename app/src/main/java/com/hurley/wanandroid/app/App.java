@@ -8,11 +8,11 @@ import com.blankj.utilcode.util.Utils;
 
 import com.facebook.stetho.Stetho;
 import com.hjq.toast.ToastUtils;
-import com.hurley.wanandroid.BuildConfig;
 import com.hurley.wanandroid.dao.DaoSession;
 import com.hurley.wanandroid.di.component.ApplicationComponent;
 import com.hurley.wanandroid.di.component.DaggerApplicationComponent;
 import com.hurley.wanandroid.di.module.ApplicationModule;
+import com.hurley.wanandroid.utils.ConfigUtil;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 import me.yokeyword.fragmentation.Fragmentation;
@@ -51,19 +51,20 @@ public class App extends Application {
         BGASwipeBackHelper.init(this, null);
         //初始化工具类
         Utils.init(this);
-        // 初始化Toast工具类
+        //初始化Toast工具类
         ToastUtils.init(this);
+        //初始化路由
         initARouter();
 
         //初始化Fragmentation
         Fragmentation.builder()
                 //BUBBLE：显示悬浮球 | SHAKE：摇一摇换出悬浮球 | NONE：隐藏悬浮球
                 .stackViewMode(Fragmentation.NONE)
-                .debug(BuildConfig.DEBUG)
+                .debug(ConfigUtil.DEBUG)
                 .install();
 
         //初始化Stetho
-        if (BuildConfig.DEBUG) {
+        if (ConfigUtil.DEBUG) {
             Stetho.initializeWithDefaults(this);
         }
     }
@@ -72,7 +73,7 @@ public class App extends Application {
      * 初始化路由
      */
     private void initARouter() {
-        if (BuildConfig.DEBUG) {
+        if (ConfigUtil.DEBUG) {
             //打印日志
             ARouter.openLog();
             //开启调试模式（如果在InstantRun模式下运行，必须开启调试模式。线上版本需要关闭，否则有安全风险）

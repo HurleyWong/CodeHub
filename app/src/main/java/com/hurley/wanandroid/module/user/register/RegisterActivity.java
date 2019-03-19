@@ -10,9 +10,8 @@ import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.bean.UserBean;
-import com.hurley.wanandroid.event.LoginEvent;
 import com.hurley.wanandroid.event.RegisterEvent;
-import com.hurley.wanandroid.helper.EditTextInputHelper;
+import com.hurley.wanandroid.helper.view.EditTextInputHelper;
 import com.hurley.wanandroid.net.callback.RxBus;
 
 import butterknife.BindView;

@@ -16,6 +16,8 @@
     <!-- 通用 -->
     <string name="http_error">网络君乘404航班去追寻诗和远方了</string>
     <string name="unknown_error">未知错误</string>
+    <string name="no_file_permission">没有权限访问文件，请手动授予权限</string>
+    <string name="grant_file_permission">请先授予文件读写权限</string>
     <string name="click_skip">跳过</string>
     <string name="click_enter">进入主界面</string>
 

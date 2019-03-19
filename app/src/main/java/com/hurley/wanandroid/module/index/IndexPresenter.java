@@ -180,6 +180,7 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
         Observable<BaseBean<List<BannerBean>>> observableBanner = RetrofitManager.create(ApiService.class).getIndexBanners();
         Observable<BaseBean<ArticleBean>> observableArticle = RetrofitManager.create(ApiService.class).getIndexArticles(mPage);
 
+        //🔥zip操作符合并两个或者多个Observable发射出的数据项，根据指定的函数变换它们，并发射一个新值
         Observable.zip(observableUser, observableBanner, observableArticle,
                 (response1, response2, response3) -> {
                     Map<String, Object> objectMap = new HashMap<>();

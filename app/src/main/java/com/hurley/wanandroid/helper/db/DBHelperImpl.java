@@ -1,4 +1,4 @@
-package com.hurley.wanandroid.db;
+package com.hurley.wanandroid.helper.db;
 
 
 import com.hurley.wanandroid.app.App;

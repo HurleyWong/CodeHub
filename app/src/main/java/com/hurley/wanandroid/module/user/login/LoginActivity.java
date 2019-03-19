@@ -17,7 +17,7 @@ import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.bean.UserBean;
 import com.hurley.wanandroid.event.LoginEvent;
 import com.hurley.wanandroid.net.callback.RxBus;
-import com.hurley.wanandroid.helper.EditTextInputHelper;
+import com.hurley.wanandroid.helper.view.EditTextInputHelper;
 
 import butterknife.BindView;
 import butterknife.OnClick;

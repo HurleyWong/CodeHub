@@ -1,4 +1,4 @@
-package com.hurley.wanandroid.module;
+package com.hurley.wanandroid.net;
 
 
 import com.hurley.wanandroid.base.BaseBean;
@@ -14,9 +14,9 @@ import com.hurley.wanandroid.bean.SystemBean;
 import com.hurley.wanandroid.bean.UserBean;
 import com.hurley.wanandroid.bean.WebsiteBean;
 import com.hurley.wanandroid.bean.WxAccountBean;
-import com.hurley.wanandroid.db.DbHelper;
-import com.hurley.wanandroid.http.HttpHelper;
-import com.hurley.wanandroid.prefs.PreferenceHelper;
+import com.hurley.wanandroid.helper.db.DbHelper;
+import com.hurley.wanandroid.helper.http.HttpHelper;
+import com.hurley.wanandroid.helper.prefs.PreferenceHelper;
 
 import java.util.List;
 

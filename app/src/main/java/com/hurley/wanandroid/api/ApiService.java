@@ -40,6 +40,8 @@ public interface ApiService {
      * http://www.wanandroid.com/user/login
      * @param username              用户名
      * @param password              密码
+     * 🔥用@FormUrlEncoded注解来标明这是一个表单请求
+     * 🔥用@Field注解来标识所对应的某个类型数据的键，从而组成一组键值对进行传递
      * @return
      */
     @POST(UrlContainer.LOGIN)
@@ -72,8 +74,9 @@ public interface ApiService {
 
     /**
      * 首页文章列表
-     * http://www.wanandroid.com/article/list/0/json
+     * http://www.wanandroid.com/article/list/{page}/json
      * @param page                  页码
+     * 用@Path来动态配置URL地址
      * @return
      */
     @GET(UrlContainer.INDEX_ARTICLE_LIST)
@@ -113,14 +116,15 @@ public interface ApiService {
 
     /**
      * 知识体系下的文章
-     * http://www.wanandroid.com/article/list/0/json?cid=60
+     * http://www.wanandroid.com/article/list/{page}/json?cid={cid}
      * @param page                  页码
      * @param cid                   分类的id，上述二级目录的id
+     * 🔥用@Query来动态指定查询条件
      * @return
      */
     @GET(UrlContainer.TREE_ARTICLE_LIST)
     Observable<BaseBean<ArticleBean>> getSystemArticles(@Path("page") int page,
-                                                                  @Query("cid") int cid);
+                                                        @Query("cid") int cid);
 
     /**
      * 导航数据
@@ -140,7 +144,7 @@ public interface ApiService {
 
     /**
      * 项目列表数据（文章）
-     * http://www.wanandroid.com/project/list/1/json?cid=294
+     * http://www.wanandroid.com/project/list/{page}/json?cid={cid}
      * @param page
      * @param cid
      * @return
@@ -151,7 +155,7 @@ public interface ApiService {
 
     /**
      * 最新项目tab
-     * http://wanandroid.com/article/listproject/0/json
+     * http://wanandroid.com/article/listproject/{page}/json
      * @param page                  页码
      * @return
      */
@@ -160,7 +164,7 @@ public interface ApiService {
 
     /**
      * 收藏文章列表
-     * http://www.wanandroid.com/lg/collect/list/0/json
+     * http://www.wanandroid.com/lg/collect/list/{page}/json
      * @param page                  页码
      * @return
      */
@@ -169,7 +173,7 @@ public interface ApiService {
 
     /**
      * 收藏站内文章
-     * http://www.wanandroid.com/lg/collect/1165/json
+     * http://www.wanandroid.com/lg/collect/{id}/json
      * 成功则返回：
      *      "data": null,
      *      "errorCode": 0,
@@ -195,7 +199,7 @@ public interface ApiService {
 
     /**
      * 从文章列表取消收藏
-     * http://www.wanandroid.com/lg/uncollect_originId/2333/json
+     * http://www.wanandroid.com/lg/uncollect_originId/{id}/json
      * 2333为originId
      * 成功则返回：
      *      "data": null,
@@ -211,7 +215,7 @@ public interface ApiService {
 
     /**
      * 从我的收藏页面取消收藏
-     * http://www.wanandroid.com/lg/uncollect/48032/json?originId=1166
+     * http://www.wanandroid.com/lg/uncollect/{id}/json?originId={originId}
      * 48032为id，1166为originId。如果是从站外收藏，则originId为-1
      * 成功则返回：
      *      "data": null,
@@ -223,7 +227,7 @@ public interface ApiService {
      */
     @POST(UrlContainer.UNCOLLECT_ARTICLE_2)
     Observable<BaseBean> unCollectArticle2(@Path("id") int id,
-                                                   @Field("originId") int originId);
+                                           @Field("originId") int originId);
 
     /**
      * 收藏网站列表
@@ -268,7 +272,7 @@ public interface ApiService {
 
     /**
      * 搜索
-     * http://www.wanandroid.com/article/query/0/json
+     * http://www.wanandroid.com/article/query/{page}/json
      * @param page                  页码
      * @param k                     关键字
      * @return
@@ -288,7 +292,7 @@ public interface ApiService {
 
     /**
      * 查看某个公众号历史数据
-     * http://wanandroid.com/wxarticle/list/405/1/json
+     * http://wanandroid.com/wxarticle/list/{id}/{page}/json
      * @param id                    公众号id
      * @param page                  公众号页码
      * @return
@@ -299,7 +303,7 @@ public interface ApiService {
 
     /**
      * 在某个公众号中搜索历史文章
-     * http://wanandroid.com/wxarticle/list/405/1/json?k=Java
+     * http://wanandroid.com/wxarticle/list/{id}/{page}/json?k=k
      * @param id                    公众号id
      * @param page                  页码
      * @param k                     关键字

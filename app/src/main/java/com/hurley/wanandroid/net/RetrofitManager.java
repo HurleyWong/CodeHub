@@ -24,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  *      @author hurley
  *      date    : 2019/3/8 12:50 PM
  *      github  : https://github.com/HurleyJames
- *      desc    :
+ *      desc    : Retrofit封装管理类
  * </pre>
  */
 
@@ -93,6 +93,9 @@ public class RetrofitManager {
         }
     };
 
+    /**
+     * 添加Header拦截器
+     */
     private static final Interceptor mHeaderInterceptor = new Interceptor() {
         @Override
         public Response intercept(Chain chain) throws IOException {
@@ -108,7 +111,7 @@ public class RetrofitManager {
     };
 
     /**
-     * 获取OkHttpClient实例
+     * 对OkHttpClient进行配置
      * @return
      */
     private static OkHttpClient getOkHttpClient() {
@@ -132,14 +135,16 @@ public class RetrofitManager {
 
 
     /**
-     * 获取Service
+     * 创建Retrofit
      * @param clazz
      * @param <T>
      * @return
      */
     public static <T> T create(Class<T> clazz) {
+        //指定baseUrl
         Retrofit retrofit = new Retrofit.Builder().baseUrl(UrlContainer.baseUrl)
                 .client(getOkHttpClient())
+                //存储转化数据对象，设置返回的数据支持转换为Gson对象
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
         return retrofit.create(clazz);

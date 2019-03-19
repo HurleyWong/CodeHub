@@ -68,14 +68,4 @@ public class GuideActivity extends BaseActivity {
     }
 
 
-
-
-
-
-
-
-
-
-
-
 }

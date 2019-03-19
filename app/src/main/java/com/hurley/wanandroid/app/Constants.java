@@ -35,17 +35,15 @@ public class Constants {
     /**
      * Fragment有关常量
      */
-    public static final int TYPE_MAIN_PAGER = 0;
+    public static final int TYPE_INDEX = 0;
 
     public static final int TYPE_SYSTEM = 1;
 
-    public static final int TYPE_WX_ARTICLE = 2;
+    public static final int TYPE_WECHAT = 2;
 
-    public static final int TYPE_PROJECT = 4;
+    public static final int TYPE_PROJECT = 3;
 
-    public static final int TYPE_COLLECT = 5;
-
-    public static final int TYPE_SETTING = 6;
+    public static final int TYPE_USER = 4;
 
 
     /**
@@ -94,7 +92,7 @@ public class Constants {
     public static final String NIGHT_MODE = "night_mode";
 
     /**
-     * 每页数量
+     * 每页显示文章数量
      */
     public static final int PAGE_SIZE = 20;
 
@@ -103,6 +101,11 @@ public class Constants {
      */
     public static final long CLICK_TIME_AREA = 1000;
     public static final long DOUBLE_INTERVAL_TIME = 2000;
+
+    /**
+     * 启动页时间
+     */
+    public static final int SPLASH_TIME = 2000;
 
     /**
      * 动画时间

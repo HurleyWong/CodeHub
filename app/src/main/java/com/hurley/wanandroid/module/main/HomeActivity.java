@@ -59,23 +59,23 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
         ISupportFragment indexFragment = findFragment(IndexFragment.class);
         if (indexFragment == null) {
-            mFragments[0] = IndexFragment.newInstance();
-            mFragments[1] = SystemFragment.newInstance();
-            mFragments[2] = WechatFragment.newInstance();
-            mFragments[3] = ProjectFragment.newInstance();
-            mFragments[4] = UserFragment.newInstance();
-            loadMultipleRootFragment(R.id.layout_fragment, 0,
-                    mFragments[0],
-                    mFragments[1],
-                    mFragments[2],
-                    mFragments[3],
-                    mFragments[4]);
+            mFragments[Constants.TYPE_INDEX] = IndexFragment.newInstance();
+            mFragments[Constants.TYPE_SYSTEM] = SystemFragment.newInstance();
+            mFragments[Constants.TYPE_WECHAT] = WechatFragment.newInstance();
+            mFragments[Constants.TYPE_PROJECT] = ProjectFragment.newInstance();
+            mFragments[Constants.TYPE_USER] = UserFragment.newInstance();
+            loadMultipleRootFragment(R.id.layout_fragment, Constants.TYPE_INDEX,
+                    mFragments[Constants.TYPE_INDEX],
+                    mFragments[Constants.TYPE_SYSTEM],
+                    mFragments[Constants.TYPE_WECHAT],
+                    mFragments[Constants.TYPE_PROJECT],
+                    mFragments[Constants.TYPE_USER]);
         } else {
-            mFragments[0] = indexFragment;
-            mFragments[1] = findFragment(SystemFragment.class);
-            mFragments[2] = findFragment(WechatFragment.class);
-            mFragments[3] = findFragment(ProjectFragment.class);
-            mFragments[4] = findFragment(UserFragment.class);
+            mFragments[Constants.TYPE_INDEX] = indexFragment;
+            mFragments[Constants.TYPE_SYSTEM] = findFragment(SystemFragment.class);
+            mFragments[Constants.TYPE_WECHAT] = findFragment(WechatFragment.class);
+            mFragments[Constants.TYPE_PROJECT] = findFragment(ProjectFragment.class);
+            mFragments[Constants.TYPE_USER] = findFragment(UserFragment.class);
         }
 
     }
@@ -89,28 +89,28 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         switch (menuItem.getItemId()) {
             case R.id.home_index:
                 mToolbar.setTitle(R.string.home_nav_index);
-                showHideFragment(mFragments[0], mFragments[preIndex]);
-                preIndex = 0;
+                showHideFragment(mFragments[Constants.TYPE_INDEX], mFragments[preIndex]);
+                preIndex = Constants.TYPE_INDEX;
                 break;
             case R.id.home_system:
                 mToolbar.setTitle(R.string.home_nav_system);
-                showHideFragment(mFragments[1], mFragments[preIndex]);
-                preIndex = 1;
+                showHideFragment(mFragments[Constants.TYPE_SYSTEM], mFragments[preIndex]);
+                preIndex = Constants.TYPE_SYSTEM;
                 break;
             case R.id.home_wechat:
                 mToolbar.setTitle(R.string.home_nav_wechat);
-                showHideFragment(mFragments[2], mFragments[preIndex]);
-                preIndex = 2;
+                showHideFragment(mFragments[Constants.TYPE_WECHAT], mFragments[preIndex]);
+                preIndex = Constants.TYPE_WECHAT;
                 break;
             case R.id.home_project:
                 mToolbar.setTitle(R.string.home_nav_project);
-                showHideFragment(mFragments[3], mFragments[preIndex]);
-                preIndex = 3;
+                showHideFragment(mFragments[Constants.TYPE_PROJECT], mFragments[preIndex]);
+                preIndex = Constants.TYPE_PROJECT;
                 break;
             case R.id.home_user:
                 mToolbar.setTitle(R.string.home_nav_user);
-                showHideFragment(mFragments[4], mFragments[preIndex]);
-                preIndex = 4;
+                showHideFragment(mFragments[Constants.TYPE_USER], mFragments[preIndex]);
+                preIndex = Constants.TYPE_USER;
                 break;
             default:
                 break;

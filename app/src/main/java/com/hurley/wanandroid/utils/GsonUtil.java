@@ -16,7 +16,7 @@ import java.util.List;
  *      @author hurley
  *      date    : 2019/3/18 4:09 PM
  *      github  : https://github.com/HurleyJames
- *      desc    :
+ *      desc    : Gson转化工具类
  * </pre>
  */
 public class GsonUtil {

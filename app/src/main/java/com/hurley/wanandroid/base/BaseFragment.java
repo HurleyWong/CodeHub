@@ -169,6 +169,8 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
             case LoadType.TYPE_LOAD_MORE_ERROR:
                 baseQuickAdapter.loadMoreFail();
                 break;
+            default:
+                break;
         }
         if (list == null || list.isEmpty() || list.size() < Constants.PAGE_SIZE) {
             baseQuickAdapter.loadMoreEnd(false);
@@ -208,7 +210,6 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
 
     /**
      * 设置View
-     *
      * @param inflater
      * @param container
      */
@@ -290,7 +291,6 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
      * The runnable will be run after all the previous action has been run.
      * <p>
      * 前面的事务全部执行后 执行该Action
-     *
      * @deprecated Use {@link #post(Runnable)} instead.
      */
     @Deprecated
@@ -371,7 +371,6 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
 
     /**
      * 获取设置的全局动画 copy
-     *
      * @return FragmentAnimator
      */
     @Override
@@ -401,7 +400,6 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
      * 类似
      * <p>
      * Similar to
-     *
      * @see #startForResult(ISupportFragment, int)
      */
     @Override
@@ -413,7 +411,6 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
      * 类似
      * <p>
      * Similar to
-     *
      * @see #startForResult(ISupportFragment, int)
      */
     @Override
@@ -426,7 +423,6 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
      * 类似
      * <p>
      * Similar to
-     *
      * @param args putNewBundle(Bundle newBundle)
      * @see #start(ISupportFragment, int)
      */
@@ -437,7 +433,6 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
 
     /**
      * 添加NewBundle,用于启动模式为SingleTask/SingleTop时
-     *
      * @see #start(ISupportFragment, int)
      */
     @Override
@@ -524,7 +519,6 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
      * back stack.
      * <p>
      * 出栈到目标fragment
-     *
      * @param targetFragmentClass   目标fragment
      * @param includeTargetFragment 是否包含该fragment
      */
@@ -544,6 +538,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
      * @param text
      */
     protected void toast(CharSequence text) {
+        //设置Toast背景颜色
         ToastUtils.setBgColor(ContextCompat.getColor(getContext(), R.color.gray));
         ToastUtils.showShort(text);
     }
@@ -553,6 +548,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
      * @param id
      */
     protected void toast(int id) {
+        //设置Toast背景颜色
         ToastUtils.setBgColor(ContextCompat.getColor(getContext(), R.color.gray));
         ToastUtils.showShort(id);
     }

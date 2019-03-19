@@ -112,16 +112,16 @@ public class SplashActivity extends AppCompatActivity implements OnPermission, A
     @Override
     public void noPermission(List<String> denied, boolean quick) {
         if (quick) {
-            ToastUtils.showShort("没有权限访问文件，请手动授予权限");
+            ToastUtils.showShort(R.string.no_file_permission);
             XXPermissions.gotoPermissionSettings(SplashActivity.this, true);
         }else {
-            ToastUtils.showShort("请先授予文件读写权限");
+            ToastUtils.showShort(R.string.grant_file_permission);
             getWindow().getDecorView().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     requestFilePermission();
                 }
-            }, 2000);
+            }, Constants.SPLASH_TIME);
         }
     }
 

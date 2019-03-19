@@ -1,4 +1,4 @@
-package com.hurley.wanandroid.http;
+package com.hurley.wanandroid.helper.http;
 
 
 import com.hurley.wanandroid.base.BaseBean;

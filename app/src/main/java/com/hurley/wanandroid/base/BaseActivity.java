@@ -88,8 +88,11 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
             showNoNet();
         }
         ImmersionBar.with(this)
+                //与导航栏同色
                 .statusBarColor(R.color.colorAccent)
+                //解决状态栏和布局重叠问题
                 .fitsSystemWindows(true)
+                //初始化
                 .init();
     }
 
@@ -99,6 +102,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
         mDelegate.onDestroy();
         unbinder.unbind();
         detachView();
+        //必须调用该方法，防止内存泄漏
         ImmersionBar.with(this).destroy();
     }
 
@@ -147,6 +151,8 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
                 } else {
                     finish();
                 }
+                break;
+            default:
                 break;
         }
         return true;
@@ -203,7 +209,6 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
 
     /**
      * 获取设置的全局动画 copy
-     *
      * @return FragmentAnimator
      */
     @Override
@@ -223,10 +228,8 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
     /**
      * Set all fragments animation.
      * 构建Fragment转场动画
-     * <p/>
      * 如果是在Activity内实现,则构建的是Activity内所有Fragment的转场动画,
      * 如果是在Fragment内实现,则构建的是该Fragment的转场动画,此时优先级 > Activity的onCreateFragmentAnimator()
-     *
      * @return FragmentAnimator对象
      */
     @Override
@@ -252,7 +255,6 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
 
     /**
      * 设置加载数据结果
-     *
      * @param baseQuickAdapter
      * @param refreshLayout
      * @param list
@@ -285,7 +287,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
         }
     }
 
-    // 选择性拓展其他方法
+    //选择性拓展其他方法
 
     public void loadRootFragment(int containerId, @NonNull ISupportFragment toFragment) {
         mDelegate.loadRootFragment(containerId, toFragment);
@@ -360,7 +362,6 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
      * 使用该方法时，要确保同级栈内无多余的Fragment,(只有通过loadMultipleRootFragment()载入的Fragment)
      * <p>
      * 建议使用更明确的{@link #showHideFragment(ISupportFragment, ISupportFragment)}
-     *
      * @param showFragment 需要show的Fragment
      */
     public void showHideFragment(ISupportFragment showFragment) {
@@ -424,6 +425,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
      * @param text
      */
     protected void toast(CharSequence text) {
+        //设置Toast背景颜色
         ToastUtils.setBgColor(ContextCompat.getColor(this, R.color.gray));
         ToastUtils.showShort(text);
     }
@@ -433,6 +435,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
      * @param id
      */
     protected void toast(int id) {
+        //设置Toast背景颜色
         ToastUtils.setBgColor(ContextCompat.getColor(this, R.color.gray));
         ToastUtils.showShort(id);
     }

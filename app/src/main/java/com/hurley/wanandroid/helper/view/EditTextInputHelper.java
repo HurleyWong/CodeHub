@@ -1,4 +1,4 @@
-package com.hurley.wanandroid.helper;
+package com.hurley.wanandroid.helper.view;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -51,7 +51,7 @@ public final class EditTextInputHelper implements TextWatcher {
 
     /**
      * 添加EditText
-     * @param views     传入单个或者多个EditText
+     * @param views             传入单个或者多个EditText
      */
     public void addViews(EditText... views) {
         if (views == null) {
@@ -112,7 +112,7 @@ public final class EditTextInputHelper implements TextWatcher {
 
     /**
      * 设置View的事件
-     * @param enabled               启用或者禁用View的事件
+     * @param enabled           启用或者禁用View的事件
      */
     public void setEnabled(boolean enabled) {
         if (enabled == mView.isEnabled()) {

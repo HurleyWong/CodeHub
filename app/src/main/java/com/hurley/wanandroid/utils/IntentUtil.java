@@ -243,47 +243,6 @@ public final class IntentUtil {
     public List getList(String key) {
         return get(key);
     }
-
-    public static class Key {
-
-        public static final String ID = "id"; // id
-        public static final String TOKEN = "token"; // token
-        public static final String ORDER = "order"; // 订单
-        public static final String BALANCE = "balance"; // 余额
-        public static final String TIME = "time"; // 时间
-        public static final String CODE = "code"; // 错误码或者其他码
-        public static final String URL = "url"; // URL
-        public static final String PATH = "path"; // 路径
-        public static final String OTHER = "other"; // 其他
-
-        // 个人信息
-        public static final String NAME = "name"; // 姓名
-        public static final String AGE = "age"; // 年龄
-        public static final String SEX = "sex"; // 性别
-        public static final String PHONE = "phone"; // 手机
-        public static final String VIP = "vip"; // 会员
-        public static final String DESCRIBE = "describe"; // 描述
-        public static final String REMARK = "remark"; // 备注
-        public static final String CONSTELLATION = "constellation"; // 星座
-
-        // 地方
-        public static final String ADDRESS = "address"; // 地址
-        public static final String PROVINCE = "province"; // 省
-        public static final String CITY = "city"; // 市
-        public static final String DISTRICT = "district"; // 区
-
-        // 文件类型相关
-        public static final String TXT = "txt"; // 文本
-        public static final String PICTURE = "picture"; // 图片
-        public static final String VOICE = "voice"; // 音频
-        public static final String VIDEO = "video"; // 视频
-
-        // 支付相关
-        public static final String BALANCE_PAY = "balance_pay"; // 余额支付
-        public static final String WECHAT_PAY = "wechat_pay"; //微信支付
-        public static final String ALI_PAY = "ali_pay"; //支付宝支付
-        public static final String UNION_PAY = "union_pay"; // 银联支付
-    }
 }
 
 

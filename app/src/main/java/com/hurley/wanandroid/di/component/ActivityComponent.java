@@ -20,7 +20,7 @@ import dagger.Component;
  *      @author hurley
  *      date    : 2019/3/14 3:54 PM
  *      github  : https://github.com/HurleyJames
- *      desc    :
+ *      desc    : Activity注入器类
  * </pre>
  */
 @ActivityScope
@@ -35,7 +35,7 @@ public interface ActivityComponent {
 
     Activity getActivity();
 
-    //TODO 添加inject(Activity)
+    //🔥定义inject方法，传入需要注入依赖的目标类
 
     void inject(WebActivity activity);
 

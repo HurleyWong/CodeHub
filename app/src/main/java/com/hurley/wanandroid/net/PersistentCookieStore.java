@@ -79,7 +79,7 @@ public class PersistentCookieStore {
             }
         }
 
-        //讲cookies持久化到本地
+        //将cookies持久化到本地
         SharedPreferences.Editor prefsWriter = cookiePrefs.edit();
         prefsWriter.putString(url.host(), TextUtils.join(",", cookies.get(url.host()).entrySet()));
         prefsWriter.putString(name, encodeCookie(new OkHttpCookies(cookie)));
@@ -152,7 +152,6 @@ public class PersistentCookieStore {
 
     /**
      * 将字符串反序列化成cookies
-     *
      * @param cookieString cookies string
      * @return cookie object
      */
@@ -174,7 +173,6 @@ public class PersistentCookieStore {
 
     /**
      * 二进制数组转十六进制字符串
-     *
      * @param bytes byte array to be converted
      * @return string containing hex values
      */
@@ -192,7 +190,6 @@ public class PersistentCookieStore {
 
     /**
      * 十六进制字符串转二进制数组
-     *
      * @param hexString string of hex-encoded values
      * @return decoded byte array
      */

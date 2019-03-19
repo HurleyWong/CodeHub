@@ -1,4 +1,4 @@
-package com.hurley.wanandroid.prefs;
+package com.hurley.wanandroid.helper.prefs;
 
 /**
  * <pre>

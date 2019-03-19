@@ -5,7 +5,7 @@ package com.hurley.wanandroid.bean;
  *      @author hurley
  *      date    : 2019/2/27 10:57 AM
  *      github  : https://github.com/HurleyJames
- *      desc    : 收藏文章实体类
+ *      desc    : 收藏的文章实体类
  * </pre>
  */
 public class CollectArticleBean {

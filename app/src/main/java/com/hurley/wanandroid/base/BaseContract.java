@@ -7,7 +7,7 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
  *      @author hurley
  *      date    : 2019/3/9 6:02 PM
  *      github  : https://github.com/HurleyJames
- *      desc    :
+ *      desc    : Contract基类
  * </pre>
  */
 public interface BaseContract {
