@@ -1,7 +1,5 @@
-package com.hurley.wanandroid.module.main;
+package com.hurley.wanandroid.module.common;
 
-import android.app.Activity;
-import android.app.LauncherActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ToastUtils;
 import com.gyf.barlibrary.BarHide;
 import com.gyf.barlibrary.ImmersionBar;
@@ -24,15 +21,12 @@ import com.hjq.permissions.XXPermissions;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.app.Constants;
-import com.hurley.wanandroid.base.BaseActivity;
-import com.hurley.wanandroid.utils.SharedPreferencesUtil;
+import com.hurley.wanandroid.module.main.HomeActivity;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import site.gemus.openingstartanimation.OpeningStartAnimation;
-import site.gemus.openingstartanimation.RedYellowBlueDrawStrategy;
 
 /**
  * <pre>

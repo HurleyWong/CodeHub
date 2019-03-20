@@ -1,8 +1,9 @@
-package com.hurley.wanandroid.module.main;
+package com.hurley.wanandroid.module.web;
 
 import com.blankj.utilcode.util.SPUtils;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BasePresenter;
+import com.hurley.wanandroid.module.web.WebContract;
 
 import javax.inject.Inject;
 

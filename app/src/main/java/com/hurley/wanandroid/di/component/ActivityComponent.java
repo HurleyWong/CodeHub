@@ -7,8 +7,8 @@ import android.content.Context;
 import com.hurley.wanandroid.di.module.ActivityModule;
 import com.hurley.wanandroid.di.scope.ActivityScope;
 import com.hurley.wanandroid.di.scope.ContextLifeCycle;
-import com.hurley.wanandroid.module.main.WebActivity;
-import com.hurley.wanandroid.module.system.SystemDetailActivity;
+import com.hurley.wanandroid.module.main.HomeActivity;
+import com.hurley.wanandroid.module.web.WebActivity;
 import com.hurley.wanandroid.module.user.collect.CollectionActivity;
 import com.hurley.wanandroid.module.user.login.LoginActivity;
 import com.hurley.wanandroid.module.user.register.RegisterActivity;
@@ -37,6 +37,8 @@ public interface ActivityComponent {
     Activity getActivity();
 
     //🔥定义inject方法，传入需要注入依赖的目标类
+
+    void inject(HomeActivity activity);
 
     void inject(WebActivity activity);
 

@@ -4,22 +4,19 @@ import android.annotation.SuppressLint;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
 
 import com.blankj.utilcode.util.LogUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.hjq.bar.TitleBar;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.base.BaseFragment;
 import com.hurley.wanandroid.bean.ArticleBean;
 import com.hurley.wanandroid.bean.BannerBean;
-import com.hurley.wanandroid.bean.PageBean;
 import com.hurley.wanandroid.event.LoginEvent;
 import com.hurley.wanandroid.module.adapter.ArticleAdapter;
-import com.hurley.wanandroid.module.main.WebActivity;
+import com.hurley.wanandroid.module.web.WebActivity;
 import com.hurley.wanandroid.net.callback.RxBus;
 import com.hurley.wanandroid.widget.GlideImageLoader;
 import com.youth.banner.Banner;
@@ -31,7 +28,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import io.reactivex.functions.Consumer;
 
 /**
  * <pre>

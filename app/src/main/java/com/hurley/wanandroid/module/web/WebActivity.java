@@ -1,4 +1,4 @@
-package com.hurley.wanandroid.module.main;
+package com.hurley.wanandroid.module.web;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;

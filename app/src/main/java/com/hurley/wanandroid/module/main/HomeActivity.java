@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.blankj.utilcode.util.Utils;
 import com.hurley.wanandroid.R;
@@ -35,7 +36,8 @@ import me.yokeyword.fragmentation.ISupportFragment;
  * </pre>
  */
 @Route(path = PathContainer.HOME)
-public class HomeActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends BaseActivity<HomePresenter>
+        implements HomeContract.View, BottomNavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.bv_home_navigation)
     BottomNavigationView mBottomNavigationView;
@@ -51,7 +53,7 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
 
     @Override
     protected void initInjector() {
-
+        mActivityComponent.inject(this);
     }
 
     @Override
@@ -77,6 +79,7 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
             mFragments[Constants.TYPE_PROJECT] = findFragment(ProjectFragment.class);
             mFragments[Constants.TYPE_USER] = findFragment(UserFragment.class);
         }
+
 
     }
 

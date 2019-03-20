@@ -1,4 +1,4 @@
-package com.hurley.wanandroid.module.main;
+package com.hurley.wanandroid.module.common;
 
 import android.widget.ImageView;
 

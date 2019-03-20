@@ -11,8 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.base.BaseActivity;
-import com.hurley.wanandroid.module.main.WebActivity;
-import com.just.agentweb.AgentWeb;
+import com.hurley.wanandroid.module.web.WebActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;

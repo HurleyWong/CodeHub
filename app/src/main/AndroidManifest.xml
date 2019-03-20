@@ -26,7 +26,7 @@
 
         <!-- 启动界面 -->
         <activity
-            android:name=".module.main.SplashActivity"
+            android:name=".module.common.SplashActivity"
             android:theme="@style/SplashTheme">
 
             <!-- 程序入口 -->
@@ -40,7 +40,7 @@
 
         <!-- 引导页 -->
         <activity
-            android:name=".module.main.GuideActivity"
+            android:name=".module.common.GuideActivity"
             android:theme="@style/GuideTheme"
             android:launchMode="singleTop" />
 
@@ -82,7 +82,7 @@
 
         <!-- 浏览器界面 -->
         <activity
-            android:name=".module.main.WebActivity"
+            android:name=".module.web.WebActivity"
             android:launchMode="singleTop" />
 
         <!-- 开源协议界面 -->

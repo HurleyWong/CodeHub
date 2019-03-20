@@ -11,7 +11,7 @@ import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.bean.OpenSourceBean;
 import com.hurley.wanandroid.module.adapter.OpenSourceAdapter;
-import com.hurley.wanandroid.module.main.WebActivity;
+import com.hurley.wanandroid.module.web.WebActivity;
 import com.hurley.wanandroid.utils.IntentUtil;
 import com.hurley.wanandroid.widget.RecyclerViewDivider;
 
