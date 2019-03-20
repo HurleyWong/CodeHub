@@ -1,5 +1,7 @@
 package com.hurley.wanandroid.module.user.setting;
 
+import android.content.Context;
+
 import com.hurley.wanandroid.base.BaseContract;
 
 /**
@@ -29,6 +31,8 @@ public interface SettingContract {
         void setNightModeState(boolean b);
 
         boolean getNightModeState();
+
+        void feedback(Context context, String title);
 
     }
 }

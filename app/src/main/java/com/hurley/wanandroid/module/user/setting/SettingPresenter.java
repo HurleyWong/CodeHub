@@ -1,9 +1,13 @@
 package com.hurley.wanandroid.module.user.setting;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatDelegate;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
+import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.app.App;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BasePresenter;
@@ -55,5 +59,12 @@ public class SettingPresenter extends BasePresenter<SettingContract.View> implem
     @Override
     public boolean getNightModeState() {
         return SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.NIGHT_MODE);
+    }
+
+    @Override
+    public void feedback(Context context, String title) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(
+                "mailto:" + App.getAppContext().getString(R.string.email_address)));
+        context.startActivity(Intent.createChooser(intent, title));
     }
 }

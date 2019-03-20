@@ -101,7 +101,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
     protected void initView() {
         cacheFile = new File(Constants.PATH_CACHE);
         mTvCacheNum.setText(ACache.getCacheSize(cacheFile));
-        LogUtils.e(cacheFile);
+        LogUtils.e("缓存大小：" + ACache.getCacheSize(cacheFile));
         mCbAutoCache.setChecked(mPresenter.getAutoCacheState());
         mCbNoImage.setChecked(mPresenter.getNoImageState());
         mCbNight.setChecked(mPresenter.getNightModeState());
@@ -141,6 +141,27 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
         }
     }
 
+    @OnClick({R.id.setting_update, R.id.setting_clear_cache, R.id.setting_feedback})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.setting_update:
+                //检查更新
+                break;
+            case R.id.setting_clear_cache:
+                //清除缓存
+                clearCache();
+                mTvCacheNum.setText(ACache.getCacheSize(cacheFile));
+                toast(R.string.setting_clear_cache_success);
+                break;
+            case R.id.setting_feedback:
+                //意见反馈
+                mPresenter.feedback(this, getString(R.string.choose_email));
+                break;
+            default:
+                break;
+        }
+    }
+
     /**
      * 设置CheckBox是否选中
      * @param checkBox
@@ -155,4 +176,10 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
         }
     }
 
+    /**
+     * 清除缓存
+     */
+    private void clearCache() {
+        ACache.deleteDir(cacheFile);
+    }
 }

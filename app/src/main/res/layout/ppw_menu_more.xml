@@ -60,7 +60,7 @@
         android:paddingStart="@dimen/dp8"
         android:drawableStart="@mipmap/ic_clear_cache"
         android:drawablePadding="@dimen/dp8"
-        android:text="@string/more_clear_cache"
+        android:text="@string/setting_clear_cache"
         android:textColor="@color/text"
         android:textSize="@dimen/sp16"/>
 </LinearLayout>

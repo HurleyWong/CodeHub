@@ -20,6 +20,7 @@
     <string name="grant_file_permission">请先授予文件读写权限</string>
     <string name="click_skip">跳过</string>
     <string name="click_enter">进入主界面</string>
+    <string name="choose_email">选择邮件客户端</string>
 
     <!-- 登录 -->
     <string name="login_text">登录</string>
@@ -66,6 +67,7 @@
     <string name="wan_android_address">https://www.wanandroid.com</string>
     <string name="github_address">https://github.com/HurleyJames</string>
     <string name="weibo_address">https://weibo.com/u/5628559861</string>
+    <string name="email_address">1401682479@qq.com</string>
 
     <!-- 更多 -->
     <string name="more_refresh">刷新</string>
@@ -73,8 +75,6 @@
     <string name="more_copy_links">复制链接</string>
     <string name="more_copy_links_success">链接已复制</string>
     <string name="more_open_by_browser">用浏览器打开</string>
-    <string name="more_clear_cache">清理缓存</string>
-    <string name="more_clear_cache_success">清除缓存成功</string>
 
     <!-- 开源协议名称 -->
     <string name="license_ButterKnife">ButterKnife</string>
@@ -129,6 +129,7 @@
     <string name="setting_language">多语言</string>
     <string name="setting_check_update">检查更新</string>
     <string name="setting_clear_cache">清除缓存</string>
+    <string name="setting_clear_cache_success">清除缓存成功</string>
     <string name="setting_cache_num">0KB</string>
     <string name="setting_feedback">意见反馈</string>
     <string name="support_text">支持</string>

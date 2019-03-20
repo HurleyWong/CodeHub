@@ -151,7 +151,7 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
                 //清理缓存
                 AgentWebConfig.clearDiskCache(this);
                 //提示清除缓存成功
-                toast(R.string.more_clear_cache_success);
+                toast(R.string.setting_clear_cache_success);
                 break;
             default:
                 break;
