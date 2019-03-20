@@ -28,5 +28,7 @@ public interface SettingContract {
 
         void setNightModeState(boolean b);
 
+        boolean getNightModeState();
+
     }
 }

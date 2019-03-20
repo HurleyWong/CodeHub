@@ -1,5 +1,7 @@
 package com.hurley.wanandroid.module.main;
 
+import com.blankj.utilcode.util.SPUtils;
+import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BasePresenter;
 
 import javax.inject.Inject;
@@ -25,5 +27,15 @@ public class WebPresenter extends BasePresenter<WebContract.View> implements Web
     @Override
     public void collectOutsideArticle(String title, String author, String link) {
 
+    }
+
+    @Override
+    public boolean getAutoCacheState() {
+        return SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.AUTO_CACHE);
+    }
+
+    @Override
+    public boolean getNoImageState() {
+        return SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.NO_IMAGE);
     }
 }

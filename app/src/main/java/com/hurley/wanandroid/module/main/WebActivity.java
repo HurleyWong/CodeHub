@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.NetworkUtils;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.app.Constants;
@@ -58,6 +59,23 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
     AgentWeb mAgentWeb;
 
     @Override
+    protected void onPause() {
+        mAgentWeb.getWebLifeCycle().onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        mAgentWeb.getWebLifeCycle().onResume();
+        super.onResume();
+    }
+    @Override
+    public void onDestroy() {
+        mAgentWeb.getWebLifeCycle().onDestroy();
+        super.onDestroy();
+    }
+
+    @Override
     protected int getLayoutId() {
         return R.layout.activity_web;
     }
@@ -71,10 +89,11 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
     protected void initView() {
         //传入Activity
         mAgentWeb = AgentWeb.with(this)
-                //传入AgentWeb 的父控件 ，如果父控件为 RelativeLayout ， 那么第二参数需要传入 RelativeLayout.LayoutParams
+                //传入AgentWeb的父控件，如果父控件为RelativeLayout，那么第二参数需要传入RelativeLayout.LayoutParams
                 .setAgentWebParent(mFlWebContent, new LinearLayout.LayoutParams(-1, -1))
                 //使用默认进度条
                 .useDefaultIndicator()
+                .setMainFrameErrorView(R.layout.empty_view, -1)
                 .setWebChromeClient(mWebChromeClient)
                 .setWebViewClient(mWebViewClient)
                 .setMainFrameErrorView(R.layout.agentweb_error_page, -1)
@@ -85,7 +104,7 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
                 .createAgentWeb()
                 .ready()
                 .go(url);
-        setWebDisplay();
+        setWebSetting();
     }
 
     /**
@@ -181,9 +200,9 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
     };
 
     /**
-     * 设置网页显示效果
+     * 设置网页属性
      */
-    private void setWebDisplay() {
+    private void setWebSetting() {
         WebSettings settings = mAgentWeb.getWebCreator().getWebView().getSettings();
 
         //是否支持ViewPoint属性，默认值false
@@ -201,6 +220,32 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
         settings.setBuiltInZoomControls(true);
         //是否显示内置缩放控件
         settings.setDisplayZoomControls(false);
+
+        if (mPresenter.getNoImageState()) {
+            //设置无图模式
+            settings.setBlockNetworkImage(true);
+        } else {
+            //设置正常显示模式
+            settings.setBlockNetworkImage(false);
+        }
+
+        if (mPresenter.getAutoCacheState()) {
+            //自动缓存
+            settings.setAppCacheEnabled(true);
+            settings.setDomStorageEnabled(true);
+            settings.setDatabaseEnabled(true);
+            if (NetworkUtils.isConnected()) {
+                settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+            } else {
+                settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+            }
+        } else {
+            //不自动缓存
+            settings.setAppCacheEnabled(false);
+            settings.setDatabaseEnabled(false);
+            settings.setDatabaseEnabled(false);
+            settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        }
 
         //支持播放gif动画
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

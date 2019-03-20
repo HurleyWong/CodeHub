@@ -21,5 +21,9 @@ public interface WebContract {
         void collectInsideArticle(int id);
 
         void collectOutsideArticle(String title, String author, String link);
+
+        boolean getAutoCacheState();
+
+        boolean getNoImageState();
     }
 }

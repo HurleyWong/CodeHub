@@ -1,5 +1,8 @@
 package com.hurley.wanandroid.module.user.setting;
 
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.SPUtils;
+import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BasePresenter;
 import com.hurley.wanandroid.net.DataManager;
 
@@ -23,26 +26,31 @@ public class SettingPresenter extends BasePresenter<SettingContract.View> implem
 
     @Override
     public boolean getAutoCacheState() {
-        return false;
+        return SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.AUTO_CACHE);
     }
 
     @Override
     public void setAutoCacheState(boolean b) {
-
+        SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.AUTO_CACHE, b);
     }
 
     @Override
     public boolean getNoImageState() {
-        return false;
+        return SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.NO_IMAGE);
     }
 
     @Override
     public void setNoImageState(boolean b) {
-
+        SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.NO_IMAGE, b);
     }
 
     @Override
     public void setNightModeState(boolean b) {
-        mDataManager.setNightMode(b);
+        SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.NIGHT_MODE, b);
+    }
+
+    @Override
+    public boolean getNightModeState() {
+        return SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.NIGHT_MODE);
     }
 }

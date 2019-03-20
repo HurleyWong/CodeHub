@@ -1,8 +1,10 @@
 package com.hurley.wanandroid.module.user.setting;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -11,13 +13,18 @@ import android.widget.TextView;
 
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.SPUtils;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.api.PathContainer;
+import com.hurley.wanandroid.app.ACache;
+import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseActivity;
 import com.hurley.wanandroid.event.NightModeEvent;
 import com.hurley.wanandroid.net.callback.RxBus;
 import com.kongzue.dialog.v2.DialogSettings;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,6 +80,8 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
     @BindView(R.id.setting_feedback)
     LinearLayout mLlFeedback;
 
+    private File cacheFile;
+
     /**
      * 语言种类
      */
@@ -90,6 +99,17 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
 
     @Override
     protected void initView() {
+        cacheFile = new File(Constants.PATH_CACHE);
+        mTvCacheNum.setText(ACache.getCacheSize(cacheFile));
+        LogUtils.e(cacheFile);
+        mCbAutoCache.setChecked(mPresenter.getAutoCacheState());
+        mCbNoImage.setChecked(mPresenter.getNoImageState());
+        mCbNight.setChecked(mPresenter.getNightModeState());
+        //设置监听事件
+        mCbAutoCache.setOnCheckedChangeListener(this);
+        mCbNoImage.setOnCheckedChangeListener(this);
+        mCbNight.setOnCheckedChangeListener(this);
+
         //Dialog风格为Kongzue风格
         DialogSettings.style = STYLE_KONGZUE;
     }
@@ -107,8 +127,10 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         switch (buttonView.getId()) {
             case R.id.cb_setting_auto_cache:
+                mPresenter.setAutoCacheState(isChecked);
                 break;
             case R.id.cb_setting_no_image:
+                mPresenter.setNoImageState(isChecked);
                 break;
             case R.id.cb_setting_night:
                 mPresenter.setNightModeState(isChecked);
@@ -125,8 +147,10 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
      */
     private void setChecked(CheckBox checkBox) {
         if (checkBox.isChecked()) {
+            //如果已被选中，则设置成未选中
             checkBox.setChecked(false);
         } else {
+            //如果未被选中，则设置成已选中
             checkBox.setChecked(true);
         }
     }
