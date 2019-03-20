@@ -1,17 +1,21 @@
 package com.hurley.wanandroid.base;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.NetworkUtils;
+import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
@@ -23,6 +27,8 @@ import com.hurley.wanandroid.app.LoadType;
 import com.hurley.wanandroid.di.component.ActivityComponent;
 import com.hurley.wanandroid.di.component.DaggerActivityComponent;
 import com.hurley.wanandroid.di.module.ActivityModule;
+import com.hurley.wanandroid.event.NightModeEvent;
+import com.hurley.wanandroid.net.callback.RxBus;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
@@ -71,6 +77,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
         return false;
     }
 
+    @SuppressLint("CheckResult")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +101,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
                 .fitsSystemWindows(true)
                 //初始化
                 .init();
+
     }
 
     @Override
@@ -134,6 +142,19 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
     @Override
     public void onRetry() {
 
+    }
+
+    @Override
+    public void useNightMode(boolean isNight) {
+        LogUtils.e("切换");
+        if (isNight) {
+            AppCompatDelegate.setDefaultNightMode(
+                    AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(
+                    AppCompatDelegate.MODE_NIGHT_NO);
+        }
+        recreate();
     }
 
     @Override

@@ -140,6 +140,11 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
     }
 
     @Override
+    public void useNightMode(boolean isNight) {
+
+    }
+
+    @Override
     public <T> LifecycleTransformer<T> bindToLife() {
         return this.bindToLifecycle();
     }

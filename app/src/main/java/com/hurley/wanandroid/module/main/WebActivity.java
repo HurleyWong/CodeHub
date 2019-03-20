@@ -328,5 +328,4 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
-
 }

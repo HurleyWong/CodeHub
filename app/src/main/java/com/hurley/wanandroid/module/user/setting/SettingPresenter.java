@@ -1,7 +1,10 @@
 package com.hurley.wanandroid.module.user.setting;
 
+import android.support.v7.app.AppCompatDelegate;
+
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
+import com.hurley.wanandroid.app.App;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BasePresenter;
 import com.hurley.wanandroid.net.DataManager;

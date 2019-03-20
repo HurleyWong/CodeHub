@@ -58,6 +58,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
         mEditTextInputHelper.addViews(mEtUserName, mEtPassword, mEtConfirmPassword);
     }
 
+
     @Override
     public void registerSuccess(UserBean userBean) {
         toast(R.string.register_success);
@@ -91,4 +92,5 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
         }
         mPresenter.register(username, password, repassword);
     }
+
 }

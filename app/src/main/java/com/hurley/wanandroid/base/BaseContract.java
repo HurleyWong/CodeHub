@@ -55,6 +55,12 @@ public interface BaseContract {
         void onRetry();
 
         /**
+         * 设置夜间模式
+         * @param isNight
+         */
+        void useNightMode(boolean isNight);
+
+        /**
          * 绑定生命周期
          * @param <T>
          * @return

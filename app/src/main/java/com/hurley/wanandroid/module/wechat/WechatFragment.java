@@ -35,5 +35,4 @@ public class WechatFragment extends BaseFragment<WechatPresenter> implements Wec
 
     }
 
-
 }
