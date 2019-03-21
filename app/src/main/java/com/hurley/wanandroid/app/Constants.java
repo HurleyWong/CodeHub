@@ -61,6 +61,8 @@ public class Constants {
 
     public static final String CONTENT_CHILDREN_KEY = "children";
 
+    public static final String CONTENT_TYPE_KEY = "type";
+
     public static final String USER_KEY = "user";
 
     public static final String BANNER_KEY = "banner";
@@ -75,6 +77,13 @@ public class Constants {
 
     public static final String PROJECT_CURRENT_PAGE = "project_current_page";
 
+
+    /**
+     * Intent params
+     */
+    public static final String ARG_PARAM1 = "param1";
+
+    public static final String ARG_PARAM2 = "param2";
 
     /**
      * 首选项存储相关常量

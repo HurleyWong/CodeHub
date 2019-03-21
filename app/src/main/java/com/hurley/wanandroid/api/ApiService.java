@@ -150,8 +150,8 @@ public interface ApiService {
      * @return
      */
     @GET(UrlContainer.PROJECT_LIST)
-    Observable<BaseBean<PageBean<ArticleBean>>> getProjectArticles(@Path("page") int page,
-                                                                   @Query("cid") int cid);
+    Observable<BaseBean<ArticleBean>> getProjectArticles(@Path("page") int page,
+                                                         @Query("cid") int cid);
 
     /**
      * 最新项目tab
@@ -298,8 +298,8 @@ public interface ApiService {
      * @return
      */
     @GET(UrlContainer.WXARTICLE_HISTORY)
-    Observable<BaseBean<PageBean<ArticleBean>>> getWxAccountsHistory(@Path("id") int id,
-                                                                     @Path("page") int page);
+    Observable<BaseBean<ArticleBean>> getWxAccountsHistory(@Path("id") int id,
+                                                           @Path("page") int page);
 
     /**
      * 在某个公众号中搜索历史文章

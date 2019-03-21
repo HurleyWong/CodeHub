@@ -2,6 +2,9 @@ package com.hurley.wanandroid.module.project;
 
 
 import com.hurley.wanandroid.base.BaseContract;
+import com.hurley.wanandroid.bean.ProjectBean;
+
+import java.util.List;
 
 /**
  * <pre>
@@ -14,8 +17,13 @@ import com.hurley.wanandroid.base.BaseContract;
 public interface ProjectContract {
 
     interface View extends BaseContract.BaseView {
+        void setProjects(List<ProjectBean> projects);
     }
 
     interface Presenter extends BaseContract.BasePresenter<ProjectContract.View> {
+
+        void loadProjects();
+
+        void refresh();
     }
 }

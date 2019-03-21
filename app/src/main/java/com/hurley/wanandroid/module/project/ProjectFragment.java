@@ -1,11 +1,17 @@
 package com.hurley.wanandroid.module.project;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.base.BaseFragment;
+import com.hurley.wanandroid.bean.ProjectBean;
+import com.hurley.wanandroid.module.adapter.ProjectAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -27,8 +33,13 @@ public class ProjectFragment extends BaseFragment<ProjectPresent> implements Pro
     @BindView(R.id.vp_project)
     ViewPager mVpProject;
 
+    private ProjectAdapter mProjectAdapter;
+
     public static ProjectFragment newInstance() {
-        return new ProjectFragment();
+        Bundle args = new Bundle();
+        ProjectFragment fragment = new ProjectFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
@@ -43,10 +54,26 @@ public class ProjectFragment extends BaseFragment<ProjectPresent> implements Pro
 
     @Override
     protected void initView(View view) {
-
-        //将TabLayout与ViewPager绑定
-        mTlProject.setupWithViewPager(mVpProject);
+        mPresenter.loadProjects();
     }
 
 
+    @Override
+    public void setProjects(List<ProjectBean> projects) {
+        List<Integer> ids = new ArrayList<>();
+        List<String> names= new ArrayList<>();
+        if (projects.size() > 0) {
+            for (ProjectBean projectBean : projects) {
+                ids.add(projectBean.getId());
+                names.add(projectBean.getName());
+            }
+        }
+
+        mProjectAdapter = new ProjectAdapter(getChildFragmentManager(), names, ids);
+        mVpProject.setAdapter(mProjectAdapter);
+        mVpProject.setOffscreenPageLimit(1);
+        mVpProject.setCurrentItem(0, false);
+        //将TabLayout与ViewPager绑定
+        mTlProject.setupWithViewPager(mVpProject, true);
+    }
 }

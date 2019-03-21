@@ -146,7 +146,6 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
 
     @Override
     public void useNightMode(boolean isNight) {
-        LogUtils.e("切换");
         if (isNight) {
             AppCompatDelegate.setDefaultNightMode(
                     AppCompatDelegate.MODE_NIGHT_YES);

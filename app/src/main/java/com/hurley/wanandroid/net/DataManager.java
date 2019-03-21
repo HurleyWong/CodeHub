@@ -113,7 +113,7 @@ public class DataManager implements HttpHelper, DbHelper, PreferenceHelper {
     }
 
     @Override
-    public Observable<BaseBean<PageBean<ArticleBean>>> getProjectArticles(int page, int cid) {
+    public Observable<BaseBean<ArticleBean>> getProjectArticles(int page, int cid) {
         return mHttpHelper.getProjectArticles(page, cid);
     }
 
@@ -158,7 +158,7 @@ public class DataManager implements HttpHelper, DbHelper, PreferenceHelper {
     }
 
     @Override
-    public Observable<BaseBean<PageBean<ArticleBean>>> getWxAccountsHistory(int id, int page) {
+    public Observable<BaseBean<ArticleBean>> getWxAccountsHistory(int id, int page) {
         return mHttpHelper.getWxAccountsHistory(id, page);
     }
 

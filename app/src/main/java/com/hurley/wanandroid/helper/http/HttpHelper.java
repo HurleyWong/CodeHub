@@ -120,7 +120,7 @@ public interface HttpHelper {
      * @param cid           分类的id
      * @return
      */
-    Observable<BaseBean<PageBean<ArticleBean>>> getProjectArticles(int page, int cid);
+    Observable<BaseBean<ArticleBean>> getProjectArticles(int page, int cid);
 
     /**
      * 最新项目tab
@@ -197,7 +197,7 @@ public interface HttpHelper {
      * @param page          页码
      * @return              公众号当前页的历史数据
      */
-    Observable<BaseBean<PageBean<ArticleBean>>> getWxAccountsHistory(int id, int page);
+    Observable<BaseBean<ArticleBean>> getWxAccountsHistory(int id, int page);
 
     /**
      * 在某个公众号中搜索历史文章

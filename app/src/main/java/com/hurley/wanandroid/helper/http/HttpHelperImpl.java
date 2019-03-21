@@ -153,7 +153,7 @@ public class HttpHelperImpl implements HttpHelper{
      * @return
      */
     @Override
-    public Observable<BaseBean<PageBean<ArticleBean>>> getProjectArticles(int page, int cid) {
+    public Observable<BaseBean<ArticleBean>> getProjectArticles(int page, int cid) {
         return mApiService.getProjectArticles(page, cid);
     }
 
@@ -248,7 +248,7 @@ public class HttpHelperImpl implements HttpHelper{
      * @return
      */
     @Override
-    public Observable<BaseBean<PageBean<ArticleBean>>> getWxAccountsHistory(int id, int page) {
+    public Observable<BaseBean<ArticleBean>> getWxAccountsHistory(int id, int page) {
         return mApiService.getWxAccountsHistory(id, page);
     }
 

@@ -1,5 +1,6 @@
 package com.hurley.wanandroid.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -85,7 +86,7 @@ public class ArticleBean {
         this.datas = datas;
     }
 
-    public static class DatasBean {
+    public static class DatasBean implements Serializable {
 
         /**
          * author : xxq2dream
