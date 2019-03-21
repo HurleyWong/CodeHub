@@ -39,6 +39,6 @@ public class PathContainer {
 
     //Fragment
 
-    public static final String ARTICLE_LIST = "/article/ArticleListFragment";
+    public static final String ARTICLE_LIST = "/article/SystemArticleListFragment";
 
 }

@@ -5,11 +5,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.blankj.utilcode.util.LogUtils;
 import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.bean.SystemBean;
-import com.hurley.wanandroid.module.article.ArticleListFragment;
+import com.hurley.wanandroid.module.article.SystemArticleListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,33 +29,33 @@ public class SystemDetailAdapter extends FragmentPagerAdapter {
 
     @Nullable
     private List<SystemBean.Children> mChildrenList;
-    private List<ArticleListFragment> mArticleListFragments;
+    private List<SystemArticleListFragment> mSystemArticleListFragments;
 
     @Inject
     public SystemDetailAdapter(FragmentManager fm, List<SystemBean.Children> children) {
         super(fm);
         this.mChildrenList = children;
-        mArticleListFragments = new ArrayList<>();
+        mSystemArticleListFragments = new ArrayList<>();
         if (mChildrenList == null) {
             return;
         }
         for (SystemBean.Children childrenBean : mChildrenList) {
-            ArticleListFragment articleListFragment = (ArticleListFragment) ARouter.getInstance()
+            SystemArticleListFragment systemArticleListFragment = (SystemArticleListFragment) ARouter.getInstance()
                     .build(PathContainer.ARTICLE_LIST)
                     .withInt(Constants.CONTENT_CID_KEY, childrenBean.getId())
                     .navigation();
-            mArticleListFragments.add(articleListFragment);
+            mSystemArticleListFragments.add(systemArticleListFragment);
         }
     }
 
     @Override
     public Fragment getItem(int i) {
-        return mArticleListFragments.get(i);
+        return mSystemArticleListFragments.get(i);
     }
 
     @Override
     public int getCount() {
-        return mArticleListFragments.size();
+        return mSystemArticleListFragments.size();
     }
 
     @Override
