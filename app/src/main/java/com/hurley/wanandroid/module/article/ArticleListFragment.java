@@ -17,6 +17,7 @@ import com.hurley.wanandroid.base.BaseFragment;
 import com.hurley.wanandroid.bean.ArticleBean;
 import com.hurley.wanandroid.event.LoginEvent;
 import com.hurley.wanandroid.module.adapter.ArticleAdapter;
+import com.hurley.wanandroid.module.web.WebActivity;
 import com.hurley.wanandroid.net.callback.RxBus;
 
 import javax.inject.Inject;
@@ -110,7 +111,10 @@ public class ArticleListFragment extends BaseFragment<ArticleListPresenter>
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+        WebActivity.startWeb(mArticleAdapter.getItem(position).getId(),
+                mArticleAdapter.getItem(position).getLink(),
+                mArticleAdapter.getItem(position).getTitle(),
+                mArticleAdapter.getItem(position).getAuthor());
     }
 
     @Override

@@ -13,6 +13,7 @@ import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseFragment;
 import com.hurley.wanandroid.bean.ArticleBean;
 import com.hurley.wanandroid.module.adapter.ArticleAdapter;
+import com.hurley.wanandroid.module.web.WebActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,7 +118,10 @@ public class ProjectArticleListFragment extends BaseFragment<ProjectArticleListP
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+        WebActivity.startWeb(mArticleAdapter.getItem(position).getId(),
+                mArticleAdapter.getItem(position).getLink(),
+                mArticleAdapter.getItem(position).getTitle(),
+                mArticleAdapter.getItem(position).getAuthor());
     }
 
     @Override
