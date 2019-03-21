@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.blankj.utilcode.util.LogUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.app.Constants;
@@ -18,9 +20,6 @@ import com.hurley.wanandroid.module.adapter.ArticleAdapter;
 import com.hurley.wanandroid.module.web.WebActivity;
 import com.hurley.wanandroid.net.callback.RxBus;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -28,33 +27,31 @@ import butterknife.BindView;
 /**
  * <pre>
  *      @author hurley
- *      date    : 2019/3/21 11:08 AM
+ *      date    : 2019/3/20 7:24 PM
  *      github  : https://github.com/HurleyJames
- *      desc    : 项目文章列表页面
+ *      desc    : 微信公众号文章列表页面
  * </pre>
  */
-public class ProjectArticleListFragment extends BaseFragment<ProjectArticleListPresenter>
-        implements ProjectArticleListContract.View,
+public class WxArticleListFragment extends BaseFragment<WxArticleListPresenter>
+        implements WxArticleListContract.View,
                 ArticleAdapter.OnItemClickListener,
                 ArticleAdapter.OnItemChildClickListener,
                 ArticleAdapter.RequestLoadMoreListener,
-                SwipeRefreshLayout.OnRefreshListener {
+                SwipeRefreshLayout.OnRefreshListener{
 
     @BindView(R.id.srl_article_list)
-    SwipeRefreshLayout mSrlProjectArticle;
+    SwipeRefreshLayout mSrlWxArticleList;
     @BindView(R.id.rv_article_list)
-    RecyclerView mRvProjectArticle;
+    RecyclerView mRvWxArticleList;
 
     private int article;
 
     @Inject
     ArticleAdapter mArticleAdapter;
 
-    private List<ArticleBean.DatasBean> mArticleBeans = new ArrayList<>();
-
-    public static ProjectArticleListFragment newInstance(int id) {
+    public static WxArticleListFragment newInstance(int id) {
         Bundle args = new Bundle();
-        ProjectArticleListFragment fragment = new ProjectArticleListFragment();
+        WxArticleListFragment fragment = new WxArticleListFragment();
         fragment.setArguments(args);
         args.putInt(Constants.ARTICLE_KEY, id);
         return fragment;
@@ -79,18 +76,18 @@ public class ProjectArticleListFragment extends BaseFragment<ProjectArticleListP
     @SuppressLint("CheckResult")
     @Override
     protected void initView(View view) {
-        //隐藏文章所属体系，因为已经是在所属文章体系中显示文章列表
+        //隐藏文章所属体系，因为已经确定是在公众号中显示文章列表
         mArticleAdapter.setChapterNameVisible(false);
 
-        mRvProjectArticle.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRvProjectArticle.setAdapter(mArticleAdapter);
+        mRvWxArticleList.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRvWxArticleList.setAdapter(mArticleAdapter);
 
         mArticleAdapter.setOnItemClickListener(this);
         mArticleAdapter.setOnItemChildClickListener(this);
         mArticleAdapter.setOnLoadMoreListener(this);
-        mSrlProjectArticle.setOnRefreshListener(this);
+        mSrlWxArticleList.setOnRefreshListener(this);
 
-        mPresenter.loadProjectArticles(article);
+        mPresenter.loadWxArticles(article);
 
         //登录成功后刷新
         RxBus.getInstance().toFlowable(LoginEvent.class)
@@ -98,10 +95,10 @@ public class ProjectArticleListFragment extends BaseFragment<ProjectArticleListP
     }
 
     @Override
-    public void setProjectArticles(ArticleBean articleBean, int type) {
+    public void setWxArticles(ArticleBean articleBean, int type) {
         if (type == 0) {
             mArticleAdapter.setNewData(articleBean.getDatas());
-            mSrlProjectArticle.setRefreshing(false);
+            mSrlWxArticleList.setRefreshing(false);
             mArticleAdapter.loadMoreComplete();
         } else if (type == 1) {
             mArticleAdapter.addData(articleBean.getDatas());
@@ -110,13 +107,18 @@ public class ProjectArticleListFragment extends BaseFragment<ProjectArticleListP
     }
 
     @Override
-    public void collectArticleSuccess(int position, ArticleBean.DatasBean articleBean) {
+    public void collectWxArticleSuccess(int position, ArticleBean.DatasBean articleBean) {
 
     }
 
     @Override
     public void onRefresh() {
         mPresenter.refresh();
+    }
+
+    @Override
+    public void showLoading() {
+        mSrlWxArticleList.setRefreshing(true);
     }
 
     @Override

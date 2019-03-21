@@ -33,6 +33,7 @@ public class ProjectArticleListPresenter extends BasePresenter<ProjectArticleLis
     @SuppressLint("CheckResult")
     @Override
     public void loadProjectArticles(int id) {
+        this.mId = id;
         RetrofitManager.create(ApiService.class)
                 .getProjectArticles(mPage, id)
                 .compose(RxSchedulers.applySchedulers())
@@ -59,8 +60,8 @@ public class ProjectArticleListPresenter extends BasePresenter<ProjectArticleLis
     @Override
     public void loadMore() {
         mPage ++;
-        isRefresh = true;
-
+        isRefresh = false;
+        loadProjectArticles(mId);
     }
 
     @Override

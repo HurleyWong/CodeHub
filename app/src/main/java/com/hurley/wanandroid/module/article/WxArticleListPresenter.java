@@ -2,11 +2,13 @@ package com.hurley.wanandroid.module.article;
 
 import android.annotation.SuppressLint;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.hurley.wanandroid.api.ApiService;
 import com.hurley.wanandroid.app.LoadType;
 import com.hurley.wanandroid.base.BaseBean;
 import com.hurley.wanandroid.base.BasePresenter;
 import com.hurley.wanandroid.bean.ArticleBean;
+import com.hurley.wanandroid.bean.PageBean;
 import com.hurley.wanandroid.net.RetrofitManager;
 import com.hurley.wanandroid.net.callback.RxSchedulers;
 
@@ -17,50 +19,46 @@ import io.reactivex.functions.Consumer;
 /**
  * <pre>
  *      @author hurley
- *      date    : 2019/3/18 2:50 PM
+ *      date    : 2019/3/20 7:22 PM
  *      github  : https://github.com/HurleyJames
- *      desc    : 文章列表 Presenter类
+ *      desc    : 微信公众号文章列表 Presenter类
  * </pre>
  */
-public class SystemArticleListPresenter extends BasePresenter<SystemArticleListContract.View> implements SystemArticleListContract.Presenter {
+public class WxArticleListPresenter extends BasePresenter<WxArticleListContract.View> implements WxArticleListContract.Presenter {
 
     /**
      * 是否刷新
      */
-    private boolean isRefresh;
+    private boolean isRefresh = true;
     /**
      * 页数
      */
-    private int mPage;
+    private int mPage = 0;
     /**
-     * 文章id
+     * 公众号文章id
      */
-    private int mCid;
+    private int mId;
 
     @Inject
-    public SystemArticleListPresenter() {
-        this.isRefresh = true;
+    public WxArticleListPresenter() {
     }
 
     @SuppressLint("CheckResult")
     @Override
-    public void loadSystemArticles(int cid) {
-        this.mCid = cid;
+    public void loadWxArticles(int id) {
+        this.mId = id;
         RetrofitManager.create(ApiService.class)
-                .getSystemArticles(mPage, mCid)
+                .getWxAccountsHistory(mId, mPage)
                 .compose(RxSchedulers.applySchedulers())
                 .compose(mView.bindToLife())
                 .subscribe(new Consumer<BaseBean<ArticleBean>>() {
                     @Override
                     public void accept(BaseBean<ArticleBean> response) throws Exception {
-                        int loadType = isRefresh ? LoadType.TYPE_REFRESH_SUCCESS : LoadType.TYPE_LOAD_MORE_SUCCESS;
-                        mView.setSystemArticles(response.getData(), loadType);
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        int loadType = isRefresh ? LoadType.TYPE_REFRESH_ERROR : LoadType.TYPE_LOAD_MORE_ERROR;
-                        mView.setSystemArticles(new ArticleBean(), loadType);
+                        if (isRefresh) {
+                            mView.setWxArticles(response.getData(), 0);
+                        } else {
+                            mView.setWxArticles(response.getData(), 1);
+                        }
                     }
                 });
     }
@@ -69,18 +67,18 @@ public class SystemArticleListPresenter extends BasePresenter<SystemArticleListC
     public void refresh() {
         mPage = 0;
         isRefresh = true;
-        loadSystemArticles(mCid);
+        loadWxArticles(mId);
     }
 
     @Override
     public void loadMore() {
         mPage ++;
         isRefresh = false;
-        loadSystemArticles(mCid);
+        loadWxArticles(mId);
     }
 
     @Override
-    public void collectArticle(int position, ArticleBean.DatasBean articleBean) {
+    public void collectWxArticle(int position, ArticleBean.DatasBean articleBean) {
 
     }
 }
