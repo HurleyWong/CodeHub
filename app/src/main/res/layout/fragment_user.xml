@@ -17,9 +17,9 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_marginTop="12.5dp"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_marginTop="@dimen/dp12"
+            android:layout_width="@dimen/dp80"
+            android:layout_height="@dimen/dp80"
             android:layout_gravity="center_horizontal"
             android:background="@mipmap/ic_user_img"/>
 
@@ -27,7 +27,7 @@
             android:id="@+id/tv_login_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dp_10"
+            android:padding="@dimen/dp10"
             android:text="@string/click_login"
             android:textColor="@color/white"
             android:textSize="@dimen/sp20"/>

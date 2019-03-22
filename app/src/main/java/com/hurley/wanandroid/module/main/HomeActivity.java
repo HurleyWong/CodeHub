@@ -1,27 +1,32 @@
 package com.hurley.wanandroid.module.main;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.content.ContextCompat;
-import android.view.Gravity;
+import android.support.design.widget.NavigationView;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
-import com.blankj.utilcode.util.ToastUtils;
-import com.blankj.utilcode.util.Utils;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseActivity;
+import com.hurley.wanandroid.event.LoginEvent;
+import com.hurley.wanandroid.event.LogoutEvent;
 import com.hurley.wanandroid.module.index.IndexFragment;
 import com.hurley.wanandroid.module.project.ProjectFragment;
 import com.hurley.wanandroid.module.system.SystemFragment;
 import com.hurley.wanandroid.module.user.UserFragment;
 import com.hurley.wanandroid.module.wechat.WechatFragment;
+import com.hurley.wanandroid.net.callback.RxBus;
 
 
 import butterknife.BindView;
@@ -37,14 +42,24 @@ import me.yokeyword.fragmentation.ISupportFragment;
  */
 @Route(path = PathContainer.HOME)
 public class HomeActivity extends BaseActivity<HomePresenter>
-        implements HomeContract.View, BottomNavigationView.OnNavigationItemSelectedListener {
+        implements HomeContract.View, BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
-    @BindView(R.id.bv_home_navigation)
+    @BindView(R.id.nv_home)
+    NavigationView mNavigationView;
+    @BindView(R.id.bnv_home)
     BottomNavigationView mBottomNavigationView;
+
+    private LinearLayout mLlLogin;
+    private TextView mTvLoginStatus;
 
     private ISupportFragment[] mFragments = new ISupportFragment[5];
     private long mExitTime;
     private int preIndex;
+
+    /**
+     * 是否登录
+     */
+    private boolean isLogin;
 
     @Override
     protected int getLayoutId() {
@@ -56,6 +71,7 @@ public class HomeActivity extends BaseActivity<HomePresenter>
         mActivityComponent.inject(this);
     }
 
+    @SuppressLint("CheckResult")
     @Override
     protected void initView() {
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -80,7 +96,38 @@ public class HomeActivity extends BaseActivity<HomePresenter>
             mFragments[Constants.TYPE_USER] = findFragment(UserFragment.class);
         }
 
+        initNavigationHeaderView();
 
+
+        setUserStatus();
+        //登录成功后需重新设置用户状态
+        RxBus.getInstance().toFlowable(LoginEvent.class).subscribe(loginEvent -> setUserStatus());
+        //退出登录后需更新设置用户状态
+        RxBus.getInstance().toFlowable(LogoutEvent.class).subscribe(logoutEvent -> setUserStatus());
+
+    }
+
+    /**
+     * 初始化左侧导航栏
+     */
+    private void initNavigationHeaderView() {
+        View headerView = mNavigationView.getHeaderView(0);
+        mLlLogin =  headerView.findViewById(R.id.ll_login);
+        mTvLoginStatus =  headerView.findViewById(R.id.tv_login_status);
+        mLlLogin.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.ll_login:
+                if (!isLogin) {
+                    //未登录
+                    ARouter.getInstance().build(PathContainer.LOGIN).navigation();
+                }
+            default:
+                break;
+        }
     }
 
     /**
@@ -128,7 +175,7 @@ public class HomeActivity extends BaseActivity<HomePresenter>
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_home_nav, menu);
+        getMenuInflater().inflate(R.menu.menu_home_options_nav, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -169,5 +216,17 @@ public class HomeActivity extends BaseActivity<HomePresenter>
         return super.onKeyDown(keyCode, event);
     }
 
-
+    /**
+     * 设置用户状态
+     */
+    public void setUserStatus() {
+        isLogin = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS);
+        if (isLogin) {
+            //已登录
+            mTvLoginStatus.setText(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getString(Constants.USERNAME));
+        } else {
+            //未登录
+            mTvLoginStatus.setText(R.string.click_login);
+        }
+    }
 }

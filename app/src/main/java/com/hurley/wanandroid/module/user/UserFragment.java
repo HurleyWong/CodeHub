@@ -17,6 +17,7 @@ import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseFragment;
 import com.hurley.wanandroid.event.LoginEvent;
 import com.hurley.wanandroid.event.LogoutEvent;
+import com.hurley.wanandroid.module.main.HomeActivity;
 import com.hurley.wanandroid.module.user.login.LoginActivity;
 import com.hurley.wanandroid.net.CookiesManager;
 import com.hurley.wanandroid.net.callback.RxBus;
@@ -120,7 +121,7 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
     /**
      * 设置用户状态
      */
-    private void setUserStatus() {
+    public void setUserStatus() {
         isLogin = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS);
         if (isLogin) {
             //已登录
