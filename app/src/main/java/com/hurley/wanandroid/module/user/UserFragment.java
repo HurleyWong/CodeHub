@@ -91,7 +91,11 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
                 //收藏界面
                 if (isLogin) {
                     //已登录
-                    ARouter.getInstance().build(PathContainer.COLLECTION).navigation();
+                    ARouter.getInstance().build(PathContainer.COLLECTION)
+                            .withString(Constants.USERNAME, SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getString(Constants.USERNAME))
+                            .withString(Constants.PASSWORD, SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getString(Constants.PASSWORD))
+                            .withBoolean(Constants.LOGIN_STATUS, SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS))
+                            .navigation();
                 } else {
                     //未登录
                     toast(R.string.login_please);
