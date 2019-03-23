@@ -8,6 +8,7 @@ import com.hurley.wanandroid.di.module.ActivityModule;
 import com.hurley.wanandroid.di.scope.ActivityScope;
 import com.hurley.wanandroid.di.scope.ContextLifeCycle;
 import com.hurley.wanandroid.module.main.HomeActivity;
+import com.hurley.wanandroid.module.user.analysis.AnalysisActivity;
 import com.hurley.wanandroid.module.web.WebActivity;
 import com.hurley.wanandroid.module.user.collect.CollectionActivity;
 import com.hurley.wanandroid.module.user.login.LoginActivity;
@@ -47,6 +48,8 @@ public interface ActivityComponent {
     void inject(RegisterActivity activity);
 
     void inject(CollectionActivity activity);
+
+    void inject(AnalysisActivity activity);
 
     void inject(SettingActivity activity);
 }

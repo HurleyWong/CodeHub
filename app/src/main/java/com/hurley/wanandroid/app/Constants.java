@@ -101,6 +101,11 @@ public class Constants {
     public static final String NIGHT_MODE = "night_mode";
 
     /**
+     * 文章总数量
+     */
+    public static final String TOTAL_PAGE = "total_page";
+
+    /**
      * 每页显示文章数量
      */
     public static final int PAGE_SIZE = 20;
