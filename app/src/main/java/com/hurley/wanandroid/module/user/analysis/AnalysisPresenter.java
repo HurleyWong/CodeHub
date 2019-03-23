@@ -2,6 +2,8 @@ package com.hurley.wanandroid.module.user.analysis;
 
 import com.hurley.wanandroid.base.BasePresenter;
 
+import javax.inject.Inject;
+
 /**
  * <pre>
  *      @author hurley
@@ -11,6 +13,9 @@ import com.hurley.wanandroid.base.BasePresenter;
  * </pre>
  */
 public class AnalysisPresenter extends BasePresenter<AnalysisContract.View> implements AnalysisContract.Presenter{
+
+    @Inject
+    public AnalysisPresenter() {}
 
     @Override
     public void getNearbyArticles() {

@@ -26,9 +26,11 @@ public class PathContainer {
 
     public static final String REGISTER = "/register/RegisterActivity";
 
+    public static final String SYSTEM_DETAIL = "/system/SystemDetailActivity";
+
     public static final String COLLECTION = "/collect/CollectionActivity";
 
-    public static final String SYSTEM_DETAIL = "/system/SystemDetailActivity";
+    public static final String ANALYSIS = "/analysis/AnalysisActivity";
 
     public static final String SETTING = "/setting/SettingActivity";
 

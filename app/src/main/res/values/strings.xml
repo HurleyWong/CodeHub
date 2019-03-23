@@ -134,6 +134,9 @@
     <string name="setting_feedback">意见反馈</string>
     <string name="support_text">支持</string>
 
+    <!-- 分析 -->
+    <string name="analysis_text">分析</string>
+
     <!-- 语言 -->
     <string name="language_auto">跟随系统</string>
     <string name="language_simplified">简体中文</string>

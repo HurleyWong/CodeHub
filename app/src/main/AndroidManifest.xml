@@ -70,6 +70,10 @@
             android:name=".module.user.collect.CollectionActivity"
             android:launchMode="singleTop" />
 
+        <activity
+            android:name=".module.user.analysis.AnalysisActivity"
+            android:launchMode="singleTop" />
+
         <!-- 设置界面 -->
         <activity
             android:name=".module.user.setting.SettingActivity"

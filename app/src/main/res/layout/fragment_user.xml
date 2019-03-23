@@ -41,8 +41,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="@dimen/dp30"
+            android:layout_marginRight="@dimen/dp30"
             android:orientation="vertical">
 
             <Button
@@ -50,15 +50,23 @@
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="@dimen/dp30"
                 android:text="@string/collect_text" />
+
+            <Button
+                android:id="@+id/btn_user_analysis"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp30"
+                android:text="@string/analysis_text"/>
 
             <Button
                 android:id="@+id/btn_user_setting"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="@dimen/dp30"
                 android:text="@string/setting_text" />
 
             <Button
@@ -66,7 +74,7 @@
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="@dimen/dp30"
                 android:text="@string/about_text" />
 
             <Button
@@ -74,7 +82,7 @@
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="@dimen/dp30"
                 android:text="@string/logout_text"
                 android:visibility="gone"/>
         </LinearLayout>
