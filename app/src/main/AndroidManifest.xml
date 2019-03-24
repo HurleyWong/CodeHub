@@ -84,6 +84,11 @@
             android:name=".module.user.about.AboutActivity"
             android:launchMode="singleTop" />
 
+        <!-- 开发者界面 -->
+        <activity
+            android:name=".module.user.about.AuthorActivity"
+            android:launchMode="singleTop" />
+
         <!-- 浏览器界面 -->
         <activity
             android:name=".module.web.WebActivity"

@@ -133,6 +133,8 @@ dependencies {
     implementation 'cn.bingoogolapple:bga-banner:2.2.5@aar'
     //OXChart包：https://github.com/openXu/OXChart
     implementation 'com.openxu.viewlib:OXViewLib:1.0.2'
+    //MaterialAbout包：https://github.com/jrvansuita/MaterialAbout
+    implementation 'com.github.jrvansuita:MaterialAbout:0.2.3'
 
     //启动动画：https://github.com/wongzy/FancyView
     implementation 'site.gemus:openingstartanimation:1.0.0'

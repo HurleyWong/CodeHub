@@ -31,6 +31,8 @@ public class AboutActivity extends BaseActivity {
 
     @BindView(R.id.about_version_text)
     TextView mTvAboutVersion;
+    @BindView(R.id.about_content)
+    LinearLayout mLlAboutContent;
     @BindView(R.id.about_wan_android)
     LinearLayout mLlAboutWanAndroid;
     @BindView(R.id.about_open_source)
@@ -62,9 +64,12 @@ public class AboutActivity extends BaseActivity {
         return true;
     }
 
-    @OnClick({R.id.about_wan_android, R.id.about_open_source, R.id.about_github})
+    @OnClick({R.id.about_content, R.id.about_wan_android, R.id.about_open_source, R.id.about_github})
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.about_content:
+                ARouter.getInstance().build(PathContainer.AUTHOR).navigation();
+                break;
             case R.id.about_wan_android:
                 //打开玩Android网页
                 WebActivity.startWeb(getString(R.string.wan_android_address));

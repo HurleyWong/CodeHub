@@ -36,6 +36,8 @@ public class PathContainer {
 
     public static final String ABOUT = "/about/AboutActivity";
 
+    public static final String AUTHOR = "/about/AuthorActivity";
+
     public static final String OPEN_SOURCE = "/about/OpenSourceActivity";
 
 

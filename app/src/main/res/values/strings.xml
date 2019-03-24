@@ -54,6 +54,7 @@
 
     <!-- 关于 -->
     <string name="about_text">关于</string>
+    <string name="about_author">开发者</string>
     <string name="about_content">简介</string>
     <string name="about_wan_android">玩Android网站</string>
     <string name="about_open_source">开源框架</string>
