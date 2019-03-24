@@ -33,6 +33,8 @@ public interface IndexContract {
 
         void loadArticles();
 
+        void getAllArticles();
+
         void refresh();
 
         void loadMore();

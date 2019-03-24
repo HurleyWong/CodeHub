@@ -3,10 +3,13 @@ package com.hurley.wanandroid.module.index;
 
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.RegexUtils;
 import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.TimeUtils;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.api.ApiService;
 import com.hurley.wanandroid.api.PathContainer;
@@ -17,11 +20,11 @@ import com.hurley.wanandroid.base.BaseBean;
 import com.hurley.wanandroid.base.BasePresenter;
 import com.hurley.wanandroid.bean.ArticleBean;
 import com.hurley.wanandroid.bean.BannerBean;
-import com.hurley.wanandroid.bean.PageBean;
 import com.hurley.wanandroid.bean.UserBean;
 import com.hurley.wanandroid.net.RetrofitManager;
 import com.hurley.wanandroid.net.callback.RxSchedulers;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +33,6 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function3;
 
 /**
  * <pre>
@@ -72,6 +74,9 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                 }, throwable -> mView.showFailed(throwable.getMessage()));
     }
 
+    /**
+     * 加载文章列表
+     */
     @SuppressLint("CheckResult")
     @Override
     public void loadArticles() {
@@ -90,6 +95,48 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                     int loadType = isRefresh ? LoadType.TYPE_REFRESH_ERROR : LoadType.TYPE_LOAD_MORE_ERROR;
                     mView.setArticles(new ArticleBean(), loadType);
                 });
+    }
+
+    /**
+     * 获得所有文章列表，用于分析
+     */
+    @SuppressLint("CheckResult")
+    @Override
+    public void getAllArticles() {
+        int totalPage = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.TOTAL_PAGE);
+        LogUtils.e("总页数：" + totalPage);
+        for (mPage = 0; mPage < totalPage - 308; mPage ++) {
+            RetrofitManager.create(ApiService.class)
+                    .getIndexArticles(mPage)
+                    .compose(RxSchedulers.applySchedulers())
+                    .compose(mView.bindToLife())
+                    .subscribe(response -> {
+                        if (response.getErrorCode() == BaseBean.SUCCESS) {
+                            for (int i = 0; i < response.getData().getSize(); i ++) {
+                                String articleDate = response.getData().getDatas().get(i).getNiceDate();
+                                //String todayDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+                                Calendar cal = Calendar.getInstance();
+                                String todayDate = cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH);
+                                //LogUtils.e("文章日期：" + response.getData().getDatas().get(i).getNiceDate());
+                                if (!RegexUtils.isDate(articleDate)) {
+                                    //如果不是正确的日期格式
+                                    LogUtils.e(articleDate);
+                                }
+                                //LogUtils.e("相隔天数：" + intervalDays);
+                                /*if (intervalDays <= 7 || !RegexUtils.isDate(articleDate)) {
+                                    //一周内的文章
+                                    LogUtils.e("文章标题：" + response.getData().getDatas().get(i).getTitle()
+                                            + " 所属体系：" + response.getData().getDatas().get(i).getChapterName());
+                                }*/
+
+                            }
+                        } else {
+                            mView.showFailed(response.getErrorMsg());
+                        }
+                    }, throwable -> {
+                        mView.showFailed(throwable.getMessage());
+                    });
+        }
     }
 
     @Override

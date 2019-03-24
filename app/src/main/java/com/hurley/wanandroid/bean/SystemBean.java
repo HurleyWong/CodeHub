@@ -6,6 +6,9 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.facade.service.SerializationService;
 import com.hurley.wanandroid.utils.GsonUtil;
 
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -20,8 +23,8 @@ import java.util.List;
 @Route(path = "/service/json")
 public class SystemBean implements SerializationService {
 
-    private int courseId;
     private int id;
+    private int courseId;
     private String name;
     private int order;
     private int parentChapterId;

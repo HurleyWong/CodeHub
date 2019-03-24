@@ -1,6 +1,11 @@
 package com.hurley.wanandroid.app;
 
+import com.blankj.utilcode.util.SPUtils;
+import com.hurley.wanandroid.bean.SystemBean;
+
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * <pre>
@@ -77,7 +82,6 @@ public class Constants {
 
     public static final String PROJECT_CURRENT_PAGE = "project_current_page";
 
-
     /**
      * Intent params
      */
@@ -99,6 +103,54 @@ public class Constants {
     public static final String NO_IMAGE = "no_image";
 
     public static final String NIGHT_MODE = "night_mode";
+
+    /**
+     * 首选项存储相关数据进行分析
+     */
+    public static final String SYSTEM_NAME = "system_name";
+
+    public static final String SYSTEM_NUM = "system_num";
+
+    /**
+     * 主要文章体系
+     */
+    public static final String UI = "用户交互";
+
+    public static final String JNI = "JNI";
+
+    public static final String COMPONENTS = "四大组件";
+
+    public static final String COMM_CTRLS = "常用控件";
+
+    public static final String CTRLS = "自定义控件";
+
+    public static final String PROJECTS = "项目管理";
+
+    public static final String DATA = "数据存储";
+
+    public static final String HARDWARE = "硬件模块";
+
+    public static final String KNOWLEDAGE = "基础知识";
+
+    public static final String IMAGE = "图片加载";
+
+    public static final String PLATFORMS = "跨平台";
+
+    public static final String KOTLIN = "Kotlin";
+
+    public static final String JETPACK = "Jetpack";
+
+    public static final String ANIM = "动画效果";
+
+    public static final String FRAMEWORK = "framework";
+
+    public static final String JAVA = "Java深入";
+
+    public static final String MEDIA = "多媒体技术";
+
+    public static final String NET = "网络访问";
+
+    public static final String DEV = "开发环境";
 
     /**
      * 文章总数量

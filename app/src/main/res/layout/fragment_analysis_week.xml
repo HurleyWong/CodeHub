@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_analysis_week"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".module.user.analysis.AnalysisWeekFragment">
+
+    <com.openxu.cview.chart.piechart.PieChartLayout
+        android:id="@+id/pcl_analysis_week"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp0"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <com.openxu.cview.chart.piechart.PieChart
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+        <com.openxu.cview.chart.piechart.PieChartLableView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
+    </com.openxu.cview.chart.piechart.PieChartLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp0"
+        android:layout_weight="2">
+        <com.openxu.cview.chart.barchart.BarVerticalChart
+            android:id="@+id/bvc_analysis_week"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:padding="@dimen/dp10"/>
+    </ScrollView>
+</LinearLayout>

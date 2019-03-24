@@ -4,13 +4,17 @@ import android.annotation.SuppressLint;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
 
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.SPUtils;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hurley.wanandroid.R;
+import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseFragment;
 import com.hurley.wanandroid.bean.ArticleBean;
 import com.hurley.wanandroid.bean.BannerBean;
@@ -22,7 +26,9 @@ import com.hurley.wanandroid.widget.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
+
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -84,7 +90,7 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         mSrlIndex.setOnRefreshListener(this);
 
         //加载数据
-        mPresenter.loadData();
+        //mPresenter.loadData();
         onRefresh();
 
         //登录成功后刷新
@@ -122,6 +128,7 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
     @Override
     public void setArticles(ArticleBean articleBean, int loadType) {
         setLoadDataResult(mArticleAdapter, mSrlIndex, articleBean.getDatas(), loadType);
+        SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.TOTAL_PAGE, articleBean.getPageCount());
     }
 
     @Override

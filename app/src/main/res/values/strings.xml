@@ -136,6 +136,31 @@
 
     <!-- 分析 -->
     <string name="analysis_text">分析</string>
+    <string name="analysis_week">一周内</string>
+    <string name="analysis_month">一月内</string>
+    <string name="analysis_year">一年内</string>
+
+    <!-- 体系 -->
+    <string name="dev_environment">开发环境</string>
+    <string name="basic_knowledge">基础知识</string>
+    <string name="android_components">四大组件</string>
+    <string name="common_ctrl">常用控件</string>
+    <string name="UI">用户交互</string>
+    <string name="network_access">网络访问</string>
+    <string name="image_loading">图片加载</string>
+    <string name="data_storage">数据存储</string>
+    <string name="animation_effect">动画效果</string>
+    <string name="customize_ctrl">自定义控件</string>
+    <string name="media_tech">多媒体技术</string>
+    <string name="hardware_module">硬件模块</string>
+    <string name="JNI">JNI</string>
+    <string name="common_SDK">常用SDK</string>
+    <string name="framework">framework</string>
+    <string name="Kotlin">Kotlin</string>
+    <string name="advanced_Java">Java深入</string>
+    <string name="cross_platform">跨平台</string>
+    <string name="project_manage">项目管理</string>
+    <string name="Jetpack">Jetpack</string>
 
     <!-- 语言 -->
     <string name="language_auto">跟随系统</string>

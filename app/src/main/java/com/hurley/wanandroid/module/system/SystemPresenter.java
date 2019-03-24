@@ -4,11 +4,19 @@ package com.hurley.wanandroid.module.system;
 
 import android.annotation.SuppressLint;
 
+import com.blankj.utilcode.util.SPUtils;
 import com.hurley.wanandroid.api.ApiService;
+import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseBean;
 import com.hurley.wanandroid.base.BasePresenter;
+import com.hurley.wanandroid.bean.SystemBean;
 import com.hurley.wanandroid.net.RetrofitManager;
 import com.hurley.wanandroid.net.callback.RxSchedulers;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -21,6 +29,9 @@ import javax.inject.Inject;
  * </pre>
  */
 public class SystemPresenter extends BasePresenter<SystemContract.View> implements SystemContract.Presenter {
+
+    private Set<String> systemBeans = new HashSet<>();
+
     @Inject
     public SystemPresenter() {
 
@@ -38,6 +49,10 @@ public class SystemPresenter extends BasePresenter<SystemContract.View> implemen
                 .subscribe(response -> {
                     if (response.getErrorCode() == BaseBean.SUCCESS) {
                         mView.setSystems(response.getData());
+                        for (int i = 0; i < response.getData().size(); i ++) {
+                            systemBeans.add(response.getData().get(i).getName());
+                        }
+                        SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.SYSTEM_NAME, systemBeans);
                     } else {
                         mView.showFailed(response.getErrorMsg());
                     }

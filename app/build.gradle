@@ -17,6 +17,9 @@ android {
                 arguments = [moduleName: project.getName()]
             }
         }
+        packagingOptions {
+            exclude 'META-INF/proguard/androidx-annotations.pro'
+        }
     }
     buildTypes {
         release {
@@ -128,6 +131,8 @@ dependencies {
     implementation 'com.youth.banner:banner:1.4.10'
     //BGABanner-Android包：https://github.com/bingoogolapple/BGABanner-Android
     implementation 'cn.bingoogolapple:bga-banner:2.2.5@aar'
+    //OXChart包：https://github.com/openXu/OXChart
+    implementation 'com.openxu.viewlib:OXViewLib:1.0.2'
 
     //启动动画：https://github.com/wongzy/FancyView
     implementation 'site.gemus:openingstartanimation:1.0.0'
