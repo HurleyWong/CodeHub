@@ -4,15 +4,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/home_website"
-        android:icon="@mipmap/ic_website"
-        android:title="@string/home_website"
+        android:id="@+id/home_wan_android"
+        android:icon="@mipmap/ic_wan_android"
+        android:title="@string/wan_android"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/home_search"
-        android:icon="@mipmap/ic_search"
-        android:title="@string/home_search"
+        android:id="@+id/home_readhub"
+        android:icon="@mipmap/ic_readhub"
+        android:title="@string/readhub"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/home_diycode"
+        android:icon="@mipmap/ic_diycode"
+        android:title="@string/diycode"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/home_github_trending"
+        android:icon="@mipmap/github"
+        android:title="@string/github_trending"
         app:showAsAction="ifRoom"/>
 
 </menu>
