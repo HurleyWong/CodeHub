@@ -51,10 +51,6 @@ public class AnalysisActivity extends BaseActivity<AnalysisPresenter> implements
 
     @Override
     protected void initView() {
-        //mPresenter.getNearbyArticles();
-        mPresenter.getAllArticles();
-        //LogUtils.e(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getStringSet(Constants.SYSTEM_NAME));
-
         tabTitles.add(getString(R.string.analysis_week));
         tabTitles.add(getString(R.string.analysis_month));
         tabTitles.add(getString(R.string.analysis_year));

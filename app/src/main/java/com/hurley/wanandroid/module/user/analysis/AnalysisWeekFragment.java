@@ -32,7 +32,7 @@ import butterknife.BindView;
  *      desc    : 一周的分析界面
  * </pre>
  */
-public class AnalysisWeekFragment extends BaseFragment {
+public class AnalysisWeekFragment extends BaseFragment<AnalysisWeekPresenter> implements AnalysisWeekContract.View {
 
     @BindView(R.id.pcl_analysis_week)
     PieChartLayout mPclAnalysis;
@@ -41,26 +41,6 @@ public class AnalysisWeekFragment extends BaseFragment {
 
     List<String> systemNames = new ArrayList<>(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getStringSet(Constants.SYSTEM_NAME));
     List<Integer> systemNum = new ArrayList<>();
-
-    int ui = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.UI);
-    int JNI = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.JNI);
-    int components = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.COMPONENTS);
-    int commCtrls = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.COMM_CTRLS);
-    int ctrls = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.CTRLS);
-    int projects = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.PROJECTS);
-    int data = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.DATA);
-    int hardware = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.HARDWARE);
-    int knowledge = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.KNOWLEDAGE);
-    int image = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.IMAGE);
-    int platforms = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.PLATFORMS);
-    int Kotlin = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.KOTLIN);
-    int Jetpack = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.JETPACK);
-    int anim = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.ANIM);
-    int framework = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.FRAMEWORK);
-    int Java = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.JAVA);
-    int media = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.MEDIA);
-    int net = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.NET);
-    int dev = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.DEV);
 
     public static AnalysisWeekFragment newInstance() {
         Bundle args = new Bundle();
@@ -76,12 +56,34 @@ public class AnalysisWeekFragment extends BaseFragment {
 
     @Override
     protected void initInjector() {
-
+        mFragmentComponent.inject(this);
     }
 
     @Override
     protected void initView(View view) {
+        mPresenter.getAllArticlesInWeek();
+
         //从首选项中取到数据，并添加到集合中
+        int ui = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.UI);
+        int JNI = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.JNI);
+        int components = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.COMPONENTS);
+        int commCtrls = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.COMM_CTRLS);
+        int ctrls = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.CTRLS);
+        int projects = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.PROJECTS);
+        int data = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.DATA);
+        int hardware = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.HARDWARE);
+        int knowledge = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.KNOWLEDAGE);
+        int image = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.IMAGE);
+        int platforms = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.PLATFORMS);
+        int Kotlin = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.KOTLIN);
+        int Jetpack = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.JETPACK);
+        int anim = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.ANIM);
+        int framework = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.FRAMEWORK);
+        int Java = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.JAVA);
+        int media = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.MEDIA);
+        int net = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.NET);
+        int dev = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.DEV);
+
         systemNum.add(ui);
         systemNum.add(JNI);
         systemNum.add(components);

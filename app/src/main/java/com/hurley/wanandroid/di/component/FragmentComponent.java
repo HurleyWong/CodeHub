@@ -14,6 +14,8 @@ import com.hurley.wanandroid.module.index.IndexFragment;
 import com.hurley.wanandroid.module.project.ProjectFragment;
 import com.hurley.wanandroid.module.system.SystemFragment;
 import com.hurley.wanandroid.module.user.UserFragment;
+import com.hurley.wanandroid.module.user.analysis.AnalysisMonthFragment;
+import com.hurley.wanandroid.module.user.analysis.AnalysisWeekFragment;
 import com.hurley.wanandroid.module.wechat.WechatFragment;
 
 import dagger.Component;
@@ -53,4 +55,8 @@ public interface FragmentComponent {
     void inject(WxArticleListFragment fragment);
 
     void inject(ProjectArticleListFragment fragment);
+
+    void inject(AnalysisWeekFragment fragment);
+
+    void inject(AnalysisMonthFragment fragment);
 }

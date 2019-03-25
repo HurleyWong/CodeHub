@@ -17,15 +17,5 @@ public interface AnalysisContract {
     }
 
     interface Presenter extends BaseContract.BasePresenter<AnalysisContract.View> {
-
-        /**
-         * 获取几天前的所有文章信息
-         */
-        void getNearbyArticles();
-
-        /**
-         * 获取所有文章的信息
-         */
-        void getAllArticles();
     }
 }
