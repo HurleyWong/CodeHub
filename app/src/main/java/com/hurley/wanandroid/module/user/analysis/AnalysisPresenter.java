@@ -171,6 +171,70 @@ public class AnalysisPresenter extends BasePresenter<AnalysisContract.View> impl
                                                 break;
                                         }
                                     }
+                                } else {
+                                    LogUtils.e("标题：" + articleTitle + "，体系：" + articleCharpter + "，模块：" + articleSuperCharpter);
+                                    switch (articleSuperCharpter) {
+                                        case Constants.UI:
+                                            mUI++;
+                                            break;
+                                        case Constants.JNI:
+                                            mJNI++;
+                                            break;
+                                        case Constants.COMPONENTS:
+                                            mComponents++;
+                                            break;
+                                        case Constants.COMM_CTRLS:
+                                            mCommCtrls++;
+                                            break;
+                                        case Constants.CTRLS:
+                                            mCtrls++;
+                                            break;
+                                        case Constants.PROJECTS:
+                                            mProjects++;
+                                            break;
+                                        case Constants.DATA:
+                                            mData++;
+                                            break;
+                                        case Constants.HARDWARE:
+                                            mHard++;
+                                            break;
+                                        case Constants.KNOWLEDAGE:
+                                            mKnowledge++;
+                                            break;
+                                        case Constants.IMAGE:
+                                            mImage++;
+                                            break;
+                                        case Constants.PLATFORMS:
+                                            mPlatforms++;
+                                            break;
+                                        case Constants.KOTLIN:
+                                            mKotlin++;
+                                            break;
+                                        case Constants.JETPACK:
+                                            mJetpack++;
+                                            break;
+                                        case Constants.ANIM:
+                                            mAnim++;
+                                            break;
+                                        case Constants.FRAMEWORK:
+                                            LogUtils.e("加1");
+                                            mFramework++;
+                                            break;
+                                        case Constants.JAVA:
+                                            mJava++;
+                                            break;
+                                        case Constants.MEDIA:
+                                            mMedia++;
+                                            break;
+                                        case Constants.NET:
+                                            mNet++;
+                                            break;
+                                        case Constants.DEV:
+                                            mDev++;
+                                            break;
+                                        default:
+                                            break;
+                                    }
                                 }
                             }
                             //将文章数量存储到首选项中

@@ -146,10 +146,15 @@ public class AboutActivity extends BaseActivity {
         return true;
     }
 
+    /**
+     * 添加数据
+     * @return
+     */
     private List<OpenSourceBean> getListData() {
         List<OpenSourceBean> list = new ArrayList<>();
         list.add(new OpenSourceBean(getString(R.string.license_ButterKnife), getString(R.string.author_ButterKnife), getString(R.string.detail_ButterKnife)));
         list.add(new OpenSourceBean(getString(R.string.license_Retrofit), getString(R.string.author_Retrofit), getString(R.string.detail_Retrofit)));
+
         return list;
     }
 
