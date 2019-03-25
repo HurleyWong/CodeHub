@@ -53,11 +53,9 @@ public class AnalysisActivity extends BaseActivity<AnalysisPresenter> implements
     protected void initView() {
         tabTitles.add(getString(R.string.analysis_week));
         tabTitles.add(getString(R.string.analysis_month));
-        tabTitles.add(getString(R.string.analysis_year));
 
         fragments.add(new AnalysisWeekFragment());
         fragments.add(new AnalysisMonthFragment());
-        fragments.add(new AnalysisYearFragment());
 
         mVpAnalysis.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
 

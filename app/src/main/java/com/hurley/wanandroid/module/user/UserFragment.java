@@ -106,7 +106,8 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
                 break;
             case R.id.btn_user_analysis:
                 //分析界面
-                ARouter.getInstance().build(PathContainer.ANALYSIS).navigation();
+                ARouter.getInstance().build(PathContainer.LOADING).navigation();
+                //ARouter.getInstance().build(PathContainer.ANALYSIS).navigation();
                 break;
             case R.id.btn_user_setting:
                 //设置界面

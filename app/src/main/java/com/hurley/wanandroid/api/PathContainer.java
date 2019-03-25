@@ -40,6 +40,8 @@ public class PathContainer {
 
     public static final String OPEN_SOURCE = "/about/OpenSourceActivity";
 
+    public static final String LOADING = "/main/LoadingDataActivity";
+
 
     //Fragment
 

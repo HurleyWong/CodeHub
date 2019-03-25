@@ -53,7 +53,7 @@ public class AnalysisMonthFragment extends BaseFragment<AnalysisMonthPresenter> 
 
     @Override
     protected void initView(View view) {
-        mPresenter.getAllArticlesInMonth();
+        //mPresenter.getAllArticlesInMonth();
 
         //从首选项中取到数据，并添加到集合中
         int ui = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.UI_MONTH);

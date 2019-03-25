@@ -61,7 +61,7 @@ public class AnalysisWeekFragment extends BaseFragment<AnalysisWeekPresenter> im
 
     @Override
     protected void initView(View view) {
-        mPresenter.getAllArticlesInWeek();
+        //mPresenter.getAllArticlesInWeek();
 
         //从首选项中取到数据，并添加到集合中
         int ui = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.UI);

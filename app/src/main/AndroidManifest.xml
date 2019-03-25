@@ -94,6 +94,11 @@
             android:name=".module.web.WebActivity"
             android:launchMode="singleTop" />
 
+        <!-- 加载界面 -->
+        <activity
+            android:name=".module.user.analysis.LoadingDataActivity"
+            android:launchMode="singleTop" />
+
         <!-- 开源协议界面 -->
         <activity
             android:name=".module.user.about.OpenSourceActivity"

@@ -118,77 +118,115 @@ public class Constants {
 
     public static final String UI_MONTH = "ui_month";
 
+    public static final String UI_YEAR = "ui_year";
+
     public static final String JNI = "JNI";
 
     public static final String JNI_MONTH = "JNI_month";
+
+    public static final String JNI_YEAR = "JIN_year";
 
     public static final String COMPONENTS = "四大组件";
 
     public static final String COMPONENTS_MONTH = "components_month";
 
+    public static final String COMPONENTS_YEAR = "components_year";
+
     public static final String COMM_CTRLS = "常用控件";
 
     public static final String COMM_CTRLS_MONTH = "comm_ctrls_month";
+
+    public static final String COMM_CTRLS_YEAR = "comm_ctrls_year";
 
     public static final String CTRLS = "自定义控件";
 
     public static final String CTRLS_MONTH = "ctrls_month";
 
+    public static final String CTRLS_YEAR = "ctrls_year";
+
     public static final String PROJECTS = "项目管理";
 
     public static final String PROJECTS_MONTH = "projects_month";
+
+    public static final String PROJECTS_YEAR = "projects_year";
 
     public static final String DATA = "数据存储";
 
     public static final String DATA_MONTH = "data_month";
 
+    public static final String DATA_YEAR = "data_year";
+
     public static final String HARDWARE = "硬件模块";
 
     public static final String HARDWARE_MONTH = "hardware_month";
+
+    public static final String HARDWARE_YEAR = "hardware_year";
 
     public static final String KNOWLEDAGE = "基础知识";
 
     public static final String KNOWLEDAGE_MONTH = "knowledge_month";
 
+    public static final String KNOWLEDAGE_YEAR = "knowledge_year";
+
     public static final String IMAGE = "图片加载";
 
     public static final String IMAGE_MONTH = "image_month";
+
+    public static final String IMAGE_YEAR = "image_year";
 
     public static final String PLATFORMS = "跨平台";
 
     public static final String PLATFORMS_MONTH = "platforms_month";
 
+    public static final String PLATFORMS_YEAR = "platforms_year";
+
     public static final String KOTLIN = "Kotlin";
 
     public static final String KOTLIN_MONTH = "kotlin_month";
+
+    public static final String KOTLIN_YEAR = "kotlin_year";
 
     public static final String JETPACK = "Jetpack";
 
     public static final String JETPACK_MONTH = "jetpack_month";
 
+    public static final String JETPACK_YEAR = "jetpack_year";
+
     public static final String ANIM = "动画效果";
 
     public static final String ANIM_MONTH = "anim_month";
+
+    public static final String ANIM_YEAR = "anim_year";
 
     public static final String FRAMEWORK = "framework";
 
     public static final String FRAMEWORK_MONTH = "framework_month";
 
+    public static final String FRAMEWORK_YEAR = "framework_year";
+
     public static final String JAVA = "Java深入";
 
     public static final String JAVA_MONTH = "java_month";
+
+    public static final String JAVA_YEAR = "java_year";
 
     public static final String MEDIA = "多媒体技术";
 
     public static final String MEDIA_MONTH = "media_month";
 
+    public static final String MEDIA_YEAR = "media_year";
+
     public static final String NET = "网络访问";
 
     public static final String NET_MONTH = "net_month";
 
+    public static final String NET_YEAR = "net_year";
+
     public static final String DEV = "开发环境";
 
     public static final String DEV_MONTH = "dev_month";
+
+    public static final String DEV_YEAR = "dev_year";
 
     /**
      * 文章总数量
