@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:gravity="center_horizontal"
+    android:background="@color/colorBackground"
     android:orientation="vertical"
     tools:context=".module.user.about.AboutActivity">
 
@@ -36,164 +36,92 @@
         android:textColor="@color/text"
         android:textSize="@dimen/sp20" />
 
-    <View
-        style="@style/HorizontalLineStyle"
-        android:layout_marginStart="@dimen/dp12"
-        android:layout_marginTop="@dimen/dp25"
-        android:layout_marginEnd="@dimen/dp12" />
-
-    <LinearLayout
-        android:id="@+id/about_content"
+    <android.support.v7.widget.CardView
+        android:id="@+id/setting_normal_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/dp12">
+        android:layout_margin="@dimen/dp10"
+        app:cardElevation="@dimen/dp2"
+        app:cardCornerRadius="@dimen/dp3">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@null"
-            android:src="@mipmap/ic_content" />
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp10"
-            android:layout_weight="1"
-            android:drawableRight="@mipmap/ic_right_arrow"
-            android:text="@string/about_content"
-            android:textColor="@color/text"
-            android:textSize="@dimen/sp20" />
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/about_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp12">
 
-    <View
-        style="@style/HorizontalLineStyle"
-        android:layout_marginStart="@dimen/dp12"
-        android:layout_marginEnd="@dimen/dp12" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@null"
+                    android:src="@mipmap/ic_content" />
 
-    <LinearLayout
-        android:id="@+id/about_wan_android"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp10"
+                    android:layout_weight="1"
+                    android:drawableRight="@mipmap/ic_right_arrow"
+                    android:text="@string/about_author"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp20" />
+            </LinearLayout>
+
+            <View
+                style="@style/HorizontalLineStyle"
+                android:layout_marginStart="@dimen/dp12"
+                android:layout_marginEnd="@dimen/dp12" />
+
+            <LinearLayout
+                android:id="@+id/about_wan_android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp12">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@null"
+                    android:src="@mipmap/ic_wan_android" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp10"
+                    android:layout_weight="1"
+                    android:drawableRight="@mipmap/ic_right_arrow"
+                    android:text="@string/about_wan_android"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp20" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/setting_other"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/dp12">
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginStart="@dimen/dp10"
+        android:layout_marginEnd="@dimen/dp10"
+        android:text="@string/about_open_source"
+        android:textSize="@dimen/sp16"
+        android:textColor="@color/text"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@null"
-            android:src="@mipmap/ic_wan_android" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp10"
-            android:layout_weight="1"
-            android:drawableRight="@mipmap/ic_right_arrow"
-            android:text="@string/about_wan_android"
-            android:textColor="@color/text"
-            android:textSize="@dimen/sp20" />
-    </LinearLayout>
-
-    <View
-        style="@style/HorizontalLineStyle"
-        android:layout_marginStart="@dimen/dp12"
-        android:layout_marginEnd="@dimen/dp12" />
-
-    <LinearLayout
-        android:id="@+id/about_open_source"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_open_source"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/dp12">
+        android:layout_margin="@dimen/dp6"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@null"
-            android:src="@mipmap/ic_open_source" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
-            android:layout_weight="1"
-            android:drawableRight="@mipmap/ic_right_arrow"
-            android:text="@string/about_open_source"
-            android:textColor="@color/text"
-            android:textSize="@dimen/sp20" />
-    </LinearLayout>
-
-    <View
-        style="@style/HorizontalLineStyle"
-        android:layout_marginStart="@dimen/dp12"
-        android:layout_marginEnd="@dimen/dp12" />
-
-    <LinearLayout
-        android:id="@+id/about_github"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/dp12">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@null"
-            android:src="@mipmap/ic_github" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp10"
-            android:layout_weight="1"
-            android:drawableRight="@mipmap/ic_right_arrow"
-            android:text="@string/about_github"
-            android:textColor="@color/text"
-            android:textSize="@dimen/sp20" />
-    </LinearLayout>
-
-    <View
-        style="@style/HorizontalLineStyle"
-        android:layout_marginStart="@dimen/dp12"
-        android:layout_marginEnd="@dimen/dp12" />
-
-    <View
-        style="@style/HorizontalLineStyle"
-        android:layout_marginStart="@dimen/dp12"
-        android:layout_marginEnd="@dimen/dp12" />
-
-    <LinearLayout
-        android:id="@+id/about_support"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/dp12">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@null"
-            android:src="@mipmap/ic_support" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp12"
-            android:layout_weight="1"
-            android:drawableRight="@mipmap/ic_right_arrow"
-            android:text="@string/about_support"
-            android:textColor="@color/text"
-            android:textSize="@dimen/sp20" />
-    </LinearLayout>
-
-    <View
-        style="@style/HorizontalLineStyle"
-        android:layout_marginStart="@dimen/dp12"
-        android:layout_marginEnd="@dimen/dp12" />
 </LinearLayout>

@@ -136,6 +136,8 @@ dependencies {
     //MaterialAbout包：https://github.com/jrvansuita/MaterialAbout
     implementation 'com.github.jrvansuita:MaterialAbout:0.2.3'
 
+    implementation 'com.github.medyo:android-about-page:1.2.5'
+
     //启动动画：https://github.com/wongzy/FancyView
     implementation 'site.gemus:openingstartanimation:1.0.0'
     //状态栏沉浸：https://github.com/gyf-dev/ImmersionBar

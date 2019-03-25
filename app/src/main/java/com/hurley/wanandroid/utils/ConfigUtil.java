@@ -15,4 +15,5 @@ public class ConfigUtil {
 
     public static final boolean DEBUG = BuildConfig.DEBUG;
     public static final boolean SOCKET_LOG_DEBUG = BuildConfig.DEBUG;
+    public static final String VERSION_NAME = BuildConfig.VERSION_NAME;
 }
