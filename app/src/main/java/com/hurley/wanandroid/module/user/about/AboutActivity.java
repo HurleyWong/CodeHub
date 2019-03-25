@@ -1,9 +1,12 @@
 package com.hurley.wanandroid.module.user.about;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,6 +20,8 @@ import com.hurley.wanandroid.bean.OpenSourceBean;
 import com.hurley.wanandroid.module.adapter.OpenSourceAdapter;
 import com.hurley.wanandroid.module.web.WebActivity;
 import com.hurley.wanandroid.utils.IntentUtil;
+import com.vansuita.materialabout.builder.AboutBuilder;
+import com.vansuita.materialabout.views.AboutView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,12 +41,6 @@ public class AboutActivity extends BaseActivity {
 
     private static final String TAG = "AboutActivity";
 
-    @BindView(R.id.about_version_text)
-    TextView mTvAboutVersion;
-    @BindView(R.id.about_author)
-    LinearLayout mLlAboutAuthor;
-    @BindView(R.id.about_wan_android)
-    LinearLayout mLlAboutWanAndroid;
     @BindView(R.id.rv_open_source)
     RecyclerView mRvOpenSource;
 
@@ -64,7 +63,57 @@ public class AboutActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        showAboutContent();
+        AboutBuilder builder = AboutBuilder.with(this)
+                .setAppIcon(R.mipmap.ic_launcher)
+                .setAppName(R.string.app_name)
+                //设置开发者照片，从Github Api获取
+                .setPhoto(R.mipmap.profile_picture)
+                .setCover(R.mipmap.profile_cover)
+                //设置加载动画
+                .setLinksAnimated(true)
+                .setDividerDashGap(13)
+                .setName("Hurley")
+                .setSubTitle("Senior Student")
+                //Links分为4列
+                .setLinksColumnsCount(4)
+                .setBrief("Having dreams is what makes life tolerable.")
+                .addAndroidLink("user")
+                .addGooglePlayStoreLink("8002078663318221363")
+                .addGitHubLink("hurleyjames")
+                .addWebsiteLink("http://www.hurley.fun")
+                .addFacebookLink("100014949587803")
+                .addTwitterLink("HurleyHuang23")
+                .addInstagramLink("hurleyhuang")
+                .addDribbbleLink("user")
+                .addSkypeLink("user")
+                .addGoogleLink("user")
+                .addLinkedInLink("arleu-cezar-vansuita-júnior-83769271")
+                .addEmailLink("1401682479@qq.com")
+                .addFiveStarsAction()
+                .addMoreFromMeAction("Vansuita")
+                .setVersionNameAsAppSubTitle()
+                .addShareAction(R.string.app_name)
+                .addUpdateAction()
+                //Action分为3列
+                .setActionsColumnsCount(3)
+                .addFeedbackAction("1401682479@qq.com")
+                .addPrivacyPolicyAction("http://www.docracy.com/2d0kis6uc2")
+                .addHelpAction((Intent) null)
+                .addChangeLogAction((Intent) null)
+                .addDonateAction((Intent) null)
+                .setWrapScrollView(true)
+                .setShowAsCard(true);
+
+        AboutView view = builder.build();
+
+        TextView textView = new TextView(this);
+        RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(10, 10, 0, 10);
+        textView.setLayoutParams(layoutParams);
+        textView.setText(getString(R.string.about_open_source));
+        textView.setTextSize(16);
+        textView.setTextColor(ContextCompat.getColor(this, R.color.text));
+
 
         mList = new ArrayList<>();
 
@@ -75,14 +124,17 @@ public class AboutActivity extends BaseActivity {
         //给RecyclerView绘制适配器
         mRvOpenSource.setAdapter(mAdapter);
         mAdapter.setNewData(getListData());
+        mAdapter.addHeaderView(view);
+        mAdapter.addHeaderView(textView);
 
-        //item点击事件
+        /*//item点击事件
         mAdapter.setOnItemClickListener(((adapter, view, position) ->
                 //打开对应框架的Github链接
                 IntentUtil.getInstance(WebActivity.class)
                         .putString("https://github.com/" + mList.get(position).getAuthor() + "/" + mList.get(position).getName())
                         .startActivity(this)
-        ));
+        ));*/
+
     }
 
     /**
@@ -92,34 +144,6 @@ public class AboutActivity extends BaseActivity {
     @Override
     protected boolean showHomeAsUp() {
         return true;
-    }
-
-    @OnClick({R.id.about_author, R.id.about_wan_android})
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.about_author:
-                ARouter.getInstance().build(PathContainer.AUTHOR).navigation();
-                break;
-            case R.id.about_wan_android:
-                //打开玩Android网页
-                WebActivity.startWeb(getString(R.string.wan_android_address));
-                break;
-            default:
-                break;
-        }
-    }
-
-    /**
-     * 显示关于界面内容
-     */
-    private void showAboutContent() {
-        try {
-            String versionStr = getString(R.string.app_name)
-                    + " V" + getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-            mTvAboutVersion.setText(versionStr);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
     private List<OpenSourceBean> getListData() {
