@@ -153,7 +153,24 @@ public class AboutActivity extends BaseActivity {
     private List<OpenSourceBean> getListData() {
         List<OpenSourceBean> list = new ArrayList<>();
         list.add(new OpenSourceBean(getString(R.string.license_ButterKnife), getString(R.string.author_ButterKnife), getString(R.string.detail_ButterKnife)));
+        list.add(new OpenSourceBean(getString(R.string.license_dagger), getString(R.string.author_dagger), getString(R.string.detail_dagger)));
+        list.add(new OpenSourceBean(getString(R.string.license_OkHttp), getString(R.string.author_OkHttp), getString(R.string.detail_OkHttp)));
         list.add(new OpenSourceBean(getString(R.string.license_Retrofit), getString(R.string.author_Retrofit), getString(R.string.detail_Retrofit)));
+        list.add(new OpenSourceBean(getString(R.string.license_RxJava), getString(R.string.author_RxJava), getString(R.string.detail_RxJava)));
+        list.add(new OpenSourceBean(getString(R.string.license_RxAndroid), getString(R.string.author_RxAndroid), getString(R.string.detail_RxAndroid)));
+        list.add(new OpenSourceBean(getString(R.string.license_RxBinding), getString(R.string.author_RxBinding), getString(R.string.detail_RxBinding)));
+        list.add(new OpenSourceBean(getString(R.string.license_AgentWeb), getString(R.string.author_AgentWeb), getString(R.string.detail_AgentWeb)));
+        list.add(new OpenSourceBean(getString(R.string.license_ARouter), getString(R.string.author_ARouter), getString(R.string.detail_ARouter)));
+        list.add(new OpenSourceBean(getString(R.string.license_Glide), getString(R.string.author_Glide), getString(R.string.detail_Glide)));
+        list.add(new OpenSourceBean(getString(R.string.license_BaseRecyclerViewAdapterHelper), getString(R.string.author_BaseRecyclerViewAdapterHelperr), getString(R.string.detail_BaseRecyclerViewAdapterHelper)));
+        list.add(new OpenSourceBean(getString(R.string.license_Fragmentation), getString(R.string.author_Fragmentation), getString(R.string.detail_Fragmentation)));
+        list.add(new OpenSourceBean(getString(R.string.license_FlowLayout), getString(R.string.author_FlowLayout), getString(R.string.detail_FlowLayout)));
+        list.add(new OpenSourceBean(getString(R.string.license_Banner), getString(R.string.author_Banner), getString(R.string.detail_Banner)));
+        list.add(new OpenSourceBean(getString(R.string.license_OXChart), getString(R.string.author_OXChart), getString(R.string.detail_OXChart)));
+        list.add(new OpenSourceBean(getString(R.string.license_MaterialAbout), getString(R.string.author_MaterialAbout), getString(R.string.detail_MaterialAbout)));
+        list.add(new OpenSourceBean(getString(R.string.license_ImmersionBar), getString(R.string.author_ImmersionBar), getString(R.string.detail_ImmersionBar)));
+        list.add(new OpenSourceBean(getString(R.string.license_XXPermissions), getString(R.string.author_XXPermissions), getString(R.string.detail_XXPermissions)));
+        list.add(new OpenSourceBean(getString(R.string.license_AndroidUtilCode), getString(R.string.author_AndroidUtilCode), getString(R.string.detail_AndroidUtilCode)));
 
         return list;
     }

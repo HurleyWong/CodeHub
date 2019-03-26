@@ -82,45 +82,66 @@
 
     <!-- 开源协议名称 -->
     <string name="license_ButterKnife">ButterKnife</string>
+    <string name="license_dagger">dagger</string>
+    <string name="license_OkHttp">OkHttp</string>
     <string name="license_Retrofit">Retrofit</string>
+    <string name="license_RxJava">RxJava</string>
+    <string name="license_RxAndroid">RxAndroid</string>
+    <string name="license_RxBinding">RxBinding</string>
+    <string name="license_AgentWeb">AgentWeb</string>
+    <string name="license_ARouter">ARouter</string>
+    <string name="license_Glide">Glide</string>
     <string name="license_BaseRecyclerViewAdapterHelper">BaseRecyclerViewAdapterHelper</string>
-    <string name="license_SmartRefreshLayout">SmartRefreshLayout</string>
+    <string name="license_Fragmentation">Fragmentation</string>
+    <string name="license_FlowLayout">FlowLayout</string>
+    <string name="license_Banner">Banner</string>
+    <string name="license_OXChart">OXChart</string>
+    <string name="license_MaterialAbout">MaterialAbout</string>
     <string name="license_ImmersionBar">ImmersionBar</string>
-    <string name="license_Dialog">Dialog</string>
-    <string name="license_TitleBar">TitleBar</string>
-    <string name="license_ToastUtils">ToastUtils</string>
     <string name="license_XXPermissions">XXPermissions</string>
     <string name="license_AndroidUtilCode">AndroidUtilCode</string>
-    <string name="license_MultipleStatusView">MultipleStatusView</string>
-    <string name="license_BGASwipeBackLayout_Android">BGASwipeBackLayout-Android</string>
 
     <!-- 开源协议作者 -->
     <string name="author_ButterKnife">JakeWharton</string>
+    <string name="author_dagger">square</string>
+    <string name="author_OkHttp">square</string>
     <string name="author_Retrofit">square</string>
-    <string name="author_BaseRecyclerViewAdapterHelper">CymChad</string>
-    <string name="author_SmartRefreshLayout">scwang90</string>
+    <string name="author_RxJava">ReactiveX</string>
+    <string name="author_RxAndroid">ReactiveX</string>
+    <string name="author_RxBinding">JakeWharton</string>
+    <string name="author_AgentWeb">Justson</string>
+    <string name="author_ARouter">alibaba</string>
+    <string name="author_Glide">bumptech</string>
+    <string name="author_BaseRecyclerViewAdapterHelperr">CymChad</string>
+    <string name="author_Fragmentation">YoKeyword</string>
+    <string name="author_FlowLayout">hongyangAndroid</string>
+    <string name="author_Banner">youth5201314</string>
+    <string name="author_OXChart">openXu</string>
+    <string name="author_MaterialAbout">jrvansuita</string>
     <string name="author_ImmersionBar">gyf-dev</string>
-    <string name="author_Dialog">kongzue</string>
-    <string name="author_TitleBar">getActivity</string>
-    <string name="author_ToastUtils">getActivity</string>
     <string name="author_XXPermissions">getActivity</string>
     <string name="author_AndroidUtilCode">Blankj</string>
-    <string name="author_MultipleStatusView">qyxxjd</string>
-    <string name="author_BGASwipeBackLayout_Android">bingoogolapple</string>
 
     <!-- 开源协议介绍 -->
     <string name="detail_ButterKnife">Bind Android views and callbacks to fields and methods.</string>
+    <string name="detail_dagger">A fast dependency injector for Android and Java.</string>
+    <string name="detail_OkHttp">An HTTP+HTTP/2 client for Android and Java applications.</string>
     <string name="detail_Retrofit">Type-safe HTTP client for Android and Java by Square, Inc.</string>
+    <string name="detail_RxJava">RxJava – Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM.</string>
+    <string name="detail_RxAndroid">RxJava bindings for Android</string>
+    <string name="detail_RxBinding">RxJava binding APIs for Android\'s UI widgets.</string>
+    <string name="detail_AgentWeb">AgentWeb is a powerful library based on Android WebView.</string>
+    <string name="detail_ARouter">💪 A framework for assisting in the renovation of Android componentization (帮助 Android App 进行组件化改造的路由框架)</string>
+    <string name="detail_Glide">An image loading and caching library for Android focused on smooth scrolling</string>
     <string name="detail_BaseRecyclerViewAdapterHelper">BRVAH:Powerful and flexible RecyclerAdapter</string>
-    <string name="detail_SmartRefreshLayout">🔥下拉刷新、上拉加载、二级刷新、淘宝二楼、RefreshLayout、OverScroll，Android智能下拉刷新框架，支持越界回弹、越界拖动，具有极强的扩展性，集成了几十种炫酷的Header和 Footer。</string>
+    <string name="detail_Fragmentation">A powerful library that manage Fragment for Android!</string>
+    <string name="detail_FlowLayout">Android流式布局，支持单选、多选等，适合用于产品标签等。</string>
+    <string name="detail_Banner">Android广告图片轮播控件，支持无限循环和多种主题，可以灵活设置轮播样式、动画、轮播和切换时间、位置、图片加载框架等！</string>
+    <string name="detail_OXChart">各种自定义图表库，使用简单，支持扩展</string>
+    <string name="detail_MaterialAbout">It\'s a material-design about screen to use on your Android apps. A developer profile and application information easy to integrate. 🔖</string>
     <string name="detail_ImmersionBar">android 4.4以上沉浸式状态栏和沉浸式导航栏管理，包括状态栏字体颜色，适用于Activity、Fragment、DialogFragment、Dialog，并且适配刘海屏，适配软键盘弹出等问题，一句代码轻松实现，以及对bar的其他设置，详见README</string>
-    <string name="detail_Dialog">🔥空祖家的对话框工具</string>
-    <string name="detail_TitleBar">A simple generic title bar</string>
-    <string name="detail_ToastUtils">This is a very functional Toast</string>
     <string name="detail_XXPermissions">Android 6.0 permissions adaptation framework</string>
     <string name="detail_AndroidUtilCode">🔥 Android developers should collect the following utils(updating).</string>
-    <string name="detail_MultipleStatusView">一个支持多种状态的自定义View,可以方便的切换到：加载中视图、错误视图、空数据视图、网络异常视图、内容视图。</string>
-    <string name="detail_BGASwipeBackLayout_Android">Android Activity 滑动返回。支持微信滑动返回样式、横屏滑动返回、全屏滑动返回</string>
 
     <!-- 设置 -->
     <string name="setting_text">设置</string>
