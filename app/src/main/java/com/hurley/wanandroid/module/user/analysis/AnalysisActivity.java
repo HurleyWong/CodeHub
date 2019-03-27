@@ -29,7 +29,7 @@ import butterknife.BindView;
  * </pre>
  */
 @Route(path = PathContainer.ANALYSIS)
-public class AnalysisActivity extends BaseActivity<AnalysisPresenter> implements AnalysisContract.View {
+public class AnalysisActivity extends BaseActivity {
 
     @BindView(R.id.tb_analysis)
     TabLayout mTbAnalysis;
@@ -46,7 +46,7 @@ public class AnalysisActivity extends BaseActivity<AnalysisPresenter> implements
 
     @Override
     protected void initInjector() {
-        mActivityComponent.inject(this);
+
     }
 
     @Override

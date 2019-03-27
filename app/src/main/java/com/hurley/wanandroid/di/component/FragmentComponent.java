@@ -56,7 +56,4 @@ public interface FragmentComponent {
 
     void inject(ProjectArticleListFragment fragment);
 
-    void inject(AnalysisWeekFragment fragment);
-
-    void inject(AnalysisMonthFragment fragment);
 }

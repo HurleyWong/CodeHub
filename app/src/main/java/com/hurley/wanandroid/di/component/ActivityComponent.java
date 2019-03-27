@@ -50,8 +50,6 @@ public interface ActivityComponent {
 
     void inject(CollectionActivity activity);
 
-    void inject(AnalysisActivity activity);
-
     void inject(LoadingDataActivity activity);
 
     void inject(SettingActivity activity);

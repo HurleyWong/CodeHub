@@ -4,18 +4,19 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.hurley.wanandroid.R;
-import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseFragment;
+import com.hurley.wanandroid.bean.ArticleNumBean;
 import com.hurley.wanandroid.bean.PieBean;
 import com.openxu.cview.chart.barchart.BarVerticalChart;
 import com.openxu.cview.chart.bean.BarBean;
 import com.openxu.cview.chart.piechart.PieChartLayout;
 import com.openxu.utils.DensityUtil;
+
+import org.litepal.LitePal;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -32,7 +33,7 @@ import butterknife.BindView;
  *      desc    : 一周的分析界面
  * </pre>
  */
-public class AnalysisWeekFragment extends BaseFragment<AnalysisWeekPresenter> implements AnalysisWeekContract.View {
+public class AnalysisWeekFragment extends BaseFragment {
 
     @BindView(R.id.pcl_analysis_week)
     PieChartLayout mPclAnalysis;
@@ -56,53 +57,33 @@ public class AnalysisWeekFragment extends BaseFragment<AnalysisWeekPresenter> im
 
     @Override
     protected void initInjector() {
-        mFragmentComponent.inject(this);
+
     }
 
     @Override
     protected void initView(View view) {
-        //mPresenter.getAllArticlesInWeek();
 
-        //从首选项中取到数据，并添加到集合中
-        int ui = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.UI);
-        int JNI = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.JNI);
-        int components = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.COMPONENTS);
-        int commCtrls = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.COMM_CTRLS);
-        int ctrls = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.CTRLS);
-        int projects = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.PROJECTS);
-        int data = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.DATA);
-        int hardware = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.HARDWARE);
-        int knowledge = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.KNOWLEDAGE);
-        int image = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.IMAGE);
-        int platforms = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.PLATFORMS);
-        int Kotlin = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.KOTLIN);
-        int Jetpack = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.JETPACK);
-        int anim = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.ANIM);
-        int framework = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.FRAMEWORK);
-        int Java = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.JAVA);
-        int media = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.MEDIA);
-        int net = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.NET);
-        int dev = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.DEV);
+        List<ArticleNumBean> list = LitePal.findAll(ArticleNumBean.class);
 
-        systemNum.add(ui);
-        systemNum.add(JNI);
-        systemNum.add(components);
-        systemNum.add(commCtrls);
-        systemNum.add(ctrls);
-        systemNum.add(projects);
-        systemNum.add(data);
-        systemNum.add(hardware);
-        systemNum.add(knowledge);
-        systemNum.add(image);
-        systemNum.add(platforms);
-        systemNum.add(Kotlin);
-        systemNum.add(Jetpack);
-        systemNum.add(anim);
-        systemNum.add(framework);
-        systemNum.add(Java);
-        systemNum.add(media);
-        systemNum.add(net);
-        systemNum.add(dev);
+        systemNum.add(list.get(list.size() - 1).getUI());
+        systemNum.add(list.get(list.size() - 1).getJNI());
+        systemNum.add(list.get(list.size() - 1).getComponents());
+        systemNum.add(list.get(list.size() - 1).getCommCtrls());
+        systemNum.add(list.get(list.size() - 1).getCtrls());
+        systemNum.add(list.get(list.size() - 1).getProjects());
+        systemNum.add(list.get(list.size() - 1).getData());
+        systemNum.add(list.get(list.size() - 1).getHard());
+        systemNum.add(list.get(list.size() - 1).getKnowledge());
+        systemNum.add(list.get(list.size() - 1).getImage());
+        systemNum.add(list.get(list.size() - 1).getPlatforms());
+        systemNum.add(list.get(list.size() - 1).getKotlin());
+        systemNum.add(list.get(list.size() - 1).getJetpack());
+        systemNum.add(list.get(list.size() - 1).getAnim());
+        systemNum.add(list.get(list.size() - 1).getFramework());
+        systemNum.add(list.get(list.size() - 1).getJava());
+        systemNum.add(list.get(list.size() - 1).getMedia());
+        systemNum.add(list.get(list.size() - 1).getNet());
+        systemNum.add(list.get(list.size() - 1).getDev());
         LogUtils.e(systemNum);
 
         //去除掉不需要的文章体系

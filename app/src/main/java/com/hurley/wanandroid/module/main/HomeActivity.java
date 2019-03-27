@@ -13,12 +13,12 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseActivity;
+import com.hurley.wanandroid.bean.ArticleNumBean;
 import com.hurley.wanandroid.event.LoginEvent;
 import com.hurley.wanandroid.event.LogoutEvent;
 import com.hurley.wanandroid.module.index.IndexFragment;
@@ -28,6 +28,8 @@ import com.hurley.wanandroid.module.user.UserFragment;
 import com.hurley.wanandroid.module.wechat.WechatFragment;
 import com.hurley.wanandroid.net.callback.RxBus;
 
+
+import org.litepal.LitePal;
 
 import butterknife.BindView;
 import me.yokeyword.fragmentation.ISupportFragment;
@@ -188,6 +190,7 @@ public class HomeActivity extends BaseActivity<HomePresenter>
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.home_website) {
             //点击热搜以及常用网站
+            LitePal.deleteAll(ArticleNumBean.class);
 
         } else if (item.getItemId() == R.id.home_search) {
             //点击搜索

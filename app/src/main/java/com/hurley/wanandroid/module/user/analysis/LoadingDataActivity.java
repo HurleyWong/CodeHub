@@ -41,8 +41,8 @@ public class LoadingDataActivity extends BaseActivity<LoadingDataPresenter> impl
 
     @Override
     protected void initView() {
-        mPresenter.getAllArticlesInMonth();
-        mPresenter.getAllArticlesInWeek();
+        assert mPresenter != null;
+        mPresenter.getAllArticles();
 
 
         mLoadingView.addBitmap(R.mipmap.ic_git);

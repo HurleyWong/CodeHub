@@ -10,6 +10,7 @@ import com.hurley.wanandroid.api.ApiService;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseBean;
 import com.hurley.wanandroid.base.BasePresenter;
+import com.hurley.wanandroid.bean.ArticleNumBean;
 import com.hurley.wanandroid.net.RetrofitManager;
 import com.hurley.wanandroid.net.callback.RxSchedulers;
 
@@ -78,13 +79,18 @@ public class LoadingDataPresenter extends BasePresenter<LoadingDataContract.View
     private int mNetMonth = 0;
     private int mDevMonth = 0;
 
+    private String articleDate;
+    private String articleTitle;
+    private String articleChapter;
+    private String articleSuperChapter;
+
     @Inject
     public LoadingDataPresenter() {}
 
     @SuppressLint("CheckResult")
     @Override
-    public void getAllArticlesInWeek() {
-        for (mPage = 0; mPage < totalPage - 300; mPage ++) {
+    public void getAllArticles() {
+        for (mPage = 0; mPage < totalPage; mPage ++) {
             RetrofitManager.create(ApiService.class)
                     .getIndexArticles(mPage)
                     .compose(RxSchedulers.applySchedulers())
@@ -92,10 +98,10 @@ public class LoadingDataPresenter extends BasePresenter<LoadingDataContract.View
                     .subscribe(response -> {
                         if (response.getErrorCode() == BaseBean.SUCCESS) {
                             for (int i = 0; i < response.getData().getSize(); i ++) {
-                                String articleDate = response.getData().getDatas().get(i).getNiceDate();
-                                String articleTitle = response.getData().getDatas().get(i).getTitle();
-                                String articleCharpter = response.getData().getDatas().get(i).getChapterName();
-                                String articleSuperCharpter = response.getData().getDatas().get(i).getsuperChapterName();
+                                articleDate = response.getData().getDatas().get(i).getNiceDate();
+                                articleTitle = response.getData().getDatas().get(i).getTitle();
+                                articleChapter = response.getData().getDatas().get(i).getChapterName();
+                                articleSuperChapter = response.getData().getDatas().get(i).getsuperChapterName();
                                 //计算与今天相隔的天数
                                 if (RegexUtils.isDate(articleDate)) {
                                     //如果是正确的日期格式
@@ -104,7 +110,7 @@ public class LoadingDataPresenter extends BasePresenter<LoadingDataContract.View
                                     if (intervalDays <= 7) {
                                         //获取一周内的文章
                                         LogUtils.e("日期：" + articleDate);
-                                        switch (articleSuperCharpter) {
+                                        switch (articleSuperChapter) {
                                             case Constants.UI:
                                                 mUI ++;
                                                 break;
@@ -166,121 +172,10 @@ public class LoadingDataPresenter extends BasePresenter<LoadingDataContract.View
                                                 break;
                                         }
                                     }
-                                } else {
-                                    LogUtils.e("标题：" + articleTitle + "，体系：" + articleCharpter + "，模块：" + articleSuperCharpter);
-                                    switch (articleSuperCharpter) {
-                                        case Constants.UI:
-                                            mUI++;
-                                            break;
-                                        case Constants.JNI:
-                                            mJNI++;
-                                            break;
-                                        case Constants.COMPONENTS:
-                                            mComponents++;
-                                            break;
-                                        case Constants.COMM_CTRLS:
-                                            mCommCtrls++;
-                                            break;
-                                        case Constants.CTRLS:
-                                            mCtrls++;
-                                            break;
-                                        case Constants.PROJECTS:
-                                            mProjects++;
-                                            break;
-                                        case Constants.DATA:
-                                            mData++;
-                                            break;
-                                        case Constants.HARDWARE:
-                                            mHard++;
-                                            break;
-                                        case Constants.KNOWLEDAGE:
-                                            mKnowledge++;
-                                            break;
-                                        case Constants.IMAGE:
-                                            mImage++;
-                                            break;
-                                        case Constants.PLATFORMS:
-                                            mPlatforms++;
-                                            break;
-                                        case Constants.KOTLIN:
-                                            mKotlin++;
-                                            break;
-                                        case Constants.JETPACK:
-                                            mJetpack++;
-                                            break;
-                                        case Constants.ANIM:
-                                            mAnim++;
-                                            break;
-                                        case Constants.FRAMEWORK:
-                                            LogUtils.e("加1");
-                                            mFramework++;
-                                            break;
-                                        case Constants.JAVA:
-                                            mJava++;
-                                            break;
-                                        case Constants.MEDIA:
-                                            mMedia++;
-                                            break;
-                                        case Constants.NET:
-                                            mNet++;
-                                            break;
-                                        case Constants.DEV:
-                                            mDev++;
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                }
-                            }
-                            //将文章数量存储到首选项中
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.UI, mUI);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.JNI, mJNI);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.COMPONENTS, mComponents);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.COMM_CTRLS, mCommCtrls);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.CTRLS, mCtrls);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.PROJECTS, mProjects);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.DATA, mData);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.HARDWARE, mHard);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.KNOWLEDAGE, mKnowledge);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.IMAGE, mImage);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.PLATFORMS, mPlatforms);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.KOTLIN, mKotlin);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.JETPACK, mJetpack);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.ANIM, mAnim);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.FRAMEWORK, mFramework);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.JAVA, mJava);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.MEDIA, mMedia);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.NET, mNet);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.DEV, mDev);
-                        }
-                    });
-        }
-    }
-
-    @SuppressLint("CheckResult")
-    @Override
-    public void getAllArticlesInMonth() {
-        for (mPage = 0; mPage < totalPage; mPage ++) {
-            RetrofitManager.create(ApiService.class)
-                    .getIndexArticles(mPage)
-                    .compose(RxSchedulers.applySchedulers())
-                    .compose(mView.bindToLife())
-                    .subscribe(response -> {
-                        if (response.getErrorCode() == BaseBean.SUCCESS) {
-                            for (int i = 0; i < response.getData().getSize(); i ++) {
-                                String articleDate = response.getData().getDatas().get(i).getNiceDate();
-                                String articleTitle = response.getData().getDatas().get(i).getTitle();
-                                String articleCharpter = response.getData().getDatas().get(i).getChapterName();
-                                String articleSuperCharpter = response.getData().getDatas().get(i).getsuperChapterName();
-                                //计算与今天相隔的天数
-                                if (RegexUtils.isDate(articleDate)) {
-                                    //如果是正确的日期格式
-                                    String strInterDays = TimeUtils.getFitTimeSpanByNow(articleDate+ " 00:00:00", 1);
-                                    int intervalDays = Integer.parseInt(strInterDays.substring(0, strInterDays.length() - 1));
                                     if (intervalDays <= 31) {
                                         //获取一周内的文章
                                         LogUtils.e("日期：" + articleDate);
-                                        switch (articleSuperCharpter) {
+                                        switch (articleSuperChapter) {
                                             case Constants.UI:
                                                 mUIMonth ++;
                                                 break;
@@ -343,64 +238,82 @@ public class LoadingDataPresenter extends BasePresenter<LoadingDataContract.View
                                         }
                                     }
                                 } else {
-                                    LogUtils.e("标题：" + articleTitle + "，体系：" + articleCharpter + "，模块：" + articleSuperCharpter);
-                                    switch (articleSuperCharpter) {
+                                    LogUtils.e("标题：" + articleTitle + "，体系：" + articleChapter + "，模块：" + articleSuperChapter);
+                                    switch (articleSuperChapter) {
                                         case Constants.UI:
+                                            mUI++;
                                             mUIMonth++;
                                             break;
                                         case Constants.JNI:
+                                            mJNI++;
                                             mJNIMonth++;
                                             break;
                                         case Constants.COMPONENTS:
+                                            mComponents++;
                                             mComponentsMonth++;
                                             break;
                                         case Constants.COMM_CTRLS:
+                                            mCommCtrls++;
                                             mCommCtrlsMonth++;
                                             break;
                                         case Constants.CTRLS:
+                                            mCtrls++;
                                             mCtrlsMonth++;
                                             break;
                                         case Constants.PROJECTS:
+                                            mProjects++;
                                             mProjectsMonth++;
                                             break;
                                         case Constants.DATA:
+                                            mData++;
                                             mDataMonth++;
                                             break;
                                         case Constants.HARDWARE:
+                                            mHard++;
                                             mHardMonth++;
                                             break;
                                         case Constants.KNOWLEDAGE:
+                                            mKnowledge++;
                                             mKnowledgeMonth++;
                                             break;
                                         case Constants.IMAGE:
+                                            mImage++;
                                             mImageMonth++;
                                             break;
                                         case Constants.PLATFORMS:
+                                            mPlatforms++;
                                             mPlatformsMonth++;
                                             break;
                                         case Constants.KOTLIN:
+                                            mKotlin++;
                                             mKotlinMonth++;
                                             break;
                                         case Constants.JETPACK:
+                                            mJetpack++;
                                             mJetpackMonth++;
                                             break;
                                         case Constants.ANIM:
+                                            mAnim++;
                                             mAnimMonth++;
                                             break;
                                         case Constants.FRAMEWORK:
-                                            LogUtils.e("加1");
+                                            mFramework++;
                                             mFrameworkMonth++;
                                             break;
                                         case Constants.JAVA:
+                                            mJava++;
                                             mJavaMonth++;
                                             break;
                                         case Constants.MEDIA:
+                                            mMedia++;
                                             mMediaMonth++;
                                             break;
                                         case Constants.NET:
+                                            mNet++;
                                             mNetMonth++;
                                             break;
                                         case Constants.DEV:
+                                            mDev++;
                                             mDevMonth++;
                                             break;
                                         default:
@@ -409,28 +322,50 @@ public class LoadingDataPresenter extends BasePresenter<LoadingDataContract.View
                                 }
                             }
 
-                            //将文章数量存储到首选项中
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.UI_MONTH, mUIMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.JNI_MONTH, mJNIMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.COMPONENTS_MONTH, mComponentsMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.COMM_CTRLS_MONTH, mCommCtrlsMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.CTRLS_MONTH, mCtrlsMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.PROJECTS_MONTH, mProjectsMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.DATA_MONTH, mDataMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.HARDWARE_MONTH, mHardMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.KNOWLEDAGE_MONTH, mKnowledgeMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.IMAGE_MONTH, mImageMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.PLATFORMS_MONTH, mPlatformsMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.KOTLIN_MONTH, mKotlinMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.JETPACK_MONTH, mJetpackMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.ANIM_MONTH, mAnimMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.FRAMEWORK_MONTH, mFrameworkMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.JAVA_MONTH, mJavaMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.MEDIA_MONTH, mMediaMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.NET_MONTH, mNetMonth);
-                            SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.DEV_MONTH, mDevMonth);
+                            //将文章数量存储到数据库中
+                            ArticleNumBean articleNumBean = new ArticleNumBean();
+                            articleNumBean.setUI(mUI);
+                            articleNumBean.setJNI(mJNI);
+                            articleNumBean.setComponents(mComponents);
+                            articleNumBean.setCtrls(mCtrls);
+                            articleNumBean.setProjects(mProjects);
+                            articleNumBean.setData(mData);
+                            articleNumBean.setHard(mHard);
+                            articleNumBean.setKnowledge(mKnowledge);
+                            articleNumBean.setImage(mImage);
+                            articleNumBean.setPlatforms(mPlatforms);
+                            articleNumBean.setKotlin(mKotlin);
+                            articleNumBean.setJetpack(mJetpack);
+                            articleNumBean.setAnim(mAnim);
+                            articleNumBean.setFramework(mFramework);
+                            articleNumBean.setJava(mJava);
+                            articleNumBean.setMedia(mMedia);
+                            articleNumBean.setNet(mNet);
+                            articleNumBean.setDev(mDev);
+                            articleNumBean.save();
+
+                            articleNumBean.setUIMonth(mUIMonth);
+                            articleNumBean.setJNIMonth(mJNIMonth);
+                            articleNumBean.setComponentsMonth(mComponentsMonth);
+                            articleNumBean.setCtrlsMonth(mCtrlsMonth);
+                            articleNumBean.setProjectsMonth(mProjectsMonth);
+                            articleNumBean.setDataMonth(mDataMonth);
+                            articleNumBean.setHardMonth(mHardMonth);
+                            articleNumBean.setKnowledgeMonth(mKnowledgeMonth);
+                            articleNumBean.setImageMonth(mImageMonth);
+                            articleNumBean.setPlatformsMonth(mPlatformsMonth);
+                            articleNumBean.setKotlinMonth(mKotlinMonth);
+                            articleNumBean.setJetpackMonth(mJetpackMonth);
+                            articleNumBean.setAnimMonth(mAnimMonth);
+                            articleNumBean.setFrameworkMonth(mFrameworkMonth);
+                            articleNumBean.setJavaMonth(mJavaMonth);
+                            articleNumBean.setMediaMonth(mMediaMonth);
+                            articleNumBean.setNetMonth(mNetMonth);
+                            articleNumBean.setDevMonth(mDevMonth);
+                            articleNumBean.save();
                         }
                     });
         }
+
     }
 }

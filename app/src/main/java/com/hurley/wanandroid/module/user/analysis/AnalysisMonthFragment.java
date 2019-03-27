@@ -11,11 +11,14 @@ import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.app.Constants;
 import com.hurley.wanandroid.base.BaseFragment;
 import com.hurley.wanandroid.bean.ArticleBean;
+import com.hurley.wanandroid.bean.ArticleNumBean;
 import com.hurley.wanandroid.bean.RoseBean;
 import com.openxu.cview.chart.barchart.BarVerticalChart;
 import com.openxu.cview.chart.bean.BarBean;
 import com.openxu.cview.chart.rosechart.NightingaleRoseChart;
 import com.openxu.utils.DensityUtil;
+
+import org.litepal.LitePal;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,7 +34,7 @@ import butterknife.BindView;
  *      desc    : 一月的分析界面
  * </pre>
  */
-public class AnalysisMonthFragment extends BaseFragment<AnalysisMonthPresenter> implements AnalysisMonthContract.View {
+public class AnalysisMonthFragment extends BaseFragment {
 
     @BindView(R.id.nrc_analysis_month)
     NightingaleRoseChart mNrcAnalysis;
@@ -48,53 +51,33 @@ public class AnalysisMonthFragment extends BaseFragment<AnalysisMonthPresenter> 
 
     @Override
     protected void initInjector() {
-        mFragmentComponent.inject(this);
+
     }
 
     @Override
     protected void initView(View view) {
-        //mPresenter.getAllArticlesInMonth();
 
-        //从首选项中取到数据，并添加到集合中
-        int ui = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.UI_MONTH);
-        int JNI = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.JNI_MONTH);
-        int components = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.COMPONENTS_MONTH);
-        int commCtrls = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.COMM_CTRLS_MONTH);
-        int ctrls = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.CTRLS_MONTH);
-        int projects = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.PROJECTS_MONTH);
-        int data = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.DATA_MONTH);
-        int hardware = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.HARDWARE_MONTH);
-        int knowledge = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.KNOWLEDAGE_MONTH);
-        int image = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.IMAGE_MONTH);
-        int platforms = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.PLATFORMS_MONTH);
-        int Kotlin = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.KOTLIN_MONTH);
-        int Jetpack = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.JETPACK_MONTH);
-        int anim = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.ANIM_MONTH);
-        int framework = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.FRAMEWORK_MONTH);
-        int Java = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.JAVA_MONTH);
-        int media = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.MEDIA_MONTH);
-        int net = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.NET_MONTH);
-        int dev = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.DEV_MONTH);
+        List<ArticleNumBean> list = LitePal.findAll(ArticleNumBean.class);
 
-        systemNum.add(ui);
-        systemNum.add(JNI);
-        systemNum.add(components);
-        systemNum.add(commCtrls);
-        systemNum.add(ctrls);
-        systemNum.add(projects);
-        systemNum.add(data);
-        systemNum.add(hardware);
-        systemNum.add(knowledge);
-        systemNum.add(image);
-        systemNum.add(platforms);
-        systemNum.add(Kotlin);
-        systemNum.add(Jetpack);
-        systemNum.add(anim);
-        systemNum.add(framework);
-        systemNum.add(Java);
-        systemNum.add(media);
-        systemNum.add(net);
-        systemNum.add(dev);
+        systemNum.add(list.get(list.size() - 1).getUIMonth());
+        systemNum.add(list.get(list.size() - 1).getJNIMonth());
+        systemNum.add(list.get(list.size() - 1).getComponentsMonth());
+        systemNum.add(list.get(list.size() - 1).getCommCtrlsMonth());
+        systemNum.add(list.get(list.size() - 1).getCtrlsMonth());
+        systemNum.add(list.get(list.size() - 1).getProjectsMonth());
+        systemNum.add(list.get(list.size() - 1).getDataMonth());
+        systemNum.add(list.get(list.size() - 1).getHardMonth());
+        systemNum.add(list.get(list.size() - 1).getKnowledgeMonth());
+        systemNum.add(list.get(list.size() - 1).getImageMonth());
+        systemNum.add(list.get(list.size() - 1).getPlatformsMonth());
+        systemNum.add(list.get(list.size() - 1).getKotlinMonth());
+        systemNum.add(list.get(list.size() - 1).getJetpackMonth());
+        systemNum.add(list.get(list.size() - 1).getAnimMonth());
+        systemNum.add(list.get(list.size() - 1).getFrameworkMonth());
+        systemNum.add(list.get(list.size() - 1).getJavaMonth());
+        systemNum.add(list.get(list.size() - 1).getMediaMonth());
+        systemNum.add(list.get(list.size() - 1).getNetMonth());
+        systemNum.add(list.get(list.size() - 1).getDevMonth());
 
         //去除掉不需要的文章体系
         filterSuperChapter(systemNames);

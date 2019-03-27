@@ -15,6 +15,9 @@ import com.hurley.wanandroid.di.component.DaggerApplicationComponent;
 import com.hurley.wanandroid.di.module.ApplicationModule;
 import com.hurley.wanandroid.utils.ConfigUtil;
 
+import org.litepal.LitePal;
+import org.litepal.LitePalApplication;
+
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 import me.yokeyword.fragmentation.Fragmentation;
 
@@ -48,6 +51,8 @@ public class App extends Application {
         instance = this;
         initApplicationComponent();
 
+        //初始化LitePal
+        LitePal.initialize(this);
 
         /**
          * 必须在Application的onCreate方法中执行BGASwipeBackHelper.init来初始化滑动返回

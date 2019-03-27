@@ -10,7 +10,7 @@ import com.hurley.wanandroid.base.BaseContract;
  *      desc    :
  * </pre>
  */
-public class LoadingDataContract {
+public interface LoadingDataContract {
 
     interface View extends BaseContract.BaseView {
 
@@ -19,14 +19,8 @@ public class LoadingDataContract {
     interface Presenter extends BaseContract.BasePresenter<LoadingDataContract.View> {
 
         /**
-         * 获取一周内所有文章的信息
+         * 获取所有文章的信息
          */
-        void getAllArticlesInWeek();
-
-        /**
-         * 获取一月内所有文章的信息
-         */
-        void getAllArticlesInMonth();
-
+        void getAllArticles();
     }
 }
