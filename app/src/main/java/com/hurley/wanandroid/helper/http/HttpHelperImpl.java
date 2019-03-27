@@ -228,7 +228,7 @@ public class HttpHelperImpl implements HttpHelper{
      * @return
      */
     @Override
-    public Observable<BaseBean<PageBean<ArticleBean>>> getSearchArticles(int page, String k) {
+    public Observable<BaseBean<ArticleBean>> getSearchArticles(int page, String k) {
         return mApiService.getSearchArticles(page, k);
     }
 

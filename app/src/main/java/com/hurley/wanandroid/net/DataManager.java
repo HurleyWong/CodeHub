@@ -148,7 +148,7 @@ public class DataManager implements HttpHelper, DbHelper, PreferenceHelper {
     }
 
     @Override
-    public Observable<BaseBean<PageBean<ArticleBean>>> getSearchArticles(int page, String k) {
+    public Observable<BaseBean<ArticleBean>> getSearchArticles(int page, String k) {
         return mHttpHelper.getSearchArticles(page, k);
     }
 

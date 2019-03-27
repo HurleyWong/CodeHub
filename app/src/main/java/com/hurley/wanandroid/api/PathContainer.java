@@ -30,6 +30,8 @@ public class PathContainer {
 
     public static final String COLLECTION = "/collect/CollectionActivity";
 
+    public static final String SEARCH = "/search/SearchActivity";
+
     public static final String ANALYSIS = "/analysis/AnalysisActivity";
 
     public static final String SETTING = "/setting/SettingActivity";

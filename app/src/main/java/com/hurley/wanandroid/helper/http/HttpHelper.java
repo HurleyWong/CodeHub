@@ -181,7 +181,7 @@ public interface HttpHelper {
      * @param k             关键字
      * @return              搜索的文章数据
      */
-    Observable<BaseBean<PageBean<ArticleBean>>> getSearchArticles(int page, String k);
+    Observable<BaseBean<ArticleBean>> getSearchArticles(int page, String k);
 
     /**
      * 获取公众号列表

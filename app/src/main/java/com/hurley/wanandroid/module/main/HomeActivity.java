@@ -190,11 +190,9 @@ public class HomeActivity extends BaseActivity<HomePresenter>
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.home_website) {
             //点击热搜以及常用网站
-            LitePal.deleteAll(ArticleNumBean.class);
-
         } else if (item.getItemId() == R.id.home_search) {
             //点击搜索
-
+            ARouter.getInstance().build(PathContainer.SEARCH).navigation();
         }
         return super.onOptionsItemSelected(item);
     }

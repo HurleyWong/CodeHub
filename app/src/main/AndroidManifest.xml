@@ -95,5 +95,10 @@
             android:name=".module.user.analysis.LoadingDataActivity"
             android:launchMode="singleTop" />
 
+        <!-- 搜索界面 -->
+        <activity
+            android:name=".module.search.SearchActivity"
+            android:launchMode="singleTop" />
+
     </application>
 </manifest>

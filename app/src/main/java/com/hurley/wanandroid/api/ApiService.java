@@ -279,7 +279,7 @@ public interface ApiService {
      */
     @POST(UrlContainer.SEARCH)
     @FormUrlEncoded
-    Observable<BaseBean<PageBean<ArticleBean>>> getSearchArticles(@Path("page") int page,
+    Observable<BaseBean<ArticleBean>> getSearchArticles(@Path("page") int page,
                                                                   @Field("k") String k);
 
     /**
