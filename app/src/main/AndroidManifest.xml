@@ -70,6 +70,7 @@
             android:name=".module.user.collect.CollectionActivity"
             android:launchMode="singleTop" />
 
+        <!-- 分析界面 -->
         <activity
             android:name=".module.user.analysis.AnalysisActivity"
             android:launchMode="singleTop" />
@@ -84,11 +85,6 @@
             android:name=".module.user.about.AboutActivity"
             android:launchMode="singleTop" />
 
-        <!-- 开发者界面 -->
-        <activity
-            android:name=".module.user.about.AuthorActivity"
-            android:launchMode="singleTop" />
-
         <!-- 浏览器界面 -->
         <activity
             android:name=".module.web.WebActivity"
@@ -99,9 +95,5 @@
             android:name=".module.user.analysis.LoadingDataActivity"
             android:launchMode="singleTop" />
 
-        <!-- 开源协议界面 -->
-        <activity
-            android:name=".module.user.about.OpenSourceActivity"
-            android:launchMode="singleTop" />
     </application>
 </manifest>

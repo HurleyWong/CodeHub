@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hurley.wanandroid.R;
 import com.hurley.wanandroid.api.PathContainer;
 import com.hurley.wanandroid.base.BaseActivity;
@@ -104,7 +105,7 @@ public class AboutActivity extends BaseActivity {
                 .setWrapScrollView(true)
                 .setShowAsCard(true);
 
-        AboutView view = builder.build();
+        AboutView aboutView = builder.build();
 
         TextView textView = new TextView(this);
         RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -123,17 +124,16 @@ public class AboutActivity extends BaseActivity {
         mAdapter = new OpenSourceAdapter(R.layout.item_open_source, mList);
         //给RecyclerView绘制适配器
         mRvOpenSource.setAdapter(mAdapter);
-        mAdapter.setNewData(getListData());
-        mAdapter.addHeaderView(view);
+        mAdapter.setNewData(getListData(mList));
+        mAdapter.addHeaderView(aboutView);
         mAdapter.addHeaderView(textView);
 
-        /*//item点击事件
-        mAdapter.setOnItemClickListener(((adapter, view, position) ->
-                //打开对应框架的Github链接
-                IntentUtil.getInstance(WebActivity.class)
-                        .putString("https://github.com/" + mList.get(position).getAuthor() + "/" + mList.get(position).getName())
-                        .startActivity(this)
-        ));*/
+        //item点击事件
+        mAdapter.setOnItemClickListener((adapter, view, position) -> {
+            //打开对应框架的Github链接
+            String url = "https://github.com/" + mList.get(position).getAuthor() + "/" + mList.get(position).getName();
+            WebActivity.startWeb(url);
+        });
 
     }
 
@@ -150,8 +150,7 @@ public class AboutActivity extends BaseActivity {
      * 添加数据
      * @return
      */
-    private List<OpenSourceBean> getListData() {
-        List<OpenSourceBean> list = new ArrayList<>();
+    private List<OpenSourceBean> getListData(List<OpenSourceBean> list) {
         list.add(new OpenSourceBean(getString(R.string.license_ButterKnife), getString(R.string.author_ButterKnife), getString(R.string.detail_ButterKnife)));
         list.add(new OpenSourceBean(getString(R.string.license_dagger), getString(R.string.author_dagger), getString(R.string.detail_dagger)));
         list.add(new OpenSourceBean(getString(R.string.license_OkHttp), getString(R.string.author_OkHttp), getString(R.string.detail_OkHttp)));
