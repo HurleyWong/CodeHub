@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.hurley.wanandroid"
+        applicationId "com.hurley.codehub"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -43,7 +43,7 @@ greendao {
     //这行代码与高版本gradle冲突，会报API 'variant.getJavaCompiler()'的warn，将在2019年末移除
     targetGenDir 'src/main/java'
     //设置DaoMaster、DaoSession、Dao包名
-    daoPackage 'com.hurley.wanandroid.dao'
+    daoPackage 'com.hurley.codehub.dao'
     //设置生成单元测试目录
     //targetGenDirTest
     //设置自动生成单元测试用例

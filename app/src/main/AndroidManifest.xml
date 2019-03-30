@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.hurley.wanandroid">
+    package="com.hurley.codehub">
 
     <!-- 外部存储读写权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".app.App"
+        android:name="com.hurley.codehub.app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -26,7 +26,7 @@
 
         <!-- 启动界面 -->
         <activity
-            android:name=".module.common.SplashActivity"
+            android:name="com.hurley.codehub.module.common.SplashActivity"
             android:theme="@style/SplashTheme">
 
             <!-- 程序入口 -->
@@ -40,64 +40,64 @@
 
         <!-- 引导页 -->
         <activity
-            android:name=".module.common.GuideActivity"
+            android:name="com.hurley.codehub.module.common.GuideActivity"
             android:theme="@style/GuideTheme"
             android:launchMode="singleTop" />
 
         <!-- 主页界面 -->
         <activity
-            android:name=".module.main.HomeActivity"
+            android:name="com.hurley.codehub.module.main.HomeActivity"
             android:alwaysRetainTaskState="true"
             android:launchMode="singleTop" />
 
         <!-- 登录界面 -->
         <activity
-            android:name=".module.user.login.LoginActivity"
+            android:name="com.hurley.codehub.module.user.login.LoginActivity"
             android:launchMode="singleTop" />
 
         <!-- 注册界面 -->
         <activity
-            android:name=".module.user.register.RegisterActivity"
+            android:name="com.hurley.codehub.module.user.register.RegisterActivity"
             android:launchMode="singleTop" />
 
         <!-- 知识体系详情界面 -->
         <activity
-            android:name=".module.system.SystemDetailActivity"
+            android:name="com.hurley.codehub.module.system.SystemDetailActivity"
             android:launchMode="singleTop" />
 
         <!-- 我的收藏界面 -->
         <activity
-            android:name=".module.user.collect.CollectionActivity"
+            android:name="com.hurley.codehub.module.user.collect.CollectionActivity"
             android:launchMode="singleTop" />
 
         <!-- 分析界面 -->
         <activity
-            android:name=".module.user.analysis.AnalysisActivity"
+            android:name="com.hurley.codehub.module.user.analysis.AnalysisActivity"
             android:launchMode="singleTop" />
 
         <!-- 设置界面 -->
         <activity
-            android:name=".module.user.setting.SettingActivity"
+            android:name="com.hurley.codehub.module.user.setting.SettingActivity"
             android:launchMode="singleTop" />
 
         <!-- 关于界面 -->
         <activity
-            android:name=".module.user.about.AboutActivity"
+            android:name="com.hurley.codehub.module.user.about.AboutActivity"
             android:launchMode="singleTop" />
 
         <!-- 浏览器界面 -->
         <activity
-            android:name=".module.web.WebActivity"
+            android:name="com.hurley.codehub.module.web.WebActivity"
             android:launchMode="singleTop" />
 
         <!-- 加载界面 -->
         <activity
-            android:name=".module.user.analysis.LoadingDataActivity"
+            android:name="com.hurley.codehub.module.user.analysis.LoadingDataActivity"
             android:launchMode="singleTop" />
 
         <!-- 搜索界面 -->
         <activity
-            android:name=".module.search.SearchActivity"
+            android:name="com.hurley.codehub.module.search.SearchActivity"
             android:launchMode="singleTop" />
 
     </application>

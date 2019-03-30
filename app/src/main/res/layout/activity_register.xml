@@ -35,7 +35,7 @@
         android:layout_margin="30dp"
         android:src="@mipmap/ic_logo" />
 
-    <com.hurley.wanandroid.widget.ClearEditText
+    <com.hurley.codehub.widget.ClearEditText
         android:id="@+id/et_register_username"
         style="@style/EditTextStyle"
         android:layout_width="match_parent"
@@ -51,7 +51,7 @@
         android:layout_marginLeft="@dimen/dp40"
         android:layout_marginRight="@dimen/dp40" />
 
-    <com.hurley.wanandroid.widget.ClearEditText
+    <com.hurley.codehub.widget.ClearEditText
         android:id="@+id/et_register_password"
         style="@style/EditTextStyle"
         android:layout_width="match_parent"
@@ -69,7 +69,7 @@
         android:layout_marginLeft="@dimen/dp40"
         android:layout_marginRight="@dimen/dp40" />
 
-    <com.hurley.wanandroid.widget.ClearEditText
+    <com.hurley.codehub.widget.ClearEditText
         android:id="@+id/et_register_confirm_password"
         style="@style/EditTextStyle"
         android:layout_width="match_parent"

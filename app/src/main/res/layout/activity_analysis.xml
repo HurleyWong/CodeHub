@@ -32,7 +32,7 @@
             app:tabMode="fixed" />
     </android.support.design.widget.AppBarLayout>
 
-    <com.hurley.wanandroid.widget.NoScrollViewPager
+    <com.hurley.codehub.widget.NoScrollViewPager
         android:id="@+id/vp_analysis"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

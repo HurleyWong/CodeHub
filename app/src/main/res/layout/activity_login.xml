@@ -36,7 +36,7 @@
         android:layout_margin="30dp"
         android:src="@mipmap/ic_logo" />
 
-    <com.hurley.wanandroid.widget.ClearEditText
+    <com.hurley.codehub.widget.ClearEditText
         android:id="@+id/et_login_username"
         style="@style/EditTextStyle"
         android:layout_width="match_parent"
@@ -52,7 +52,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp" />
 
-    <com.hurley.wanandroid.widget.ClearEditText
+    <com.hurley.codehub.widget.ClearEditText
         android:id="@+id/et_login_password"
         style="@style/EditTextStyle"
         android:layout_width="match_parent"
