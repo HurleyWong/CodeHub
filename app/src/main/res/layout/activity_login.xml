@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".module.user.login.LoginActivity">
+    tools:context=".module.wanandroid.core.user.login.LoginActivity">
 
 
     <android.support.design.widget.AppBarLayout

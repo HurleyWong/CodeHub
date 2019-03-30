@@ -7,7 +7,7 @@
     android:background="@color/colorBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".module.user.analysis.AnalysisWeekFragment">
+    tools:context=".module.wanandroid.core.user.analysis.AnalysisWeekFragment">
 
     <com.openxu.cview.chart.piechart.PieChartLayout
         android:id="@+id/pcl_analysis_week"

@@ -26,7 +26,7 @@
 
         <!-- 启动界面 -->
         <activity
-            android:name="com.hurley.codehub.module.common.SplashActivity"
+            android:name=".module.wanandroid.core.common.SplashActivity"
             android:theme="@style/SplashTheme">
 
             <!-- 程序入口 -->
@@ -40,64 +40,64 @@
 
         <!-- 引导页 -->
         <activity
-            android:name="com.hurley.codehub.module.common.GuideActivity"
+            android:name=".module.wanandroid.core.common.GuideActivity"
             android:theme="@style/GuideTheme"
             android:launchMode="singleTop" />
 
         <!-- 主页界面 -->
         <activity
-            android:name="com.hurley.codehub.module.main.HomeActivity"
+            android:name=".module.wanandroid.core.main.HomeActivity"
             android:alwaysRetainTaskState="true"
             android:launchMode="singleTop" />
 
         <!-- 登录界面 -->
         <activity
-            android:name="com.hurley.codehub.module.user.login.LoginActivity"
+            android:name=".module.wanandroid.core.user.login.LoginActivity"
             android:launchMode="singleTop" />
 
         <!-- 注册界面 -->
         <activity
-            android:name="com.hurley.codehub.module.user.register.RegisterActivity"
+            android:name=".module.wanandroid.core.user.register.RegisterActivity"
             android:launchMode="singleTop" />
 
         <!-- 知识体系详情界面 -->
         <activity
-            android:name="com.hurley.codehub.module.system.SystemDetailActivity"
+            android:name=".module.wanandroid.core.system.SystemDetailActivity"
             android:launchMode="singleTop" />
 
         <!-- 我的收藏界面 -->
         <activity
-            android:name="com.hurley.codehub.module.user.collect.CollectionActivity"
+            android:name=".module.wanandroid.core.user.collect.CollectionActivity"
             android:launchMode="singleTop" />
 
         <!-- 分析界面 -->
         <activity
-            android:name="com.hurley.codehub.module.user.analysis.AnalysisActivity"
+            android:name=".module.wanandroid.core.user.analysis.AnalysisActivity"
             android:launchMode="singleTop" />
 
         <!-- 设置界面 -->
         <activity
-            android:name="com.hurley.codehub.module.user.setting.SettingActivity"
+            android:name=".module.wanandroid.core.user.setting.SettingActivity"
             android:launchMode="singleTop" />
 
         <!-- 关于界面 -->
         <activity
-            android:name="com.hurley.codehub.module.user.about.AboutActivity"
+            android:name=".module.wanandroid.core.user.about.AboutActivity"
             android:launchMode="singleTop" />
 
         <!-- 浏览器界面 -->
         <activity
-            android:name="com.hurley.codehub.module.web.WebActivity"
+            android:name=".module.wanandroid.core.web.WebActivity"
             android:launchMode="singleTop" />
 
         <!-- 加载界面 -->
         <activity
-            android:name="com.hurley.codehub.module.user.analysis.LoadingDataActivity"
+            android:name=".module.wanandroid.core.user.analysis.LoadingDataActivity"
             android:launchMode="singleTop" />
 
         <!-- 搜索界面 -->
         <activity
-            android:name="com.hurley.codehub.module.search.SearchActivity"
+            android:name=".module.wanandroid.core.search.SearchActivity"
             android:launchMode="singleTop" />
 
     </application>

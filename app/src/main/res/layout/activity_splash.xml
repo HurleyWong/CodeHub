@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".module.common.SplashActivity">
+    tools:context=".module.wanandroid.core.common.SplashActivity">
 
     <ImageView
         android:id="@+id/iv_splash_bg"

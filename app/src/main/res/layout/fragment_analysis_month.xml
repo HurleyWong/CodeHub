@@ -7,7 +7,7 @@
     android:background="@color/colorBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".module.user.analysis.AnalysisMonthFragment">
+    tools:context=".module.wanandroid.core.user.analysis.AnalysisMonthFragment">
 
     <com.openxu.cview.chart.rosechart.NightingaleRoseChart
         android:id="@+id/nrc_analysis_month"

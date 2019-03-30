@@ -6,7 +6,7 @@
     android:background="@color/colorBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".module.user.analysis.AnalysisActivity">
+    tools:context=".module.wanandroid.core.user.analysis.AnalysisActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

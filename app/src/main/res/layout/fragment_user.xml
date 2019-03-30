@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".module.user.UserFragment">
+    tools:context=".module.wanandroid.core.user.UserFragment">
 
     <LinearLayout
         android:id="@+id/ll_login"

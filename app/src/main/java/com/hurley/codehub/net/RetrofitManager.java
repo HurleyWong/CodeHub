@@ -1,7 +1,7 @@
 package com.hurley.codehub.net;
 
 import com.blankj.utilcode.util.NetworkUtils;
-import com.hurley.codehub.api.UrlContainer;
+import com.hurley.codehub.api.WanAndroidUrlContainer;
 import com.hurley.codehub.app.App;
 
 
@@ -142,7 +142,7 @@ public class RetrofitManager {
      */
     public static <T> T create(Class<T> clazz) {
         //指定baseUrl
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(UrlContainer.baseUrl)
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(WanAndroidUrlContainer.baseUrl)
                 .client(getOkHttpClient())
                 //存储转化数据对象，设置返回的数据支持转换为Gson对象
                 .addConverterFactory(GsonConverterFactory.create())

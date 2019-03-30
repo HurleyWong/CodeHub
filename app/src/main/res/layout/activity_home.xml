@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    tools:context=".module.main.HomeActivity">
+    tools:context=".module.wanandroid.core.main.HomeActivity">
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/dl_home"

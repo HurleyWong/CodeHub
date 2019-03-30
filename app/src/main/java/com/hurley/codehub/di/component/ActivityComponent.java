@@ -7,14 +7,14 @@ import android.content.Context;
 import com.hurley.codehub.di.module.ActivityModule;
 import com.hurley.codehub.di.scope.ActivityScope;
 import com.hurley.codehub.di.scope.ContextLifeCycle;
-import com.hurley.codehub.module.main.HomeActivity;
-import com.hurley.codehub.module.search.SearchActivity;
-import com.hurley.codehub.module.user.analysis.LoadingDataActivity;
-import com.hurley.codehub.module.web.WebActivity;
-import com.hurley.codehub.module.user.collect.CollectionActivity;
-import com.hurley.codehub.module.user.login.LoginActivity;
-import com.hurley.codehub.module.user.register.RegisterActivity;
-import com.hurley.codehub.module.user.setting.SettingActivity;
+import com.hurley.codehub.module.wanandroid.core.main.HomeActivity;
+import com.hurley.codehub.module.wanandroid.core.search.SearchActivity;
+import com.hurley.codehub.module.wanandroid.core.user.analysis.LoadingDataActivity;
+import com.hurley.codehub.module.wanandroid.core.web.WebActivity;
+import com.hurley.codehub.module.wanandroid.core.user.collect.CollectionActivity;
+import com.hurley.codehub.module.wanandroid.core.user.login.LoginActivity;
+import com.hurley.codehub.module.wanandroid.core.user.register.RegisterActivity;
+import com.hurley.codehub.module.wanandroid.core.user.setting.SettingActivity;
 
 import dagger.Component;
 

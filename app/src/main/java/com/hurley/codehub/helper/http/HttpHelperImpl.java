@@ -2,7 +2,7 @@ package com.hurley.codehub.helper.http;
 
 
 
-import com.hurley.codehub.api.ApiService;
+import com.hurley.codehub.api.WanAndroidApiService;
 import com.hurley.codehub.base.BaseBean;
 import com.hurley.codehub.bean.ArticleBean;
 import com.hurley.codehub.bean.BannerBean;
@@ -32,11 +32,11 @@ import io.reactivex.Observable;
  */
 public class HttpHelperImpl implements HttpHelper{
 
-    private ApiService mApiService;
+    private WanAndroidApiService mWanAndroidApiService;
 
     @Inject
-    HttpHelperImpl(ApiService apiService) {
-        mApiService = apiService;
+    HttpHelperImpl(WanAndroidApiService wanAndroidApiService) {
+        mWanAndroidApiService = wanAndroidApiService;
     }
 
     /**
@@ -47,7 +47,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<UserBean>> login(String username, String password) {
-        return mApiService.login(username, password);
+        return mWanAndroidApiService.login(username, password);
     }
 
     /**
@@ -59,7 +59,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<UserBean>> register(String username, String password, String repassword) {
-        return mApiService.register(username, password, repassword);
+        return mWanAndroidApiService.register(username, password, repassword);
     }
 
     /**
@@ -68,7 +68,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<UserBean>> logout() {
-        return mApiService.logout();
+        return mWanAndroidApiService.logout();
     }
 
     /**
@@ -78,7 +78,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<ArticleBean>> getIndexArticles(int page) {
-        return mApiService.getIndexArticles(page);
+        return mWanAndroidApiService.getIndexArticles(page);
     }
 
     /**
@@ -87,7 +87,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<List<BannerBean>>> getIndexBanners() {
-        return mApiService.getIndexBanners();
+        return mWanAndroidApiService.getIndexBanners();
     }
 
     /**
@@ -96,7 +96,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<List<WebsiteBean>>> getWebsites() {
-        return mApiService.getWebsites();
+        return mWanAndroidApiService.getWebsites();
     }
 
     /**
@@ -105,7 +105,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<List<HotKeyBean>>> getHotKeys() {
-        return mApiService.getHotKeys();
+        return mWanAndroidApiService.getHotKeys();
     }
 
     /**
@@ -114,7 +114,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<List<SystemBean>>> getSystem() {
-        return mApiService.getSystem();
+        return mWanAndroidApiService.getSystem();
     }
 
     /**
@@ -125,7 +125,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<ArticleBean>> getSystemArticles(int page, int cid) {
-        return mApiService.getSystemArticles(page, cid);
+        return mWanAndroidApiService.getSystemArticles(page, cid);
     }
 
     /**
@@ -134,7 +134,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<List<NaviBean>>> getNavigation() {
-        return mApiService.getNavigation();
+        return mWanAndroidApiService.getNavigation();
     }
 
     /**
@@ -143,7 +143,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<List<ProjectBean>>> getProject() {
-        return mApiService.getProject();
+        return mWanAndroidApiService.getProject();
     }
 
     /**
@@ -154,7 +154,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<ArticleBean>> getProjectArticles(int page, int cid) {
-        return mApiService.getProjectArticles(page, cid);
+        return mWanAndroidApiService.getProjectArticles(page, cid);
     }
 
     /**
@@ -164,7 +164,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<PageBean<ArticleBean>>> getLatestProjectArticles(int page) {
-        return mApiService.getLatestProjectArticles(page);
+        return mWanAndroidApiService.getLatestProjectArticles(page);
     }
 
     /**
@@ -174,7 +174,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<ArticleBean>> getCollectArticles(int page) {
-        return mApiService.getCollectArticles(page);
+        return mWanAndroidApiService.getCollectArticles(page);
     }
 
     /**
@@ -184,7 +184,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean> collectInsideArticle(int id) {
-        return mApiService.collectInsideArticle(id);
+        return mWanAndroidApiService.collectInsideArticle(id);
     }
 
     /**
@@ -196,7 +196,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<CollectArticleBean>> collectOutsideArticle(String title, String author, String link) {
-        return mApiService.collectOutsideArticle(title, author, link);
+        return mWanAndroidApiService.collectOutsideArticle(title, author, link);
     }
 
     /**
@@ -207,7 +207,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<String>> unCollectArticle1(int id, int originId) {
-        return mApiService.unCollectArticle1(id, originId);
+        return mWanAndroidApiService.unCollectArticle1(id, originId);
     }
 
     /**
@@ -218,7 +218,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean> unCollectArticle2(int id, int originId) {
-        return mApiService.unCollectArticle2(id, originId);
+        return mWanAndroidApiService.unCollectArticle2(id, originId);
     }
 
     /**
@@ -229,7 +229,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<ArticleBean>> getSearchArticles(int page, String k) {
-        return mApiService.getSearchArticles(page, k);
+        return mWanAndroidApiService.getSearchArticles(page, k);
     }
 
     /**
@@ -238,7 +238,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<List<WxAccountBean>>> getWxAccounts() {
-        return mApiService.getWxAccounts();
+        return mWanAndroidApiService.getWxAccounts();
     }
 
     /**
@@ -249,7 +249,7 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<ArticleBean>> getWxAccountsHistory(int id, int page) {
-        return mApiService.getWxAccountsHistory(id, page);
+        return mWanAndroidApiService.getWxAccountsHistory(id, page);
     }
 
     /**
@@ -261,6 +261,6 @@ public class HttpHelperImpl implements HttpHelper{
      */
     @Override
     public Observable<BaseBean<PageBean<ArticleBean>>> getWxAccountsBySearch(int id, int page, String k) {
-        return mApiService.getWxAccountsBySearch(id, page, k);
+        return mWanAndroidApiService.getWxAccountsBySearch(id, page, k);
     }
 }
