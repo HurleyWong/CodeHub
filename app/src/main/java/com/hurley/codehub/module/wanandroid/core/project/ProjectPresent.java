@@ -7,7 +7,7 @@ import android.annotation.SuppressLint;
 import com.hurley.codehub.api.WanAndroidApiService;
 import com.hurley.codehub.base.BaseBean;
 import com.hurley.codehub.base.BasePresenter;
-import com.hurley.codehub.bean.ProjectBean;
+import com.hurley.codehub.bean.wanandroid.ProjectBean;
 import com.hurley.codehub.net.RetrofitManager;
 import com.hurley.codehub.net.callback.RxSchedulers;
 

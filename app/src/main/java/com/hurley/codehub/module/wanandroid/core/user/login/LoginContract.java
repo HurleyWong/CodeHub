@@ -2,7 +2,7 @@ package com.hurley.codehub.module.wanandroid.core.user.login;
 
 
 import com.hurley.codehub.base.BaseContract;
-import com.hurley.codehub.bean.UserBean;
+import com.hurley.codehub.bean.wanandroid.UserBean;
 
 /**
  * <pre>

@@ -8,7 +8,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
 import com.hurley.codehub.base.BaseActivity;
-import com.hurley.codehub.bean.SystemBean;
+import com.hurley.codehub.bean.wanandroid.SystemBean;
 import com.hurley.codehub.module.wanandroid.core.adapter.SystemDetailAdapter;
 
 import java.util.List;

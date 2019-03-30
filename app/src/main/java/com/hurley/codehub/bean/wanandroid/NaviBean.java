@@ -1,4 +1,6 @@
-package com.hurley.codehub.bean;
+package com.hurley.codehub.bean.wanandroid;
+
+import com.hurley.codehub.bean.wanandroid.ArticleBean;
 
 import java.io.Serializable;
 import java.util.List;

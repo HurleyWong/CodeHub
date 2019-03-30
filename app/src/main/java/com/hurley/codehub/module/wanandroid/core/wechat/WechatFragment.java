@@ -9,7 +9,7 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.hurley.codehub.R;
 import com.hurley.codehub.base.BaseFragment;
-import com.hurley.codehub.bean.WxAccountBean;
+import com.hurley.codehub.bean.wanandroid.WxAccountBean;
 import com.hurley.codehub.module.wanandroid.core.adapter.WechatAdapter;
 
 import java.util.ArrayList;

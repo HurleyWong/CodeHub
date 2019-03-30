@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.hurley.codehub.R;
 import com.hurley.codehub.base.BaseFragment;
-import com.hurley.codehub.bean.ProjectBean;
+import com.hurley.codehub.bean.wanandroid.ProjectBean;
 import com.hurley.codehub.module.wanandroid.core.adapter.ProjectAdapter;
 
 import java.util.ArrayList;

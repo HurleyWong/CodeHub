@@ -9,7 +9,7 @@ import com.blankj.utilcode.util.SPUtils;
 import com.hurley.codehub.R;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseFragment;
-import com.hurley.codehub.bean.ArticleNumBean;
+import com.hurley.codehub.bean.wanandroid.ArticleNumBean;
 import com.hurley.codehub.bean.PieBean;
 import com.openxu.cview.chart.barchart.BarVerticalChart;
 import com.openxu.cview.chart.bean.BarBean;

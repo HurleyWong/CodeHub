@@ -2,7 +2,7 @@ package com.hurley.codehub.module.wanandroid.core.article;
 
 import com.hurley.codehub.app.LoadType;
 import com.hurley.codehub.base.BaseContract;
-import com.hurley.codehub.bean.ArticleBean;
+import com.hurley.codehub.bean.wanandroid.ArticleBean;
 
 /**
  * <pre>

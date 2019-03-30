@@ -1,4 +1,4 @@
-package com.hurley.codehub.bean;
+package com.hurley.codehub.bean.wanandroid;
 
 import org.litepal.crud.LitePalSupport;
 

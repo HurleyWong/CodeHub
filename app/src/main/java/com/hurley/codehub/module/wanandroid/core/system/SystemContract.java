@@ -3,7 +3,7 @@ package com.hurley.codehub.module.wanandroid.core.system;
 
 
 import com.hurley.codehub.base.BaseContract;
-import com.hurley.codehub.bean.SystemBean;
+import com.hurley.codehub.bean.wanandroid.SystemBean;
 
 import java.util.List;
 

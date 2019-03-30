@@ -3,8 +3,8 @@ package com.hurley.codehub.module.wanandroid.core.index;
 
 import com.hurley.codehub.app.LoadType;
 import com.hurley.codehub.base.BaseContract;
-import com.hurley.codehub.bean.ArticleBean;
-import com.hurley.codehub.bean.BannerBean;
+import com.hurley.codehub.bean.wanandroid.ArticleBean;
+import com.hurley.codehub.bean.wanandroid.BannerBean;
 
 import java.util.List;
 

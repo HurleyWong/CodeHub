@@ -9,7 +9,7 @@ import com.blankj.utilcode.util.StringUtils;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
 import com.hurley.codehub.base.BaseActivity;
-import com.hurley.codehub.bean.UserBean;
+import com.hurley.codehub.bean.wanandroid.UserBean;
 import com.hurley.codehub.module.wanandroid.event.RegisterEvent;
 import com.hurley.codehub.helper.view.EditTextInputHelper;
 import com.hurley.codehub.net.callback.RxBus;

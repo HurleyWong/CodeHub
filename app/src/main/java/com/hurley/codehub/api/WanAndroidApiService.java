@@ -3,17 +3,17 @@ package com.hurley.codehub.api;
 
 
 import com.hurley.codehub.base.BaseBean;
-import com.hurley.codehub.bean.ArticleBean;
-import com.hurley.codehub.bean.BannerBean;
-import com.hurley.codehub.bean.CollectArticleBean;
-import com.hurley.codehub.bean.HotKeyBean;
-import com.hurley.codehub.bean.NaviBean;
-import com.hurley.codehub.bean.PageBean;
-import com.hurley.codehub.bean.ProjectBean;
-import com.hurley.codehub.bean.SystemBean;
-import com.hurley.codehub.bean.UserBean;
-import com.hurley.codehub.bean.WebsiteBean;
-import com.hurley.codehub.bean.WxAccountBean;
+import com.hurley.codehub.bean.wanandroid.ArticleBean;
+import com.hurley.codehub.bean.wanandroid.BannerBean;
+import com.hurley.codehub.bean.wanandroid.CollectArticleBean;
+import com.hurley.codehub.bean.wanandroid.HotKeyBean;
+import com.hurley.codehub.bean.wanandroid.NaviBean;
+import com.hurley.codehub.bean.wanandroid.PageBean;
+import com.hurley.codehub.bean.wanandroid.ProjectBean;
+import com.hurley.codehub.bean.wanandroid.SystemBean;
+import com.hurley.codehub.bean.wanandroid.UserBean;
+import com.hurley.codehub.bean.wanandroid.WebsiteBean;
+import com.hurley.codehub.bean.wanandroid.WxAccountBean;
 
 import java.util.List;
 

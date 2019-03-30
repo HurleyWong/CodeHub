@@ -2,7 +2,7 @@ package com.hurley.codehub.module.wanandroid.core.wechat;
 
 
 import com.hurley.codehub.base.BaseContract;
-import com.hurley.codehub.bean.WxAccountBean;
+import com.hurley.codehub.bean.wanandroid.WxAccountBean;
 
 import java.util.List;
 

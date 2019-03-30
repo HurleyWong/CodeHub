@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hurley.codehub.api.PathContainer;
 import com.hurley.codehub.app.Constants;
-import com.hurley.codehub.bean.SystemBean;
+import com.hurley.codehub.bean.wanandroid.SystemBean;
 import com.hurley.codehub.module.wanandroid.core.article.SystemArticleListFragment;
 
 import java.util.ArrayList;

@@ -3,7 +3,7 @@ package com.hurley.codehub.module.wanandroid.core.adapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.hurley.codehub.R;
-import com.hurley.codehub.bean.SystemBean;
+import com.hurley.codehub.bean.wanandroid.SystemBean;
 
 import javax.inject.Inject;
 

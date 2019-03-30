@@ -2,7 +2,7 @@ package com.hurley.codehub.module.wanandroid.core.project;
 
 
 import com.hurley.codehub.base.BaseContract;
-import com.hurley.codehub.bean.ProjectBean;
+import com.hurley.codehub.bean.wanandroid.ProjectBean;
 
 import java.util.List;
 
