@@ -3,7 +3,7 @@ package com.hurley.codehub.module.wanandroid.core.user.register;
 import android.annotation.SuppressLint;
 
 import com.hurley.codehub.api.WanAndroidApiService;
-import com.hurley.codehub.base.BaseBean;
+import com.hurley.codehub.bean.wanandroid.BaseBean;
 import com.hurley.codehub.base.BasePresenter;
 import com.hurley.codehub.net.RetrofitManager;
 import com.hurley.codehub.net.callback.RxSchedulers;

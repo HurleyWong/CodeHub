@@ -3,7 +3,7 @@ package com.hurley.codehub.helper.http;
 
 
 import com.hurley.codehub.api.WanAndroidApiService;
-import com.hurley.codehub.base.BaseBean;
+import com.hurley.codehub.bean.wanandroid.BaseBean;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.bean.wanandroid.BannerBean;
 import com.hurley.codehub.bean.wanandroid.CollectArticleBean;

@@ -2,7 +2,7 @@ package com.hurley.codehub.api;
 
 
 
-import com.hurley.codehub.base.BaseBean;
+import com.hurley.codehub.bean.wanandroid.BaseBean;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.bean.wanandroid.BannerBean;
 import com.hurley.codehub.bean.wanandroid.CollectArticleBean;
@@ -30,7 +30,7 @@ import retrofit2.http.Query;
  *      @author hurley
  *      date   : 2018/11/19 下午8:56
  *      github : https://github.com/HurleyJames
- *      desc   : 服务器接口类
+ *      desc   : WanAndroid服务器接口类
  * </pre>
  */
 public interface WanAndroidApiService {

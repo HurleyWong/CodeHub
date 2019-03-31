@@ -5,7 +5,7 @@ package com.hurley.codehub.api;
  *      @author hurley
  *      date    : 2019/2/26 10:29 AM
  *      github  : https://github.com/HurleyJames
- *      desc    : Api接口地址类
+ *      desc    : WanAndroid Api接口地址类
  * </pre>
  */
 public class WanAndroidUrlContainer {

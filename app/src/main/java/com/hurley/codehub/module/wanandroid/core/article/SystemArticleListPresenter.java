@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 
 import com.hurley.codehub.api.WanAndroidApiService;
 import com.hurley.codehub.app.LoadType;
-import com.hurley.codehub.base.BaseBean;
+import com.hurley.codehub.bean.wanandroid.BaseBean;
 import com.hurley.codehub.base.BasePresenter;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.net.RetrofitManager;

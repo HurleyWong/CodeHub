@@ -1,4 +1,4 @@
-package com.hurley.codehub.base;
+package com.hurley.codehub.bean.wanandroid;
 
 /**
  * <pre>
