@@ -3,28 +3,30 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/home_wan_android"
-        android:icon="@mipmap/ic_wan_android"
-        android:title="@string/wan_android"
-        app:showAsAction="ifRoom"/>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home_wan_android"
+            android:icon="@mipmap/ic_wan_android"
+            android:title="@string/wan_android"
+            app:showAsAction="ifRoom"/>
 
-    <item
-        android:id="@+id/home_readhub"
-        android:icon="@mipmap/ic_readhub"
-        android:title="@string/readhub"
-        app:showAsAction="ifRoom"/>
+        <item
+            android:id="@+id/home_readhub"
+            android:icon="@mipmap/ic_readhub"
+            android:title="@string/readhub"
+            app:showAsAction="ifRoom"/>
 
-    <item
-        android:id="@+id/home_diycode"
-        android:icon="@mipmap/ic_diycode"
-        android:title="@string/diycode"
-        app:showAsAction="ifRoom"/>
+        <item
+            android:id="@+id/home_diycode"
+            android:icon="@mipmap/ic_diycode"
+            android:title="@string/diycode"
+            app:showAsAction="ifRoom"/>
 
-    <item
-        android:id="@+id/home_github_trending"
-        android:icon="@mipmap/github"
-        android:title="@string/github_trending"
-        app:showAsAction="ifRoom"/>
+        <item
+            android:id="@+id/home_github_trending"
+            android:icon="@mipmap/github"
+            android:title="@string/github_trending"
+            app:showAsAction="ifRoom"/>
+    </group>
 
 </menu>

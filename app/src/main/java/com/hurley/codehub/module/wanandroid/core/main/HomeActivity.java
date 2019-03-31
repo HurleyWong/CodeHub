@@ -1,9 +1,12 @@
 package com.hurley.codehub.module.wanandroid.core.main;
 
 import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,7 +45,8 @@ import me.yokeyword.fragmentation.ISupportFragment;
 @Route(path = PathContainer.HOME)
 public class HomeActivity extends BaseActivity<HomePresenter>
         implements HomeContract.View, BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-
+    @BindView(R.id.dl_home)
+    DrawerLayout mDrawerLayout;
     @BindView(R.id.nv_home)
     NavigationView mNavigationView;
     @BindView(R.id.bnv_home)
@@ -96,6 +100,7 @@ public class HomeActivity extends BaseActivity<HomePresenter>
         }
 
         initNavigationHeaderView();
+        setNavigationViewListener();
 
 
         setUserStatus();
@@ -114,6 +119,37 @@ public class HomeActivity extends BaseActivity<HomePresenter>
         mLlLogin =  headerView.findViewById(R.id.ll_login);
         mTvLoginStatus =  headerView.findViewById(R.id.tv_login_status);
         mLlLogin.setOnClickListener(this);
+    }
+
+    /**
+     * 设置左侧导航栏监听
+     */
+    private void setNavigationViewListener() {
+        mNavigationView.setNavigationItemSelectedListener(
+                menuItem -> {
+                    switch (menuItem.getItemId()) {
+                        case R.id.home_wan_android:
+                            menuItem.setChecked(true);
+                            mDrawerLayout.closeDrawers();
+                            break;
+                        case R.id.home_readhub:
+                            menuItem.setChecked(true);
+                            mDrawerLayout.closeDrawers();
+                            break;
+                        case R.id.home_diycode:
+                            menuItem.setChecked(true);
+                            mDrawerLayout.closeDrawers();
+                            break;
+                        case R.id.home_github_trending:
+                            menuItem.setChecked(true);
+                            mDrawerLayout.closeDrawers();
+                            break;
+                        default:
+                            break;
+                    }
+                    return false;
+                }
+        );
     }
 
     @Override

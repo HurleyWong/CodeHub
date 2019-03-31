@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- selected颜色 -->
+    <item android:state_checked="true"
+        android:color="@color/colorAccent" />
+    <!-- pressed颜色 -->
+    <item android:state_pressed="true"
+        android:color="@color/colorAccent"/>
+    <!-- focused颜色 -->
+    <item android:state_focused="true"
+        android:color="@color/colorAccent"/>
+    <!-- default颜色 -->
+    <item android:color="@color/text"/>
+</selector>

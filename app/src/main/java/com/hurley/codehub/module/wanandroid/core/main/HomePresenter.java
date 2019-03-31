@@ -13,7 +13,7 @@ import javax.inject.Inject;
  *      @author hurley
  *      date    : 2019/3/20 5:37 PM
  *      github  : https://github.com/HurleyJames
- *      desc    :
+ *      desc    : 主页 Presenter类
  * </pre>
  */
 public class HomePresenter extends BasePresenter<HomeContract.View> implements HomeContract.Presenter {
