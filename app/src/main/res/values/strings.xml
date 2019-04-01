@@ -130,7 +130,7 @@
     <string name="detail_Retrofit">Type-safe HTTP client for Android and Java by Square, Inc.</string>
     <string name="detail_RxJava">RxJava – Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM.</string>
     <string name="detail_RxAndroid">RxJava bindings for Android</string>
-    <string name="detail_RxBinding">RxJava binding APIs for Android's UI widgets.</string>
+    <string name="detail_RxBinding">RxJava binding APIs for Android\'s UI widgets.</string>
     <string name="detail_AgentWeb">AgentWeb is a powerful library based on Android WebView.</string>
     <string name="detail_ARouter">💪 A framework for assisting in the renovation of Android componentization (帮助 Android App 进行组件化改造的路由框架)</string>
     <string name="detail_Glide">An image loading and caching library for Android focused on smooth scrolling</string>
@@ -139,7 +139,7 @@
     <string name="detail_FlowLayout">Android流式布局，支持单选、多选等，适合用于产品标签等。</string>
     <string name="detail_Banner">Android广告图片轮播控件，支持无限循环和多种主题，可以灵活设置轮播样式、动画、轮播和切换时间、位置、图片加载框架等！</string>
     <string name="detail_OXChart">各种自定义图表库，使用简单，支持扩展</string>
-    <string name="detail_MaterialAbout">It's a material-design about screen to use on your Android apps. A developer profile and application information easy to integrate. 🔖</string>
+    <string name="detail_MaterialAbout">It\'s a material-design about screen to use on your Android apps. A developer profile and application information easy to integrate. 🔖</string>
     <string name="detail_ImmersionBar">android 4.4以上沉浸式状态栏和沉浸式导航栏管理，包括状态栏字体颜色，适用于Activity、Fragment、DialogFragment、Dialog，并且适配刘海屏，适配软键盘弹出等问题，一句代码轻松实现，以及对bar的其他设置，详见README</string>
     <string name="detail_XXPermissions">Android 6.0 permissions adaptation framework</string>
     <string name="detail_AndroidUtilCode">🔥 Android developers should collect the following utils(updating).</string>
