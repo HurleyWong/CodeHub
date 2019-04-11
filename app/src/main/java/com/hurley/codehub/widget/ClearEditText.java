@@ -133,8 +133,4 @@ public class ClearEditText extends AppCompatEditText
     @Override
     public void afterTextChanged(Editable s) {}
 
-//    @Override
-//    protected void drawableStateChanged() {
-//        super.drawableStateChanged();
-//    }
 }

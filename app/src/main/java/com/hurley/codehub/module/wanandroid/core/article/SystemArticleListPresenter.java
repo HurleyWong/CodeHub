@@ -50,18 +50,12 @@ public class SystemArticleListPresenter extends BasePresenter<SystemArticleListC
                 .getSystemArticles(mPage, mCid)
                 .compose(RxSchedulers.applySchedulers())
                 .compose(mView.bindToLife())
-                .subscribe(new Consumer<BaseBean<ArticleBean>>() {
-                    @Override
-                    public void accept(BaseBean<ArticleBean> response) throws Exception {
-                        int loadType = isRefresh ? LoadType.TYPE_REFRESH_SUCCESS : LoadType.TYPE_LOAD_MORE_SUCCESS;
-                        mView.setSystemArticles(response.getData(), loadType);
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        int loadType = isRefresh ? LoadType.TYPE_REFRESH_ERROR : LoadType.TYPE_LOAD_MORE_ERROR;
-                        mView.setSystemArticles(new ArticleBean(), loadType);
-                    }
+                .subscribe(response -> {
+                    int loadType = isRefresh ? LoadType.TYPE_REFRESH_SUCCESS : LoadType.TYPE_LOAD_MORE_SUCCESS;
+                    mView.setSystemArticles(response.getData(), loadType);
+                }, throwable -> {
+                    int loadType = isRefresh ? LoadType.TYPE_REFRESH_ERROR : LoadType.TYPE_LOAD_MORE_ERROR;
+                    mView.setSystemArticles(new ArticleBean(), loadType);
                 });
     }
 

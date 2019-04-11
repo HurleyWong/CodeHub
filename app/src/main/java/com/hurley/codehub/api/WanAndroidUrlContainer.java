@@ -87,7 +87,7 @@ public class WanAndroidUrlContainer {
     /**
      * 项目列表数据
      */
-    public static final String PROJECT_LIST = "project/list/{page}/json?";
+    public static final String PROJECT_LIST = "project/list/{page}/json";
 
     /**
      * 最新项目

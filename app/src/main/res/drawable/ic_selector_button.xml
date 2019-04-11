@@ -5,7 +5,7 @@
     <!-- 按钮禁用状态 -->
     <item android:state_enabled="false">
         <shape android:shape="rectangle">
-            <corners android:radius="5dp" />
+            <corners android:radius="@dimen/dp5" />
             <solid android:color="@color/colorButtonDisable" />
         </shape>
     </item>
@@ -13,7 +13,7 @@
     <!-- 按钮按压状态 -->
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <corners android:radius="5dp" />
+            <corners android:radius="@dimen/dp5" />
             <solid android:color="@color/colorButtonPressed" />
         </shape>
     </item>
@@ -21,7 +21,7 @@
     <!-- 按钮默认状态 -->
     <item>
         <shape android:shape="rectangle">
-            <corners android:radius="5dp" />
+            <corners android:radius="@dimen/dp5" />
             <solid android:color="@color/colorAccent" />
         </shape>
     </item>

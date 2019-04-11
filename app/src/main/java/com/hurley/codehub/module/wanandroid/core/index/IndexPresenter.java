@@ -112,21 +112,12 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                         if (response.getErrorCode() == BaseBean.SUCCESS) {
                             for (int i = 0; i < response.getData().getSize(); i ++) {
                                 String articleDate = response.getData().getDatas().get(i).getNiceDate();
-                                //String todayDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
                                 Calendar cal = Calendar.getInstance();
                                 String todayDate = cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH);
-                                //LogUtils.e("文章日期：" + response.getData().getDatas().get(i).getNiceDate());
                                 if (!RegexUtils.isDate(articleDate)) {
                                     //如果不是正确的日期格式
                                     LogUtils.e(articleDate);
                                 }
-                                //LogUtils.e("相隔天数：" + intervalDays);
-                                /*if (intervalDays <= 7 || !RegexUtils.isDate(articleDate)) {
-                                    //一周内的文章
-                                    LogUtils.e("文章标题：" + response.getData().getDatas().get(i).getTitle()
-                                            + " 所属体系：" + response.getData().getDatas().get(i).getChapterName());
-                                }*/
-
                             }
                         } else {
                             mView.showFailed(response.getErrorMsg());
@@ -217,7 +208,6 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
     @SuppressLint("CheckResult")
     @Override
     public void loadData() {
-        mView.showLoading();
         String username = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getString(Constants.USERNAME);
         String password = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getString(Constants.PASSWORD);
 

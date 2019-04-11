@@ -3,6 +3,7 @@ package com.hurley.codehub.module.wanandroid.core.user;
 import android.annotation.SuppressLint;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -36,6 +37,8 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
 
     @BindView(R.id.ll_login)
     LinearLayout mLlLogin;
+    @BindView(R.id.iv_user)
+    ImageView mIvUser;
     @BindView(R.id.tv_login_status)
     TextView mTvLoginStatus;
     @BindView(R.id.btn_user_collect)

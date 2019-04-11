@@ -89,8 +89,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login_commit:
-                String username = mEtUsername.getText().toString();
-                String password = mEtPassword.getText().toString();
+                String username = mEtUsername.getText().toString().trim();
+                String password = mEtPassword.getText().toString().trim();
                 if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
                     //如果用户名或密码为空
                     toast(R.string.login_username_password_null);

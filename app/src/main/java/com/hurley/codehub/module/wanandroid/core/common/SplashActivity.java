@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.gyf.barlibrary.BarHide;
 import com.gyf.barlibrary.ImmersionBar;
@@ -59,7 +60,6 @@ public class SplashActivity extends AppCompatActivity implements OnPermission, A
             mEditor = mSharedPreference.edit();
             mEditor.putBoolean("first_open", false);
             mEditor.apply();
-
             Intent intent = new Intent();
             intent.setClass(this, GuideActivity.class);
             this.startActivity(intent);
