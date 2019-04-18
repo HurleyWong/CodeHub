@@ -18,12 +18,34 @@ public interface WebContract {
 
     interface Presenter extends BaseContract.BasePresenter<WebContract.View> {
 
+        /**
+         * 收藏站内文章
+         *
+         * @param id
+         */
         void collectInsideArticle(int id);
 
+        /**
+         * 收藏站外文章
+         *
+         * @param title
+         * @param author
+         * @param link
+         */
         void collectOutsideArticle(String title, String author, String link);
 
+        /**
+         * 设置是否自动缓存
+         *
+         * @return
+         */
         boolean getAutoCacheState();
 
+        /**
+         * 设置是否无图模式
+         *
+         * @return
+         */
         boolean getNoImageState();
     }
 }

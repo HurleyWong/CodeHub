@@ -17,13 +17,25 @@ import java.util.List;
 public interface ProjectContract {
 
     interface View extends BaseContract.BaseView {
+
+        /**
+         * 设置项目
+         *
+         * @param projects
+         */
         void setProjects(List<ProjectBean> projects);
     }
 
     interface Presenter extends BaseContract.BasePresenter<ProjectContract.View> {
 
+        /**
+         * 加载项目
+         */
         void loadProjects();
 
+        /**
+         * 刷新
+         */
         void refresh();
     }
 }

@@ -1,7 +1,6 @@
 package com.hurley.codehub.module.wanandroid.core.index;
 
 
-
 import android.annotation.SuppressLint;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -85,7 +84,7 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                 .subscribe(response -> {
                     if (response.getErrorCode() == BaseBean.SUCCESS) {
                         int loadType = isRefresh ? LoadType.TYPE_REFRESH_SUCCESS : LoadType.TYPE_LOAD_MORE_SUCCESS;
-                        mView.setArticles(response.getData(),loadType);
+                        mView.setArticles(response.getData(), loadType);
                     } else {
                         mView.showFailed(response.getErrorMsg());
                     }
@@ -93,39 +92,6 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                     int loadType = isRefresh ? LoadType.TYPE_REFRESH_ERROR : LoadType.TYPE_LOAD_MORE_ERROR;
                     mView.setArticles(new ArticleBean(), loadType);
                 });
-    }
-
-    /**
-     * 获得所有文章列表，用于分析
-     */
-    @SuppressLint("CheckResult")
-    @Override
-    public void getAllArticles() {
-        int totalPage = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.TOTAL_PAGE);
-        LogUtils.e("总页数：" + totalPage);
-        for (mPage = 0; mPage < totalPage - 308; mPage ++) {
-            RetrofitManager.create(WanAndroidApiService.class)
-                    .getIndexArticles(mPage)
-                    .compose(RxSchedulers.applySchedulers())
-                    .compose(mView.bindToLife())
-                    .subscribe(response -> {
-                        if (response.getErrorCode() == BaseBean.SUCCESS) {
-                            for (int i = 0; i < response.getData().getSize(); i ++) {
-                                String articleDate = response.getData().getDatas().get(i).getNiceDate();
-                                Calendar cal = Calendar.getInstance();
-                                String todayDate = cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH);
-                                if (!RegexUtils.isDate(articleDate)) {
-                                    //如果不是正确的日期格式
-                                    LogUtils.e(articleDate);
-                                }
-                            }
-                        } else {
-                            mView.showFailed(response.getErrorMsg());
-                        }
-                    }, throwable -> {
-                        mView.showFailed(throwable.getMessage());
-                    });
-        }
     }
 
     @Override
@@ -139,13 +105,14 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
 
     @Override
     public void loadMore() {
-        mPage ++;
+        mPage++;
         isRefresh = false;
         loadArticles();
     }
 
     /**
      * 收藏文章
+     *
      * @param position
      * @param articleBean
      */
@@ -224,20 +191,25 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                     objectMap.put(Constants.ARTICLE_KEY, response3);
                     return objectMap;
                 }).compose(RxSchedulers.applySchedulers())
-                    .compose(mView.bindToLife())
-                    .subscribe(stringObjectMap -> {
-                        BaseBean<UserBean> response = (BaseBean<UserBean>) stringObjectMap.get(Constants.USER_KEY);
-                        assert response != null;
-                        if (response.getErrorCode() == BaseBean.SUCCESS) {
-                            mView.showSuccess(App.getAppContext().getString(R.string.login_auto_success));
-                        } else {
-                            mView.showFailed(response.getErrorMsg());
-                        }
+                .compose(mView.bindToLife())
+                .subscribe(stringObjectMap -> {
+                    BaseBean<UserBean> response = (BaseBean<UserBean>) stringObjectMap.get(Constants.USER_KEY);
+                    assert response != null;
+                    if (response.getErrorCode() == BaseBean.SUCCESS) {
+                        mView.showSuccess(App.getAppContext().getString(R.string.login_auto_success));
+                    } else {
+                        mView.showFailed(response.getErrorMsg());
+                    }
 
-                        List<BannerBean> banners = (List<BannerBean>) stringObjectMap.get(Constants.BANNER_KEY);
-                        ArticleBean articleBean = (ArticleBean) stringObjectMap.get(Constants.ARTICLE_KEY);
-                        mView.setBanners(banners);
-                        mView.setArticles(articleBean, LoadType.TYPE_REFRESH_SUCCESS);
-                    }, throwable -> mView.showFailed(throwable.getMessage()));
+                    List<BannerBean> banners = (List<BannerBean>) stringObjectMap.get(Constants.BANNER_KEY);
+                    ArticleBean articleBean = (ArticleBean) stringObjectMap.get(Constants.ARTICLE_KEY);
+                    mView.setBanners(banners);
+                    mView.setArticles(articleBean, LoadType.TYPE_REFRESH_SUCCESS);
+                }, throwable -> mView.showFailed(throwable.getMessage()));
+    }
+
+    @Override
+    public void saveArticles(String chapterName, String superChapterName) {
+
     }
 }

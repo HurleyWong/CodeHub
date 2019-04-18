@@ -28,7 +28,7 @@ public class ProjectAdapter extends FragmentStatePagerAdapter {
         this.mTitles = titles;
         this.mIds = ids;
 
-        for(Integer id : ids) {
+        for (Integer id : ids) {
             projectArticleListFragments.add(ProjectArticleListFragment.newInstance(id));
         }
     }

@@ -33,10 +33,10 @@ import butterknife.BindView;
 @Route(path = PathContainer.ARTICLE_LIST)
 public class SystemArticleListFragment extends BaseFragment<SystemArticleListPresenter>
         implements SystemArticleListContract.View,
-                ArticleAdapter.OnItemClickListener,
-                ArticleAdapter.OnItemChildClickListener,
-                ArticleAdapter.RequestLoadMoreListener,
-                SwipeRefreshLayout.OnRefreshListener {
+        ArticleAdapter.OnItemClickListener,
+        ArticleAdapter.OnItemChildClickListener,
+        ArticleAdapter.RequestLoadMoreListener,
+        SwipeRefreshLayout.OnRefreshListener {
 
     private static final String TAG = "SystemArticleListFragment";
 
@@ -113,6 +113,8 @@ public class SystemArticleListFragment extends BaseFragment<SystemArticleListPre
                 mArticleAdapter.getItem(position).getLink(),
                 mArticleAdapter.getItem(position).getTitle(),
                 mArticleAdapter.getItem(position).getAuthor());
+
+        mPresenter.saveArticle(mArticleAdapter.getItem(position).getChapterName(), mArticleAdapter.getItem(position).getsuperChapterName());
     }
 
     @Override

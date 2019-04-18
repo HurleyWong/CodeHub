@@ -56,7 +56,7 @@ public class SearchPresenter extends BasePresenter<SearchContract.View> implemen
 
     @Override
     public void loadMore() {
-        mPage ++;
+        mPage++;
         mRefresh = false;
         loadSearchArticles(mKey);
     }

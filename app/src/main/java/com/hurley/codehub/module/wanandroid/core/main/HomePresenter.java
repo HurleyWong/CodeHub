@@ -19,7 +19,8 @@ import javax.inject.Inject;
 public class HomePresenter extends BasePresenter<HomeContract.View> implements HomeContract.Presenter {
 
     @Inject
-    public HomePresenter() {}
+    public HomePresenter() {
+    }
 
     @SuppressLint("CheckResult")
     @Override

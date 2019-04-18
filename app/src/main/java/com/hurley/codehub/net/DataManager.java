@@ -36,7 +36,7 @@ public class DataManager implements HttpHelper, DbHelper, PreferenceHelper {
     private DbHelper mDbHelper;
     private PreferenceHelper mPreferenceHelper;
 
-    public DataManager (HttpHelper httpHelper, DbHelper dbHelper, PreferenceHelper preferenceHelper) {
+    public DataManager(HttpHelper httpHelper, DbHelper dbHelper, PreferenceHelper preferenceHelper) {
         this.mHttpHelper = httpHelper;
         this.mDbHelper = dbHelper;
         this.mPreferenceHelper = preferenceHelper;

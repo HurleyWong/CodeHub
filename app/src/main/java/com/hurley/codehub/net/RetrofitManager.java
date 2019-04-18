@@ -55,63 +55,55 @@ public class RetrofitManager {
      * 云端响应头拦截器，用来配置缓存策略
      * Dangerous interceptor that rewrites the server's cache-control header.
      */
-    private static final Interceptor mRewriteCacheControlInterceptor = new Interceptor() {
-        @Override
-        public Response intercept(Chain chain) throws IOException {
-            Request request = chain.request();
-            if (!NetworkUtils.isConnected()) {
-                request = request.newBuilder()
-                        .cacheControl(CacheControl.FORCE_CACHE)
-                        .build();
-            }
-            Response originalResponse = chain.proceed(request);
-            if (NetworkUtils.isConnected()) {
-                //有网的时候读接口上的@Headers里的配置，可以在这里进行统一的设置
-                String cacheControl = request.cacheControl().toString();
-                return originalResponse.newBuilder()
-                        .header("Cache-Control", cacheControl)
-                        .removeHeader("Pragma")
-                        .build();
-            } else {
-                return originalResponse.newBuilder()
-                        .header("Cache-Control", "public, only-if-cached, max-stale=" + CACHE_CONTROL_CACHE)
-                        .removeHeader("Pragma")
-                        .build();
-            }
+    private static final Interceptor mRewriteCacheControlInterceptor = chain -> {
+        Request request = chain.request();
+        if (!NetworkUtils.isConnected()) {
+            request = request.newBuilder()
+                    .cacheControl(CacheControl.FORCE_CACHE)
+                    .build();
+        }
+        Response originalResponse = chain.proceed(request);
+        if (NetworkUtils.isConnected()) {
+            //有网的时候读接口上的@Headers里的配置，可以在这里进行统一的设置
+            String cacheControl = request.cacheControl().toString();
+            return originalResponse.newBuilder()
+                    .header("Cache-Control", cacheControl)
+                    .removeHeader("Pragma")
+                    .build();
+        } else {
+            return originalResponse.newBuilder()
+                    .header("Cache-Control", "public, only-if-cached, max-stale=" + CACHE_CONTROL_CACHE)
+                    .removeHeader("Pragma")
+                    .build();
         }
     };
 
     /**
      * 日志拦截器
      */
-    private static final Interceptor mLoggingInterceptor = new Interceptor() {
-        @Override
-        public Response intercept(Chain chain) throws IOException {
-            Request request = chain.request();
-            Response response = chain.proceed(request);
-            return response;
-        }
+    private static final Interceptor mLoggingInterceptor = chain -> {
+        Request request = chain.request();
+        Response response = chain.proceed(request);
+        return response;
     };
 
     /**
      * 添加Header拦截器
      */
-    private static final Interceptor mHeaderInterceptor = new Interceptor() {
-        @Override
-        public Response intercept(Chain chain) throws IOException {
-            Request request = chain.request()
-                    .newBuilder()
-                    .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
-                    .addHeader("Accept-Encoding", "gzip, deflate")
-                    .addHeader("Connection", "keep-alive")
-                    .addHeader("Accept", "*/*")
-                    .build();
-            return chain.proceed(request);
-        }
+    private static final Interceptor mHeaderInterceptor = chain -> {
+        Request request = chain.request()
+                .newBuilder()
+                .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
+                .addHeader("Accept-Encoding", "gzip, deflate")
+                .addHeader("Connection", "keep-alive")
+                .addHeader("Accept", "*/*")
+                .build();
+        return chain.proceed(request);
     };
 
     /**
      * 对OkHttpClient进行配置
+     *
      * @return
      */
     private static OkHttpClient getOkHttpClient() {
@@ -136,6 +128,7 @@ public class RetrofitManager {
 
     /**
      * 创建Retrofit
+     *
      * @param clazz
      * @param <T>
      * @return

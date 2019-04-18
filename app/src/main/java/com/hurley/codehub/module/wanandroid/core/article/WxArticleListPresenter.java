@@ -69,7 +69,7 @@ public class WxArticleListPresenter extends BasePresenter<WxArticleListContract.
 
     @Override
     public void loadMore() {
-        mPage ++;
+        mPage++;
         isRefresh = false;
         loadWxArticles(mId);
     }

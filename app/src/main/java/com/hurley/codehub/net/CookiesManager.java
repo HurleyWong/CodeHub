@@ -42,6 +42,7 @@ public class CookiesManager implements CookieJar {
 
     /**
      * 清除指定cookie
+     *
      * @param url
      * @param cookie
      * @return
@@ -52,6 +53,7 @@ public class CookiesManager implements CookieJar {
 
     /**
      * 获取cookies
+     *
      * @return
      */
     public static List<Cookie> getCookies() {

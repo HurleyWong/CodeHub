@@ -61,7 +61,7 @@ public class ProjectFragment extends BaseFragment<ProjectPresent> implements Pro
     @Override
     public void setProjects(List<ProjectBean> projects) {
         List<Integer> ids = new ArrayList<>();
-        List<String> names= new ArrayList<>();
+        List<String> names = new ArrayList<>();
         if (projects.size() > 0) {
             for (ProjectBean projectBean : projects) {
                 ids.add(projectBean.getId());

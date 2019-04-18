@@ -17,6 +17,7 @@ public interface SystemArticleListContract {
     interface View extends BaseContract.BaseView {
         /**
          * 设置体系文章列表
+         *
          * @param articleBean
          * @param loadType
          */
@@ -24,6 +25,7 @@ public interface SystemArticleListContract {
 
         /**
          * 在文章列表页面成功收藏文章
+         *
          * @param position
          * @param articleBean
          */
@@ -31,12 +33,38 @@ public interface SystemArticleListContract {
     }
 
     interface Presenter extends BaseContract.BasePresenter<SystemArticleListContract.View> {
+
+        /**
+         * 加载体系文章
+         *
+         * @param cid
+         */
         void loadSystemArticles(int cid);
 
+        /**
+         * 刷新
+         */
         void refresh();
 
+        /**
+         * 加载更多
+         */
         void loadMore();
 
+        /**
+         * 收藏文章
+         *
+         * @param position
+         * @param articleBean
+         */
         void collectArticle(int position, ArticleBean.DatasBean articleBean);
+
+        /**
+         * 将点击的文章模块、父模块保存至自己的数据库
+         *
+         * @param chapterName
+         * @param superChapterName
+         */
+        void saveArticle(String chapterName, String superChapterName);
     }
 }

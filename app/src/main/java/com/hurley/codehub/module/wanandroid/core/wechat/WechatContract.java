@@ -18,13 +18,24 @@ public interface WechatContract {
 
     interface View extends BaseContract.BaseView {
 
+        /**
+         * 显示微信公众号
+         *
+         * @param wxAccounts
+         */
         void setWxAccounts(List<WxAccountBean> wxAccounts);
     }
 
     interface Presenter extends BaseContract.BasePresenter<WechatContract.View> {
 
+        /**
+         * 加载微信公众号
+         */
         void loadWxAccounts();
 
+        /**
+         * 刷新
+         */
         void refresh();
     }
 }

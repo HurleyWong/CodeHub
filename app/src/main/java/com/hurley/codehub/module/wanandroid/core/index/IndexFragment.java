@@ -44,7 +44,7 @@ import butterknife.BindView;
  */
 public class IndexFragment extends BaseFragment<IndexPresenter>
         implements IndexContract.View, ArticleAdapter.OnItemClickListener, ArticleAdapter.OnItemChildClickListener,
-                    ArticleAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
+        ArticleAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.srl_index)
     SwipeRefreshLayout mSrlIndex;
@@ -152,6 +152,7 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
 
     /**
      * 点击item每条文章
+     *
      * @param adapter
      * @param view
      * @param position
@@ -162,10 +163,14 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
                 mArticleAdapter.getItem(position).getLink(),
                 mArticleAdapter.getItem(position).getTitle(),
                 mArticleAdapter.getItem(position).getAuthor());
+
+        //TODO 将文章实体类ArticleBean中的属性（id title link chapterName superChapterName）传给自己的后台
+        mPresenter.saveArticles(mArticleAdapter.getItem(position).getChapterName(), mArticleAdapter.getItem(position).getsuperChapterName());
     }
 
     /**
      * 点击item的子元素
+     *
      * @param adapter
      * @param view
      * @param position

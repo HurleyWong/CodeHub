@@ -32,10 +32,10 @@ import butterknife.BindView;
  */
 public class WxArticleListFragment extends BaseFragment<WxArticleListPresenter>
         implements WxArticleListContract.View,
-                ArticleAdapter.OnItemClickListener,
-                ArticleAdapter.OnItemChildClickListener,
-                ArticleAdapter.RequestLoadMoreListener,
-                SwipeRefreshLayout.OnRefreshListener{
+        ArticleAdapter.OnItemClickListener,
+        ArticleAdapter.OnItemChildClickListener,
+        ArticleAdapter.RequestLoadMoreListener,
+        SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.srl_article_list)
     SwipeRefreshLayout mSrlWxArticleList;

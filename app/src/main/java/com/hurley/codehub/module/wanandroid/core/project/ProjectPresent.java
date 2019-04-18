@@ -1,7 +1,6 @@
 package com.hurley.codehub.module.wanandroid.core.project;
 
 
-
 import android.annotation.SuppressLint;
 
 import com.hurley.codehub.api.WanAndroidApiService;
@@ -41,17 +40,7 @@ public class ProjectPresent extends BasePresenter<ProjectContract.View> implemen
                 .getProject()
                 .compose(RxSchedulers.applySchedulers())
                 .compose(mView.bindToLife())
-                .subscribe(new Consumer<BaseBean<List<ProjectBean>>>() {
-                    @Override
-                    public void accept(BaseBean<List<ProjectBean>> response) throws Exception {
-                        mView.setProjects(response.getData());
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        mView.showFailed(throwable.getMessage());
-                    }
-                });
+                .subscribe(response -> mView.setProjects(response.getData()), throwable -> mView.showFailed(throwable.getMessage()));
     }
 
     @Override

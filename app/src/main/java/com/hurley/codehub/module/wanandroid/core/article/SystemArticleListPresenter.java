@@ -68,13 +68,18 @@ public class SystemArticleListPresenter extends BasePresenter<SystemArticleListC
 
     @Override
     public void loadMore() {
-        mPage ++;
+        mPage++;
         isRefresh = false;
         loadSystemArticles(mCid);
     }
 
     @Override
     public void collectArticle(int position, ArticleBean.DatasBean articleBean) {
+
+    }
+
+    @Override
+    public void saveArticle(String chapterName, String superChapterName) {
 
     }
 }

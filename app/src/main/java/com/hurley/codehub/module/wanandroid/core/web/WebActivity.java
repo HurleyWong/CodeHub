@@ -69,6 +69,7 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
         mAgentWeb.getWebLifeCycle().onResume();
         super.onResume();
     }
+
     @Override
     public void onDestroy() {
         mAgentWeb.getWebLifeCycle().onDestroy();
@@ -109,6 +110,7 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
 
     /**
      * 显示返回键
+     *
      * @return
      */
     @Override
@@ -161,6 +163,7 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
 
     /**
      * 返回上一页而不是finish Activity
+     *
      * @param keyCode
      * @param event
      * @return
@@ -269,10 +272,11 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
 
     /**
      * 点击文章打开网页
-     * @param id            文章id
-     * @param url           文章链接
-     * @param title         文章标题
-     * @param author        文章作者
+     *
+     * @param id     文章id
+     * @param url    文章链接
+     * @param title  文章标题
+     * @param author 文章作者
      */
     public static void startWeb(int id, String url, String title, String author) {
         ARouter.getInstance().build(PathContainer.WEB)
@@ -285,7 +289,8 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
 
     /**
      * 直接打开网页
-     * @param url           网页链接
+     *
+     * @param url 网页链接
      */
     public static void startWeb(String url) {
         ARouter.getInstance().build(PathContainer.WEB)
@@ -307,10 +312,11 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
 
     /**
      * 复制链接
+     *
      * @param content
      */
     private void copyLink(CharSequence content) {
-        ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         if (clipboard != null) {
             //参数一：标签，可为空，参数二：要复制到剪贴板的文本
             clipboard.setPrimaryClip(ClipData.newPlainText(null, content));

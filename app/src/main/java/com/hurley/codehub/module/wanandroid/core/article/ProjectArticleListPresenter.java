@@ -28,7 +28,8 @@ public class ProjectArticleListPresenter extends BasePresenter<ProjectArticleLis
     private boolean isRefresh = true;
 
     @Inject
-    public ProjectArticleListPresenter() {}
+    public ProjectArticleListPresenter() {
+    }
 
     @SuppressLint("CheckResult")
     @Override
@@ -38,14 +39,11 @@ public class ProjectArticleListPresenter extends BasePresenter<ProjectArticleLis
                 .getProjectArticles(mPage, id)
                 .compose(RxSchedulers.applySchedulers())
                 .compose(mView.bindToLife())
-                .subscribe(new Consumer<BaseBean<ArticleBean>>() {
-                    @Override
-                    public void accept(BaseBean<ArticleBean> response) throws Exception {
-                        if (isRefresh) {
-                            mView.setProjectArticles(response.getData(), 0);
-                        } else {
-                            mView.setProjectArticles(response.getData(), 1);
-                        }
+                .subscribe(response -> {
+                    if (isRefresh) {
+                        mView.setProjectArticles(response.getData(), 0);
+                    } else {
+                        mView.setProjectArticles(response.getData(), 1);
                     }
                 });
     }
@@ -59,7 +57,7 @@ public class ProjectArticleListPresenter extends BasePresenter<ProjectArticleLis
 
     @Override
     public void loadMore() {
-        mPage ++;
+        mPage++;
         isRefresh = false;
         loadProjectArticles(mId);
     }

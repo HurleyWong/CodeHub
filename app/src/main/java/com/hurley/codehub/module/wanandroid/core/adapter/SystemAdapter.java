@@ -28,7 +28,7 @@ public class SystemAdapter extends BaseQuickAdapter<SystemBean, BaseViewHolder> 
         StringBuffer stringBuffer = new StringBuffer();
         for (SystemBean.Children systemBean : item.getChildren()) {
             //设置两者之间的间隔
-            stringBuffer.append(systemBean.getName()+ "     ");
+            stringBuffer.append(systemBean.getName() + "     ");
         }
         helper.setText(R.id.tv_system_subtitle, stringBuffer.toString());
     }

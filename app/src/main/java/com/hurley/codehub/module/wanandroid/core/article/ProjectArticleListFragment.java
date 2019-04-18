@@ -35,10 +35,10 @@ import butterknife.BindView;
  */
 public class ProjectArticleListFragment extends BaseFragment<ProjectArticleListPresenter>
         implements ProjectArticleListContract.View,
-                ArticleAdapter.OnItemClickListener,
-                ArticleAdapter.OnItemChildClickListener,
-                ArticleAdapter.RequestLoadMoreListener,
-                SwipeRefreshLayout.OnRefreshListener {
+        ArticleAdapter.OnItemClickListener,
+        ArticleAdapter.OnItemChildClickListener,
+        ArticleAdapter.RequestLoadMoreListener,
+        SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.srl_article_list)
     SwipeRefreshLayout mSrlProjectArticle;

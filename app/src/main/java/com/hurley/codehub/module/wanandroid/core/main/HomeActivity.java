@@ -116,8 +116,8 @@ public class HomeActivity extends BaseActivity<HomePresenter>
      */
     private void initNavigationHeaderView() {
         View headerView = mNavigationView.getHeaderView(0);
-        mLlLogin =  headerView.findViewById(R.id.ll_login);
-        mTvLoginStatus =  headerView.findViewById(R.id.tv_login_status);
+        mLlLogin = headerView.findViewById(R.id.ll_login);
+        mTvLoginStatus = headerView.findViewById(R.id.tv_login_status);
         mLlLogin.setOnClickListener(this);
     }
 
@@ -167,6 +167,7 @@ public class HomeActivity extends BaseActivity<HomePresenter>
 
     /**
      * 底部导航栏的选择
+     *
      * @param menuItem
      */
     @Override
@@ -205,6 +206,7 @@ public class HomeActivity extends BaseActivity<HomePresenter>
 
     /**
      * 创建
+     *
      * @param menu
      * @return
      */
@@ -216,6 +218,7 @@ public class HomeActivity extends BaseActivity<HomePresenter>
 
     /**
      * ToolBar栏的选择操作
+     *
      * @param item
      * @return
      */
@@ -232,6 +235,7 @@ public class HomeActivity extends BaseActivity<HomePresenter>
 
     /**
      * 再按一次退出
+     *
      * @param keyCode
      * @param event
      * @return

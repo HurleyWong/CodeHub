@@ -17,7 +17,8 @@ import javax.inject.Inject;
 public class WebPresenter extends BasePresenter<WebContract.View> implements WebContract.Presenter {
 
     @Inject
-    public WebPresenter() {}
+    public WebPresenter() {
+    }
 
     @Override
     public void collectInsideArticle(int id) {

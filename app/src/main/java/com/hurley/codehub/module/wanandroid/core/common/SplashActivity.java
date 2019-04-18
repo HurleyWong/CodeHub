@@ -108,7 +108,7 @@ public class SplashActivity extends AppCompatActivity implements OnPermission, A
         if (quick) {
             ToastUtils.showShort(R.string.no_file_permission);
             XXPermissions.gotoPermissionSettings(SplashActivity.this, true);
-        }else {
+        } else {
             ToastUtils.showShort(R.string.grant_file_permission);
             getWindow().getDecorView().postDelayed(new Runnable() {
                 @Override

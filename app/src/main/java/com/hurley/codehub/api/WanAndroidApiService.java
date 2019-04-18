@@ -1,7 +1,6 @@
 package com.hurley.codehub.api;
 
 
-
 import com.hurley.codehub.bean.wanandroid.BaseBean;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.bean.wanandroid.BannerBean;
@@ -38,10 +37,11 @@ public interface WanAndroidApiService {
     /**
      * 登录
      * http://www.wanandroid.com/user/login
-     * @param username              用户名
-     * @param password              密码
-     * 🔥用@FormUrlEncoded注解来标明这是一个表单请求
-     * 🔥用@Field注解来标识所对应的某个类型数据的键，从而组成一组键值对进行传递
+     *
+     * @param username 用户名
+     * @param password 密码
+     *                 🔥用@FormUrlEncoded注解来标明这是一个表单请求
+     *                 🔥用@Field注解来标识所对应的某个类型数据的键，从而组成一组键值对进行传递
      * @return
      */
     @POST(WanAndroidUrlContainer.LOGIN)
@@ -52,9 +52,10 @@ public interface WanAndroidApiService {
     /**
      * 注册
      * http://www.wanandroid.com/user/register
-     * @param username              用户名
-     * @param password              密码
-     * @param repassword            重复密码
+     *
+     * @param username   用户名
+     * @param password   密码
+     * @param repassword 重复密码
      * @return
      */
     @POST(WanAndroidUrlContainer.REGISTER)
@@ -66,6 +67,7 @@ public interface WanAndroidApiService {
     /**
      * 退出登录
      * http://www.wanandroid.com/user/logout/json
+     *
      * @return
      */
     @GET(WanAndroidUrlContainer.LOGOUT)
@@ -75,8 +77,9 @@ public interface WanAndroidApiService {
     /**
      * 首页文章列表
      * http://www.wanandroid.com/article/list/{page}/json
-     * @param page                  页码
-     * 用@Path来动态配置URL地址
+     *
+     * @param page 页码
+     *             用@Path来动态配置URL地址
      * @return
      */
     @GET(WanAndroidUrlContainer.INDEX_ARTICLE_LIST)
@@ -85,6 +88,7 @@ public interface WanAndroidApiService {
     /**
      * 首页Banner
      * http://www.wanandroid.com/banner/json
+     *
      * @return
      */
     @GET(WanAndroidUrlContainer.INDEX_BANNER)
@@ -93,6 +97,7 @@ public interface WanAndroidApiService {
     /**
      * 常用网站
      * http://www.wanandroid.com/friend/json
+     *
      * @return
      */
     @GET(WanAndroidUrlContainer.WEBSITE)
@@ -101,6 +106,7 @@ public interface WanAndroidApiService {
     /**
      * 搜索热词
      * http://www.wanandroid.com//hotkey/json
+     *
      * @return
      */
     @GET(WanAndroidUrlContainer.HOT_KEY)
@@ -109,6 +115,7 @@ public interface WanAndroidApiService {
     /**
      * 体系数据
      * http://www.wanandroid.com/tree/json
+     *
      * @return
      */
     @GET(WanAndroidUrlContainer.TREE)
@@ -117,9 +124,10 @@ public interface WanAndroidApiService {
     /**
      * 知识体系下的文章
      * http://www.wanandroid.com/article/list/{page}/json?cid={cid}
-     * @param page                  页码
-     * @param cid                   分类的id，上述二级目录的id
-     * 🔥用@Query来动态指定查询条件
+     *
+     * @param page 页码
+     * @param cid  分类的id，上述二级目录的id
+     *             🔥用@Query来动态指定查询条件
      * @return
      */
     @GET(WanAndroidUrlContainer.TREE_ARTICLE_LIST)
@@ -129,6 +137,7 @@ public interface WanAndroidApiService {
     /**
      * 导航数据
      * http://www.wanandroid.com/navi/json
+     *
      * @return
      */
     @GET(WanAndroidUrlContainer.NAVI)
@@ -137,6 +146,7 @@ public interface WanAndroidApiService {
     /**
      * 项目分类
      * http://www.wanandroid.com/project/tree/json
+     *
      * @return
      */
     @GET(WanAndroidUrlContainer.PROJECT_TREE)
@@ -145,6 +155,7 @@ public interface WanAndroidApiService {
     /**
      * 项目列表数据（文章）
      * http://www.wanandroid.com/project/list/{page}/json?cid={cid}
+     *
      * @param page
      * @param cid
      * @return
@@ -156,7 +167,8 @@ public interface WanAndroidApiService {
     /**
      * 最新项目tab
      * http://wanandroid.com/article/listproject/{page}/json
-     * @param page                  页码
+     *
+     * @param page 页码
      * @return
      */
     @GET(WanAndroidUrlContainer.LATEST_PROJECT)
@@ -165,7 +177,8 @@ public interface WanAndroidApiService {
     /**
      * 收藏文章列表
      * http://www.wanandroid.com/lg/collect/list/{page}/json
-     * @param page                  页码
+     *
+     * @param page 页码
      * @return
      */
     @GET(WanAndroidUrlContainer.COLLECT_ARTICLE_LIST)
@@ -175,10 +188,11 @@ public interface WanAndroidApiService {
      * 收藏站内文章
      * http://www.wanandroid.com/lg/collect/{id}/json
      * 成功则返回：
-     *      "data": null,
-     *      "errorCode": 0,
-     *      "errorMsg": ""
-     * @param id                    文章id
+     * "data": null,
+     * "errorCode": 0,
+     * "errorMsg": ""
+     *
+     * @param id 文章id
      * @return
      */
     @POST(WanAndroidUrlContainer.COLLECT_INSIDE_ARTICLE)
@@ -187,9 +201,10 @@ public interface WanAndroidApiService {
     /**
      * 收藏站外文章
      * http://www.wanandroid.com/lg/collect/add/json
-     * @param title                 标题
-     * @param author                作者
-     * @param link                  链接
+     *
+     * @param title  标题
+     * @param author 作者
+     * @param link   链接
      * @return
      */
     @POST(WanAndroidUrlContainer.COLLECT_OUTSIDE_ARTICLE)
@@ -202,9 +217,10 @@ public interface WanAndroidApiService {
      * http://www.wanandroid.com/lg/uncollect_originId/{id}/json
      * 2333为originId
      * 成功则返回：
-     *      "data": null,
-     *      "errorCode": 0,
-     *      "errorMsg": ""
+     * "data": null,
+     * "errorCode": 0,
+     * "errorMsg": ""
+     *
      * @param id
      * @param originId
      * @return
@@ -218,9 +234,10 @@ public interface WanAndroidApiService {
      * http://www.wanandroid.com/lg/uncollect/{id}/json?originId={originId}
      * 48032为id，1166为originId。如果是从站外收藏，则originId为-1
      * 成功则返回：
-     *      "data": null,
-     *      "errorCode": 0,
-     *      "errorMsg": ""
+     * "data": null,
+     * "errorCode": 0,
+     * "errorMsg": ""
+     *
      * @param id
      * @param originId
      * @return
@@ -232,6 +249,7 @@ public interface WanAndroidApiService {
     /**
      * 收藏网站列表
      * http://www.wanandroid.com/lg/collect/usertools/json
+     *
      * @return
      */
     @GET(WanAndroidUrlContainer.COLLECT_WEBSITE_LIST)
@@ -240,8 +258,9 @@ public interface WanAndroidApiService {
     /**
      * 收藏网址
      * http://www.wanandroid.com/lg/collect/addtool/json
-     * @param name                  标题
-     * @param link                  链接
+     *
+     * @param name 标题
+     * @param link 链接
      * @return
      */
     @POST(WanAndroidUrlContainer.COLLECT_WEBSITE)
@@ -251,9 +270,10 @@ public interface WanAndroidApiService {
     /**
      * 编辑收藏网址
      * http://www.wanandroid.com/lg/collect/updatetool/json
-     * @param id                    文章id
-     * @param name                  标题
-     * @param link                  链接
+     *
+     * @param id   文章id
+     * @param name 标题
+     * @param link 链接
      * @return
      */
     @POST(WanAndroidUrlContainer.EDIT_COLLECT_WEBSITE)
@@ -264,7 +284,8 @@ public interface WanAndroidApiService {
     /**
      * 删除收藏网址
      * http://www.wanandroid.com/lg/collect/deletetool/json
-     * @param id                    文章id
+     *
+     * @param id 文章id
      * @return
      */
     @POST(WanAndroidUrlContainer.DEL_COLLECT_WEBSITE)
@@ -273,18 +294,20 @@ public interface WanAndroidApiService {
     /**
      * 搜索
      * http://www.wanandroid.com/article/query/{page}/json
-     * @param page                  页码
-     * @param k                     关键字
+     *
+     * @param page 页码
+     * @param k    关键字
      * @return
      */
     @POST(WanAndroidUrlContainer.SEARCH)
     @FormUrlEncoded
     Observable<BaseBean<ArticleBean>> getSearchArticles(@Path("page") int page,
-                                                                  @Field("k") String k);
+                                                        @Field("k") String k);
 
     /**
      * 获取公众号列表
      * http://wanandroid.com/wxarticle/chapters/json
+     *
      * @return
      */
     @GET(WanAndroidUrlContainer.WXARTICLE_LIST)
@@ -293,8 +316,9 @@ public interface WanAndroidApiService {
     /**
      * 查看某个公众号历史数据
      * http://wanandroid.com/wxarticle/list/{id}/{page}/json
-     * @param id                    公众号id
-     * @param page                  公众号页码
+     *
+     * @param id   公众号id
+     * @param page 公众号页码
      * @return
      */
     @GET(WanAndroidUrlContainer.WXARTICLE_HISTORY)
@@ -304,9 +328,10 @@ public interface WanAndroidApiService {
     /**
      * 在某个公众号中搜索历史文章
      * http://wanandroid.com/wxarticle/list/{id}/{page}/json?k=k
-     * @param id                    公众号id
-     * @param page                  页码
-     * @param k                     关键字
+     *
+     * @param id   公众号id
+     * @param page 页码
+     * @param k    关键字
      * @return
      */
     @GET(WanAndroidUrlContainer.WXARTICLE_SEARCH)

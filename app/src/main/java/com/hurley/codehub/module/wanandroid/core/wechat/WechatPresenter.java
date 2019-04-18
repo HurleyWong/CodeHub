@@ -19,7 +19,7 @@ import javax.inject.Inject;
  *      desc    : 公众号 Presenter类
  * </pre>
  */
-public class WechatPresenter extends BasePresenter<WechatContract.View> implements WechatContract.Presenter{
+public class WechatPresenter extends BasePresenter<WechatContract.View> implements WechatContract.Presenter {
 
     @Inject
     public WechatPresenter() {

@@ -68,7 +68,7 @@ public class WechatFragment extends BaseFragment<WechatPresenter> implements Wec
     @Override
     public void setWxAccounts(List<WxAccountBean> wxAccounts) {
         List<Integer> ids = new ArrayList<>();
-        List<String> names= new ArrayList<>();
+        List<String> names = new ArrayList<>();
         if (wxAccounts.size() > 0) {
             for (WxAccountBean wxAccountBean : wxAccounts) {
                 ids.add(wxAccountBean.getId());

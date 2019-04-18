@@ -15,10 +15,17 @@ public interface ProjectArticleListContract {
 
     interface View extends BaseContract.BaseView {
 
+        /**
+         * 显示项目文章
+         *
+         * @param articleBean
+         * @param type
+         */
         void setProjectArticles(ArticleBean articleBean, int type);
 
         /**
          * 在文章列表页面成功收藏文章
+         *
          * @param position
          * @param articleBean
          */
@@ -26,12 +33,30 @@ public interface ProjectArticleListContract {
     }
 
     interface Presenter extends BaseContract.BasePresenter<ProjectArticleListContract.View> {
+
+        /**
+         * 加载项目文章
+         *
+         * @param id
+         */
         void loadProjectArticles(int id);
 
+        /**
+         * 刷新
+         */
         void refresh();
 
+        /**
+         * 加载更多
+         */
         void loadMore();
 
+        /**
+         * 收藏文章
+         *
+         * @param position
+         * @param articleBean
+         */
         void collectArticle(int position, ArticleBean.DatasBean articleBean);
     }
 }

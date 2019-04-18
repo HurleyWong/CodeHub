@@ -96,6 +96,8 @@ public class SystemFragment extends BaseFragment<SystemPresenter>
                 .withString(Constants.CONTENT_TITLE_KEY, mSystemAdapter.getItem(position).getName())
                 .withObject(Constants.CONTENT_CHILDREN_KEY, mSystemAdapter.getItem(position).getChildren())
                 .navigation();
+        //将点击的体系名称保存至自己的数据库
+        mPresenter.saveSystems(mSystemAdapter.getItem(position).getName());
     }
 
 }

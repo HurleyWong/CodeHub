@@ -32,10 +32,10 @@ import butterknife.BindView;
 @Route(path = PathContainer.SEARCH)
 public class SearchActivity extends BaseActivity<SearchPresenter>
         implements SearchContract.View,
-                    ArticleAdapter.OnItemClickListener,
-                    ArticleAdapter.OnItemChildClickListener,
-                    SwipeRefreshLayout.OnRefreshListener,
-                    ArticleAdapter.RequestLoadMoreListener{
+        ArticleAdapter.OnItemClickListener,
+        ArticleAdapter.OnItemChildClickListener,
+        SwipeRefreshLayout.OnRefreshListener,
+        ArticleAdapter.RequestLoadMoreListener {
 
     @BindView(R.id.srl_search)
     SwipeRefreshLayout mSrlSearch;

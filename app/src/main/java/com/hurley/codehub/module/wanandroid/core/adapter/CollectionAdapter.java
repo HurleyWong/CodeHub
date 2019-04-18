@@ -32,7 +32,7 @@ public class CollectionAdapter extends BaseQuickAdapter<ArticleBean.DatasBean, B
         if (StringUtils.isEmpty(item.getsuperChapterName())) {
             helper.setText(R.id.tv_article_chapter, item.getChapterName());
         } else {
-            helper.setText(R.id.tv_article_chapter,  item.getsuperChapterName() + " / "+ item.getChapterName());
+            helper.setText(R.id.tv_article_chapter, item.getsuperChapterName() + " / " + item.getChapterName());
         }
         //添加文章所属体系的点击事件
         helper.addOnClickListener(R.id.tv_article_chapter);

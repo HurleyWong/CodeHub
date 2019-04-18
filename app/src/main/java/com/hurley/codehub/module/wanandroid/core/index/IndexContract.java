@@ -19,27 +19,73 @@ import java.util.List;
 public interface IndexContract {
 
     interface View extends BaseContract.BaseView {
+
+        /**
+         * 显示首页轮播图
+         *
+         * @param banners
+         */
         void setBanners(List<BannerBean> banners);
 
+        /**
+         * 显示首页文章
+         *
+         * @param articleBean
+         * @param loadType
+         */
         void setArticles(ArticleBean articleBean, @LoadType.checker int loadType);
 
+        /**
+         * 收藏文章成功
+         *
+         * @param position
+         * @param articleBean
+         */
         void collectArticleSuccess(int position, ArticleBean.DatasBean articleBean);
 
     }
 
     interface Presenter extends BaseContract.BasePresenter<View> {
+
+        /**
+         * 加载首页轮播图
+         */
         void loadBanners();
 
+        /**
+         * 加载首页文章
+         */
         void loadArticles();
 
-        void getAllArticles();
-
+        /**
+         * 刷新
+         */
         void refresh();
 
+        /**
+         * 加载更多
+         */
         void loadMore();
 
+        /**
+         * 收藏文章
+         *
+         * @param position
+         * @param articleBean
+         */
         void collectArticle(int position, ArticleBean.DatasBean articleBean);
 
+        /**
+         * 加载所有数据（用户信息、轮播图、文章）
+         */
         void loadData();
+
+        /**
+         * 将点击的文章模块、父模块保存至自己的数据库
+         *
+         * @param chapterName
+         * @param superChapterName
+         */
+        void saveArticles(String chapterName, String superChapterName);
     }
 }

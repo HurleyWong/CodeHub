@@ -19,6 +19,7 @@ public interface ReadhubApiService {
 
     /**
      * 获得热门话题
+     *
      * @return
      */
     @GET(ReadhubUrlContainer.TOPIC)
@@ -27,6 +28,7 @@ public interface ReadhubApiService {
 
     /**
      * 获得热门话题细节
+     *
      * @param topicId
      * @return
      */

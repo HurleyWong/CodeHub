@@ -1,7 +1,6 @@
 package com.hurley.codehub.module.wanandroid.core.system;
 
 
-
 import android.annotation.SuppressLint;
 
 import com.blankj.utilcode.util.SPUtils;
@@ -46,7 +45,7 @@ public class SystemPresenter extends BasePresenter<SystemContract.View> implemen
                 .subscribe(response -> {
                     if (response.getErrorCode() == BaseBean.SUCCESS) {
                         mView.setSystems(response.getData());
-                        for (int i = 0; i < response.getData().size(); i ++) {
+                        for (int i = 0; i < response.getData().size(); i++) {
                             systemBeans.add(response.getData().get(i).getName());
                         }
                         SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.SYSTEM_NAME, systemBeans);
@@ -62,4 +61,10 @@ public class SystemPresenter extends BasePresenter<SystemContract.View> implemen
         //刷新，重新加载数据
         loadSystems();
     }
+
+    @Override
+    public void saveSystems(String superChapterName) {
+
+    }
+
 }

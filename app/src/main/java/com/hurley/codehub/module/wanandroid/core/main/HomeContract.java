@@ -18,6 +18,11 @@ public interface HomeContract {
 
     interface Presenter extends BaseContract.BasePresenter<HomeContract.View> {
 
+        /**
+         * 设置夜间模式
+         *
+         * @param isNight
+         */
         void setNightMode(boolean isNight);
     }
 }

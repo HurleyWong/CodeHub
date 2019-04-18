@@ -31,6 +31,7 @@ public class RxBus {
     /**
      * 获得RxBus的实例
      * 单例模式的双重检查模式
+     *
      * @return
      */
     public static RxBus getInstance() {
@@ -46,6 +47,7 @@ public class RxBus {
 
     /**
      * 发送事件
+     *
      * @param o
      */
     public void post(Object o) {
@@ -55,6 +57,7 @@ public class RxBus {
     /**
      * 接受事件
      * 根据传递的 eventType 类型返回特定类型(eventType)的 被观察者
+     *
      * @param eventType
      * @param <T>
      * @return

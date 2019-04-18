@@ -16,16 +16,33 @@ public interface SearchContract {
 
     interface View extends BaseContract.BaseView {
 
+        /**
+         * 显示搜索文章结果
+         *
+         * @param articleBean
+         * @param loadType
+         */
         void setSearchArticles(ArticleBean articleBean, @LoadType.checker int loadType);
 
     }
 
     interface Presenter extends BaseContract.BasePresenter<SearchContract.View> {
 
+        /**
+         * 加载搜索结果
+         *
+         * @param key
+         */
         void loadSearchArticles(String key);
 
+        /**
+         * 刷新
+         */
         void refresh();
 
+        /**
+         * 加载更多
+         */
         void loadMore();
     }
 }

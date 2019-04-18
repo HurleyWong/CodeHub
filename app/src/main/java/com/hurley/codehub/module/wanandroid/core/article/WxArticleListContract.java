@@ -15,19 +15,48 @@ public interface WxArticleListContract {
 
     interface View extends BaseContract.BaseView {
 
+        /**
+         * 显示微信公众号文章
+         *
+         * @param articleBean
+         * @param type
+         */
         void setWxArticles(ArticleBean articleBean, int type);
 
+        /**
+         * 显示收藏文章成功
+         *
+         * @param position
+         * @param articleBean
+         */
         void collectWxArticleSuccess(int position, ArticleBean.DatasBean articleBean);
     }
 
     interface Presenter extends BaseContract.BasePresenter<WxArticleListContract.View> {
 
+        /**
+         * 加载微信公众号文章
+         *
+         * @param id
+         */
         void loadWxArticles(int id);
 
+        /**
+         * 刷新
+         */
         void refresh();
 
+        /**
+         * 加载更多
+         */
         void loadMore();
 
+        /**
+         * 收藏文章
+         *
+         * @param position
+         * @param articleBean
+         */
         void collectWxArticle(int position, ArticleBean.DatasBean articleBean);
     }
 }
