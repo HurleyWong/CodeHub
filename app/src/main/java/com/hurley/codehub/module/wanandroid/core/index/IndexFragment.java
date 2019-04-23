@@ -1,11 +1,13 @@
 package com.hurley.codehub.module.wanandroid.core.index;
 
 import android.annotation.SuppressLint;
+import android.media.audiofx.LoudnessEnhancer;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 
 
 import com.blankj.utilcode.util.ActivityUtils;
@@ -19,6 +21,7 @@ import com.hurley.codehub.base.BaseFragment;
 import com.hurley.codehub.bean.local.Article;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.bean.wanandroid.BannerBean;
+import com.hurley.codehub.module.wanandroid.core.adapter.RecommendAdapter;
 import com.hurley.codehub.module.wanandroid.event.LoginEvent;
 import com.hurley.codehub.module.wanandroid.core.adapter.ArticleAdapter;
 import com.hurley.codehub.module.wanandroid.core.web.WebActivity;
@@ -28,7 +31,6 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
 
-import java.net.ConnectException;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -47,7 +49,7 @@ import butterknife.BindView;
  */
 public class IndexFragment extends BaseFragment<IndexPresenter>
         implements IndexContract.View, ArticleAdapter.OnItemClickListener, ArticleAdapter.OnItemChildClickListener,
-        ArticleAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
+        ArticleAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener, View.OnClickListener{
 
     @BindView(R.id.srl_index)
     SwipeRefreshLayout mSrlIndex;
@@ -56,9 +58,11 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
 
     @Inject
     ArticleAdapter mArticleAdapter;
+    @Inject
+    RecommendAdapter mRecommendAdapter;
 
     private Banner mBanner;
-    private View mBannerView;
+    private View mRecommendView;
 
     public static IndexFragment newInstance() {
         return new IndexFragment();
@@ -81,9 +85,18 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         mRvIndex.setAdapter(mArticleAdapter);
 
         //设置Banner
-        mBannerView = LayoutInflater.from(getContext()).inflate(R.layout.banner_index, null);
+        View mBannerView = LayoutInflater.from(getContext()).inflate(R.layout.banner_index, null);
         mBanner = mBannerView.findViewById(R.id.banner_index);
         mArticleAdapter.addHeaderView(mBannerView);
+
+        //设置推荐模块
+        mRecommendView = LayoutInflater.from(getContext()).inflate(R.layout.layout_index_head, null);
+        RecyclerView rvRecommend = mRecommendView.findViewById(R.id.rv_recommend);
+        ImageView ivRefresh = mRecommendView.findViewById(R.id.iv_refresh);
+        ImageView ivClose = mRecommendView.findViewById(R.id.iv_close);
+        mArticleAdapter.addHeaderView(mRecommendView);
+        rvRecommend.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvRecommend.setAdapter(mRecommendAdapter);
 
         mArticleAdapter.setOnItemClickListener(this);
         mArticleAdapter.setOnItemChildClickListener(this);
@@ -91,8 +104,24 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         mArticleAdapter.setOnLoadMoreListener(this);
         mSrlIndex.setOnRefreshListener(this);
 
+        //推荐文章的点击事件
+        mRecommendAdapter.setOnItemClickListener((adapter, v, position) -> WebActivity.startWeb(mRecommendAdapter.getItem(position).getId(),
+                mRecommendAdapter.getItem(position).getLink(),
+                mRecommendAdapter.getItem(position).getTitle(),
+                mRecommendAdapter.getItem(position).getAuthor(),
+                mRecommendAdapter.getItem(position).getChapterId(),
+                mRecommendAdapter.getItem(position).getChapterName(),
+                mRecommendAdapter.getItem(position).getsuperChapterName(),
+                mRecommendAdapter.getItem(position).getNiceDate()));
+
+        //刷新和关闭推荐文章的点击事件
+        ivRefresh.setOnClickListener(this);
+        ivClose.setOnClickListener(this);
+
         //加载数据
         //mPresenter.loadData();
+        //根据后台返回的要推荐的体系，加载推荐文章
+        //mPresenter.loadRecommendArticles(60);
         onRefresh();
 
         //登录成功后刷新
@@ -139,8 +168,14 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
     }
 
     @Override
+    public void setRecommendArticles(ArticleBean articleBean) {
+        mRecommendAdapter.setNewData(articleBean.getDatas());
+    }
+
+    @Override
     public void onRefresh() {
         mPresenter.refresh();
+        mRecommendView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -170,8 +205,6 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
                 mArticleAdapter.getItem(position).getChapterName(),
                 mArticleAdapter.getItem(position).getsuperChapterName(),
                 mArticleAdapter.getItem(position).getNiceDate());
-
-        //TODO 将文章实体类ArticleBean中的属性（userId title link chapterName superChapterName）传给自己的后台
     }
 
     /**
@@ -204,4 +237,17 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         mPresenter.loadMore();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_refresh:
+                //刷新推荐文章，重新推荐
+                break;
+            case R.id.iv_close:
+                mRecommendView.setVisibility(View.GONE);
+                break;
+            default:
+                break;
+        }
+    }
 }

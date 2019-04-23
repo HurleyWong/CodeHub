@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CardViewStyle">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp80"
+        android:padding="@dimen/dp10">
+
+        <TextView
+            android:id="@+id/tv_recommend_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/article_title"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp16" />
+
+        <TextView
+            android:id="@+id/tv_recommend_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/article_title" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

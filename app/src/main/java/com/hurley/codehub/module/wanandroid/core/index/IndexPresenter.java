@@ -52,6 +52,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class IndexPresenter extends BasePresenter<IndexContract.View> implements IndexContract.Presenter {
 
     /**
+     * 文章id
+     */
+    private int mCid;
+    /**
      * 页数
      */
     private int mPage;
@@ -104,6 +108,20 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                 });
     }
 
+    @SuppressLint("CheckResult")
+    @Override
+    public void loadRecommendArticles(int cid) {
+        RetrofitManager.create(WanAndroidApiService.class)
+                .getSystemArticles(mPage, cid)
+                .compose(RxSchedulers.applySchedulers())
+                .compose(mView.bindToLife())
+                .subscribe(response -> {
+                    mView.setRecommendArticles(response.getData());
+                }, throwable -> {
+                    LogUtils.e(throwable.getMessage());
+                });
+    }
+
     @Override
     public void refresh() {
         //页数设置为首页
@@ -111,6 +129,7 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
         isRefresh = true;
         loadBanners();
         loadArticles();
+        loadRecommendArticles(60);
     }
 
     @Override

@@ -44,6 +44,13 @@ public interface IndexContract {
          */
         void collectArticleSuccess(int position, ArticleBean.DatasBean articleBean);
 
+        /**
+         * 显示推荐文章
+         *
+         * @param articleBean
+         */
+        void setRecommendArticles(ArticleBean articleBean);
+
     }
 
     interface Presenter extends BaseContract.BasePresenter<View> {
@@ -57,6 +64,11 @@ public interface IndexContract {
          * 加载首页文章
          */
         void loadArticles();
+
+        /**
+         * 加载推荐文章
+         */
+        void loadRecommendArticles(int cid);
 
         /**
          * 刷新
