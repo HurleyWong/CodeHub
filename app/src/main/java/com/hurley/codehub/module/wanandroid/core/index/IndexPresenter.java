@@ -7,12 +7,16 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.RegexUtils;
 import com.blankj.utilcode.util.SPUtils;
+import com.google.gson.Gson;
 import com.hurley.codehub.R;
+import com.hurley.codehub.api.LocalApiService;
+import com.hurley.codehub.api.LocalUrlContainer;
 import com.hurley.codehub.api.WanAndroidApiService;
 import com.hurley.codehub.api.PathContainer;
 import com.hurley.codehub.app.App;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.app.LoadType;
+import com.hurley.codehub.bean.local.Article;
 import com.hurley.codehub.bean.wanandroid.BaseBean;
 import com.hurley.codehub.base.BasePresenter;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
@@ -30,6 +34,12 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * <pre>
@@ -119,6 +129,7 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
     @SuppressLint("CheckResult")
     @Override
     public void collectArticle(int position, ArticleBean.DatasBean articleBean) {
+        //如果已登录
         if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
             if (articleBean.isCollect()) {
                 //如果已收藏
@@ -208,8 +219,4 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                 }, throwable -> mView.showFailed(throwable.getMessage()));
     }
 
-    @Override
-    public void saveArticles(String chapterName, String superChapterName) {
-
-    }
 }

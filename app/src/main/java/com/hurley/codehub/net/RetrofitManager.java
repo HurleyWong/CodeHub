@@ -127,7 +127,7 @@ public class RetrofitManager {
 
 
     /**
-     * 创建Retrofit
+     * 创建WanAndroid的Retrofit
      *
      * @param clazz
      * @param <T>
@@ -139,7 +139,26 @@ public class RetrofitManager {
                 .client(getOkHttpClient())
                 //存储转化数据对象，设置返回的数据支持转换为Gson对象
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        return retrofit.create(clazz);
+    }
+
+    /**
+     * 创建本地的Retrofit
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public static <T> T createLocal(Class<T> clazz) {
+        //指定baseUrl
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(WanAndroidUrlContainer.baseUrl)
+                .client(getOkHttpClient())
+                //存储转化数据对象，设置返回的数据支持转换为Gson对象
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
         return retrofit.create(clazz);
     }
 }

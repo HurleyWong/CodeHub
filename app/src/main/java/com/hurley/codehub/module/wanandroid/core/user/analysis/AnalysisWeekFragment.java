@@ -10,7 +10,7 @@ import com.hurley.codehub.R;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseFragment;
 import com.hurley.codehub.bean.wanandroid.ArticleNumBean;
-import com.hurley.codehub.bean.PieBean;
+import com.hurley.codehub.bean.common.PieBean;
 import com.openxu.cview.chart.barchart.BarVerticalChart;
 import com.openxu.cview.chart.bean.BarBean;
 import com.openxu.cview.chart.piechart.PieChartLayout;

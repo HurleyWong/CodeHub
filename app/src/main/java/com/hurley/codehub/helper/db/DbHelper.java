@@ -1,7 +1,7 @@
 package com.hurley.codehub.helper.db;
 
 
-import com.hurley.codehub.bean.HistoryBean;
+import com.hurley.codehub.bean.common.HistoryBean;
 
 import java.util.List;
 

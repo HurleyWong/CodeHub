@@ -22,14 +22,18 @@ import android.widget.LinearLayout;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.NetworkUtils;
+import com.blankj.utilcode.util.SPUtils;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseActivity;
+import com.hurley.codehub.bean.local.Article;
 import com.just.agentweb.AgentWeb;
 import com.just.agentweb.AgentWebConfig;
 import com.just.agentweb.DefaultWebClient;
+import com.openxu.utils.LogUtil;
 
 import butterknife.BindView;
 
@@ -57,6 +61,19 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
     FrameLayout mFlWebContent;
 
     AgentWeb mAgentWeb;
+
+    static long sStartTime;
+    static long sEndTime;
+    static int sDuration;
+    static int sUserId;
+    static String sTitle;
+    static String sAuthor;
+    static int sChapterId;
+    static String sChapterName;
+    static String sSuperChapterName;
+    static String sNiceDate;
+    static String sLink;
+
 
     @Override
     protected void onPause() {
@@ -127,6 +144,29 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    sEndTime = System.currentTimeMillis();
+                    sDuration = Long.valueOf((sEndTime - sStartTime) / 1000 / 60).intValue();
+                    LogUtils.e(sDuration + "分钟 !");
+                    //如果已登录，则保存点击过的文章属性到本地数据库
+                    if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
+                        saveArticle(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID),
+                                sTitle, sAuthor, sChapterId, sChapterName, sSuperChapterName, sNiceDate, sLink, sDuration);
+                    }
+                    finishAfterTransition();
+                } else {
+                    sEndTime = System.currentTimeMillis();
+                    sDuration = Long.valueOf((sEndTime - sStartTime) / 1000 / 60).intValue();
+                    LogUtils.e(sDuration + "分钟 !");
+                    //如果已登录，则保存点击过的文章属性到本地数据库
+                    if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
+                        saveArticle(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID),
+                                sTitle, sAuthor, sChapterId, sChapterName, sSuperChapterName, sNiceDate, sLink, sDuration);
+                    }
+                    finish();
+                }
+                break;
             case R.id.more_refresh:
                 //刷新
                 mAgentWeb.getWebCreator().getWebView().loadUrl(url);
@@ -134,15 +174,18 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
             case R.id.more_share:
                 //分享
                 shareWeb();
+                //TODO 视为该用户喜欢的文章
                 break;
             case R.id.more_collect:
                 //收藏
+                //TODO 视为该用户喜欢的文章
                 break;
             case R.id.more_copy_links:
                 //复制链接
                 copyLink(url);
                 //提示复制链接成功
                 toast(R.string.more_copy_links_success);
+                //TODO 视为该用户喜欢的文章
                 break;
             case R.id.more_open_by_browser:
                 //用浏览器打开
@@ -172,6 +215,15 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (mAgentWeb != null && mAgentWeb.handleKeyEvent(keyCode, event)) {
             return true;
+        }
+        sEndTime = System.currentTimeMillis();
+        sDuration = Long.valueOf((sEndTime - sStartTime) / 1000 / 60).intValue();
+        LogUtils.e(sDuration + "分钟 !");
+
+        //如果已登录，则保存点击过的文章属性到本地数据库
+        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
+            saveArticle(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID),
+                    sTitle, sAuthor, sChapterId, sChapterName, sSuperChapterName, sNiceDate, sLink, sDuration);
         }
         return super.onKeyDown(keyCode, event);
     }
@@ -269,6 +321,35 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
         }
     }
 
+    /**
+     * 点击文章打开网页
+     *
+     * @param id
+     * @param url
+     * @param title
+     * @param author
+     * @param chapterId
+     * @param chapterName
+     * @param superChapterName
+     * @param niceDate
+     */
+    public static void startWeb(int id, String url, String title, String author,
+                                int chapterId, String chapterName, String superChapterName, String niceDate) {
+        sStartTime = System.currentTimeMillis();
+        sTitle = title;
+        sAuthor = author;
+        sChapterId = chapterId;
+        sChapterName = chapterName;
+        sSuperChapterName = superChapterName;
+        sNiceDate = niceDate;
+        sLink = url;
+        ARouter.getInstance().build(PathContainer.WEB)
+                .withInt(Constants.CONTENT_ID_KEY, id)
+                .withString(Constants.CONTENT_URL_KEY, url)
+                .withString(Constants.CONTENT_TITLE_KEY, title)
+                .withString(Constants.CONTENT_AUTHOR_KEY, author)
+                .navigation();
+    }
 
     /**
      * 点击文章打开网页
@@ -279,6 +360,7 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
      * @param author 文章作者
      */
     public static void startWeb(int id, String url, String title, String author) {
+        sStartTime = System.currentTimeMillis();
         ARouter.getInstance().build(PathContainer.WEB)
                 .withInt(Constants.CONTENT_ID_KEY, id)
                 .withString(Constants.CONTENT_URL_KEY, url)
@@ -333,5 +415,33 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
         Uri uri = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
+    }
+
+    /**
+     * 将数据存进Article对象中
+     *
+     * @param userId
+     * @param title
+     * @param author
+     * @param chapterId
+     * @param chapterName
+     * @param superChapterName
+     * @param niceDate
+     * @param link
+     * @param duration
+     */
+    private void saveArticle(int userId, String title, String author, int chapterId, String chapterName,
+                            String superChapterName, String niceDate, String link, int duration) {
+        Article article = new Article();
+        article.setUserid(userId);
+        article.setTitle(title);
+        article.setAuthor(author);
+        article.setChapterid(chapterId);
+        article.setChaptername(chapterName);
+        article.setSuperchaptername(superChapterName);
+        article.setNicedate(niceDate);
+        article.setLink(link);
+        article.setDuration(duration);
+        mPresenter.saveArticles(article);
     }
 }

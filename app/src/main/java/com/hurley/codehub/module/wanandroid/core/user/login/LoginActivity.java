@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.hurley.codehub.R;
@@ -69,6 +70,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     public void loginSuccess(UserBean userBean) {
         toast(R.string.login_success);
         SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.LOGIN_STATUS, true);
+        LogUtils.d(userBean.getId());
+        SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.USER_ID, userBean.getId());
         SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.USERNAME, userBean.getUsername());
         SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.PASSWORD, userBean.getPassword());
         //登录成功后通知其他界面

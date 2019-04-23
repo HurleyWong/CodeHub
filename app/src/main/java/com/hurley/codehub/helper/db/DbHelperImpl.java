@@ -2,7 +2,7 @@ package com.hurley.codehub.helper.db;
 
 
 import com.hurley.codehub.app.App;
-import com.hurley.codehub.bean.HistoryBean;
+import com.hurley.codehub.bean.common.HistoryBean;
 import com.hurley.codehub.dao.DaoSession;
 import com.hurley.codehub.dao.HistoryBeanDao;
 

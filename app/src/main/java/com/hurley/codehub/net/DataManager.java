@@ -5,7 +5,7 @@ import com.hurley.codehub.bean.wanandroid.BaseBean;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.bean.wanandroid.BannerBean;
 import com.hurley.codehub.bean.wanandroid.CollectArticleBean;
-import com.hurley.codehub.bean.HistoryBean;
+import com.hurley.codehub.bean.common.HistoryBean;
 import com.hurley.codehub.bean.wanandroid.HotKeyBean;
 import com.hurley.codehub.bean.wanandroid.NaviBean;
 import com.hurley.codehub.bean.wanandroid.PageBean;

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 
@@ -15,6 +16,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hurley.codehub.R;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseFragment;
+import com.hurley.codehub.bean.local.Article;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.bean.wanandroid.BannerBean;
 import com.hurley.codehub.module.wanandroid.event.LoginEvent;
@@ -26,6 +28,7 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
 
+import java.net.ConnectException;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -162,10 +165,13 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         WebActivity.startWeb(mArticleAdapter.getItem(position).getId(),
                 mArticleAdapter.getItem(position).getLink(),
                 mArticleAdapter.getItem(position).getTitle(),
-                mArticleAdapter.getItem(position).getAuthor());
+                mArticleAdapter.getItem(position).getAuthor(),
+                mArticleAdapter.getItem(position).getChapterId(),
+                mArticleAdapter.getItem(position).getChapterName(),
+                mArticleAdapter.getItem(position).getsuperChapterName(),
+                mArticleAdapter.getItem(position).getNiceDate());
 
-        //TODO 将文章实体类ArticleBean中的属性（id title link chapterName superChapterName）传给自己的后台
-        mPresenter.saveArticles(mArticleAdapter.getItem(position).getChapterName(), mArticleAdapter.getItem(position).getsuperChapterName());
+        //TODO 将文章实体类ArticleBean中的属性（userId title link chapterName superChapterName）传给自己的后台
     }
 
     /**

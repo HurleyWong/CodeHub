@@ -12,7 +12,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
 import com.hurley.codehub.base.BaseActivity;
-import com.hurley.codehub.bean.OpenSourceBean;
+import com.hurley.codehub.bean.common.OpenSourceBean;
 import com.hurley.codehub.module.wanandroid.core.adapter.OpenSourceAdapter;
 import com.hurley.codehub.module.wanandroid.core.web.WebActivity;
 import com.vansuita.materialabout.builder.AboutBuilder;

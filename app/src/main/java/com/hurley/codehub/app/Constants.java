@@ -87,6 +87,8 @@ public class Constants {
     /**
      * 首选项存储相关常量
      */
+    public static final String USER_ID = "id";
+
     public static final String USERNAME = "username";
 
     public static final String PASSWORD = "password";

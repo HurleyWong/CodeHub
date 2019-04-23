@@ -1,6 +1,7 @@
 package com.hurley.codehub.module.wanandroid.core.web;
 
 import com.hurley.codehub.base.BaseContract;
+import com.hurley.codehub.bean.local.Article;
 
 /**
  * <pre>
@@ -47,5 +48,12 @@ public interface WebContract {
          * @return
          */
         boolean getNoImageState();
+
+        /**
+         * 将点击的文章保存至自己的数据库
+         *
+         * @param article
+         */
+        void saveArticles(Article article);
     }
 }

@@ -3,6 +3,7 @@ package com.hurley.codehub.module.wanandroid.core.index;
 
 import com.hurley.codehub.app.LoadType;
 import com.hurley.codehub.base.BaseContract;
+import com.hurley.codehub.bean.local.Article;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.bean.wanandroid.BannerBean;
 
@@ -79,13 +80,5 @@ public interface IndexContract {
          * 加载所有数据（用户信息、轮播图、文章）
          */
         void loadData();
-
-        /**
-         * 将点击的文章模块、父模块保存至自己的数据库
-         *
-         * @param chapterName
-         * @param superChapterName
-         */
-        void saveArticles(String chapterName, String superChapterName);
     }
 }

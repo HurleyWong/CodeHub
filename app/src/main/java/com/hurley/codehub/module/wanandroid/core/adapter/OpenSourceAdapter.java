@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.hurley.codehub.R;
-import com.hurley.codehub.bean.OpenSourceBean;
+import com.hurley.codehub.bean.common.OpenSourceBean;
 
 
 import java.util.List;
