@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.gyf.barlibrary.BarHide;
@@ -94,9 +95,7 @@ public class SplashActivity extends AppCompatActivity implements OnPermission, A
 
     @Override
     public void hasPermission(List<String> granted, boolean isAll) {
-        Intent intent = new Intent();
-        intent.setClass(this, HomeActivity.class);
-        this.startActivity(intent);
+        ActivityUtils.startActivity(HomeActivity.class);
 
         //使用ARouter会加载变慢，出现一个短暂的白屏效果
         //ARouter.getInstance().build("/main/HomeActivity").navigation();

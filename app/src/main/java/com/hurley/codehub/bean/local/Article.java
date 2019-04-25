@@ -5,7 +5,7 @@ package com.hurley.codehub.bean.local;
  *      @author hurley
  *      date    : 2019-04-23 10:17
  *      github  : https://github.com/HurleyJames
- *      desc    :
+ *      desc    : 保存到自己数据库的文章实体类
  * </pre>
  */
 public class Article {

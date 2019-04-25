@@ -17,6 +17,7 @@ import com.hurley.codehub.app.App;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.app.LoadType;
 import com.hurley.codehub.bean.local.Article;
+import com.hurley.codehub.bean.local.Chapter;
 import com.hurley.codehub.bean.wanandroid.BaseBean;
 import com.hurley.codehub.base.BasePresenter;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
@@ -25,6 +26,7 @@ import com.hurley.codehub.bean.wanandroid.UserBean;
 import com.hurley.codehub.net.RetrofitManager;
 import com.hurley.codehub.net.callback.RxSchedulers;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -122,6 +124,22 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                 });
     }
 
+    @SuppressLint("CheckResult")
+    @Override
+    public void getRecommendChapter(List<Integer> list) {
+        RetrofitManager.createLocal(LocalApiService.class)
+                .getChapterId()
+                .compose(RxSchedulers.applySchedulers())
+                .compose(mView.bindToLife())
+                .subscribe(chapter -> {
+                    for (int i = 0; i < chapter.getData().size(); i++) {
+                        list.add(chapter.getData().get(i).getChapterid());
+                        LogUtils.e("请求成功：" + chapter.getData().get(i).getChapterid());
+                        loadRecommendArticles(chapter.getData().get(i).getChapterid());
+                    }
+                }, throwable -> LogUtils.e(throwable.getMessage()));
+    }
+
     @Override
     public void refresh() {
         //页数设置为首页
@@ -129,7 +147,8 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
         isRefresh = true;
         loadBanners();
         loadArticles();
-        loadRecommendArticles(60);
+        List<Integer> list = new ArrayList<>();
+        getRecommendChapter(list);
     }
 
     @Override

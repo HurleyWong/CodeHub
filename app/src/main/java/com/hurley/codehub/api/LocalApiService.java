@@ -1,12 +1,14 @@
 package com.hurley.codehub.api;
 
 import com.hurley.codehub.bean.local.Article;
+import com.hurley.codehub.bean.local.Chapter;
 import com.hurley.codehub.bean.wanandroid.BaseBean;
 
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
@@ -29,4 +31,7 @@ public interface LocalApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(LocalUrlContainer.ARTICLE)
     Call<BaseBean<Article>> saveArticle(@Body RequestBody article);
+
+    @GET(LocalUrlContainer.CHAPTER)
+    Observable<Chapter> getChapterId();
 }

@@ -12,7 +12,9 @@ public class LocalUrlContainer {
 
     private static final String TAG = "LocalUrlContainer";
 
-    public static final String baseUrl = "http://192.168.43.176:8203/";
+    public static final String baseUrl = "http://192.168.43.176:8080/";
 
     public static final String ARTICLE = "article";
+
+    public static final String CHAPTER = "chapter";
 }

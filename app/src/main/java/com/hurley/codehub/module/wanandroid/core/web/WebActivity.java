@@ -147,8 +147,8 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
             case android.R.id.home:
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     sEndTime = System.currentTimeMillis();
-                    sDuration = Long.valueOf((sEndTime - sStartTime) / 1000 / 60).intValue();
-                    LogUtils.e(sDuration + "分钟 !");
+                    sDuration = Long.valueOf((sEndTime - sStartTime) / 1000).intValue();
+                    LogUtils.e(sDuration + "秒!");
                     //如果已登录，则保存点击过的文章属性到本地数据库
                     if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
                         saveArticle(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID),
@@ -157,8 +157,8 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
                     finishAfterTransition();
                 } else {
                     sEndTime = System.currentTimeMillis();
-                    sDuration = Long.valueOf((sEndTime - sStartTime) / 1000 / 60).intValue();
-                    LogUtils.e(sDuration + "分钟 !");
+                    sDuration = Long.valueOf((sEndTime - sStartTime) / 1000).intValue();
+                    LogUtils.e(sDuration + "秒!");
                     //如果已登录，则保存点击过的文章属性到本地数据库
                     if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
                         saveArticle(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID),
@@ -217,8 +217,8 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
             return true;
         }
         sEndTime = System.currentTimeMillis();
-        sDuration = Long.valueOf((sEndTime - sStartTime) / 1000 / 60).intValue();
-        LogUtils.e(sDuration + "分钟 !");
+        sDuration = Long.valueOf((sEndTime - sStartTime) / 1000).intValue();
+        LogUtils.e(sDuration + "秒!");
 
         //如果已登录，则保存点击过的文章属性到本地数据库
         if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
