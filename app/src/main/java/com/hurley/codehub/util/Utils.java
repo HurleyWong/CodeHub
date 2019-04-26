@@ -1,4 +1,4 @@
-package com.hurley.codehub.utils;
+package com.hurley.codehub.util;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
@@ -14,7 +14,7 @@ import java.lang.reflect.InvocationTargetException;
  *      desc   : 初始化Util
  * </pre>
  */
-public class Util {
+public class Utils {
     private static final String TAG = "Util";
 
     @SuppressLint("StaticFieldLeak")

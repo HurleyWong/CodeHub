@@ -4,6 +4,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.hurley.codehub.R;
 import com.hurley.codehub.bean.wanandroid.SystemBean;
+import com.hurley.codehub.util.ReplaceUtils;
 
 import javax.inject.Inject;
 
@@ -24,12 +25,12 @@ public class SystemAdapter extends BaseQuickAdapter<SystemBean, BaseViewHolder> 
 
     @Override
     protected void convert(BaseViewHolder helper, SystemBean item) {
-        helper.setText(R.id.tv_system_title, item.getName());
+        helper.setText(R.id.tv_system_title, ReplaceUtils.replace(item.getName()));
         StringBuffer stringBuffer = new StringBuffer();
         for (SystemBean.Children systemBean : item.getChildren()) {
             //设置两者之间的间隔
             stringBuffer.append(systemBean.getName() + "     ");
         }
-        helper.setText(R.id.tv_system_subtitle, stringBuffer.toString());
+        helper.setText(R.id.tv_system_subtitle, ReplaceUtils.replace(stringBuffer.toString()));
     }
 }

@@ -13,7 +13,7 @@ import com.hurley.codehub.dao.DaoSession;
 import com.hurley.codehub.di.component.ApplicationComponent;
 import com.hurley.codehub.di.component.DaggerApplicationComponent;
 import com.hurley.codehub.di.module.ApplicationModule;
-import com.hurley.codehub.utils.ConfigUtil;
+import com.hurley.codehub.util.ConfigUtils;
 
 import org.litepal.LitePal;
 
@@ -70,11 +70,11 @@ public class App extends Application {
         Fragmentation.builder()
                 //BUBBLE：显示悬浮球 | SHAKE：摇一摇换出悬浮球 | NONE：隐藏悬浮球
                 .stackViewMode(Fragmentation.NONE)
-                .debug(ConfigUtil.DEBUG)
+                .debug(ConfigUtils.DEBUG)
                 .install();
 
         //初始化Stetho
-        if (ConfigUtil.DEBUG) {
+        if (ConfigUtils.DEBUG) {
             Stetho.initializeWithDefaults(this);
         }
 
@@ -84,7 +84,7 @@ public class App extends Application {
      * 初始化路由
      */
     private void initARouter() {
-        if (ConfigUtil.DEBUG) {
+        if (ConfigUtils.DEBUG) {
             //打印日志
             ARouter.openLog();
             //开启调试模式（如果在InstantRun模式下运行，必须开启调试模式。线上版本需要关闭，否则有安全风险）

@@ -4,6 +4,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.hurley.codehub.R;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
+import com.hurley.codehub.util.ReplaceUtils;
 
 import javax.inject.Inject;
 
@@ -37,7 +38,7 @@ public class ArticleAdapter extends BaseQuickAdapter<ArticleBean.DatasBean, Base
         helper.setText(R.id.tv_article_author, item.getAuthor());
         helper.setText(R.id.tv_article_date, item.getNiceDate());
         //TODO Html.fromHtml
-        helper.setText(R.id.tv_article_title, item.getTitle());
+        helper.setText(R.id.tv_article_title, ReplaceUtils.replace(item.getTitle()));
         helper.setText(R.id.tv_article_chapter, item.getChapterName());
         if (isCollect) {
             //设置是否收藏

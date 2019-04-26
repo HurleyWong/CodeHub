@@ -1,4 +1,4 @@
-package com.hurley.codehub.utils;
+package com.hurley.codehub.widget;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

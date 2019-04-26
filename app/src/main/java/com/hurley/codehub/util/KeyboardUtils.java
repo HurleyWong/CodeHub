@@ -1,4 +1,4 @@
-package com.hurley.codehub.utils;
+package com.hurley.codehub.util;
 
 import android.content.Context;
 import android.view.View;
@@ -12,7 +12,7 @@ import android.view.inputmethod.InputMethodManager;
  *      desc   : 软键盘工具类
  * </pre>
  */
-public class KeyboardUtil {
+public class KeyboardUtils {
 
     /**
      * 显示软键盘

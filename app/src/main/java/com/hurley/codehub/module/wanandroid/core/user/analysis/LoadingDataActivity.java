@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
 import com.hurley.codehub.base.BaseActivity;
-import com.hurley.codehub.utils.FakeElementLoadingView;
+import com.hurley.codehub.widget.FakeElementLoadingView;
 
 import java.util.Timer;
 import java.util.TimerTask;

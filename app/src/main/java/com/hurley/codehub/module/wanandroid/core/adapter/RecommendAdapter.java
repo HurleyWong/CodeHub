@@ -4,6 +4,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.hurley.codehub.R;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
+import com.hurley.codehub.util.ReplaceUtils;
 
 import javax.inject.Inject;
 
@@ -24,7 +25,7 @@ public class RecommendAdapter extends BaseQuickAdapter<ArticleBean.DatasBean, Ba
 
     @Override
     protected void convert(BaseViewHolder helper, ArticleBean.DatasBean item) {
-        helper.setText(R.id.tv_recommend_title, item.getTitle());
+        helper.setText(R.id.tv_recommend_title, ReplaceUtils.replace(item.getTitle()));
         helper.setText(R.id.tv_recommend_detail, item.getsuperChapterName() + "·" + item.getAuthor() + "·" + item.getNiceDate());
     }
 

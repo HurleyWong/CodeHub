@@ -1,4 +1,4 @@
-package com.hurley.codehub.utils;
+package com.hurley.codehub.util;
 
 import com.blankj.utilcode.util.StringUtils;
 import com.google.gson.Gson;
@@ -19,7 +19,7 @@ import java.util.List;
  *      desc    : Gson转化工具类
  * </pre>
  */
-public class GsonUtil {
+public class GsonUtils {
 
     private static final Gson gson = new GsonBuilder()
             .disableHtmlEscaping()

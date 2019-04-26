@@ -1,4 +1,4 @@
-package com.hurley.codehub.utils;
+package com.hurley.codehub.util;
 
 
 import com.hurley.codehub.BuildConfig;
@@ -11,7 +11,7 @@ import com.hurley.codehub.BuildConfig;
  *      desc   : 配置工具类
  * </pre>
  */
-public class ConfigUtil {
+public class ConfigUtils {
 
     public static final boolean DEBUG = BuildConfig.DEBUG;
     public static final boolean SOCKET_LOG_DEBUG = BuildConfig.DEBUG;

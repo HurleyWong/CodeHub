@@ -1,4 +1,4 @@
-package com.hurley.codehub.utils;
+package com.hurley.codehub.util;
 
 import android.os.SystemClock;
 
@@ -10,7 +10,7 @@ import android.os.SystemClock;
  *      desc   : 点击工具类
  * </pre>
  */
-public class OnClickUtil {
+public class OnClickUtils {
     /**
      * 数组的长度为2代表只记录双击操作
      */

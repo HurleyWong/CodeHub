@@ -19,7 +19,7 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <com.hurley.codehub.utils.FakeElementLoadingView
+    <com.hurley.codehub.widget.FakeElementLoadingView
         android:id="@+id/loadingView"
         android:layout_width="@dimen/dp50"
         android:layout_height="wrap_content"

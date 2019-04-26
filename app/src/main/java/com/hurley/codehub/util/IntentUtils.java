@@ -1,4 +1,4 @@
-package com.hurley.codehub.utils;
+package com.hurley.codehub.util;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,23 +15,23 @@ import java.util.List;
  *      desc   : Intent数据存取工具类
  * </pre>
  */
-public final class IntentUtil {
+public final class IntentUtils {
 
     private static final String TAG = "IntentUtil";
 
     private static Class<?> sCurrentClass;
 
-    private static IntentUtil sInstance;
+    private static IntentUtils sInstance;
 
     private static HashMap<String, Object> sMap;
 
-    private IntentUtil() {
+    private IntentUtils() {
 
     }
 
-    public static IntentUtil getInstance(Class<? extends Activity> cls) {
+    public static IntentUtils getInstance(Class<? extends Activity> cls) {
         if (sInstance == null) {
-            sInstance = new IntentUtil();
+            sInstance = new IntentUtils();
         }
         if (sMap == null) {
             sMap = new HashMap<>();
@@ -98,11 +98,11 @@ public final class IntentUtil {
 
     //Object
 
-    public IntentUtil put(Class<?> clazz, Object object) {
+    public IntentUtils put(Class<?> clazz, Object object) {
         return put(sCurrentClass + clazz.getName(), object);
     }
 
-    public IntentUtil put(String key, Object object) {
+    public IntentUtils put(String key, Object object) {
         sMap.put(key, object);
         return this;
     }
@@ -120,11 +120,11 @@ public final class IntentUtil {
 
     //String
 
-    public IntentUtil putString(String s) {
+    public IntentUtils putString(String s) {
         return put(String.class, s);
     }
 
-    public IntentUtil putString(String key, String s) {
+    public IntentUtils putString(String key, String s) {
         return put(key, s);
     }
 
@@ -138,11 +138,11 @@ public final class IntentUtil {
 
     //Integer
 
-    public IntentUtil putInteger(Integer i) {
+    public IntentUtils putInteger(Integer i) {
         return put(Integer.class, i);
     }
 
-    public IntentUtil putInteger(String key, Integer i) {
+    public IntentUtils putInteger(String key, Integer i) {
         return put(key, i);
     }
 
@@ -156,11 +156,11 @@ public final class IntentUtil {
 
     //Long
 
-    public IntentUtil putLong(Long l) {
+    public IntentUtils putLong(Long l) {
         return put(Long.class, l);
     }
 
-    public IntentUtil putLong(String key, Long l) {
+    public IntentUtils putLong(String key, Long l) {
         return put(key, l);
     }
 
@@ -174,11 +174,11 @@ public final class IntentUtil {
 
     //Boolean
 
-    public IntentUtil putBoolean(Boolean b) {
+    public IntentUtils putBoolean(Boolean b) {
         return put(Boolean.class, b);
     }
 
-    public IntentUtil putBoolean(String key, Boolean b) {
+    public IntentUtils putBoolean(String key, Boolean b) {
         return put(key, b);
     }
 
@@ -192,11 +192,11 @@ public final class IntentUtil {
 
     //Double
 
-    public IntentUtil putDouble(Double d) {
+    public IntentUtils putDouble(Double d) {
         return put(Double.class, d);
     }
 
-    public IntentUtil putDouble(String key, Double d) {
+    public IntentUtils putDouble(String key, Double d) {
         return put(key, d);
     }
 
@@ -210,11 +210,11 @@ public final class IntentUtil {
 
     //Float
 
-    public IntentUtil putFloat(Float f) {
+    public IntentUtils putFloat(Float f) {
         return put(Float.class, f);
     }
 
-    public IntentUtil putFloat(String key, Float f) {
+    public IntentUtils putFloat(String key, Float f) {
         return put(key, f);
     }
 
@@ -228,11 +228,11 @@ public final class IntentUtil {
 
     //List
 
-    public IntentUtil putList(List list) {
+    public IntentUtils putList(List list) {
         return put(List.class, list);
     }
 
-    public IntentUtil putList(String key, List list) {
+    public IntentUtils putList(String key, List list) {
         return put(key, list);
     }
 

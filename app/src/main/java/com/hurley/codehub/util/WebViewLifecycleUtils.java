@@ -1,4 +1,4 @@
-package com.hurley.codehub.utils;
+package com.hurley.codehub.util;
 
 import android.view.ViewGroup;
 import android.webkit.WebView;
@@ -11,7 +11,7 @@ import android.webkit.WebView;
  *      desc   : WebView生命周期优化工具
  * </pre>
  */
-public final class WebViewLifecycleUtil {
+public final class WebViewLifecycleUtils {
 
     private static final String TAG = "WebViewLifecycleUtil";
 

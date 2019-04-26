@@ -1,4 +1,4 @@
-package com.hurley.codehub.utils;
+package com.hurley.codehub.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,7 +11,7 @@ import android.content.SharedPreferences;
  *      desc    : 首选项工具类
  * </pre>
  */
-public class SharedPreferencesUtil {
+public class SharedPreferencesUtils {
     private static final String WELCOME_PAGE = "welcome_page";
     public static final String FIRST_OPEN = "first_open";
 

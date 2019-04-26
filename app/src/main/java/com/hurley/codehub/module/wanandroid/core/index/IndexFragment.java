@@ -123,8 +123,6 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         //根据后台返回的要推荐的体系，加载推荐文章
         //mPresenter.loadRecommendArticles(60);
         onRefresh();
-//        mPresenter.loadRecommendArticles(60);
-//        mPresenter.loadRecommendArticles(224);
         mPresenter.loadRecommendArticles(61);
 
         //登录成功后刷新
