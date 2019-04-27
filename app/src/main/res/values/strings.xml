@@ -49,6 +49,33 @@
     <string name="register_success">注册成功</string>
     <string name="register_fail">注册失败</string>
 
+    <!-- 标签 -->
+    <string name="tag_text">标签</string>
+    <string name="all_tag">全部标签</string>
+    <string name="followed_tag">已关注标签</string>
+    <string name="recommend_tag">推荐标签</string>
+    <string name="follow"> + 关 注 </string>
+    <string name="followed"> √ 已 关 注 </string>
+    <string name="tag_1">基础知识</string>
+    <string name="tag_1_detail">开发环境 基础知识 四大组件 常用控件 用户交互</string>
+    <string name="tag_2">网络请求</string>
+    <string name="tag_2_detail">网络访问 图片加载</string>
+    <string name="tag_3">数据存储</string>
+    <string name="tag_3_detail">数据存储</string>
+    <string name="tag_4">自定义View</string>
+    <string name="tag_4_detail">动画效果 自定义控件</string>
+    <string name="tag_5">硬件模块</string>
+    <string name="tag_5_detail">硬件模块 JNI 常用SDK framework 多媒体技术 TV相关</string>
+    <string name="tag_6">项目必备</string>
+    <string name="tag_6_detail">项目必备 干货资源 完整开源项目 开源项目源码解析 开放API</string>
+    <string name="tag_7">高新技术</string>
+    <string name="tag_7_detail">高新技术 延伸技术 Jetpack</string>
+    <string name="tag_8">学习资源</string>
+    <string name="tag_8_detail">推荐网站 原创文章 速查知识表 公众号 问答 视频</string>
+    <string name="tag_9">Java进阶</string>
+    <string name="tag_9_detail">Java深入 Kotlin 注解&amp;反射&amp;AOP 跨平台 项目管理</string>
+
+
     <!-- 收藏 -->
     <string name="collect_text">收藏</string>
     <string name="collect_success">收藏成功</string>
@@ -62,7 +89,7 @@
     <string name="about_author">开发者</string>
     <string name="about_wan_android">玩Android网站</string>
     <string name="about_open_source">开源框架</string>
-    <string name="about_open_source_name">LeakCanary</string>
+    <string name="about_open_source_name">开源框架名称</string>
     <string name="about_open_source_author">square</string>
     <string name="about_open_source_detail">A memory leak detection library for Android and Java.</string>
     <string name="about_github">Github</string>

@@ -151,6 +151,7 @@ dependencies {
     //权限请求框架：https://github.com/getActivity/XXPermissions
     implementation 'com.hjq:xxpermissions:5.3'
 
+    implementation 'com.github.niniloveyou:StateButton:v1.0.0'
     //空祖家的Dialog：https://github.com/kongzue/Dialog
     implementation 'com.kongzue.dialog:dialog:2.4.7'
     //BasePopup：https://github.com/razerdp/BasePopup

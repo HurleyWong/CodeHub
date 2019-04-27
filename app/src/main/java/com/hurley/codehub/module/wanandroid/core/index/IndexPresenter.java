@@ -119,7 +119,6 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                 .compose(mView.bindToLife())
                 .subscribe(response -> {
                     mView.setRecommendArticles(response.getData());
-                    LogUtils.e("文章标题：" + response.getData().getDatas().get(0).getTitle().replace("&mdash;", "——"));
                 }, throwable -> {
                     LogUtils.e(throwable.getMessage());
                 });

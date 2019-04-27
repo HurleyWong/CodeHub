@@ -41,6 +41,8 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
     ImageView mIvUser;
     @BindView(R.id.tv_login_status)
     TextView mTvLoginStatus;
+    @BindView(R.id.btn_user_tag)
+    Button mBtnTag;
     @BindView(R.id.btn_user_collect)
     Button mBtnCollect;
     @BindView(R.id.btn_user_analysis)
@@ -79,7 +81,7 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
         RxBus.getInstance().toFlowable(LoginEvent.class).subscribe(loginEvent -> setUserStatus());
     }
 
-    @OnClick({R.id.ll_login, R.id.btn_user_collect, R.id.btn_user_analysis, R.id.btn_user_setting, R.id.btn_user_about, R.id.btn_user_logout})
+    @OnClick({R.id.ll_login, R.id.btn_user_tag, R.id.btn_user_collect, R.id.btn_user_analysis, R.id.btn_user_setting, R.id.btn_user_about, R.id.btn_user_logout})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_login:
@@ -88,6 +90,10 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
                     //未登录
                     ARouter.getInstance().build(PathContainer.LOGIN).navigation();
                 }
+                break;
+            case R.id.btn_user_tag:
+                //标签界面
+                ARouter.getInstance().build(PathContainer.TAG).navigation();
                 break;
             case R.id.btn_user_collect:
                 //收藏界面

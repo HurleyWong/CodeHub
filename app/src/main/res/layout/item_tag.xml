@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/CardViewStyle">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp6">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/ic_knowledge"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/dp10">
+
+                <TextView
+                    android:id="@+id/tv_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/tag_text"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp20" />
+
+                <TextView
+                    android:id="@+id/tv_tag_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tag_text"
+                    android:singleLine="true"
+                    android:ellipsize="end"/>
+            </LinearLayout>
+
+            <com.deadline.statebutton.StateButton
+                android:id="@+id/btn_tag_status"
+                android:layout_width="@dimen/dp80"
+                android:layout_height="@dimen/dp40"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="@string/follow"
+                app:animationDuration="200"
+                app:normalBackgroundColor="@color/white"
+                app:normalStrokeColor="@color/colorAccent"
+                app:normalStrokeWidth="@dimen/dp2"
+                app:normalTextColor="@color/colorAccent" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

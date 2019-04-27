@@ -118,7 +118,7 @@ public class AboutActivity extends BaseActivity {
         mAdapter = new OpenSourceAdapter(R.layout.item_open_source, mList);
         //给RecyclerView绘制适配器
         mRvOpenSource.setAdapter(mAdapter);
-        mAdapter.setNewData(getListData(mList));
+        mAdapter.setNewData(setListData(mList));
         mAdapter.addHeaderView(aboutView);
         mAdapter.addHeaderView(textView);
 
@@ -144,7 +144,7 @@ public class AboutActivity extends BaseActivity {
      * 添加数据
      * @return
      */
-    private List<OpenSourceBean> getListData(List<OpenSourceBean> list) {
+    private List<OpenSourceBean> setListData(List<OpenSourceBean> list) {
         list.add(new OpenSourceBean(getString(R.string.license_ButterKnife), getString(R.string.author_ButterKnife), getString(R.string.detail_ButterKnife)));
         list.add(new OpenSourceBean(getString(R.string.license_dagger), getString(R.string.author_dagger), getString(R.string.detail_dagger)));
         list.add(new OpenSourceBean(getString(R.string.license_OkHttp), getString(R.string.author_OkHttp), getString(R.string.detail_OkHttp)));

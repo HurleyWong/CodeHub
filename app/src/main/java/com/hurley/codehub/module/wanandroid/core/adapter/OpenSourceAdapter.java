@@ -26,7 +26,6 @@ public class OpenSourceAdapter extends BaseQuickAdapter<OpenSourceBean, BaseView
 
     @Override
     protected void convert(BaseViewHolder helper, OpenSourceBean item) {
-        //可链式调用赋值
         helper.setText(R.id.tv_open_source_name, item.getName())
                 .setText(R.id.tv_open_source_author, item.getAuthor())
                 .setText(R.id.tv_open_source_detail, item.getDetail());

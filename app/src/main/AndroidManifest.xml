@@ -65,6 +65,10 @@
             android:name=".module.wanandroid.core.system.SystemDetailActivity"
             android:launchMode="singleTop" />
 
+        <activity
+            android:name=".module.wanandroid.core.user.tag.TagActivity"
+            android:launchMode="singleTop" />
+
         <!-- 我的收藏界面 -->
         <activity
             android:name=".module.wanandroid.core.user.collect.CollectionActivity"

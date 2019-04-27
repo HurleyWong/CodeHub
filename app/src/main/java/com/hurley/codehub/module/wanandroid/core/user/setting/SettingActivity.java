@@ -112,6 +112,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
 
     /**
      * 显示返回键
+     *
      * @return
      */
     @Override
@@ -160,6 +161,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
 
     /**
      * 设置CheckBox是否选中
+     *
      * @param checkBox
      */
     private void setChecked(CheckBox checkBox) {

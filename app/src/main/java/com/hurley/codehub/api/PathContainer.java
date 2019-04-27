@@ -10,8 +10,6 @@ package com.hurley.codehub.api;
  */
 public class PathContainer {
 
-    private static final String TAG = "PathContainer";
-
     //Activity
 
     public static final String HOME = "/main/HomeActivity";
@@ -31,6 +29,8 @@ public class PathContainer {
     public static final String COLLECTION = "/collect/CollectionActivity";
 
     public static final String SEARCH = "/search/SearchActivity";
+
+    public static final String TAG = "/tag/TagActivity";
 
     public static final String ANALYSIS = "/analysis/AnalysisActivity";
 

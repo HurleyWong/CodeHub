@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_analysis_month"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    tools:context=".module.wanandroid.core.user.tag.AllTagFragment">
+
+    <TextView
+        android:id="@+id/tv_recommend_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginEnd="@dimen/dp10"
+        android:text="@string/recommend_tag"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp20" />
+
+    <TextView
+        android:id="@+id/tv_all_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginEnd="@dimen/dp10"
+        android:text="@string/all_tag"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp20" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_all_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"/>
+</LinearLayout>
+
+
+
+
