@@ -10,9 +10,21 @@
     tools:context=".module.wanandroid.core.user.tag.FollowedTagFragment">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_followed_tag"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="2"/>
+        android:layout_marginStart="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginEnd="@dimen/dp10"
+        android:text="@string/followed_tag"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp20" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_followed_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"/>
 </LinearLayout>
 
 

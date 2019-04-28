@@ -84,6 +84,8 @@ public class ProjectArticleListFragment extends BaseFragment<ProjectArticleListP
 
         mRvProjectArticle.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvProjectArticle.setAdapter(mArticleAdapter);
+        mArticleAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        mArticleAdapter.isFirstOnly(false);
 
         mArticleAdapter.setOnItemClickListener(this);
         mArticleAdapter.setOnItemChildClickListener(this);

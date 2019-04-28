@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
 import com.hurley.codehub.base.BaseActivity;
@@ -118,6 +119,8 @@ public class AboutActivity extends BaseActivity {
         mAdapter = new OpenSourceAdapter(R.layout.item_open_source, mList);
         //给RecyclerView绘制适配器
         mRvOpenSource.setAdapter(mAdapter);
+        mAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        mAdapter.isFirstOnly(false);
         mAdapter.setNewData(setListData(mList));
         mAdapter.addHeaderView(aboutView);
         mAdapter.addHeaderView(textView);

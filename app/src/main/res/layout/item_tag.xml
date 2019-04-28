@@ -58,6 +58,10 @@
                 app:normalStrokeColor="@color/colorAccent"
                 app:normalStrokeWidth="@dimen/dp2"
                 app:normalTextColor="@color/colorAccent" />
+                <!--app:pressedBackgroundColor="@color/colorAccent"-->
+                <!--app:pressedStrokeColor="@color/colorAccent"-->
+                <!--app:pressedStrokeWidth="@dimen/dp2"-->
+                <!--app:pressedTextColor="@color/white"/>-->
         </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>

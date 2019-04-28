@@ -79,6 +79,8 @@ public class WxArticleListFragment extends BaseFragment<WxArticleListPresenter>
 
         mRvWxArticleList.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvWxArticleList.setAdapter(mArticleAdapter);
+        mArticleAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        mArticleAdapter.isFirstOnly(false);
 
         mArticleAdapter.setOnItemClickListener(this);
         mArticleAdapter.setOnItemChildClickListener(this);

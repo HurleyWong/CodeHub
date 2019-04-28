@@ -69,6 +69,8 @@ public class SystemArticleListFragment extends BaseFragment<SystemArticleListPre
 
         mRvArticleList.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvArticleList.setAdapter(mArticleAdapter);
+        mArticleAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        mArticleAdapter.isFirstOnly(false);
 
         mArticleAdapter.setOnItemClickListener(this);
         mArticleAdapter.setOnItemChildClickListener(this);

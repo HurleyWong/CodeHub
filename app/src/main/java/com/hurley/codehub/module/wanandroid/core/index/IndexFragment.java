@@ -83,6 +83,9 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
     protected void initView(View view) {
         mRvIndex.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvIndex.setAdapter(mArticleAdapter);
+        //动画效果
+        mArticleAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        mArticleAdapter.isFirstOnly(false);
 
         //设置Banner
         View mBannerView = LayoutInflater.from(getContext()).inflate(R.layout.banner_index, null);
@@ -160,7 +163,6 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
     @Override
     public void setArticles(ArticleBean articleBean, int loadType) {
         setLoadDataResult(mArticleAdapter, mSrlIndex, articleBean.getDatas(), loadType);
-        SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.TOTAL_PAGE, articleBean.getPageCount());
     }
 
     @Override

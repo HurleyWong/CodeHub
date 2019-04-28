@@ -58,6 +58,8 @@ public class SystemFragment extends BaseFragment<SystemPresenter>
     protected void initView(View view) {
         mRvSystem.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvSystem.setAdapter(mSystemAdapter);
+        mSystemAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        mSystemAdapter.isFirstOnly(false);
 
         mSystemAdapter.setOnItemClickListener(this);
         mSrlSystem.setOnRefreshListener(this);

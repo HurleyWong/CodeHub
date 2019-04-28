@@ -25,8 +25,9 @@ public class TagAdapter extends BaseQuickAdapter<UserTag, BaseViewHolder> {
 
     @Override
     protected void convert(BaseViewHolder helper, UserTag item) {
-        helper.setText(R.id.tv_tag, item.getTitle());
-        helper.setText(R.id.tv_tag_detail, item.getSubTitle());
-        helper.setImageResource(R.id.iv_tag, item.getImage());
+        helper.setText(R.id.tv_tag, item.getTitle())
+                .setText(R.id.tv_tag_detail, item.getSubTitle())
+                .setImageResource(R.id.iv_tag, item.getImage())
+                .addOnClickListener(R.id.btn_tag_status);
     }
 }
