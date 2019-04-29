@@ -177,7 +177,7 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
     }
 
     /**
-     * 收藏文章
+     * 收藏文章或者取消收藏文章
      *
      * @param position
      * @param articleBean
@@ -188,50 +188,35 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
         //如果已登录
         if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
             if (articleBean.isCollect()) {
-                //如果已收藏
+                //如果已收藏，则取消收藏文章
                 RetrofitManager.create(WanAndroidApiService.class)
-                        .unCollectArticle2(articleBean.getId(), -1)
+                        .unCollectArticle1(articleBean.getId(), -1)
                         .compose(RxSchedulers.applySchedulers())
                         .compose(mView.bindToLife())
-                        .subscribe(new Consumer<BaseBean>() {
-                            @Override
-                            public void accept(BaseBean response) throws Exception {
-                                if (response.getErrorCode() == BaseBean.SUCCESS) {
-                                    articleBean.setCollect(!articleBean.isCollect());
-                                    mView.showSuccess(App.getAppContext().getString(R.string.uncollect_success));
-                                } else {
-                                    mView.showFailed(App.getAppContext().getString(R.string.uncollect_failed));
-                                }
+                        .subscribe(response -> {
+                            if (response.getErrorCode() == BaseBean.SUCCESS) {
+                                articleBean.setCollect(!articleBean.isCollect());
+                                mView.collectArticleSuccess(position, articleBean);
+                                mView.showSuccess(App.getAppContext().getString(R.string.uncollect_success));
+                            } else {
+                                mView.showFailed(App.getAppContext().getString(R.string.uncollect_failed));
                             }
-                        }, new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Exception {
-                                mView.showFailed(throwable.getMessage());
-                            }
-                        });
+                        }, throwable -> mView.showFailed(throwable.getMessage()));
             } else {
-                //如果未收藏
+                //如果未收藏，则收藏该文章
                 RetrofitManager.create(WanAndroidApiService.class)
                         .collectInsideArticle(articleBean.getId())
                         .compose(RxSchedulers.applySchedulers())
                         .compose(mView.bindToLife())
-                        .subscribe(new Consumer<BaseBean>() {
-                            @Override
-                            public void accept(BaseBean response) throws Exception {
-                                if (response.getErrorCode() == BaseBean.SUCCESS) {
-                                    articleBean.setCollect(!articleBean.isCollect());
-                                    mView.collectArticleSuccess(position, articleBean);
-                                    mView.showSuccess(App.getAppContext().getString(R.string.collect_success));
-                                } else {
-                                    mView.showFailed(App.getAppContext().getString(R.string.collect_failed));
-                                }
+                        .subscribe(response -> {
+                            if (response.getErrorCode() == BaseBean.SUCCESS) {
+                                articleBean.setCollect(!articleBean.isCollect());
+                                mView.collectArticleSuccess(position, articleBean);
+                                mView.showSuccess(App.getAppContext().getString(R.string.collect_success));
+                            } else {
+                                mView.showFailed(App.getAppContext().getString(R.string.collect_failed));
                             }
-                        }, new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Exception {
-                                mView.showFailed(throwable.getMessage());
-                            }
-                        });
+                        }, throwable -> mView.showFailed(throwable.getMessage()));
 
             }
         } else {

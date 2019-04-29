@@ -241,7 +241,6 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
             case R.id.iv_article_collect:
                 //点击收藏
                 mPresenter.collectArticle(position, mArticleAdapter.getItem(position));
-
                 break;
             case R.id.tv_article_chapter:
                 //点击所属体系

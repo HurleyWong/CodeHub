@@ -224,7 +224,7 @@ public interface WanAndroidApiService {
                                                                    @Field("link") String link);
 
     /**
-     * 从文章列表取消收藏
+     * 🔥从文章列表取消收藏
      * http://www.wanandroid.com/lg/uncollect_originId/{id}/json
      * 2333为originId
      * 成功则返回：
@@ -236,12 +236,13 @@ public interface WanAndroidApiService {
      * @param originId
      * @return
      */
+    @FormUrlEncoded
     @POST(WanAndroidUrlContainer.UNCOLLECT_ARTICLE_1)
     Observable<BaseBean<String>> unCollectArticle1(@Path("id") int id,
                                                    @Field("originId") int originId);
 
     /**
-     * 从我的收藏页面取消收藏
+     * 🔥从我的收藏页面取消收藏
      * http://www.wanandroid.com/lg/uncollect/{id}/json?originId={originId}
      * 48032为id，1166为originId。如果是从站外收藏，则originId为-1
      * 成功则返回：
