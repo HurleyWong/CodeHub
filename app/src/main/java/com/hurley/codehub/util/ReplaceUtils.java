@@ -11,10 +11,14 @@ package com.hurley.codehub.util;
 public class ReplaceUtils {
 
     public static String replace(String str) {
-        return str.replace("&mdash;", "—")
-                .replace("&quot;", "\"")
-                .replace("&amp;", "&")
-                .replace("&ldquo;", "“")
-                .replace("&rdquo", "”");
+        if (str != null) {
+            return str.replace("&mdash;", "—")
+                    .replace("&quot;", "\"")
+                    .replace("&amp;", "&")
+                    .replace("&ldquo;", "“")
+                    .replace("&rdquo", "”");
+        } else {
+            return null;
+        }
     }
 }

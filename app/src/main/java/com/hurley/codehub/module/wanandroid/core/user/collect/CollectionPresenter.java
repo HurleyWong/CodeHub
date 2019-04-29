@@ -50,8 +50,6 @@ public class CollectionPresenter extends BasePresenter<CollectionContract.View> 
         if (isRefresh) {
             mView.showLoading();
         }
-        LogUtils.e(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getString(Constants.USERNAME));
-        LogUtils.e(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getString(Constants.PASSWORD));
         LogUtils.e(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS));
         RetrofitManager.create(WanAndroidApiService.class)
                 .getCollectArticles(mPage)
@@ -61,6 +59,7 @@ public class CollectionPresenter extends BasePresenter<CollectionContract.View> 
                     @Override
                     public void accept(BaseBean<ArticleBean> response) throws Exception {
                         int loadType = isRefresh ? LoadType.TYPE_REFRESH_SUCCESS : LoadType.TYPE_LOAD_MORE_SUCCESS;
+                        LogUtils.e(response.getErrorMsg());
                         mView.setCollectionArticle(response.getData(), loadType);
                     }
                 }, new Consumer<Throwable>() {
@@ -91,6 +90,6 @@ public class CollectionPresenter extends BasePresenter<CollectionContract.View> 
 
     @Override
     public void unCollectArticle(int position, ArticleBean.DatasBean articleBean) {
-
+        LogUtils.e("取消收藏");
     }
 }

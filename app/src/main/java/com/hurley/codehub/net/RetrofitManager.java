@@ -1,9 +1,17 @@
 package com.hurley.codehub.net;
 
+import android.content.Context;
+
 import com.blankj.utilcode.util.NetworkUtils;
+import com.franmontiel.persistentcookiejar.ClearableCookieJar;
+import com.franmontiel.persistentcookiejar.PersistentCookieJar;
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.hurley.codehub.api.LocalUrlContainer;
 import com.hurley.codehub.api.WanAndroidUrlContainer;
 import com.hurley.codehub.app.App;
+import com.hurley.codehub.net.interceptor.LoadCookieInterceptor;
+import com.hurley.codehub.net.interceptor.SaveCookieInterceptor;
 
 
 import java.io.File;
@@ -33,6 +41,7 @@ public class RetrofitManager {
     private static long CONNECT_TIMEOUT = 60L;
     private static long READ_TIMEOUT = 10L;
     private static long WRITE_TIMEOUT = 10L;
+
     /**
      * 设缓存有效期为1天
      */
@@ -110,15 +119,22 @@ public class RetrofitManager {
     private static OkHttpClient getOkHttpClient() {
         if (mOkHttpClient == null) {
             synchronized (RetrofitManager.class) {
+                ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(App.getAppContext()));
                 Cache cache = new Cache(new File(App.getAppContext().getCacheDir(), "HttpCache"), 1024 * 1024 * 100);
                 if (mOkHttpClient == null) {
-                    mOkHttpClient = new OkHttpClient.Builder().cache(cache)
+                    mOkHttpClient = new OkHttpClient.Builder()
+                            .cache(cache)
+                            //链接超时
                             .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
+                            //读取超时
                             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
                             .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
                             .addInterceptor(mRewriteCacheControlInterceptor)
                             .addInterceptor(mLoggingInterceptor)
-                            .cookieJar(new CookiesManager())
+                            //添加Cookie拦截器
+                            //.addInterceptor(new SaveCookieInterceptor())
+                            //.addInterceptor(new LoadCookieInterceptor())
+                            .cookieJar(cookieJar)
                             .build();
                 }
             }

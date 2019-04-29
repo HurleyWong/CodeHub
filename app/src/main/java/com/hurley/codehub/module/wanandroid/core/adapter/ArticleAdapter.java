@@ -53,6 +53,12 @@ public class ArticleAdapter extends BaseQuickAdapter<ArticleBean.DatasBean, Base
         helper.addOnClickListener(R.id.iv_article_collect);
         //设置文章所属体系是否可见
         helper.setVisible(R.id.tv_article_chapter, isChapterNameVisible);
+        //设置置顶文章标志是否可见
+        if (item.isTop()) {
+            helper.setGone(R.id.tv_article_top, true);
+        } else {
+            helper.setGone(R.id.tv_article_top, false);
+        }
     }
 
     public void setChapterNameVisible(boolean isChapterNameVisible) {

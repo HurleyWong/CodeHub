@@ -1,6 +1,7 @@
 package com.hurley.codehub.api;
 
 
+import com.hurley.codehub.bean.local.Article;
 import com.hurley.codehub.bean.wanandroid.BaseBean;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.bean.wanandroid.BannerBean;
@@ -10,6 +11,7 @@ import com.hurley.codehub.bean.wanandroid.NaviBean;
 import com.hurley.codehub.bean.wanandroid.PageBean;
 import com.hurley.codehub.bean.wanandroid.ProjectBean;
 import com.hurley.codehub.bean.wanandroid.SystemBean;
+import com.hurley.codehub.bean.wanandroid.TopArticleBean;
 import com.hurley.codehub.bean.wanandroid.UserBean;
 import com.hurley.codehub.bean.wanandroid.WebsiteBean;
 import com.hurley.codehub.bean.wanandroid.WxAccountBean;
@@ -111,6 +113,15 @@ public interface WanAndroidApiService {
      */
     @GET(WanAndroidUrlContainer.HOT_KEY)
     Observable<BaseBean<List<HotKeyBean>>> getHotKeys();
+
+    /**
+     * 置顶文章
+     * https://www.wanandroid.com/article/top/json
+     *
+     * @return
+     */
+    @GET(WanAndroidUrlContainer.TOP)
+    Observable<BaseBean<List<ArticleBean.DatasBean>>> getTopArticles();
 
     /**
      * 体系数据

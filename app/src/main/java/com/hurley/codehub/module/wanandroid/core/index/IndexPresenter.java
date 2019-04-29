@@ -13,6 +13,7 @@ import com.hurley.codehub.api.LocalApiService;
 import com.hurley.codehub.api.LocalUrlContainer;
 import com.hurley.codehub.api.WanAndroidApiService;
 import com.hurley.codehub.api.PathContainer;
+import com.hurley.codehub.api.WanAndroidUrlContainer;
 import com.hurley.codehub.app.App;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.app.LoadType;
@@ -108,6 +109,23 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                     int loadType = isRefresh ? LoadType.TYPE_REFRESH_ERROR : LoadType.TYPE_LOAD_MORE_ERROR;
                     mView.setArticles(new ArticleBean(), loadType);
                 });
+    }
+
+    @SuppressLint("CheckResult")
+    @Override
+    public void loadTopArticles() {
+        RetrofitManager.create(WanAndroidApiService.class)
+                .getTopArticles()
+                .compose(RxSchedulers.applySchedulers())
+                .compose(mView.bindToLife())
+                .subscribe(response -> {
+                    if (response.getErrorCode() == BaseBean.SUCCESS) {
+                        LogUtils.e("请求置顶文章");
+                        mView.setTopArticles(response.getData());
+                    } else {
+                        mView.showFailed(response.getErrorMsg());
+                    }
+                }, throwable -> LogUtils.e(throwable.getMessage()));
     }
 
     @SuppressLint("CheckResult")

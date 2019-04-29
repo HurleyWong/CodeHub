@@ -6,6 +6,7 @@ import com.hurley.codehub.base.BaseContract;
 import com.hurley.codehub.bean.local.Article;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.bean.wanandroid.BannerBean;
+import com.hurley.codehub.bean.wanandroid.TopArticleBean;
 
 import java.util.List;
 
@@ -37,6 +38,13 @@ public interface IndexContract {
         void setArticles(ArticleBean articleBean, @LoadType.checker int loadType);
 
         /**
+         * 显示置顶文章
+         *
+         * @param articles
+         */
+        void setTopArticles(List<ArticleBean.DatasBean> articles);
+
+        /**
          * 收藏文章成功
          *
          * @param position
@@ -64,6 +72,11 @@ public interface IndexContract {
          * 加载首页文章
          */
         void loadArticles();
+
+        /**
+         * 加载置顶文章
+         */
+        void loadTopArticles();
 
         /**
          * 加载推荐文章

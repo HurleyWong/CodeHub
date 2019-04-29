@@ -15,10 +15,17 @@ import com.hurley.codehub.bean.wanandroid.ArticleBean;
 public interface CollectionContract {
 
     interface View extends BaseContract.BaseView {
+        /**
+         * 显示收藏的文章
+         *
+         * @param articleBean
+         * @param loadType
+         */
         void setCollectionArticle(ArticleBean articleBean, @LoadType.checker int loadType);
 
         /**
          * 取消收藏文章成功
+         *
          * @param position
          */
         void unCollectArticleSuccess(int position);
@@ -42,6 +49,7 @@ public interface CollectionContract {
 
         /**
          * 取消收藏文章
+         *
          * @param position
          * @param articleBean
          */

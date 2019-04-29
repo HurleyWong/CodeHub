@@ -105,7 +105,7 @@ public class CollectionActivity extends BaseActivity<CollectionPresenter>
 
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-
+        mPresenter.unCollectArticle(position, mArticleAdapter.getItem(position));
     }
 
     @Override

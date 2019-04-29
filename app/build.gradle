@@ -85,6 +85,7 @@ dependencies {
     //Gson转换器，将网络响应使用Gson转换成Java Bean
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
 
     //AgentWeb包：https://github.com/Justson/AgentWeb
     implementation 'com.just.agentweb:agentweb:4.0.2'

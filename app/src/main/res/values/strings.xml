@@ -27,6 +27,14 @@
     <string name="choose_email">选择邮件客户端</string>
     <string name="input_key">请输入关键字</string>
 
+    <!-- 文章 -->
+    <string name="article_title">标题</string>
+    <string name="article_author">作者</string>
+    <string name="article_system">体系</string>
+    <string name="article_date">日期</string>
+    <string name="article_top">置顶</string>
+    <string name="article_new">新</string>
+
     <!-- 登录 -->
     <string name="login_text">登录</string>
     <string name="click_login">点击登录</string>
@@ -55,7 +63,7 @@
     <string name="followed_tag">已关注标签</string>
     <string name="recommend_tag">推荐标签</string>
     <string name="follow"> + 关 注 </string>
-    <string name="followed"> √ 已 关 注 </string>
+    <string name="followed"> 已 关 注 </string>
     <string name="tag_1">基础知识</string>
     <string name="tag_1_detail">开发环境 基础知识 四大组件 常用控件 用户交互</string>
     <string name="tag_2">网络请求</string>
@@ -223,12 +231,6 @@
     <string name="language_simplified">简体中文</string>
     <string name="language_traditional">繁體中文</string>
     <string name="language_english">English</string>
-
-    <!-- 文章 -->
-    <string name="article_title">标题</string>
-    <string name="article_author">作者</string>
-    <string name="article_system">体系</string>
-    <string name="article_date">日期</string>
 
     <!-- 提示 -->
     <string name="home_exit">再按一次退出</string>

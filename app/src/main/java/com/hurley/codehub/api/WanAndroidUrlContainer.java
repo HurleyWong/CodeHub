@@ -55,6 +55,11 @@ public class WanAndroidUrlContainer {
      */
     public static final String HOT_KEY = "/hotkey/json";
 
+    /**
+     * 置顶文章
+     */
+    public static final String TOP = "article/top/json";
+
 
     //3.体系
 

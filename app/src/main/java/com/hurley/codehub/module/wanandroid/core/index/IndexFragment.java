@@ -8,8 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TableRow;
 
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
@@ -21,6 +23,7 @@ import com.hurley.codehub.base.BaseFragment;
 import com.hurley.codehub.bean.local.Article;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.bean.wanandroid.BannerBean;
+import com.hurley.codehub.bean.wanandroid.TopArticleBean;
 import com.hurley.codehub.module.wanandroid.core.adapter.RecommendAdapter;
 import com.hurley.codehub.module.wanandroid.event.LoginEvent;
 import com.hurley.codehub.module.wanandroid.core.adapter.ArticleAdapter;
@@ -63,6 +66,8 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
 
     private Banner mBanner;
     private View mRecommendView;
+
+    private List<ArticleBean.DatasBean> mTopArticles;
 
     public static IndexFragment newInstance() {
         return new IndexFragment();
@@ -121,11 +126,10 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         ivRefresh.setOnClickListener(this);
         ivClose.setOnClickListener(this);
 
-        //加载数据
-        //mPresenter.loadData();
-        //根据后台返回的要推荐的体系，加载推荐文章
-        //mPresenter.loadRecommendArticles(60);
+
+        mPresenter.loadTopArticles();
         onRefresh();
+        //根据后台返回的要推荐的体系，加载推荐文章
         mPresenter.loadRecommendArticles(61);
 
         //登录成功后刷新
@@ -162,7 +166,21 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
 
     @Override
     public void setArticles(ArticleBean articleBean, int loadType) {
+        //将置顶文章添加到文章列表中
+        if (mTopArticles.size() != 0) {
+            for (int i = 0; i < mTopArticles.size(); i++) {
+                mTopArticles.get(i).setTop(true);
+                articleBean.getDatas().add(i, mTopArticles.get(i));
+            }
+        }
         setLoadDataResult(mArticleAdapter, mSrlIndex, articleBean.getDatas(), loadType);
+
+    }
+
+    @Override
+    public void setTopArticles(List<ArticleBean.DatasBean> articles) {
+        mTopArticles = new ArrayList<>();
+        mTopArticles = articles;
     }
 
     @Override
@@ -224,6 +242,7 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
                 //点击收藏
                 LogUtils.e("点击收藏");
                 mPresenter.collectArticle(position, mArticleAdapter.getItem(position));
+
                 break;
             case R.id.tv_article_chapter:
                 //点击所属体系

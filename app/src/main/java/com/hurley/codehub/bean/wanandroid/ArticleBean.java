@@ -123,6 +123,8 @@ public class ArticleBean {
         private String niceDate;
         private int courseId;
         private boolean collect;
+        private boolean top;
+        private boolean latest;
 
         public int getId() {
             return id;
@@ -251,6 +253,22 @@ public class ArticleBean {
 
         public void setCollect(boolean collect) {
             this.collect = collect;
+        }
+
+        public boolean isTop() {
+            return top;
+        }
+
+        public void setTop(boolean top) {
+            this.top = top;
+        }
+
+        public boolean isLatest() {
+            return latest;
+        }
+
+        public void setLatest(boolean latest) {
+            this.latest = latest;
         }
     }
 }
