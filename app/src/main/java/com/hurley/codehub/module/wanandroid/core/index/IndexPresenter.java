@@ -198,7 +198,6 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                             public void accept(BaseBean response) throws Exception {
                                 if (response.getErrorCode() == BaseBean.SUCCESS) {
                                     articleBean.setCollect(!articleBean.isCollect());
-                                    mView.collectArticleSuccess(position, articleBean);
                                     mView.showSuccess(App.getAppContext().getString(R.string.uncollect_success));
                                 } else {
                                     mView.showFailed(App.getAppContext().getString(R.string.uncollect_failed));
@@ -220,6 +219,8 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                             @Override
                             public void accept(BaseBean response) throws Exception {
                                 if (response.getErrorCode() == BaseBean.SUCCESS) {
+                                    articleBean.setCollect(!articleBean.isCollect());
+                                    mView.collectArticleSuccess(position, articleBean);
                                     mView.showSuccess(App.getAppContext().getString(R.string.collect_success));
                                 } else {
                                     mView.showFailed(App.getAppContext().getString(R.string.collect_failed));

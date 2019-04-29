@@ -174,7 +174,6 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
             }
         }
         setLoadDataResult(mArticleAdapter, mSrlIndex, articleBean.getDatas(), loadType);
-
     }
 
     @Override
@@ -185,7 +184,8 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
 
     @Override
     public void collectArticleSuccess(int position, ArticleBean.DatasBean articleBean) {
-
+        //重新设置该item的属性，即可改变item的isCollect的状态
+        mArticleAdapter.setData(position, articleBean);
     }
 
     @Override
@@ -240,7 +240,6 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         switch (view.getId()) {
             case R.id.iv_article_collect:
                 //点击收藏
-                LogUtils.e("点击收藏");
                 mPresenter.collectArticle(position, mArticleAdapter.getItem(position));
 
                 break;

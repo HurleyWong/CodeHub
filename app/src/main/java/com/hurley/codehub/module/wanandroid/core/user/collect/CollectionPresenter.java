@@ -52,7 +52,6 @@ public class CollectionPresenter extends BasePresenter<CollectionContract.View> 
         if (isRefresh) {
             mView.showLoading();
         }
-        LogUtils.e(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS));
         RetrofitManager.create(WanAndroidApiService.class)
                 .getCollectArticles(mPage)
                 .compose(RxSchedulers.applySchedulers())
