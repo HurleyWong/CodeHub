@@ -10,8 +10,6 @@ import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersisto
 import com.hurley.codehub.api.LocalUrlContainer;
 import com.hurley.codehub.api.WanAndroidUrlContainer;
 import com.hurley.codehub.app.App;
-import com.hurley.codehub.net.interceptor.LoadCookieInterceptor;
-import com.hurley.codehub.net.interceptor.SaveCookieInterceptor;
 
 
 import java.io.File;

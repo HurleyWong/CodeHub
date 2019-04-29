@@ -253,6 +253,7 @@ public interface WanAndroidApiService {
      * @param originId
      * @return
      */
+    @FormUrlEncoded
     @POST(WanAndroidUrlContainer.UNCOLLECT_ARTICLE_2)
     Observable<BaseBean> unCollectArticle2(@Path("id") int id,
                                            @Field("originId") int originId);

@@ -89,7 +89,7 @@ public class CollectionActivity extends BaseActivity<CollectionPresenter>
 
     @Override
     public void unCollectArticleSuccess(int position) {
-
+        mArticleAdapter.remove(position);
     }
 
     @Override

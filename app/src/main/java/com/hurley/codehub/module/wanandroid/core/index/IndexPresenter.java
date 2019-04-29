@@ -120,8 +120,8 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                 .compose(mView.bindToLife())
                 .subscribe(response -> {
                     if (response.getErrorCode() == BaseBean.SUCCESS) {
-                        LogUtils.e("请求置顶文章");
                         mView.setTopArticles(response.getData());
+                        LogUtils.e(response.getErrorMsg());
                     } else {
                         mView.showFailed(response.getErrorMsg());
                     }
@@ -152,7 +152,7 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                 .subscribe(chapter -> {
                     for (int i = 0; i < chapter.getData().size(); i++) {
                         list.add(chapter.getData().get(i).getChapterid());
-                        LogUtils.e("请求成功：" + chapter.getData().get(i).getChapterid());
+                        LogUtils.e("推荐的文章体系id是：" + chapter.getData().get(i).getChapterid());
                         loadRecommendArticles(chapter.getData().get(i).getChapterid());
                     }
                 }, throwable -> LogUtils.e(throwable.getMessage()));

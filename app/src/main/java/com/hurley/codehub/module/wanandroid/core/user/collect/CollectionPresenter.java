@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
+import com.hurley.codehub.R;
 import com.hurley.codehub.api.WanAndroidApiService;
+import com.hurley.codehub.app.App;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.app.LoadType;
 import com.hurley.codehub.bean.wanandroid.BaseBean;
@@ -88,8 +90,21 @@ public class CollectionPresenter extends BasePresenter<CollectionContract.View> 
         loadCollection();
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void unCollectArticle(int position, ArticleBean.DatasBean articleBean) {
-        LogUtils.e("取消收藏");
+        RetrofitManager.create(WanAndroidApiService.class)
+                .unCollectArticle2(articleBean.getId(), -1)
+                .compose(RxSchedulers.applySchedulers())
+                .compose(mView.bindToLife())
+                .subscribe(response -> {
+                    if (response.getErrorCode() == BaseBean.SUCCESS) {
+                        articleBean.setCollect(!articleBean.isCollect());
+                        mView.showSuccess(App.getAppContext().getString(R.string.uncollect_success));
+                        mView.unCollectArticleSuccess(position);
+                    } else {
+                        mView.showFailed(App.getAppContext().getString(R.string.uncollect_failed));
+                    }
+                }, throwable -> LogUtils.e(throwable.getMessage()));
     }
 }
