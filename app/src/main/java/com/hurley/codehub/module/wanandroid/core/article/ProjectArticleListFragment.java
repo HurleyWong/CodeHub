@@ -111,7 +111,6 @@ public class ProjectArticleListFragment extends BaseFragment<ProjectArticleListP
 
     @Override
     public void collectArticleSuccess(int position, ArticleBean.DatasBean articleBean) {
-        //重新设置该item的属性，即可改变item的isCollect的状态
         mProjectAdapter.setData(position, articleBean);
     }
 

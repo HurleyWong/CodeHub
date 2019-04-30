@@ -108,7 +108,7 @@ public class WxArticleListFragment extends BaseFragment<WxArticleListPresenter>
 
     @Override
     public void collectWxArticleSuccess(int position, ArticleBean.DatasBean articleBean) {
-
+        mArticleAdapter.setData(position, articleBean);
     }
 
     @Override
@@ -123,7 +123,7 @@ public class WxArticleListFragment extends BaseFragment<WxArticleListPresenter>
 
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-
+        mPresenter.collectWxArticle(position, mArticleAdapter.getItem(position));
     }
 
     @Override

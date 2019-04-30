@@ -91,7 +91,7 @@ public class SystemArticleListFragment extends BaseFragment<SystemArticleListPre
 
     @Override
     public void collectArticleSuccess(int position, ArticleBean.DatasBean articleBean) {
-
+        mArticleAdapter.setData(position, articleBean);
     }
 
     @Override
@@ -106,7 +106,7 @@ public class SystemArticleListFragment extends BaseFragment<SystemArticleListPre
 
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-
+        mPresenter.collectArticle(position, mArticleAdapter.getItem(position));
     }
 
     @Override
@@ -115,7 +115,6 @@ public class SystemArticleListFragment extends BaseFragment<SystemArticleListPre
                 mArticleAdapter.getItem(position).getLink(),
                 mArticleAdapter.getItem(position).getTitle(),
                 mArticleAdapter.getItem(position).getAuthor());
-
         mPresenter.saveArticle(mArticleAdapter.getItem(position).getChapterName(), mArticleAdapter.getItem(position).getsuperChapterName());
     }
 
