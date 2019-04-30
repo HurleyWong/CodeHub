@@ -12,12 +12,12 @@
         android:id="@+id/tl_wechat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         app:tabGravity="center"
         app:tabIndicatorColor="@color/white50"
         app:tabSelectedTextColor="@color/white"
         app:tabIndicatorHeight="@dimen/dp2"
-        app:tabTextColor="@color/colorPrimary"
+        app:tabTextColor="@color/white"
         app:tabMode="scrollable">
     </android.support.design.widget.TabLayout>
 

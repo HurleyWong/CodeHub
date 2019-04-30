@@ -1,14 +1,23 @@
 package com.hurley.codehub.module.wanandroid.core.web;
 
+import android.annotation.SuppressLint;
+
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.google.gson.Gson;
+import com.hurley.codehub.R;
 import com.hurley.codehub.api.LocalApiService;
 import com.hurley.codehub.api.LocalUrlContainer;
+import com.hurley.codehub.api.PathContainer;
+import com.hurley.codehub.api.WanAndroidApiService;
+import com.hurley.codehub.app.App;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BasePresenter;
 import com.hurley.codehub.bean.local.Article;
 import com.hurley.codehub.bean.wanandroid.BaseBean;
+import com.hurley.codehub.net.RetrofitManager;
+import com.hurley.codehub.net.callback.RxSchedulers;
 
 import javax.inject.Inject;
 
@@ -33,14 +42,48 @@ public class WebPresenter extends BasePresenter<WebContract.View> implements Web
     public WebPresenter() {
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void collectInsideArticle(int id) {
-
+        //如果已登录
+        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
+            RetrofitManager.create(WanAndroidApiService.class)
+                    .collectInsideArticle(id)
+                    .compose(RxSchedulers.applySchedulers())
+                    .compose(mView.bindToLife())
+                    .subscribe(response -> {
+                        if (response.getErrorCode() == BaseBean.SUCCESS) {
+                            mView.showSuccess(App.getAppContext().getString(R.string.collect_success));
+                        } else {
+                            mView.showFailed(App.getAppContext().getString(R.string.collect_failed));
+                        }
+                    }, throwable -> LogUtils.e(throwable.getMessage()));
+        } else {
+            //如果未登录，跳转至登录界面
+            ARouter.getInstance().build(PathContainer.LOGIN).navigation();
+        }
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void collectOutsideArticle(String title, String author, String link) {
-
+        //如果已登录
+        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
+            RetrofitManager.create(WanAndroidApiService.class)
+                    .collectOutsideArticle(title, author, link)
+                    .compose(RxSchedulers.applySchedulers())
+                    .compose(mView.bindToLife())
+                    .subscribe(response -> {
+                        if (response.getErrorCode() == BaseBean.SUCCESS) {
+                            mView.showSuccess(App.getAppContext().getString(R.string.collect_success));
+                        } else {
+                            mView.showFailed(App.getAppContext().getString(R.string.collect_failed));
+                        }
+                    }, throwable -> LogUtils.e(throwable.getMessage()));
+        } else {
+            //如果未登录，跳转至登录界面
+            ARouter.getInstance().build(PathContainer.LOGIN).navigation();
+        }
     }
 
     @Override

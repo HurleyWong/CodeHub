@@ -178,6 +178,13 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
                 break;
             case R.id.more_collect:
                 //收藏
+                if (id == 0) {
+                    //收藏站外文章
+                    mPresenter.collectOutsideArticle(title, author, url);
+                } else {
+                    //收藏站内文章
+                    mPresenter.collectInsideArticle(id);
+                }
                 //TODO 视为该用户喜欢的文章
                 break;
             case R.id.more_copy_links:

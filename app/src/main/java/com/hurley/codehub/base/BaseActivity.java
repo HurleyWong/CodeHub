@@ -92,7 +92,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
         }
         ImmersionBar.with(this)
                 //与导航栏同色
-                .statusBarColor(R.color.colorAccent)
+                .statusBarColor(R.color.colorPrimary)
                 //解决状态栏和布局重叠问题
                 .fitsSystemWindows(true)
                 //初始化
