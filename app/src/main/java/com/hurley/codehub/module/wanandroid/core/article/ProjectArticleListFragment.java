@@ -13,6 +13,7 @@ import com.hurley.codehub.R;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseFragment;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
+import com.hurley.codehub.module.wanandroid.core.adapter.ProjectArticleAdapter;
 import com.hurley.codehub.module.wanandroid.event.LoginEvent;
 import com.hurley.codehub.module.wanandroid.core.adapter.ArticleAdapter;
 import com.hurley.codehub.module.wanandroid.core.web.WebActivity;
@@ -48,7 +49,7 @@ public class ProjectArticleListFragment extends BaseFragment<ProjectArticleListP
     private int article;
 
     @Inject
-    ArticleAdapter mArticleAdapter;
+    ProjectArticleAdapter mProjectAdapter;
 
     private List<ArticleBean.DatasBean> mArticleBeans = new ArrayList<>();
 
@@ -79,17 +80,14 @@ public class ProjectArticleListFragment extends BaseFragment<ProjectArticleListP
     @SuppressLint("CheckResult")
     @Override
     protected void initView(View view) {
-        //隐藏文章所属体系，因为已经是在所属文章体系中显示文章列表
-        mArticleAdapter.setChapterNameVisible(false);
-
         mRvProjectArticle.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRvProjectArticle.setAdapter(mArticleAdapter);
-        mArticleAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
-        mArticleAdapter.isFirstOnly(false);
+        mRvProjectArticle.setAdapter(mProjectAdapter);
+        mProjectAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        mProjectAdapter.isFirstOnly(false);
 
-        mArticleAdapter.setOnItemClickListener(this);
-        mArticleAdapter.setOnItemChildClickListener(this);
-        mArticleAdapter.setOnLoadMoreListener(this);
+        mProjectAdapter.setOnItemClickListener(this);
+        mProjectAdapter.setOnItemChildClickListener(this);
+        mProjectAdapter.setOnLoadMoreListener(this);
         mSrlProjectArticle.setOnRefreshListener(this);
 
         mPresenter.loadProjectArticles(article);
@@ -102,18 +100,19 @@ public class ProjectArticleListFragment extends BaseFragment<ProjectArticleListP
     @Override
     public void setProjectArticles(ArticleBean articleBean, int type) {
         if (type == 0) {
-            mArticleAdapter.setNewData(articleBean.getDatas());
+            mProjectAdapter.setNewData(articleBean.getDatas());
             mSrlProjectArticle.setRefreshing(false);
-            mArticleAdapter.loadMoreComplete();
+            mProjectAdapter.loadMoreComplete();
         } else if (type == 1) {
-            mArticleAdapter.addData(articleBean.getDatas());
-            mArticleAdapter.loadMoreComplete();
+            mProjectAdapter.addData(articleBean.getDatas());
+            mProjectAdapter.loadMoreComplete();
         }
     }
 
     @Override
     public void collectArticleSuccess(int position, ArticleBean.DatasBean articleBean) {
-
+        //重新设置该item的属性，即可改变item的isCollect的状态
+        mProjectAdapter.setData(position, articleBean);
     }
 
     @Override
@@ -123,15 +122,15 @@ public class ProjectArticleListFragment extends BaseFragment<ProjectArticleListP
 
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-
+        mPresenter.collectArticle(position, mProjectAdapter.getItem(position));
     }
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        WebActivity.startWeb(mArticleAdapter.getItem(position).getId(),
-                mArticleAdapter.getItem(position).getLink(),
-                mArticleAdapter.getItem(position).getTitle(),
-                mArticleAdapter.getItem(position).getAuthor());
+        WebActivity.startWeb(mProjectAdapter.getItem(position).getId(),
+                mProjectAdapter.getItem(position).getLink(),
+                mProjectAdapter.getItem(position).getTitle(),
+                mProjectAdapter.getItem(position).getAuthor());
     }
 
     @Override

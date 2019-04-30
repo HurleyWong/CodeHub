@@ -225,6 +225,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
 
     /**
      * 获取设置的全局动画 copy
+     *
      * @return FragmentAnimator
      */
     @Override
@@ -246,6 +247,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
      * 构建Fragment转场动画
      * 如果是在Activity内实现,则构建的是Activity内所有Fragment的转场动画,
      * 如果是在Fragment内实现,则构建的是该Fragment的转场动画,此时优先级 > Activity的onCreateFragmentAnimator()
+     *
      * @return FragmentAnimator对象
      */
     @Override
@@ -271,6 +273,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
 
     /**
      * 设置加载数据结果
+     *
      * @param baseQuickAdapter
      * @param refreshLayout
      * @param list
@@ -378,6 +381,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
      * 使用该方法时，要确保同级栈内无多余的Fragment,(只有通过loadMultipleRootFragment()载入的Fragment)
      * <p>
      * 建议使用更明确的{@link #showHideFragment(ISupportFragment, ISupportFragment)}
+     *
      * @param showFragment 需要show的Fragment
      */
     public void showHideFragment(ISupportFragment showFragment) {
@@ -411,7 +415,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
         }
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(showHomeAsUp());
-        /**toolbar除掉阴影*/
+        //toolbar除掉阴影
         getSupportActionBar().setElevation(0);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mToolbar.setElevation(0);
@@ -438,6 +442,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
 
     /**
      * 显示Toast
+     *
      * @param text
      */
     protected void toast(CharSequence text) {
@@ -448,6 +453,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
 
     /**
      * 显示Toast
+     *
      * @param id
      */
     protected void toast(int id) {

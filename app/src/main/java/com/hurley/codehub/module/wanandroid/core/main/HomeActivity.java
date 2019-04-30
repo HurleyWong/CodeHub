@@ -3,6 +3,8 @@ package com.hurley.codehub.module.wanandroid.core.main;
 import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -51,6 +53,8 @@ public class HomeActivity extends BaseActivity<HomePresenter>
     NavigationView mNavigationView;
     @BindView(R.id.bnv_home)
     BottomNavigationView mBottomNavigationView;
+    @BindView(R.id.toolbar_title)
+    TextView mTvTitle;
 
     private LinearLayout mLlLogin;
     private TextView mTvLoginStatus;
@@ -102,7 +106,7 @@ public class HomeActivity extends BaseActivity<HomePresenter>
         initNavigationHeaderView();
         setNavigationViewListener();
 
-
+        //设置用户登录状态
         setUserStatus();
         //登录成功后需重新设置用户状态
         RxBus.getInstance().toFlowable(LoginEvent.class).subscribe(loginEvent -> setUserStatus());
@@ -119,6 +123,10 @@ public class HomeActivity extends BaseActivity<HomePresenter>
         mLlLogin = headerView.findViewById(R.id.ll_login);
         mTvLoginStatus = headerView.findViewById(R.id.tv_login_status);
         mLlLogin.setOnClickListener(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
     }
 
     /**
@@ -128,18 +136,22 @@ public class HomeActivity extends BaseActivity<HomePresenter>
         mNavigationView.setNavigationItemSelectedListener(
                 menuItem -> {
                     switch (menuItem.getItemId()) {
+                        //玩安卓页面
                         case R.id.home_wan_android:
                             menuItem.setChecked(true);
                             mDrawerLayout.closeDrawers();
                             break;
+                        //ReadHub页面
                         case R.id.home_readhub:
                             menuItem.setChecked(true);
                             mDrawerLayout.closeDrawers();
                             break;
+                        //DiyCode页面
                         case R.id.home_diycode:
                             menuItem.setChecked(true);
                             mDrawerLayout.closeDrawers();
                             break;
+                        //Github Trending页面
                         case R.id.home_github_trending:
                             menuItem.setChecked(true);
                             mDrawerLayout.closeDrawers();
@@ -174,27 +186,32 @@ public class HomeActivity extends BaseActivity<HomePresenter>
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.home_index:
-                mToolbar.setTitle(R.string.home_nav_index);
+                mTvTitle.setText(R.string.home_nav_index);
+                mToolbar.setTitle("");
                 showHideFragment(mFragments[Constants.TYPE_INDEX], mFragments[preIndex]);
                 preIndex = Constants.TYPE_INDEX;
                 break;
             case R.id.home_system:
-                mToolbar.setTitle(R.string.home_nav_system);
+                mTvTitle.setText(R.string.home_nav_system);
+                mToolbar.setTitle("");
                 showHideFragment(mFragments[Constants.TYPE_SYSTEM], mFragments[preIndex]);
                 preIndex = Constants.TYPE_SYSTEM;
                 break;
             case R.id.home_wechat:
-                mToolbar.setTitle(R.string.home_nav_wechat);
+                mTvTitle.setText(R.string.home_nav_wechat);
+                mToolbar.setTitle("");
                 showHideFragment(mFragments[Constants.TYPE_WECHAT], mFragments[preIndex]);
                 preIndex = Constants.TYPE_WECHAT;
                 break;
             case R.id.home_project:
-                mToolbar.setTitle(R.string.home_nav_project);
+                mTvTitle.setText(R.string.home_nav_project);
+                mToolbar.setTitle("");
                 showHideFragment(mFragments[Constants.TYPE_PROJECT], mFragments[preIndex]);
                 preIndex = Constants.TYPE_PROJECT;
                 break;
             case R.id.home_user:
-                mToolbar.setTitle(R.string.home_nav_user);
+                mTvTitle.setText(R.string.home_nav_user);
+                mToolbar.setTitle("");
                 showHideFragment(mFragments[Constants.TYPE_USER], mFragments[preIndex]);
                 preIndex = Constants.TYPE_USER;
                 break;
