@@ -57,5 +57,4 @@ public interface ActivityComponent {
 
     void inject(SettingActivity activity);
 
-    void inject(TagActivity activity);
 }

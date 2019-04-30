@@ -3,26 +3,17 @@ package com.hurley.codehub.module.wanandroid.core.user.tag;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.blankj.utilcode.util.LogUtils;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
 import com.hurley.codehub.base.BaseActivity;
-import com.hurley.codehub.util.ColorUtils;
-import com.zhy.view.flowlayout.FlowLayout;
-import com.zhy.view.flowlayout.TagAdapter;
-import com.zhy.view.flowlayout.TagFlowLayout;
+import com.hurley.codehub.module.wanandroid.core.user.tag.all.AllTagFragment;
+import com.hurley.codehub.module.wanandroid.core.user.tag.followed.FollowedTagFragment;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import butterknife.BindView;
 
@@ -35,7 +26,7 @@ import butterknife.BindView;
  * </pre>
  */
 @Route(path = PathContainer.TAG)
-public class TagActivity extends BaseActivity<TagPresenter> implements TagContract.View {
+public class TagActivity extends BaseActivity {
 
     @BindView(R.id.tl_tag)
     TabLayout mTlTag;
@@ -52,7 +43,7 @@ public class TagActivity extends BaseActivity<TagPresenter> implements TagContra
 
     @Override
     protected void initInjector() {
-        mActivityComponent.inject(this);
+
     }
 
     @Override

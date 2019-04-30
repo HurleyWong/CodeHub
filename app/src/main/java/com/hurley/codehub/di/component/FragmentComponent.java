@@ -14,6 +14,8 @@ import com.hurley.codehub.module.wanandroid.core.index.IndexFragment;
 import com.hurley.codehub.module.wanandroid.core.project.ProjectFragment;
 import com.hurley.codehub.module.wanandroid.core.system.SystemFragment;
 import com.hurley.codehub.module.wanandroid.core.user.UserFragment;
+import com.hurley.codehub.module.wanandroid.core.user.tag.all.AllTagFragment;
+import com.hurley.codehub.module.wanandroid.core.user.tag.followed.FollowedTagFragment;
 import com.hurley.codehub.module.wanandroid.core.wechat.WechatFragment;
 
 import dagger.Component;
@@ -54,4 +56,7 @@ public interface FragmentComponent {
 
     void inject(ProjectArticleListFragment fragment);
 
+    void inject(AllTagFragment fragment);
+
+    void inject(FollowedTagFragment fragment);
 }

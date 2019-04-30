@@ -7,7 +7,7 @@
     android:background="@color/colorBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".module.wanandroid.core.user.tag.FollowedTagFragment">
+    tools:context=".module.wanandroid.core.user.tag.followed.FollowedTagFragment">
 
     <TextView
         android:id="@+id/tv_followed_tag"

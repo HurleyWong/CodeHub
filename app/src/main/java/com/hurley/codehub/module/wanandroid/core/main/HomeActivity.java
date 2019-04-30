@@ -123,10 +123,6 @@ public class HomeActivity extends BaseActivity<HomePresenter>
         mLlLogin = headerView.findViewById(R.id.ll_login);
         mTvLoginStatus = headerView.findViewById(R.id.tv_login_status);
         mLlLogin.setOnClickListener(this);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
     }
 
     /**

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:orientation="vertical"
-    tools:context=".module.wanandroid.core.user.tag.AllTagFragment">
+    tools:context=".module.wanandroid.core.user.tag.all.AllTagFragment">
 
     <TextView
         android:id="@+id/tv_recommend_tag"

@@ -1,4 +1,4 @@
-package com.hurley.codehub.module.wanandroid.core.user.tag;
+package com.hurley.codehub.module.wanandroid.core.user.tag.followed;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,7 +23,7 @@ import butterknife.BindView;
  *      desc    : 已关注标签页面
  * </pre>
  */
-public class FollowedTagFragment extends BaseFragment {
+public class FollowedTagFragment extends BaseFragment<FollowedTagPresenter> implements FollowedTagContract.View {
 
     @BindView(R.id.rv_followed_tag)
     RecyclerView mRvFollowedTag;
@@ -45,7 +45,7 @@ public class FollowedTagFragment extends BaseFragment {
 
     @Override
     protected void initInjector() {
-
+        mFragmentComponent.inject(this);
     }
 
     @Override
@@ -53,5 +53,10 @@ public class FollowedTagFragment extends BaseFragment {
         mList = new ArrayList<>();
         mRvFollowedTag.setLayoutManager(new LinearLayoutManager(getActivity()));
         mTagAdapter = new TagAdapter(R.layout.item_tag, mList);
+    }
+
+    @Override
+    public void setFollowedTag() {
+
     }
 }
