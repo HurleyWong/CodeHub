@@ -438,7 +438,7 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
      * @param duration
      */
     private void saveArticle(int userId, String title, String author, int chapterId, String chapterName,
-                            String superChapterName, String niceDate, String link, int duration) {
+                             String superChapterName, String niceDate, String link, int duration) {
         Article article = new Article();
         article.setUserid(userId);
         article.setTitle(title);

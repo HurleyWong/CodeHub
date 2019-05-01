@@ -19,7 +19,7 @@ import javax.inject.Inject;
  *      desc    : 已关注标签 Presenter类
  * </pre>
  */
-public class FollowedTagPresenter extends BasePresenter<FollowedTagContract.View> implements FollowedTagContract.Presenter{
+public class FollowedTagPresenter extends BasePresenter<FollowedTagContract.View> implements FollowedTagContract.Presenter {
 
     @Inject
     public FollowedTagPresenter() {

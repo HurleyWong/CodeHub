@@ -29,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  *      desc    : 全部标签 Presenter类
  * </pre>
  */
-public class AllTagPresenter extends BasePresenter<AllTagContract.View> implements AllTagContract.Presenter{
+public class AllTagPresenter extends BasePresenter<AllTagContract.View> implements AllTagContract.Presenter {
 
     @Inject
     public AllTagPresenter() {

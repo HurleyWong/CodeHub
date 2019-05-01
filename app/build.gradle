@@ -61,12 +61,51 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    //Recyclerview包
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    //ui框架
 
-    //ButterKnife包 https://github.com/JakeWharton/butterknife
-    implementation 'com.jakewharton:butterknife:9.0.0-rc1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
+    //RecyclerView包
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    //Fragmentation包：https://github.com/YoKeyword/Fragmentation
+    implementation 'me.yokeyword:fragmentation:1.3.6'
+    implementation 'me.yokeyword:fragmentation-swipeback:1.3.6'
+    //MultipleStatusView：https://github.com/qyxxjd/MultipleStatusView
+    implementation 'com.classic.common:multiple-status-view:1.6'
+    //SmartRefreshLayout：https://github.com/scwang90/SmartRefreshLayout
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-23'
+    //BaseQuickAdapter：https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45'
+    //Banner包：https://github.com/youth5201314/banner
+    implementation 'com.youth.banner:banner:1.4.10'
+    //BGABanner-Android包：https://github.com/bingoogolapple/BGABanner-Android
+    implementation 'cn.bingoogolapple:bga-banner:2.2.5@aar'
+    //OXChart包：https://github.com/openXu/OXChart
+    implementation 'com.openxu.viewlib:OXViewLib:1.0.2'
+    //MaterialAbout包：https://github.com/jrvansuita/MaterialAbout
+    implementation 'com.github.jrvansuita:MaterialAbout:0.2.3'
+    //启动动画：https://github.com/wongzy/FancyView
+    implementation 'site.gemus:openingstartanimation:1.0.0'
+    //状态栏沉浸：https://github.com/gyf-dev/ImmersionBar
+    implementation 'com.gyf.immersionbar:immersionbar:2.3.3'
+    //侧滑功能：https://github.com/bingoogolapple/BGASwipeBackLayout-Android
+    implementation 'cn.bingoogolapple:bga-swipebacklayout:1.2.0@aar'
+    //标题栏：https://github.com/getActivity/TitleBar
+    implementation 'com.hjq:titlebar:5.0'
+    //吐司工具类：https://github.com/getActivity/ToastUtils
+    implementation 'com.hjq:toast:5.6'
+    //权限请求框架：https://github.com/getActivity/XXPermissions
+    implementation 'com.hjq:xxpermissions:5.3'
+    //不同状态的Button：https://github.com/niniloveyou/StateButton
+    implementation 'com.github.niniloveyou:StateButton:v1.0.0'
+    //空祖家的Dialog：https://github.com/kongzue/Dialog
+    implementation 'com.kongzue.dialog:dialog:2.4.7'
+    //BasePopup：https://github.com/razerdp/BasePopup
+    implementation 'com.github.razerdp:BasePopup:2.1.8'
+    //EasyPopup：https://github.com/zyyoona7/EasyPopup
+    implementation 'com.github.zyyoona7:EasyPopup:1.1.2'
+    //FlowLayout包：https://github.com/hongyangAndroid/FlowLayout
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
+
+    //网络框架
 
     //OkHttp包：https://github.com/square/okhttp
     implementation "com.squareup.okhttp3:okhttp:3.13.1"
@@ -80,18 +119,13 @@ dependencies {
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
     //PersistentCookieJar for OkHttp3：https://github.com/franmontiel/PersistentCookieJar
     implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
-
     //Retrofit包：https://github.com/square/retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     //Gson转换器，将网络响应使用Gson转换成Java Bean
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
-
     //AgentWeb包：https://github.com/Justson/AgentWeb
     implementation 'com.just.agentweb:agentweb:4.0.2'
-
-
     //RxJava包：https://github.com/ReactiveX/RxJava
     implementation "io.reactivex.rxjava2:rxjava:2.2.7"
     //RxAndroid包：https://github.com/ReactiveX/RxAndroid
@@ -100,7 +134,18 @@ dependencies {
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.0'
     implementation "com.trello.rxlifecycle2:rxlifecycle:2.1.0"
     implementation "com.trello.rxlifecycle2:rxlifecycle-components:2.1.0"
+    //ARoute阿里巴巴路由跳转包：
+    implementation "com.alibaba:arouter-api:1.3.1"
+    annotationProcessor "com.alibaba:arouter-compiler:1.1.4"
+    //Glide包：https://github.com/bumptech/glide
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 
+    //依赖注入框架
+
+    //ButterKnife包 https://github.com/JakeWharton/butterknife
+    implementation 'com.jakewharton:butterknife:9.0.0-rc1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
     //dagger包：https://github.com/google/dagger
     implementation 'com.google.dagger:dagger:2.21'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.21'
@@ -108,60 +153,16 @@ dependencies {
     implementation 'com.google.dagger:dagger-android-support:2.21'
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.21'
 
-    //ARoute阿里巴巴路由跳转包：
-    implementation "com.alibaba:arouter-api:1.3.1"
-    annotationProcessor "com.alibaba:arouter-compiler:1.1.4"
+    //数据库框架
 
     //greenDAO包：https://github.com/greenrobot/greenDAO
     implementation 'org.greenrobot:greendao:3.2.2'
     //LitePal包：https://github.com/LitePalFramework/LitePal
     implementation 'org.litepal.android:java:3.0.0'
 
-    //Glide包：https://github.com/bumptech/glide
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
-    //Fragmentation包：https://github.com/YoKeyword/Fragmentation
-    implementation 'me.yokeyword:fragmentation:1.3.6'
-    implementation 'me.yokeyword:fragmentation-swipeback:1.3.6'
-    //MultipleStatusView：https://github.com/qyxxjd/MultipleStatusView
-    implementation 'com.classic.common:multiple-status-view:1.5.1'
-    //BaseQuickAdapter：https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45'
+    //工具类框架
+
     //UtilCode：https://github.com/Blankj/AndroidUtilCode
     implementation 'com.blankj:utilcode:1.11.1'
-    //SmartRefreshLayout：https://github.com/scwang90/SmartRefreshLayout
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-20'
-    //Banner包：https://github.com/youth5201314/banner
-    implementation 'com.youth.banner:banner:1.4.10'
-    //BGABanner-Android包：https://github.com/bingoogolapple/BGABanner-Android
-    implementation 'cn.bingoogolapple:bga-banner:2.2.5@aar'
-    //OXChart包：https://github.com/openXu/OXChart
-    implementation 'com.openxu.viewlib:OXViewLib:1.0.2'
-    //MaterialAbout包：https://github.com/jrvansuita/MaterialAbout
-    implementation 'com.github.jrvansuita:MaterialAbout:0.2.3'
-
-    //启动动画：https://github.com/wongzy/FancyView
-    implementation 'site.gemus:openingstartanimation:1.0.0'
-    //状态栏沉浸：https://github.com/gyf-dev/ImmersionBar
-    implementation 'com.gyf.immersionbar:immersionbar:2.3.3'
-    //侧滑功能：https://github.com/bingoogolapple/BGASwipeBackLayout-Android
-    implementation 'cn.bingoogolapple:bga-swipebacklayout:1.2.0@aar'
-    //标题栏：https://github.com/getActivity/TitleBar
-    implementation 'com.hjq:titlebar:5.0'
-    //吐司工具类：https://github.com/getActivity/ToastUtils
-    implementation 'com.hjq:toast:5.6'
-    //权限请求框架：https://github.com/getActivity/XXPermissions
-    implementation 'com.hjq:xxpermissions:5.3'
-
-    implementation 'com.github.niniloveyou:StateButton:v1.0.0'
-    //空祖家的Dialog：https://github.com/kongzue/Dialog
-    implementation 'com.kongzue.dialog:dialog:2.4.7'
-    //BasePopup：https://github.com/razerdp/BasePopup
-    implementation 'com.github.razerdp:BasePopup:2.1.8'
-    //EasyPopup：https://github.com/zyyoona7/EasyPopup
-    implementation 'com.github.zyyoona7:EasyPopup:1.1.2'
-    //FlowLayout包：https://github.com/hongyangAndroid/FlowLayout
-    implementation 'com.hyman:flowlayout-lib:1.1.2'
-
 
 }

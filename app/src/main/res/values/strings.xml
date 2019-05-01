@@ -26,6 +26,7 @@
     <string name="click_enter">进入主界面</string>
     <string name="choose_email">选择邮件客户端</string>
     <string name="input_key">请输入关键字</string>
+    <string name="home_exit">再按一次退出</string>
 
     <!-- 文章 -->
     <string name="article_title">标题</string>
@@ -72,7 +73,7 @@
     <string name="tag_3_detail">数据存储</string>
     <string name="tag_4">自定义View</string>
     <string name="tag_4_detail">动画效果 自定义控件</string>
-    <string name="tag_5">硬件模块</string>
+    <string name="tag_5">硬件相关</string>
     <string name="tag_5_detail">硬件模块 JNI 常用SDK framework 多媒体技术 TV相关</string>
     <string name="tag_6">项目必备</string>
     <string name="tag_6_detail">项目必备 干货资源 完整开源项目 开源项目源码解析 开放API</string>
@@ -232,6 +233,4 @@
     <string name="language_traditional">繁體中文</string>
     <string name="language_english">English</string>
 
-    <!-- 提示 -->
-    <string name="home_exit">再按一次退出</string>
 </resources>

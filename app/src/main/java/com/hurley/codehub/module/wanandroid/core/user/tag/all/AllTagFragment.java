@@ -91,6 +91,7 @@ public class AllTagFragment extends BaseFragment<AllTagPresenter> implements All
 
     /**
      * 初始化全部标签列表
+     *
      * @param list
      * @return
      */
@@ -110,6 +111,7 @@ public class AllTagFragment extends BaseFragment<AllTagPresenter> implements All
 
     /**
      * 保存标签
+     *
      * @param userId
      * @param title
      */
@@ -130,7 +132,7 @@ public class AllTagFragment extends BaseFragment<AllTagPresenter> implements All
     @Override
     public void setFollowedTag(List<UserTag> list) {
         for (int i = 0; i < list.size(); i++) {
-            for (int j = 0; j < mList.size(); j ++) {
+            for (int j = 0; j < mList.size(); j++) {
                 if (list.get(i).getTitle().equals(mList.get(j).getTitle())) {
                     mList.get(j).setFollowed(true);
                 }
