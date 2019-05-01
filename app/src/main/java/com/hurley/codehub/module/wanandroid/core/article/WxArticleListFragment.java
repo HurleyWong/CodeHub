@@ -117,11 +117,6 @@ public class WxArticleListFragment extends BaseFragment<WxArticleListPresenter>
     }
 
     @Override
-    public void showLoading() {
-        mSrlWxArticleList.setRefreshing(true);
-    }
-
-    @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
         mPresenter.collectWxArticle(position, mArticleAdapter.getItem(position));
     }

@@ -12,6 +12,8 @@ public class PathContainer {
 
     //Activity
 
+    //WanAndroid Activity
+
     public static final String HOME = "/main/HomeActivity";
 
     public static final String GUIDE = "/main/GuideActivity";
@@ -40,8 +42,14 @@ public class PathContainer {
 
     public static final String LOADING = "/main/LoadingDataActivity";
 
+    //ReadHub Activity
+
+    public static final String MAIN = "/main/MainActivity";
+
 
     //Fragment
+
+    //WanAndroid Fragment
 
     public static final String ARTICLE_LIST = "/article/SystemArticleListFragment";
 

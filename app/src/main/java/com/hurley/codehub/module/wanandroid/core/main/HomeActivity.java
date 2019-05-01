@@ -18,11 +18,13 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseActivity;
+import com.hurley.codehub.module.readhub.core.main.MainActivity;
 import com.hurley.codehub.module.wanandroid.event.LoginEvent;
 import com.hurley.codehub.module.wanandroid.event.LogoutEvent;
 import com.hurley.codehub.module.wanandroid.core.index.IndexFragment;
@@ -129,6 +131,7 @@ public class HomeActivity extends BaseActivity<HomePresenter>
      * 设置左侧导航栏监听
      */
     private void setNavigationViewListener() {
+        mNavigationView.setCheckedItem(R.id.home_wan_android);
         mNavigationView.setNavigationItemSelectedListener(
                 menuItem -> {
                     switch (menuItem.getItemId()) {
@@ -140,6 +143,7 @@ public class HomeActivity extends BaseActivity<HomePresenter>
                         //ReadHub页面
                         case R.id.home_readhub:
                             menuItem.setChecked(true);
+                            ARouter.getInstance().build(PathContainer.MAIN).navigation();
                             mDrawerLayout.closeDrawers();
                             break;
                         //DiyCode页面
@@ -260,7 +264,7 @@ public class HomeActivity extends BaseActivity<HomePresenter>
                 toast(R.string.home_exit);
                 mExitTime = System.currentTimeMillis();
             } else {
-                System.exit(0);
+                ActivityUtils.finishAllActivities();
             }
             return true;
         }

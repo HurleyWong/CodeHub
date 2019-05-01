@@ -104,5 +104,7 @@
             android:name=".module.wanandroid.core.search.SearchActivity"
             android:launchMode="singleTop" />
 
+        <activity android:name=".module.readhub.core.main.MainActivity" />
+
     </application>
 </manifest>

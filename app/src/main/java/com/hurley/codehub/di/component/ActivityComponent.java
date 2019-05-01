@@ -7,6 +7,7 @@ import android.content.Context;
 import com.hurley.codehub.di.module.ActivityModule;
 import com.hurley.codehub.di.scope.ActivityScope;
 import com.hurley.codehub.di.scope.ContextLifeCycle;
+import com.hurley.codehub.module.readhub.core.main.MainActivity;
 import com.hurley.codehub.module.wanandroid.core.main.HomeActivity;
 import com.hurley.codehub.module.wanandroid.core.search.SearchActivity;
 import com.hurley.codehub.module.wanandroid.core.user.analysis.LoadingDataActivity;
@@ -41,6 +42,8 @@ public interface ActivityComponent {
 
     //🔥定义inject方法，传入需要注入依赖的目标类
 
+    //WanAndroid Activity
+
     void inject(HomeActivity activity);
 
     void inject(WebActivity activity);
@@ -56,5 +59,9 @@ public interface ActivityComponent {
     void inject(LoadingDataActivity activity);
 
     void inject(SettingActivity activity);
+
+    //ReadHub Activity
+
+    void inject(MainActivity activity);
 
 }

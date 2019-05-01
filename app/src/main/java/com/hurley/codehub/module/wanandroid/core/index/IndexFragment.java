@@ -167,12 +167,12 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
     @Override
     public void setArticles(ArticleBean articleBean, int loadType) {
         //将置顶文章添加到文章列表中
-//        if (mTopArticles.size() != 0) {
-//            for (int i = 0; i < mTopArticles.size(); i++) {
-//                mTopArticles.get(i).setTop(true);
-//                articleBean.getDatas().add(i, mTopArticles.get(i));
-//            }
-//        }
+        if (mTopArticles.size() != 0) {
+            for (int i = 0; i < mTopArticles.size(); i++) {
+                mTopArticles.get(i).setTop(true);
+                articleBean.getDatas().add(i, mTopArticles.get(i));
+            }
+        }
         setLoadDataResult(mArticleAdapter, mSrlIndex, articleBean.getDatas(), loadType);
     }
 
@@ -191,6 +191,7 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
     @Override
     public void setRecommendArticles(ArticleBean articleBean) {
         mRecommendAdapter.addData(articleBean.getDatas().get(0));
+        mRecommendAdapter.notifyDataSetChanged();
     }
 
     @Override

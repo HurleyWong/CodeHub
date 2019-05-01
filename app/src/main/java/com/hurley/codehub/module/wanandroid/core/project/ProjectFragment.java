@@ -75,5 +75,7 @@ public class ProjectFragment extends BaseFragment<ProjectPresent> implements Pro
         mVpProject.setCurrentItem(0, false);
         //将TabLayout与ViewPager绑定
         mTlProject.setupWithViewPager(mVpProject, true);
+
+
     }
 }

@@ -35,8 +35,6 @@ public class WechatFragment extends BaseFragment<WechatPresenter> implements Wec
 
     @BindView(R.id.tl_wechat)
     TabLayout mTlWechat;
-    @BindView(R.id.srl_wechat)
-    SwipeRefreshLayout mSrlWechat;
     @BindView(R.id.vp_wechat)
     ViewPager mVpWechat;
 
@@ -89,4 +87,5 @@ public class WechatFragment extends BaseFragment<WechatPresenter> implements Wec
         }
         initTabLayoutAndViewPager(wxAccounts);*/
     }
+
 }

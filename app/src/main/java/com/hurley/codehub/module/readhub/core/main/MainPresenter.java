@@ -2,6 +2,8 @@ package com.hurley.codehub.module.readhub.core.main;
 
 import com.hurley.codehub.base.BasePresenter;
 
+import javax.inject.Inject;
+
 /**
  * <pre>
  *      @author hurley
@@ -11,4 +13,8 @@ import com.hurley.codehub.base.BasePresenter;
  * </pre>
  */
 public class MainPresenter extends BasePresenter<MainContract.View> implements MainContract.Presenter {
+
+    @Inject
+    public MainPresenter() {}
+
 }

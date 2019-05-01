@@ -72,6 +72,7 @@ dependencies {
     implementation 'com.classic.common:multiple-status-view:1.6'
     //SmartRefreshLayout：https://github.com/scwang90/SmartRefreshLayout
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-23'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-23'
     //BaseQuickAdapter：https://github.com/CymChad/BaseRecyclerViewAdapterHelper
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45'
     //Banner包：https://github.com/youth5201314/banner
