@@ -6,16 +6,21 @@
     <string name="diycode">Diycode</string>
     <string name="github_trending">Github Trending</string>
 
-    <!-- 主界面Fragment -->
+    <!-- WanAndroid主界面Fragment -->
     <string name="home_nav_index">首页</string>
     <string name="home_nav_system">体系</string>
     <string name="home_nav_wechat">公众号</string>
     <string name="home_nav_project">项目</string>
     <string name="home_nav_user">我的</string>
-
     <string name="home_hotkey">热词</string>
     <string name="home_website">常用网站</string>
     <string name="home_search">搜索</string>
+
+    <!-- ReadHub主界面Fragment -->
+    <string name="main_topic">热门话题</string>
+    <string name="main_tech">科技动态</string>
+    <string name="main_dev">开发者资讯</string>
+    <string name="main_block">区块链</string>
 
     <!-- 通用 -->
     <string name="http_error">网络君乘404航班去追寻诗和远方了</string>

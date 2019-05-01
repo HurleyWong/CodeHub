@@ -3,9 +3,12 @@ package com.hurley.codehub.api;
 import com.hurley.codehub.bean.readhub.BaseBean;
 import com.hurley.codehub.bean.readhub.TopicBean;
 
+import java.util.List;
+
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * <pre>
@@ -23,8 +26,7 @@ public interface ReadhubApiService {
      * @return
      */
     @GET(ReadhubUrlContainer.TOPIC)
-    Observable<BaseBean<TopicBean>> getTopic();
-
+    Observable<BaseBean<TopicBean>> getTopic(@Query("lastCursor") String lastCursor, @Query("pageSize") int pageSize);
 
     /**
      * 获得热门话题细节

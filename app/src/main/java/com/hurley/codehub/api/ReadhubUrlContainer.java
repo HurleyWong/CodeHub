@@ -12,7 +12,7 @@ public class ReadhubUrlContainer {
 
     private static final String TAG = "ReadhubUrlContainer";
 
-    private static final String baseUrl = "https://api.readhub.cn/";
+    public static final String baseUrl = "https://api.readhub.cn/";
 
     /**
      * 热门话题

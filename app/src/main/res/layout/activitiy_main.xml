@@ -26,24 +26,37 @@
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
-                    style="@style/ActionBar" >
+                    style="@style/ActionBar">
 
                     <TextView
                         android:id="@+id/toolbar_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:textSize="@dimen/sp20"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp20" />
                 </android.support.v7.widget.Toolbar>
 
             </android.support.design.widget.AppBarLayout>
 
-            <FrameLayout
-                android:id="@+id/layout_fragment"
+            <com.flyco.tablayout.SlidingTabLayout
+                android:id="@+id/tl_main"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/windowBackground"
+                app:tl_indicator_color="@color/colorAccent"
+                app:tl_indicator_width_equal_title="true"
+                app:tl_indicator_height="@dimen/dp3"
+                app:tl_tab_space_equal="true"
+                app:tl_textSelectColor="@color/text"
+                app:tl_textUnselectColor="@color/black50"
+                app:tl_textBold="SELECT"
+                app:tl_textsize="@dimen/sp18" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
 
         <android.support.design.widget.NavigationView
@@ -55,6 +68,5 @@
             app:itemIconTint="@color/ic_selector_nav"
             app:itemTextColor="@color/ic_selector_nav"
             app:menu="@menu/menu_home_nav" />
-
     </android.support.v4.widget.DrawerLayout>
 </FrameLayout>

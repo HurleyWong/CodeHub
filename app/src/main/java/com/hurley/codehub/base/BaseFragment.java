@@ -24,8 +24,11 @@ import com.hurley.codehub.app.LoadType;
 import com.hurley.codehub.di.component.DaggerFragmentComponent;
 import com.hurley.codehub.di.component.FragmentComponent;
 import com.hurley.codehub.di.module.FragmentModule;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxFragment;
+
+import org.litepal.util.Const;
 
 import java.util.List;
 
@@ -185,6 +188,41 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
     }
 
     /**
+     * 设置加载数据结果
+     *
+     * @param baseQuickAdapter
+     * @param refreshLayout
+     * @param list
+     * @param loadType
+     */
+    protected void setLoadDataResult(BaseQuickAdapter baseQuickAdapter, SmartRefreshLayout refreshLayout, List list, @LoadType.checker int loadType) {
+        switch (loadType) {
+            case LoadType.TYPE_REFRESH_SUCCESS:
+                baseQuickAdapter.setNewData(list);
+                refreshLayout.setEnableRefresh(false);
+                break;
+            case LoadType.TYPE_REFRESH_ERROR:
+                refreshLayout.setEnableRefresh(false);
+                break;
+            case LoadType.TYPE_LOAD_MORE_SUCCESS:
+                if (list != null) {
+                    baseQuickAdapter.addData(list);
+                }
+                break;
+            case LoadType.TYPE_LOAD_MORE_ERROR:
+                baseQuickAdapter.loadMoreFail();
+                break;
+            default:
+                break;
+        }
+        if (list == null || list.isEmpty() || list.size() < Constants.PAGE_SIZE) {
+            baseQuickAdapter.loadMoreEnd(false);
+        } else {
+            baseQuickAdapter.loadMoreComplete();
+        }
+    }
+
+    /**
      * 初始化FragmentComponent
      */
     private void initFragmentComponent() {
@@ -215,6 +253,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
 
     /**
      * 设置View
+     *
      * @param inflater
      * @param container
      */
@@ -296,6 +335,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
      * The runnable will be run after all the previous action has been run.
      * <p>
      * 前面的事务全部执行后 执行该Action
+     *
      * @deprecated Use {@link #post(Runnable)} instead.
      */
     @Deprecated
@@ -376,6 +416,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
 
     /**
      * 获取设置的全局动画 copy
+     *
      * @return FragmentAnimator
      */
     @Override
@@ -405,6 +446,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
      * 类似
      * <p>
      * Similar to
+     *
      * @see #startForResult(ISupportFragment, int)
      */
     @Override
@@ -416,6 +458,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
      * 类似
      * <p>
      * Similar to
+     *
      * @see #startForResult(ISupportFragment, int)
      */
     @Override
@@ -428,6 +471,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
      * 类似
      * <p>
      * Similar to
+     *
      * @param args putNewBundle(Bundle newBundle)
      * @see #start(ISupportFragment, int)
      */
@@ -438,6 +482,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
 
     /**
      * 添加NewBundle,用于启动模式为SingleTask/SingleTop时
+     *
      * @see #start(ISupportFragment, int)
      */
     @Override
@@ -524,6 +569,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
      * back stack.
      * <p>
      * 出栈到目标fragment
+     *
      * @param targetFragmentClass   目标fragment
      * @param includeTargetFragment 是否包含该fragment
      */
@@ -540,6 +586,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
 
     /**
      * 显示Toast
+     *
      * @param text
      */
     protected void toast(CharSequence text) {
@@ -550,6 +597,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
 
     /**
      * 显示Toast
+     *
      * @param id
      */
     protected void toast(int id) {

@@ -8,6 +8,7 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -20,6 +21,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.SPUtils;
+import com.flyco.tablayout.SlidingTabLayout;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
 import com.hurley.codehub.app.Constants;
@@ -57,6 +59,7 @@ public class HomeActivity extends BaseActivity<HomePresenter>
     BottomNavigationView mBottomNavigationView;
     @BindView(R.id.toolbar_title)
     TextView mTvTitle;
+
 
     private LinearLayout mLlLogin;
     private TextView mTvLoginStatus;

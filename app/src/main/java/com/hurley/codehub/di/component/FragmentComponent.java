@@ -7,6 +7,7 @@ import android.content.Context;
 import com.hurley.codehub.di.module.FragmentModule;
 import com.hurley.codehub.di.scope.ContextLifeCycle;
 import com.hurley.codehub.di.scope.FragmentScope;
+import com.hurley.codehub.module.readhub.core.topic.TopicFragment;
 import com.hurley.codehub.module.wanandroid.core.article.SystemArticleListFragment;
 import com.hurley.codehub.module.wanandroid.core.article.ProjectArticleListFragment;
 import com.hurley.codehub.module.wanandroid.core.article.WxArticleListFragment;
@@ -40,6 +41,8 @@ public interface FragmentComponent {
 
     Activity getActivity();
 
+    //WanAndroid Fragment
+
     void inject(IndexFragment fragment);
 
     void inject(SystemFragment fragment);
@@ -59,4 +62,8 @@ public interface FragmentComponent {
     void inject(AllTagFragment fragment);
 
     void inject(FollowedTagFragment fragment);
+
+    //ReadHub Fragment
+
+    void inject(TopicFragment fragment);
 }

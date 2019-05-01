@@ -8,6 +8,7 @@ import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.hurley.codehub.api.LocalUrlContainer;
+import com.hurley.codehub.api.ReadhubUrlContainer;
 import com.hurley.codehub.api.WanAndroidUrlContainer;
 import com.hurley.codehub.app.App;
 
@@ -157,6 +158,18 @@ public class RetrofitManager {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         return retrofit.create(clazz);
+    }
+
+    public static <T> T createReadHub(Class<T> clazz) {
+        //指定baseUrl
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(ReadhubUrlContainer.baseUrl)
+                .client(getOkHttpClient())
+                //存储转化数据对象，设置返回的数据支持转换为Gson对象
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        return retrofit.create(clazz);
+
     }
 
     /**

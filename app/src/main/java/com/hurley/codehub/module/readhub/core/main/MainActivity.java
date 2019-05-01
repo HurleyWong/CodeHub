@@ -2,6 +2,8 @@ package com.hurley.codehub.module.readhub.core.main;
 
 import android.annotation.SuppressLint;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.KeyEvent;
 import android.view.View;
@@ -12,13 +14,21 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.SPUtils;
+import com.flyco.tablayout.SlidingTabLayout;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseActivity;
+import com.hurley.codehub.module.readhub.core.block.BlockFragment;
+import com.hurley.codehub.module.readhub.core.dev.DevFragment;
+import com.hurley.codehub.module.readhub.core.tech.TechFragment;
+import com.hurley.codehub.module.readhub.core.topic.TopicFragment;
 import com.hurley.codehub.module.wanandroid.event.LoginEvent;
 import com.hurley.codehub.module.wanandroid.event.LogoutEvent;
 import com.hurley.codehub.net.callback.RxBus;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 import butterknife.BindView;
 
@@ -38,9 +48,15 @@ public class MainActivity extends BaseActivity<MainPresenter>
     DrawerLayout mDrawerLayout;
     @BindView(R.id.nv_main)
     NavigationView mNavigationView;
+    @BindView(R.id.tl_main)
+    SlidingTabLayout mTlMain;
+    @BindView(R.id.vp_main)
+    ViewPager mVpMain;
 
     private LinearLayout mLlLogin;
     private TextView mTvLoginStatus;
+
+    private ArrayList<Fragment> mFragments;
 
     /**
      * 是否登录
@@ -62,6 +78,20 @@ public class MainActivity extends BaseActivity<MainPresenter>
     @SuppressLint("CheckResult")
     @Override
     protected void initView() {
+        mFragments = new ArrayList<>();
+
+        mFragments.add(TopicFragment.newInstance());
+        mFragments.add(TechFragment.newInstance());
+        mFragments.add(DevFragment.newInstance());
+        mFragments.add(BlockFragment.newInstance());
+
+        String[] mTitles = {getString(R.string.main_topic),
+                getString(R.string.main_tech),
+                getString(R.string.main_dev),
+                getString(R.string.main_block)};
+
+        mTlMain.setViewPager(mVpMain, mTitles, this, mFragments);
+
         initNavigationHeaderView();
         setNavigationViewListener();
 
@@ -83,6 +113,9 @@ public class MainActivity extends BaseActivity<MainPresenter>
         mLlLogin.setOnClickListener(this);
     }
 
+    /**
+     * 设置左侧导航栏监听
+     */
     private void setNavigationViewListener() {
         mNavigationView.setCheckedItem(R.id.home_readhub);
         mNavigationView.setNavigationItemSelectedListener(menuItem -> {
