@@ -64,6 +64,9 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
     @Inject
     RecommendAdapter mRecommendAdapter;
 
+    private int count = 0;
+    private boolean isRefresh = false;
+
     private Banner mBanner;
     private View mRecommendView;
 
@@ -130,7 +133,6 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         mPresenter.loadTopArticles();
         onRefresh();
         //根据后台返回的要推荐的体系，加载推荐文章
-        mPresenter.loadRecommendArticles(61);
 
         //登录成功后刷新
         RxBus.getInstance().toFlowable(LoginEvent.class)
@@ -167,12 +169,12 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
     @Override
     public void setArticles(ArticleBean articleBean, int loadType) {
         //将置顶文章添加到文章列表中
-        if (mTopArticles.size() != 0) {
-            for (int i = 0; i < mTopArticles.size(); i++) {
-                mTopArticles.get(i).setTop(true);
-                articleBean.getDatas().add(i, mTopArticles.get(i));
-            }
-        }
+//        if (mTopArticles.size() != 0) {
+//            for (int i = 0; i < mTopArticles.size(); i++) {
+//                mTopArticles.get(i).setTop(true);
+//                articleBean.getDatas().add(i, mTopArticles.get(i));
+//            }
+//        }
         setLoadDataResult(mArticleAdapter, mSrlIndex, articleBean.getDatas(), loadType);
     }
 
@@ -190,7 +192,15 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
 
     @Override
     public void setRecommendArticles(ArticleBean articleBean) {
-        mRecommendAdapter.addData(articleBean.getDatas().get(0));
+        LogUtils.e(count);
+        if (isRefresh) {
+            mRecommendAdapter.remove(0);
+            mRecommendAdapter.remove(0);
+            mRecommendAdapter.remove(0);
+            isRefresh = false;
+        }
+        mRecommendAdapter.addData(articleBean.getDatas().get(count));
+        LogUtils.e(articleBean.getDatas().get(count).getTitle());
         mRecommendAdapter.notifyDataSetChanged();
     }
 
@@ -263,6 +273,9 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         switch (v.getId()) {
             case R.id.iv_refresh:
                 //刷新推荐文章，重新推荐
+                count++;
+                isRefresh = true;
+                mPresenter.refreshRecommendChapter();
                 break;
             case R.id.iv_close:
                 mRecommendView.setVisibility(View.GONE);

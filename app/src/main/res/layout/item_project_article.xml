@@ -22,12 +22,14 @@
 
             <TextView
                 android:id="@+id/tv_project_title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp10"
                 android:text="@string/article_title"
                 android:textColor="@color/text"
-                android:textSize="@dimen/sp18" />
+                android:textSize="@dimen/sp18"
+                android:maxLines="1"
+                android:ellipsize="end"/>
 
             <TextView
                 android:id="@+id/tv_project_desc"

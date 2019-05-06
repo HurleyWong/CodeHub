@@ -1,4 +1,4 @@
-package com.hurley.codehub.module.wanandroid.core.user.tag.all;
+package com.hurley.codehub.module.wanandroid.core.user.tag;
 
 import com.hurley.codehub.base.BaseContract;
 import com.hurley.codehub.bean.local.UserTag;
@@ -8,12 +8,12 @@ import java.util.List;
 /**
  * <pre>
  *      @author hurley
- *      date    : 2019-04-30 15:49
+ *      date    : 2019-05-05 09:40
  *      github  : https://github.com/HurleyJames
- *      desc    : 全部标签 Contract类
+ *      desc    : 标签 Contract类
  * </pre>
  */
-public interface AllTagContract {
+public interface TagContract {
 
     interface View extends BaseContract.BaseView {
 
@@ -25,7 +25,7 @@ public interface AllTagContract {
         void setFollowedTag(List<UserTag> userTag);
     }
 
-    interface Presenter extends BaseContract.BasePresenter<AllTagContract.View> {
+    interface Presenter extends BaseContract.BasePresenter<TagContract.View> {
 
         /**
          * 加载该用户已关注的标签

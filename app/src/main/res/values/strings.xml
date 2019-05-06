@@ -85,10 +85,11 @@
     <string name="tag_7">高新技术</string>
     <string name="tag_7_detail">高新技术 延伸技术 Jetpack</string>
     <string name="tag_8">学习资源</string>
-    <string name="tag_8_detail">推荐网站 原创文章 速查知识表 公众号 问答 视频</string>
+    <string name="tag_8_detail">推荐网站 原创文章 速查知识表 公众号 问答 视频 内推</string>
     <string name="tag_9">Java进阶</string>
     <string name="tag_9_detail">Java深入 Kotlin 注解&amp;反射&amp;AOP 跨平台 项目管理</string>
-
+    <string name="tag_10">热门专题</string>
+    <string name="tag_10_detail">项目架构 反编译 设计模式 插件化 模块化 组件化 热修复 性能优化 Xposed ANR</string>
 
     <!-- 收藏 -->
     <string name="collect_text">收藏</string>
@@ -209,6 +210,7 @@
     
     <!-- 推荐 -->
     <string name="recommend_tips">热门推荐</string>
+    <string name="recommend_end">没有多余的文章可以推荐了</string>
 
     <!-- 体系 -->
     <string name="dev_environment">开发环境</string>

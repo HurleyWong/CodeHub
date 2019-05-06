@@ -1,4 +1,4 @@
-package com.hurley.codehub.module.wanandroid.core.user.tag.all;
+package com.hurley.codehub.module.wanandroid.core.user.tag;
 
 import android.annotation.SuppressLint;
 
@@ -24,23 +24,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * <pre>
  *      @author hurley
- *      date    : 2019-04-30 15:50
+ *      date    : 2019-05-05 09:41
  *      github  : https://github.com/HurleyJames
- *      desc    : 全部标签 Presenter类
+ *      desc    :
  * </pre>
  */
-public class AllTagPresenter extends BasePresenter<AllTagContract.View> implements AllTagContract.Presenter {
+public class TagPresenter extends BasePresenter<TagContract.View> implements TagContract.Presenter {
 
     @Inject
-    public AllTagPresenter() {
+    public TagPresenter() {
 
     }
 
     @SuppressLint("CheckResult")
     @Override
-    public void loadFollowedTag(int userid) {
+    public void loadFollowedTag(int userId) {
         RetrofitManager.createLocal(LocalApiService.class)
-                .getFollowedTag(userid)
+                .getFollowedTag(userId)
                 .compose(RxSchedulers.applySchedulers())
                 .compose(mView.bindToLife())
                 .subscribe(response -> {

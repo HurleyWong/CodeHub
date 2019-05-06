@@ -41,10 +41,11 @@ public interface LocalApiService {
     /**
      * 获得后台推荐的文章体系id
      *
+     * @param userid
      * @return
      */
     @GET(LocalUrlContainer.CHAPTER)
-    Observable<Chapter> getChapterId();
+    Observable<Chapter> getChapterId(@Query("userid") int userid);
 
     /**
      * 获得当前用户关注的Tag

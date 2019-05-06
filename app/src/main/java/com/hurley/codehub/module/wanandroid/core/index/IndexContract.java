@@ -85,7 +85,13 @@ public interface IndexContract {
          */
         void loadRecommendArticles(int cid);
 
+        /**
+         * 获得要推荐的文章体系
+         * @param list
+         */
         void getRecommendChapter(List<Integer> list);
+
+        void refreshRecommendChapter();
 
         /**
          * 刷新

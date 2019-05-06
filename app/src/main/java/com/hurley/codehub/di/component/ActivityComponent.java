@@ -60,6 +60,8 @@ public interface ActivityComponent {
 
     void inject(SettingActivity activity);
 
+    void inject(TagActivity activity);
+
     //ReadHub Activity
 
     void inject(MainActivity activity);

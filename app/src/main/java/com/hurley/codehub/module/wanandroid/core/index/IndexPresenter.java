@@ -138,6 +138,7 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                 .subscribe(response -> {
                     mView.setRecommendArticles(response.getData());
                 }, throwable -> {
+                    mView.showFailed(throwable.getMessage());
                     LogUtils.e(throwable.getMessage());
                 });
     }
@@ -146,7 +147,7 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
     @Override
     public void getRecommendChapter(List<Integer> list) {
         RetrofitManager.createLocal(LocalApiService.class)
-                .getChapterId()
+                .getChapterId(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID))
                 .compose(RxSchedulers.applySchedulers())
                 .compose(mView.bindToLife())
                 .subscribe(chapter -> {
@@ -156,6 +157,12 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                         loadRecommendArticles(chapter.getData().get(i).getChapterid());
                     }
                 }, throwable -> LogUtils.e(throwable.getMessage()));
+    }
+
+    @Override
+    public void refreshRecommendChapter() {
+        List<Integer> list = new ArrayList<>();
+        getRecommendChapter(list);
     }
 
     @Override

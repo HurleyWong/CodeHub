@@ -1,16 +1,18 @@
 package com.hurley.codehub.module.wanandroid.core.user.tag;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.blankj.utilcode.util.SPUtils;
+import com.deadline.statebutton.StateButton;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
+import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseActivity;
-import com.hurley.codehub.module.wanandroid.core.user.tag.all.AllTagFragment;
-import com.hurley.codehub.module.wanandroid.core.user.tag.followed.FollowedTagFragment;
+import com.hurley.codehub.bean.local.UserTag;
+import com.hurley.codehub.module.wanandroid.core.adapter.TagAdapter;
+import com.hurley.codehub.util.ButtonUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,15 +28,17 @@ import butterknife.BindView;
  * </pre>
  */
 @Route(path = PathContainer.TAG)
-public class TagActivity extends BaseActivity {
+public class TagActivity extends BaseActivity<TagPresenter> implements TagContract.View {
 
-    @BindView(R.id.tl_tag)
-    TabLayout mTlTag;
-    @BindView(R.id.vp_tag)
-    ViewPager mVpTag;
+    @BindView(R.id.rv_all_tag)
+    RecyclerView mRvTag;
 
-    private List<String> mTitle;
-    private List<Fragment> fragments;
+    private StateButton button;
+
+    private TagAdapter mTagAdapter;
+    private List<UserTag> mList;
+
+    private int userId;
 
     @Override
     protected int getLayoutId() {
@@ -43,42 +47,36 @@ public class TagActivity extends BaseActivity {
 
     @Override
     protected void initInjector() {
-
+        mActivityComponent.inject(this);
     }
 
     @Override
     protected void initView() {
+        mList = new ArrayList<>();
+        mRvTag.setLayoutManager(new LinearLayoutManager(this));
+        mTagAdapter = new TagAdapter(R.layout.item_tag, mList);
+        mRvTag.setAdapter(mTagAdapter);
+        mTagAdapter.setNewData(setListData(mList));
 
-        fragments = new ArrayList<>();
-        fragments.add(AllTagFragment.newInstance());
-        fragments.add(FollowedTagFragment.newInstance());
+        userId = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID);
+        mPresenter.loadFollowedTag(userId);
 
-        mTitle = new ArrayList<>();
-        mTitle.add(getString(R.string.all_tag));
-        mTitle.add(getString(R.string.followed_tag));
+        mTagAdapter.setOnItemClickListener((adapter, view1, position) -> {
 
-        for (String tab : mTitle) {
-            mTlTag.addTab(mTlTag.newTab().setText(tab));
-        }
+        });
 
-        mVpTag.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public Fragment getItem(int i) {
-                return fragments.get(i);
-            }
-
-            @Override
-            public int getCount() {
-                return fragments.size();
-            }
-
-            @Override
-            public CharSequence getPageTitle(int i) {
-                return mTitle.get(i);
+        mTagAdapter.setOnItemChildClickListener((adapter, view2, position) -> {
+            button = view2.findViewById(R.id.btn_tag_status);
+            if (button.getText().toString().equals(getString(R.string.followed))) {
+                //已关注，点击后变为未关注
+                ButtonUtils.setButtonStyle1(button);
+                delUserTag(userId, mList.get(position).getTitle());
+            } else {
+                //未关注，点击后变为已关注
+                ButtonUtils.setButtonStyle2(button);
+                saveUserTag(userId, mList.get(position).getTitle());
             }
         });
-        mVpTag.setCurrentItem(0, false);
-        mTlTag.setupWithViewPager(mVpTag, true);
     }
 
     /**
@@ -89,6 +87,59 @@ public class TagActivity extends BaseActivity {
     @Override
     protected boolean showHomeAsUp() {
         return true;
+    }
+
+    /**
+     * 初始化全部标签列表
+     *
+     * @param list
+     * @return
+     */
+    private List<UserTag> setListData(List<UserTag> list) {
+        userId = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID);
+        list.add(new UserTag(userId, getString(R.string.tag_1), getString(R.string.tag_1_detail), R.mipmap.ic_knowledge));
+        list.add(new UserTag(userId, getString(R.string.tag_2), getString(R.string.tag_2_detail), R.mipmap.ic_net));
+        list.add(new UserTag(userId, getString(R.string.tag_3), getString(R.string.tag_3_detail), R.mipmap.ic_database));
+        list.add(new UserTag(userId, getString(R.string.tag_4), getString(R.string.tag_4_detail), R.mipmap.ic_view));
+        list.add(new UserTag(userId, getString(R.string.tag_5), getString(R.string.tag_5_detail), R.mipmap.ic_media));
+        list.add(new UserTag(userId, getString(R.string.tag_6), getString(R.string.tag_6_detail), R.mipmap.ic_project_tag));
+        list.add(new UserTag(userId, getString(R.string.tag_7), getString(R.string.tag_7_detail), R.mipmap.ic_tech));
+        list.add(new UserTag(userId, getString(R.string.tag_8), getString(R.string.tag_8_detail), R.mipmap.ic_resource));
+        list.add(new UserTag(userId, getString(R.string.tag_9), getString(R.string.tag_9_detail), R.mipmap.ic_java));
+        list.add(new UserTag(userId, getString(R.string.tag_10), getString(R.string.tag_10_detail), R.mipmap.ic_hot));
+        return list;
+    }
+
+    /**
+     * 保存标签
+     *
+     * @param userId
+     * @param title
+     */
+    private void saveUserTag(int userId, String title) {
+        UserTag userTag = new UserTag();
+        userTag.setUserid(userId);
+        userTag.setTitle(title);
+        mPresenter.saveTag(userTag);
+    }
+
+    private void delUserTag(int userId, String title) {
+        UserTag userTag = new UserTag();
+        userTag.setUserid(userId);
+        userTag.setTitle(title);
+        mPresenter.deleteTag(userTag);
+    }
+
+    @Override
+    public void setFollowedTag(List<UserTag> list) {
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < mList.size(); j++) {
+                if (list.get(i).getTitle().equals(mList.get(j).getTitle())) {
+                    mList.get(j).setFollowed(true);
+                }
+            }
+        }
+        mTagAdapter.notifyDataSetChanged();
     }
 
 }
