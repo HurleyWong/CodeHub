@@ -27,6 +27,7 @@ import com.hurley.codehub.bean.wanandroid.UserBean;
 import com.hurley.codehub.net.RetrofitManager;
 import com.hurley.codehub.net.callback.RxSchedulers;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;

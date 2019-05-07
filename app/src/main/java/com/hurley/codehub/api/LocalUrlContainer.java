@@ -10,7 +10,7 @@ package com.hurley.codehub.api;
  */
 public class LocalUrlContainer {
 
-    public static final String baseUrl = "http://192.168.43.176:8080/";
+    public static final String baseUrl = "http://wherewego.top:8300/";
 
     public static final String ARTICLE = "article";
 
