@@ -14,11 +14,14 @@ import com.hurley.codehub.di.component.ApplicationComponent;
 import com.hurley.codehub.di.component.DaggerApplicationComponent;
 import com.hurley.codehub.di.module.ApplicationModule;
 import com.hurley.codehub.util.ConfigUtils;
+import com.kongzue.dialog.v2.DialogSettings;
 
 import org.litepal.LitePal;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 import me.yokeyword.fragmentation.Fragmentation;
+
+import static com.kongzue.dialog.v2.DialogSettings.STYLE_IOS;
 
 /**
  * <pre>
@@ -78,6 +81,8 @@ public class App extends Application {
             Stetho.initializeWithDefaults(this);
         }
 
+        //初始化全局Dialog风格样式
+        DialogSettings.style = STYLE_IOS;
     }
 
     /**

@@ -18,7 +18,7 @@ import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseActivity;
 import com.hurley.codehub.module.wanandroid.event.NightModeEvent;
 import com.hurley.codehub.net.callback.RxBus;
-import com.kongzue.dialog.v2.DialogSettings;
+import com.kongzue.dialog.v2.BottomMenu;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -27,6 +27,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+import static com.kongzue.dialog.v2.DialogSettings.STYLE_IOS;
 import static com.kongzue.dialog.v2.DialogSettings.STYLE_KONGZUE;
 
 /**
@@ -106,8 +107,10 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
         mCbNoImage.setOnCheckedChangeListener(this);
         mCbNight.setOnCheckedChangeListener(this);
 
-        //Dialog风格为Kongzue风格
-        DialogSettings.style = STYLE_KONGZUE;
+        languageList.add(getString(R.string.language_auto));
+        languageList.add(getString(R.string.language_simplified));
+        languageList.add(getString(R.string.language_traditional));
+        languageList.add(getString(R.string.language_english));
     }
 
     /**
@@ -138,9 +141,19 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
         }
     }
 
-    @OnClick({R.id.setting_update, R.id.setting_clear_cache, R.id.setting_feedback})
+    @OnClick({R.id.setting_language, R.id.setting_theme_color, R.id.setting_update, R.id.setting_clear_cache, R.id.setting_feedback})
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.setting_language:
+                //多语言
+                BottomMenu.show(this, languageList, (text, index) -> {
+                    mTvLanguageType.setText(text);
+                    //TODO 切换语言
+                });
+                break;
+            case R.id.setting_theme_color:
+                //主题颜色
+                break;
             case R.id.setting_update:
                 //检查更新
                 break;

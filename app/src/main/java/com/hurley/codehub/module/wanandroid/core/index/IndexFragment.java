@@ -32,6 +32,7 @@ import com.hurley.codehub.net.callback.RxBus;
 import com.hurley.codehub.widget.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
 
 
 import java.util.ArrayList;
@@ -155,6 +156,8 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
                 .setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
                 //设置图片加载器
                 .setImageLoader(new GlideImageLoader())
+                //设置Banner动画效果
+                .setBannerAnimation(Transformer.DepthPage)
                 .start();
 
         //设置Banner的点击事件
