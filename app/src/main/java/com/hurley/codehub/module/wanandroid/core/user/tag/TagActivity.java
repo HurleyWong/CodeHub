@@ -4,6 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.deadline.statebutton.StateButton;
 import com.hurley.codehub.R;
@@ -67,15 +68,22 @@ public class TagActivity extends BaseActivity<TagPresenter> implements TagContra
 
         mTagAdapter.setOnItemChildClickListener((adapter, view2, position) -> {
             button = view2.findViewById(R.id.btn_tag_status);
-            if (button.getText().toString().equals(getString(R.string.followed))) {
-                //已关注，点击后变为未关注
-                ButtonUtils.setButtonStyle1(button);
-                delUserTag(userId, mList.get(position).getTitle());
+            //已登录
+            if (userId != -1) {
+                if (button.getText().toString().equals(getString(R.string.followed))) {
+                    //已关注，点击后变为未关注
+                    ButtonUtils.setButtonStyle1(button);
+                    delUserTag(userId, mList.get(position).getTitle());
+                } else {
+                    //未关注，点击后变为已关注
+                    ButtonUtils.setButtonStyle2(button);
+                    saveUserTag(userId, mList.get(position).getTitle());
+                }
             } else {
-                //未关注，点击后变为已关注
-                ButtonUtils.setButtonStyle2(button);
-                saveUserTag(userId, mList.get(position).getTitle());
+                //未登录
+                toast(R.string.login_please);
             }
+
         });
     }
 
@@ -123,6 +131,11 @@ public class TagActivity extends BaseActivity<TagPresenter> implements TagContra
         mPresenter.saveTag(userTag);
     }
 
+    /**
+     * 删除标签
+     * @param userId
+     * @param title
+     */
     private void delUserTag(int userId, String title) {
         UserTag userTag = new UserTag();
         userTag.setUserid(userId);

@@ -8,26 +8,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TableRow;
 
 
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.SPUtils;
 
+import com.blankj.utilcode.util.SPUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hurley.codehub.R;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseFragment;
-import com.hurley.codehub.bean.local.Article;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.bean.wanandroid.BannerBean;
-import com.hurley.codehub.bean.wanandroid.TopArticleBean;
 import com.hurley.codehub.module.wanandroid.core.adapter.RecommendAdapter;
 import com.hurley.codehub.module.wanandroid.event.LoginEvent;
 import com.hurley.codehub.module.wanandroid.core.adapter.ArticleAdapter;
 import com.hurley.codehub.module.wanandroid.core.web.WebActivity;
+import com.hurley.codehub.module.wanandroid.event.LogoutEvent;
 import com.hurley.codehub.net.callback.RxBus;
 import com.hurley.codehub.widget.GlideImageLoader;
 import com.youth.banner.Banner;
@@ -130,14 +126,15 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         ivRefresh.setOnClickListener(this);
         ivClose.setOnClickListener(this);
 
-
+        //加载置顶文章
         mPresenter.loadTopArticles();
         onRefresh();
         //根据后台返回的要推荐的体系，加载推荐文章
 
         //登录成功后刷新
-        RxBus.getInstance().toFlowable(LoginEvent.class)
-                .subscribe(loginEvent -> mPresenter.refresh());
+        RxBus.getInstance().toFlowable(LoginEvent.class).subscribe(loginEvent -> onRefresh());
+        //退出登录后刷新
+        RxBus.getInstance().toFlowable(LogoutEvent.class).subscribe(logoutEvent -> onRefresh());
     }
 
     @Override
@@ -210,7 +207,11 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
     @Override
     public void onRefresh() {
         mPresenter.refresh();
-        mRecommendView.setVisibility(View.VISIBLE);
+        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
+            mRecommendView.setVisibility(View.VISIBLE);
+        } else {
+            mRecommendView.setVisibility(View.GONE);
+        }
     }
 
     @Override
