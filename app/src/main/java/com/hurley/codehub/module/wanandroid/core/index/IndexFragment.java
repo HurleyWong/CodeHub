@@ -24,6 +24,7 @@ import com.hurley.codehub.module.wanandroid.event.LoginEvent;
 import com.hurley.codehub.module.wanandroid.core.adapter.ArticleAdapter;
 import com.hurley.codehub.module.wanandroid.core.web.WebActivity;
 import com.hurley.codehub.module.wanandroid.event.LogoutEvent;
+import com.hurley.codehub.module.wanandroid.event.TagEvent;
 import com.hurley.codehub.net.callback.RxBus;
 import com.hurley.codehub.widget.GlideImageLoader;
 import com.youth.banner.Banner;
@@ -135,6 +136,8 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         RxBus.getInstance().toFlowable(LoginEvent.class).subscribe(loginEvent -> onRefresh());
         //退出登录后刷新
         RxBus.getInstance().toFlowable(LogoutEvent.class).subscribe(logoutEvent -> onRefresh());
+        //关注或取消关注标签后刷新
+        RxBus.getInstance().toFlowable(TagEvent.class).subscribe(tagEvent -> onRefresh());
     }
 
     @Override
@@ -205,9 +208,20 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
     }
 
     @Override
+    public void setRecommendView(boolean isVisible) {
+        if (isVisible) {
+            mRecommendView.setVisibility(View.VISIBLE);
+        } else {
+            mRecommendView.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
     public void onRefresh() {
+        mPresenter.findSimilarTagUser(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID));
         mPresenter.refresh();
-        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
+        //如果已登录用户
+        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS) ) {
             mRecommendView.setVisibility(View.VISIBLE);
         } else {
             mRecommendView.setVisibility(View.GONE);

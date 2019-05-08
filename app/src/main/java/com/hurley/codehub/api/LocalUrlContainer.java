@@ -18,6 +18,8 @@ public class LocalUrlContainer {
 
     public static final String TAG = "tag";
 
+    public static final String SIMILAR_TAG = "similarTag";
+
     public static final String SAVE_TAG = "saveTag";
 
     public static final String DEL_TAG = "delTag";

@@ -59,6 +59,13 @@ public interface IndexContract {
          */
         void setRecommendArticles(ArticleBean articleBean);
 
+        /**
+         * 设置推荐模块是否可见
+         *
+         * @param isVisible
+         */
+        void setRecommendView(boolean isVisible);
+
     }
 
     interface Presenter extends BaseContract.BasePresenter<View> {
@@ -87,11 +94,22 @@ public interface IndexContract {
 
         /**
          * 获得要推荐的文章体系
+         *
          * @param list
          */
         void getRecommendChapter(List<Integer> list);
 
+        /**
+         * 刷新推荐文章，重新推荐
+         */
         void refreshRecommendChapter();
+
+        /**
+         * 查询有相似关注标签的用户
+         *
+         * @param userid
+         */
+        void findSimilarTagUser(int userid);
 
         /**
          * 刷新

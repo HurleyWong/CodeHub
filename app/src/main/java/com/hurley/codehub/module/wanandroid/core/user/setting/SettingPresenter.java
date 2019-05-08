@@ -62,7 +62,7 @@ public class SettingPresenter extends BasePresenter<SettingContract.View> implem
     @Override
     public void feedback(Context context, String title) {
         Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(
-                "mailto:" + App.getAppContext().getString(R.string.email_address)));
+                "mail to:" + App.getAppContext().getString(R.string.email_address)));
         context.startActivity(Intent.createChooser(intent, title));
     }
 }

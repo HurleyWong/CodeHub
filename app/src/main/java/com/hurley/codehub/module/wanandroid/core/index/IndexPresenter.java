@@ -2,6 +2,7 @@ package com.hurley.codehub.module.wanandroid.core.index;
 
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.LogUtils;
@@ -122,7 +123,6 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                 .subscribe(response -> {
                     if (response.getErrorCode() == BaseBean.SUCCESS) {
                         mView.setTopArticles(response.getData());
-                        LogUtils.e(response.getErrorMsg());
                     } else {
                         mView.showFailed(response.getErrorMsg());
                     }
@@ -147,6 +147,7 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
     @SuppressLint("CheckResult")
     @Override
     public void getRecommendChapter(List<Integer> list) {
+        list.clear();
         RetrofitManager.createLocal(LocalApiService.class)
                 .getChapterId(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID))
                 .compose(RxSchedulers.applySchedulers())
@@ -164,6 +165,24 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
     public void refreshRecommendChapter() {
         List<Integer> list = new ArrayList<>();
         getRecommendChapter(list);
+    }
+
+    @SuppressLint("CheckResult")
+    @Override
+    public void findSimilarTagUser(int userid) {
+        RetrofitManager.createLocal(LocalApiService.class)
+                .findSimilarUser(userid)
+                .compose(RxSchedulers.applySchedulers())
+                .compose(mView.bindToLife())
+                .subscribe(listBaseBean -> {
+                    if (listBaseBean.getData().size() > 0) {
+                        LogUtils.e(listBaseBean.getData().size());
+                        mView.setRecommendView(true);
+                    } else {
+                        LogUtils.e("没有相似的用户");
+                        mView.setRecommendView(false);
+                    }
+                }, throwable -> LogUtils.e(throwable.getMessage()));
     }
 
     @Override

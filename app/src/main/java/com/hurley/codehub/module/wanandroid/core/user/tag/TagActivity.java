@@ -13,6 +13,9 @@ import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseActivity;
 import com.hurley.codehub.bean.local.UserTag;
 import com.hurley.codehub.module.wanandroid.core.adapter.TagAdapter;
+import com.hurley.codehub.module.wanandroid.event.LoginEvent;
+import com.hurley.codehub.module.wanandroid.event.TagEvent;
+import com.hurley.codehub.net.callback.RxBus;
 import com.hurley.codehub.util.ButtonUtils;
 
 import java.util.ArrayList;
@@ -79,6 +82,8 @@ public class TagActivity extends BaseActivity<TagPresenter> implements TagContra
                     ButtonUtils.setButtonStyle2(button);
                     saveUserTag(userId, mList.get(position).getTitle());
                 }
+                //关注或取消关注标签后通知其他界面
+                RxBus.getInstance().post(new TagEvent());
             } else {
                 //未登录
                 toast(R.string.login_please);

@@ -19,6 +19,7 @@ import com.hurley.codehub.base.BaseActivity;
 import com.hurley.codehub.module.wanandroid.event.NightModeEvent;
 import com.hurley.codehub.net.callback.RxBus;
 import com.kongzue.dialog.v2.BottomMenu;
+import com.tencent.bugly.beta.Beta;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -27,8 +28,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-import static com.kongzue.dialog.v2.DialogSettings.STYLE_IOS;
-import static com.kongzue.dialog.v2.DialogSettings.STYLE_KONGZUE;
 
 /**
  * <pre>
@@ -156,6 +155,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
                 break;
             case R.id.setting_update:
                 //检查更新
+                Beta.checkUpgrade();
                 break;
             case R.id.setting_clear_cache:
                 //清除缓存

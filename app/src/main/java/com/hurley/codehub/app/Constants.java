@@ -14,6 +14,11 @@ import java.io.File;
  */
 public class Constants {
 
+    /**
+     * Bugly App ID
+     */
+    public static final String APP_ID = "440cdb730d";
+
     public static final String MY_SHARED_PREFERENCE = "my_shared_preference";
 
     /**
@@ -112,6 +117,10 @@ public class Constants {
     public static final String NO_IMAGE = "no_image";
 
     public static final String NIGHT_MODE = "night_mode";
+
+    public static final String TAG_STATUS = "tag_status";
+
+    public static final String SIMILAR_STATUS = "similar_status";
 
     /**
      * 首选项存储相关数据进行分析

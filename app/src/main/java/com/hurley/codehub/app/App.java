@@ -1,7 +1,9 @@
 package com.hurley.codehub.app;
 
-import android.app.Application;
 import android.content.Context;
+import android.os.Environment;
+import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 import android.support.v7.app.AppCompatDelegate;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -9,12 +11,16 @@ import com.blankj.utilcode.util.Utils;
 
 import com.facebook.stetho.Stetho;
 import com.hjq.toast.ToastUtils;
+import com.hurley.codehub.R;
 import com.hurley.codehub.dao.DaoSession;
 import com.hurley.codehub.di.component.ApplicationComponent;
 import com.hurley.codehub.di.component.DaggerApplicationComponent;
 import com.hurley.codehub.di.module.ApplicationModule;
+import com.hurley.codehub.module.wanandroid.core.main.HomeActivity;
 import com.hurley.codehub.util.ConfigUtils;
 import com.kongzue.dialog.v2.DialogSettings;
+import com.tencent.bugly.Bugly;
+import com.tencent.bugly.beta.Beta;
 
 import org.litepal.LitePal;
 
@@ -31,7 +37,7 @@ import static com.kongzue.dialog.v2.DialogSettings.STYLE_IOS;
  *      desc    : 该项目的Application基类
  * </pre>
  */
-public class App extends Application {
+public class App extends MultiDexApplication {
 
     private static App instance;
     private ApplicationComponent mApplicationComponent;
@@ -83,6 +89,42 @@ public class App extends Application {
 
         //初始化全局Dialog风格样式
         DialogSettings.style = STYLE_IOS;
+        DialogSettings.use_blur = true;
+
+        //自动初始化开关
+        //true表示app启动初始化升级模块，false不会自动初始化
+        Beta.autoInit = true;
+        //自动检查更新开关
+        //true表示初始化时自动检查升级，false表示不会自动检查升级
+        Beta.autoCheckUpgrade = true;
+        //升级检查周期设置
+        //设置升级检查周期为60s（默认检查周期为0s）
+        Beta.upgradeCheckPeriod = 60 * 1000;
+        //延迟初始化
+        //设置启动延时为1s（默认延时为3s），APP启动1s后初始化SDK，避免影响APP启动速度
+        Beta.initDelay = 1 * 1000;
+        //设置通知栏内大图标
+        Beta.largeIconId = R.mipmap.ic_launcher;
+        //设置更新弹窗默认展示的banner
+        Beta.defaultBannerId = R.mipmap.ic_launcher;
+        //设置SD卡的Download为更新资源存储目录
+        Beta.storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        //设置开启显示打断策略
+        Beta.showInterruptedStrategy = true;
+        //添加可显示弹窗的Activity
+        Beta.canShowUpgradeActs.add(HomeActivity.class);
+        //设置自定义升级对话框UI布局
+        //Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade;
+        //设置自定义tip弹窗UI布局
+        //Beta.tipsDialogLayoutId = R.layout.dialog_tips;
+        //设置是否显示消息通知
+        Beta.enableNotification = true;
+        //设置Wifi下是否自动下载
+        Beta.autoDownloadOnWifi = false;
+        //设置是否显示弹窗中的apk消息
+        Beta.canShowApkInfo = true;
+        //初始化统一接口
+        Bugly.init(getAppContext(), Constants.APP_ID, false);
     }
 
     /**
@@ -97,6 +139,12 @@ public class App extends Application {
         }
         //推荐在Application中初始化
         ARouter.init(this);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
     private void initApplicationComponent() {

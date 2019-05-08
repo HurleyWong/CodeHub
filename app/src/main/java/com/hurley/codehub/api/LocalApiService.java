@@ -57,6 +57,14 @@ public interface LocalApiService {
     Observable<BaseBean<List<UserTag>>> getFollowedTag(@Query("userid") int userid);
 
     /**
+     * 查询有相似关注标签的用户
+     * @param userid
+     * @return
+     */
+    @GET(LocalUrlContainer.SIMILAR_TAG)
+    Observable<BaseBean<List>> findSimilarUser(@Query("userid") int userid);
+
+    /**
      * 发送用户关注的标签到后台
      *
      * @param userTag
