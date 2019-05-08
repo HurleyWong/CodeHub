@@ -109,7 +109,7 @@ public interface IndexContract {
          *
          * @param userid
          */
-        void findSimilarTagUser(int userid);
+        void findSimilarUser(int userid);
 
         /**
          * 刷新

@@ -218,7 +218,7 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
 
     @Override
     public void onRefresh() {
-        mPresenter.findSimilarTagUser(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID));
+        mPresenter.findSimilarUser(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID));
         mPresenter.refresh();
         //如果已登录用户
         if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS) ) {

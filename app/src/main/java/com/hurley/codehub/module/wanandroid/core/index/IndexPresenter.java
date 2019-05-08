@@ -20,6 +20,7 @@ import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.app.LoadType;
 import com.hurley.codehub.bean.local.Article;
 import com.hurley.codehub.bean.local.Chapter;
+import com.hurley.codehub.bean.local.UserSimilarity;
 import com.hurley.codehub.bean.wanandroid.BaseBean;
 import com.hurley.codehub.base.BasePresenter;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
@@ -169,20 +170,34 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
 
     @SuppressLint("CheckResult")
     @Override
-    public void findSimilarTagUser(int userid) {
+    public void findSimilarUser(int userid) {
         RetrofitManager.createLocal(LocalApiService.class)
                 .findSimilarUser(userid)
                 .compose(RxSchedulers.applySchedulers())
                 .compose(mView.bindToLife())
-                .subscribe(listBaseBean -> {
-                    if (listBaseBean.getData().size() > 0) {
-                        LogUtils.e(listBaseBean.getData().size());
-                        mView.setRecommendView(true);
-                    } else {
-                        LogUtils.e("没有相似的用户");
-                        mView.setRecommendView(false);
+                .subscribe(new Consumer<BaseBean<List<UserSimilarity>>>() {
+                    @Override
+                    public void accept(BaseBean<List<UserSimilarity>> response) throws Exception {
+                        if (response.getData().size() > 0) {
+                            LogUtils.e("用户id：" + userid);
+                            LogUtils.e(response.getData().size());
+                            mView.setRecommendView(true);
+                        } else {
+                            LogUtils.e("没有相似的用户");
+                            mView.setRecommendView(false);
+                        }
                     }
                 }, throwable -> LogUtils.e(throwable.getMessage()));
+//                .subscribe(listBaseBean -> {
+//                    if (listBaseBean.getData().size() > 0) {
+//                        LogUtils.e("用户id：" + userid);
+//                        LogUtils.e(listBaseBean.getData().size());
+//                        mView.setRecommendView(true);
+//                    } else {
+//                        LogUtils.e("没有相似的用户");
+//                        mView.setRecommendView(false);
+//                    }
+//                }, throwable -> LogUtils.e(throwable.getMessage()));
     }
 
     @Override
