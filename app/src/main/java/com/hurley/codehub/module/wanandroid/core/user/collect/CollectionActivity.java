@@ -14,6 +14,8 @@ import com.hurley.codehub.base.BaseActivity;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.module.wanandroid.core.adapter.ArticleAdapter;
 import com.hurley.codehub.module.wanandroid.core.web.WebActivity;
+import com.hurley.codehub.module.wanandroid.event.CollectEvent;
+import com.hurley.codehub.net.callback.RxBus;
 
 import javax.inject.Inject;
 
@@ -90,6 +92,8 @@ public class CollectionActivity extends BaseActivity<CollectionPresenter>
     @Override
     public void unCollectArticleSuccess(int position) {
         mArticleAdapter.remove(position);
+        //取消关注后通知其他页面刷新界面
+        RxBus.getInstance().post(new CollectEvent());
     }
 
     @Override

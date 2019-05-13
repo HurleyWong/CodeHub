@@ -20,7 +20,9 @@ public class ReplaceUtils {
                     .replace("&quot;", "\"")
                     .replace("&amp;", "&")
                     .replace("&ldquo;", "“")
-                    .replace("&rdquo", "”");
+                    .replace("&rdquo", "”")
+                    .replace("<em class='highlight'>", "")
+                    .replace("</em>", "");
         } else {
             return null;
         }

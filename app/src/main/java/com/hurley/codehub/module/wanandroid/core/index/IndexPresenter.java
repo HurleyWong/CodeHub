@@ -148,7 +148,6 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
     @SuppressLint("CheckResult")
     @Override
     public void getRecommendChapter(List<Integer> list) {
-        list.clear();
         RetrofitManager.createLocal(LocalApiService.class)
                 .getChapterId(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID))
                 .compose(RxSchedulers.applySchedulers())
@@ -200,6 +199,21 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
 //                }, throwable -> LogUtils.e(throwable.getMessage()));
     }
 
+    @SuppressLint("CheckResult")
+    @Override
+    public void calcSimilar(int userid) {
+        RetrofitManager.createLocal(LocalApiService.class)
+                .calcSimilar(userid)
+                .compose(RxSchedulers.applySchedulers())
+                .compose(mView.bindToLife())
+                .subscribe(new Consumer<BaseBean>() {
+                    @Override
+                    public void accept(BaseBean baseBean) throws Exception {
+                        LogUtils.e("计算相似度");
+                    }
+                }, throwable -> LogUtils.e(throwable.getMessage()));
+    }
+
     @Override
     public void refresh() {
         //页数设置为首页
@@ -207,8 +221,10 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
         isRefresh = true;
         loadBanners();
         loadArticles();
-        List<Integer> list = new ArrayList<>();
-        getRecommendChapter(list);
+        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
+            List<Integer> list = new ArrayList<>();
+            getRecommendChapter(list);
+        }
     }
 
     @Override

@@ -24,6 +24,14 @@ public interface SearchContract {
          */
         void setSearchArticles(ArticleBean articleBean, @LoadType.checker int loadType);
 
+        /**
+         * 收藏文章成功
+         *
+         * @param position
+         * @param articleBean
+         */
+        void collectArticleSuccess(int position, ArticleBean.DatasBean articleBean);
+
     }
 
     interface Presenter extends BaseContract.BasePresenter<SearchContract.View> {
@@ -44,5 +52,13 @@ public interface SearchContract {
          * 加载更多
          */
         void loadMore();
+
+        /**
+         * 收藏文章
+         *
+         * @param position
+         * @param articleBean
+         */
+        void collectArticle(int position, ArticleBean.DatasBean articleBean);
     }
 }

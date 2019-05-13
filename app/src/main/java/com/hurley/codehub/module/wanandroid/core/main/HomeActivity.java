@@ -1,14 +1,9 @@
 package com.hurley.codehub.module.wanandroid.core.main;
 
 import android.annotation.SuppressLint;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -21,21 +16,18 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.SPUtils;
-import com.flyco.tablayout.SlidingTabLayout;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseActivity;
-import com.hurley.codehub.module.readhub.core.main.MainActivity;
-import com.hurley.codehub.module.wanandroid.event.LoginEvent;
-import com.hurley.codehub.module.wanandroid.event.LogoutEvent;
 import com.hurley.codehub.module.wanandroid.core.index.IndexFragment;
 import com.hurley.codehub.module.wanandroid.core.project.ProjectFragment;
 import com.hurley.codehub.module.wanandroid.core.system.SystemFragment;
 import com.hurley.codehub.module.wanandroid.core.user.UserFragment;
 import com.hurley.codehub.module.wanandroid.core.wechat.WechatFragment;
+import com.hurley.codehub.module.wanandroid.event.LoginEvent;
+import com.hurley.codehub.module.wanandroid.event.LogoutEvent;
 import com.hurley.codehub.net.callback.RxBus;
-
 
 import butterknife.BindView;
 import me.yokeyword.fragmentation.ISupportFragment;

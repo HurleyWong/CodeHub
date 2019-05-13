@@ -16,7 +16,6 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-
 import com.hurley.codehub.R;
 import com.hurley.codehub.app.App;
 import com.hurley.codehub.app.Constants;
@@ -27,8 +26,6 @@ import com.hurley.codehub.di.module.FragmentModule;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxFragment;
-
-import org.litepal.util.Const;
 
 import java.util.List;
 

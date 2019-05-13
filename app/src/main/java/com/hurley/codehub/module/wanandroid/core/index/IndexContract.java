@@ -112,6 +112,12 @@ public interface IndexContract {
         void findSimilarUser(int userid);
 
         /**
+         * 计算用户相似度
+         * @param userid
+         */
+        void calcSimilar(int userid);
+
+        /**
          * 刷新
          */
         void refresh();

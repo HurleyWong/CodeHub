@@ -1,7 +1,5 @@
 package com.hurley.codehub.api;
 
-import android.nfc.Tag;
-
 import com.hurley.codehub.bean.local.Article;
 import com.hurley.codehub.bean.local.Chapter;
 import com.hurley.codehub.bean.local.UserSimilarity;
@@ -72,6 +70,14 @@ public interface LocalApiService {
      */
     @GET(LocalUrlContainer.SIMILAR_USER)
     Observable<BaseBean<List<UserSimilarity>>> findSimilarUser(@Query("userid") int userid);
+
+    /**
+     * 计算相似度
+     * @param userid
+     * @return
+     */
+    @GET(LocalUrlContainer.CALC_SIMILAR)
+    Observable<BaseBean> calcSimilar(@Query("userid") int userid);
 
     /**
      * 发送用户关注的标签到后台

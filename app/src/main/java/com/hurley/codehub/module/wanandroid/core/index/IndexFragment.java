@@ -1,7 +1,6 @@
 package com.hurley.codehub.module.wanandroid.core.index;
 
 import android.annotation.SuppressLint;
-import android.media.audiofx.LoudnessEnhancer;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,9 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
-
 import com.blankj.utilcode.util.LogUtils;
-
 import com.blankj.utilcode.util.SPUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hurley.codehub.R;
@@ -19,10 +16,11 @@ import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseFragment;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.bean.wanandroid.BannerBean;
-import com.hurley.codehub.module.wanandroid.core.adapter.RecommendAdapter;
-import com.hurley.codehub.module.wanandroid.event.LoginEvent;
 import com.hurley.codehub.module.wanandroid.core.adapter.ArticleAdapter;
+import com.hurley.codehub.module.wanandroid.core.adapter.RecommendAdapter;
 import com.hurley.codehub.module.wanandroid.core.web.WebActivity;
+import com.hurley.codehub.module.wanandroid.event.CollectEvent;
+import com.hurley.codehub.module.wanandroid.event.LoginEvent;
 import com.hurley.codehub.module.wanandroid.event.LogoutEvent;
 import com.hurley.codehub.module.wanandroid.event.TagEvent;
 import com.hurley.codehub.net.callback.RxBus;
@@ -31,9 +29,7 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 
-
 import java.util.ArrayList;
-
 import java.util.List;
 
 import javax.inject.Inject;
@@ -50,7 +46,7 @@ import butterknife.BindView;
  */
 public class IndexFragment extends BaseFragment<IndexPresenter>
         implements IndexContract.View, ArticleAdapter.OnItemClickListener, ArticleAdapter.OnItemChildClickListener,
-        ArticleAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener, View.OnClickListener{
+        ArticleAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
 
     @BindView(R.id.srl_index)
     SwipeRefreshLayout mSrlIndex;
@@ -138,6 +134,11 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         RxBus.getInstance().toFlowable(LogoutEvent.class).subscribe(logoutEvent -> onRefresh());
         //关注或取消关注标签后刷新
         RxBus.getInstance().toFlowable(TagEvent.class).subscribe(tagEvent -> onRefresh());
+        //取消收藏后更新
+        RxBus.getInstance().toFlowable(CollectEvent.class)
+                .subscribe(collectEvent -> {
+                    onRefresh();
+                });
     }
 
     @Override
@@ -178,6 +179,9 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
 //                articleBean.getDatas().add(i, mTopArticles.get(i));
 //            }
 //        }
+        if (mArticleAdapter == null) {
+            return;
+        }
         setLoadDataResult(mArticleAdapter, mSrlIndex, articleBean.getDatas(), loadType);
     }
 
@@ -218,10 +222,13 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
 
     @Override
     public void onRefresh() {
-        mPresenter.findSimilarUser(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID));
+        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
+            mPresenter.findSimilarUser(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID));
+            mPresenter.calcSimilar(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID));
+        }
         mPresenter.refresh();
         //如果已登录用户
-        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS) ) {
+        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
             mRecommendView.setVisibility(View.VISIBLE);
         } else {
             mRecommendView.setVisibility(View.GONE);

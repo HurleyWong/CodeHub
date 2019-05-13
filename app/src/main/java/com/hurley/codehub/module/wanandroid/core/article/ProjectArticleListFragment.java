@@ -14,6 +14,7 @@ import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseFragment;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.module.wanandroid.core.adapter.ProjectArticleAdapter;
+import com.hurley.codehub.module.wanandroid.event.CollectEvent;
 import com.hurley.codehub.module.wanandroid.event.LoginEvent;
 import com.hurley.codehub.module.wanandroid.core.adapter.ArticleAdapter;
 import com.hurley.codehub.module.wanandroid.core.web.WebActivity;
@@ -95,6 +96,9 @@ public class ProjectArticleListFragment extends BaseFragment<ProjectArticleListP
         //登录成功后刷新
         RxBus.getInstance().toFlowable(LoginEvent.class)
                 .subscribe(loginEvent -> mPresenter.refresh());
+        //取消收藏后更新
+        RxBus.getInstance().toFlowable(CollectEvent.class)
+                .subscribe(collectEvent -> onRefresh());
     }
 
     @Override
@@ -117,6 +121,7 @@ public class ProjectArticleListFragment extends BaseFragment<ProjectArticleListP
     @Override
     public void onRefresh() {
         mPresenter.refresh();
+        mProjectAdapter.notifyDataSetChanged();
     }
 
     @Override

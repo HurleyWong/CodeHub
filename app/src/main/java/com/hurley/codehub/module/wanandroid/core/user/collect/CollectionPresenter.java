@@ -60,7 +60,6 @@ public class CollectionPresenter extends BasePresenter<CollectionContract.View> 
                     @Override
                     public void accept(BaseBean<ArticleBean> response) throws Exception {
                         int loadType = isRefresh ? LoadType.TYPE_REFRESH_SUCCESS : LoadType.TYPE_LOAD_MORE_SUCCESS;
-                        LogUtils.e(response.getErrorMsg());
                         mView.setCollectionArticle(response.getData(), loadType);
                     }
                 }, new Consumer<Throwable>() {

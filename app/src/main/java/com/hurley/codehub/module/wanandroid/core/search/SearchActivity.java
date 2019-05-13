@@ -119,13 +119,19 @@ public class SearchActivity extends BaseActivity<SearchPresenter>
     }
 
     @Override
+    public void collectArticleSuccess(int position, ArticleBean.DatasBean articleBean) {
+        //重新设置该item的属性，即可改变item的isCollect的状态
+        mArticleAdapter.setData(position, articleBean);
+    }
+
+    @Override
     public void onRefresh() {
         mPresenter.refresh();
     }
 
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-
+        mPresenter.collectArticle(position, mArticleAdapter.getItem(position));
     }
 
     @Override
