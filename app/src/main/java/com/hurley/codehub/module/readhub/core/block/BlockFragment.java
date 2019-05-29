@@ -25,7 +25,7 @@ public class BlockFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_block;
+        return R.layout.block_fragment;
     }
 
     @Override

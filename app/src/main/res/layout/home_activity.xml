@@ -56,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:headerLayout="@layout/layout_user_head"
+        app:headerLayout="@layout/user_head_include"
         app:itemIconTint="@color/ic_selector_nav"
         app:itemTextColor="@color/ic_selector_nav"
         app:menu="@menu/menu_home_nav" />

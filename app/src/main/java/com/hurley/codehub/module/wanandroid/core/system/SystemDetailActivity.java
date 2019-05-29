@@ -40,7 +40,7 @@ public class SystemDetailActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_system_detail;
+        return R.layout.system_detail_activity;
     }
 
     @Override

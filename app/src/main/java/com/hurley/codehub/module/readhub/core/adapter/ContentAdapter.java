@@ -23,7 +23,7 @@ public class ContentAdapter extends BaseQuickAdapter<TopicBean, BaseViewHolder> 
 
     @Inject
     public ContentAdapter() {
-        super(R.layout.item_content, null);
+        super(R.layout.content_recycle_item, null);
     }
 
     @Override

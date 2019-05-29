@@ -51,7 +51,7 @@ public class CollectionActivity extends BaseActivity<CollectionPresenter>
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_collection;
+        return R.layout.collection_activity;
     }
 
     @Override

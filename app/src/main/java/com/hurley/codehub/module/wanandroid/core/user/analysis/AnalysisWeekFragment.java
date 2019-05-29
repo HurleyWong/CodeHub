@@ -52,7 +52,7 @@ public class AnalysisWeekFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_analysis_week;
+        return R.layout.analysis_week_fragment;
     }
 
     @Override

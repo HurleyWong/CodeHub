@@ -28,7 +28,6 @@ import com.hurley.codehub.module.wanandroid.event.LogoutEvent;
 import com.hurley.codehub.net.callback.RxBus;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import butterknife.BindView;
 
@@ -67,7 +66,7 @@ public class MainActivity extends BaseActivity<MainPresenter>
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activitiy_main;
+        return R.layout.main_activity;
     }
 
     @Override

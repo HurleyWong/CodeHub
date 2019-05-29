@@ -85,7 +85,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_setting;
+        return R.layout.setting_activity;
     }
 
     @Override

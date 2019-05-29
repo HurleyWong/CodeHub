@@ -44,7 +44,7 @@ public class ProjectFragment extends BaseFragment<ProjectPresent> implements Pro
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_project;
+        return R.layout.project_fragment;
     }
 
     @Override

@@ -4,7 +4,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.deadline.statebutton.StateButton;
 import com.hurley.codehub.R;
@@ -13,7 +12,6 @@ import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseActivity;
 import com.hurley.codehub.bean.local.UserTag;
 import com.hurley.codehub.module.wanandroid.core.adapter.TagAdapter;
-import com.hurley.codehub.module.wanandroid.event.LoginEvent;
 import com.hurley.codehub.module.wanandroid.event.TagEvent;
 import com.hurley.codehub.net.callback.RxBus;
 import com.hurley.codehub.util.ButtonUtils;
@@ -46,7 +44,7 @@ public class TagActivity extends BaseActivity<TagPresenter> implements TagContra
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_tag;
+        return R.layout.tag_activity;
     }
 
     @Override
@@ -58,7 +56,7 @@ public class TagActivity extends BaseActivity<TagPresenter> implements TagContra
     protected void initView() {
         mList = new ArrayList<>();
         mRvTag.setLayoutManager(new LinearLayoutManager(this));
-        mTagAdapter = new TagAdapter(R.layout.item_tag, mList);
+        mTagAdapter = new TagAdapter(R.layout.tag_recycle_item, mList);
         mRvTag.setAdapter(mTagAdapter);
         mTagAdapter.setNewData(setListData(mList));
 

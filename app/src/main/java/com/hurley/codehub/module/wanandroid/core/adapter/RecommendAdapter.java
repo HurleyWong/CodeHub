@@ -20,7 +20,7 @@ public class RecommendAdapter extends BaseQuickAdapter<ArticleBean.DatasBean, Ba
 
     @Inject
     public RecommendAdapter() {
-        super(R.layout.item_recommend_article, null);
+        super(R.layout.recommend_article_recycle_item, null);
     }
 
     @Override

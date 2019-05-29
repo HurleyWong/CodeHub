@@ -49,7 +49,7 @@ public class AboutActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_about;
+        return R.layout.about_activity;
     }
 
     @Override
@@ -116,7 +116,7 @@ public class AboutActivity extends BaseActivity {
         //创建布局管理
         mRvOpenSource.setLayoutManager(new LinearLayoutManager(this));
         //创建适配器
-        mAdapter = new OpenSourceAdapter(R.layout.item_open_source, mList);
+        mAdapter = new OpenSourceAdapter(R.layout.open_source_recycle_item, mList);
         //给RecyclerView绘制适配器
         mRvOpenSource.setAdapter(mAdapter);
         mAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);

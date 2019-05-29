@@ -33,7 +33,6 @@ import com.hurley.codehub.bean.local.Article;
 import com.just.agentweb.AgentWeb;
 import com.just.agentweb.AgentWebConfig;
 import com.just.agentweb.DefaultWebClient;
-import com.openxu.utils.LogUtil;
 
 import butterknife.BindView;
 
@@ -95,7 +94,7 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_web;
+        return R.layout.web_activity;
     }
 
     @Override

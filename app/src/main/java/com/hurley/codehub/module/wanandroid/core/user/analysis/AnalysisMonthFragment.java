@@ -43,7 +43,7 @@ public class AnalysisMonthFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_analysis_month;
+        return R.layout.analysis_month_fragment;
     }
 
     @Override

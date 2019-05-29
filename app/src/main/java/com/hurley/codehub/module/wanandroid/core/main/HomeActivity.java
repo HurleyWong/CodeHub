@@ -67,7 +67,7 @@ public class HomeActivity extends BaseActivity<HomePresenter>
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_home;
+        return R.layout.home_activity;
     }
 
     @Override

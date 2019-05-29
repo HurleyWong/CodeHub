@@ -24,7 +24,7 @@ public class MorePopupWindow extends BasePopupWindow {
 
     @Override
     public View onCreateContentView() {
-        return createPopupById(R.layout.ppw_menu_more);
+        return createPopupById(R.layout.menu_more_ppw);
     }
 
 }

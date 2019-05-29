@@ -46,7 +46,7 @@ public class TopicFragment extends BaseFragment<TopicPresenter>
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_topic;
+        return R.layout.topic_fragment;
     }
 
     @Override

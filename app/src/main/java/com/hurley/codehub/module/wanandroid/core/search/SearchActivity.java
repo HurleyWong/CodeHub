@@ -50,7 +50,7 @@ public class SearchActivity extends BaseActivity<SearchPresenter>
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_search;
+        return R.layout.search_activity;
     }
 
     @Override

@@ -46,7 +46,7 @@ public class SystemFragment extends BaseFragment<SystemPresenter>
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_system;
+        return R.layout.system_fragment;
     }
 
     @Override

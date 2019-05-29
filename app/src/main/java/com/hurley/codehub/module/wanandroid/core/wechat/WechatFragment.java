@@ -3,7 +3,6 @@ package com.hurley.codehub.module.wanandroid.core.wechat;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
@@ -50,7 +49,7 @@ public class WechatFragment extends BaseFragment<WechatPresenter> implements Wec
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_wechat;
+        return R.layout.wechat_fragment;
     }
 
     @Override

@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.ActivityUtils;
-import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.gyf.barlibrary.BarHide;
 import com.gyf.barlibrary.ImmersionBar;
@@ -76,7 +75,7 @@ public class SplashActivity extends AppCompatActivity implements OnPermission, A
             return;
         }*/
 
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.splash_activity);
         ButterKnife.bind(this);
 
         initStartAnim();

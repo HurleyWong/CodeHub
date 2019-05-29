@@ -30,7 +30,7 @@ public class ArticleAdapter extends BaseQuickAdapter<ArticleBean.DatasBean, Base
 
     @Inject
     public ArticleAdapter() {
-        super(R.layout.item_article, null);
+        super(R.layout.article_recycle_item, null);
     }
 
     @Override

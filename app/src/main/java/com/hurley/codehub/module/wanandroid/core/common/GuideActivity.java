@@ -30,7 +30,7 @@ public class GuideActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_guide;
+        return R.layout.guide_activity;
     }
 
     @Override

@@ -25,7 +25,7 @@ public class TechFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_tech;
+        return R.layout.tech_fragment;
     }
 
     @Override

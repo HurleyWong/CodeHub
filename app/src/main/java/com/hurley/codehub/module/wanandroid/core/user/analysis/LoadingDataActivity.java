@@ -30,7 +30,7 @@ public class LoadingDataActivity extends BaseActivity<LoadingDataPresenter> impl
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_loading;
+        return R.layout.loading_activity;
     }
 
     @Override

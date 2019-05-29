@@ -39,7 +39,7 @@ public class AnalysisActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_analysis;
+        return R.layout.analysis_activity;
     }
 
     @Override

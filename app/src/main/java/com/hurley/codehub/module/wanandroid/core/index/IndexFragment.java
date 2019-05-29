@@ -72,7 +72,7 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_index;
+        return R.layout.index_fragment;
     }
 
     @Override
@@ -90,12 +90,12 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         mArticleAdapter.isFirstOnly(false);
 
         //设置Banner
-        View mBannerView = LayoutInflater.from(getContext()).inflate(R.layout.banner_index, null);
+        View mBannerView = LayoutInflater.from(getContext()).inflate(R.layout.index_banner, null);
         mBanner = mBannerView.findViewById(R.id.banner_index);
         mArticleAdapter.addHeaderView(mBannerView);
 
         //设置推荐模块
-        mRecommendView = LayoutInflater.from(getContext()).inflate(R.layout.layout_index_head, null);
+        mRecommendView = LayoutInflater.from(getContext()).inflate(R.layout.index_head_include, null);
         RecyclerView rvRecommend = mRecommendView.findViewById(R.id.rv_recommend);
         ImageView ivRefresh = mRecommendView.findViewById(R.id.iv_refresh);
         ImageView ivClose = mRecommendView.findViewById(R.id.iv_close);

@@ -9,7 +9,6 @@ import com.hurley.codehub.R;
 import com.hurley.codehub.app.App;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.util.ReplaceUtils;
-import com.hurley.codehub.widget.GlideImageLoader;
 
 import javax.inject.Inject;
 
@@ -30,7 +29,7 @@ public class ProjectArticleAdapter extends BaseQuickAdapter<ArticleBean.DatasBea
 
     @Inject
     public ProjectArticleAdapter() {
-        super(R.layout.item_project_article, null);
+        super(R.layout.project_article_recycle_item, null);
     }
 
     @Override

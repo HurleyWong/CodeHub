@@ -63,7 +63,7 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_user;
+        return R.layout.user_fragment;
     }
 
     @Override

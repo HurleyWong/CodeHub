@@ -64,7 +64,7 @@ public class ProjectArticleListFragment extends BaseFragment<ProjectArticleListP
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_article_list;
+        return R.layout.article_list_fragment;
     }
 
     @Override

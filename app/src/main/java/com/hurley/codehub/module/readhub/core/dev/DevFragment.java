@@ -25,7 +25,7 @@ public class DevFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_dev;
+        return R.layout.dev_fragment;
     }
 
     @Override

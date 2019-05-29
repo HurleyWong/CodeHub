@@ -20,7 +20,7 @@ public class SystemAdapter extends BaseQuickAdapter<SystemBean, BaseViewHolder> 
 
     @Inject
     public SystemAdapter() {
-        super(R.layout.item_system, null);
+        super(R.layout.system_recycle_item, null);
     }
 
     @Override
