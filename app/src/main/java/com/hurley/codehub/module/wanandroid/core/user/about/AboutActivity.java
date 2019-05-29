@@ -83,7 +83,7 @@ public class AboutActivity extends BaseActivity {
                 .addDribbbleLink("user")
                 .addSkypeLink("user")
                 .addGoogleLink("user")
-                .addLinkedInLink("arleu-cezar-vansuita-júnior-83769271")
+                .addLinkedInLink("")
                 .addEmailLink("1401682479@qq.com")
                 .addFiveStarsAction()
                 .addMoreFromMeAction("")

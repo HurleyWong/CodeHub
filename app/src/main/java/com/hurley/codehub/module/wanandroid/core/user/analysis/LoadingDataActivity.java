@@ -28,7 +28,6 @@ public class LoadingDataActivity extends BaseActivity<LoadingDataPresenter> impl
     @BindView(R.id.loadingView)
     FakeElementLoadingView mLoadingView;
 
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_loading;

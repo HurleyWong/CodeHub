@@ -45,8 +45,6 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
     Button mBtnTag;
     @BindView(R.id.btn_user_collect)
     Button mBtnCollect;
-    @BindView(R.id.btn_user_analysis)
-    Button mBtnAnalysis;
     @BindView(R.id.btn_user_setting)
     Button mBtnSetting;
     @BindView(R.id.btn_user_about)
@@ -81,7 +79,7 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
         RxBus.getInstance().toFlowable(LoginEvent.class).subscribe(loginEvent -> setUserStatus());
     }
 
-    @OnClick({R.id.ll_login, R.id.btn_user_tag, R.id.btn_user_collect, R.id.btn_user_analysis, R.id.btn_user_setting, R.id.btn_user_about, R.id.btn_user_logout})
+    @OnClick({R.id.ll_login, R.id.btn_user_tag, R.id.btn_user_collect, R.id.btn_user_setting, R.id.btn_user_about, R.id.btn_user_logout})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_login:
@@ -108,11 +106,6 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
                     //未登录
                     toast(R.string.login_please);
                 }
-                break;
-            case R.id.btn_user_analysis:
-                //分析界面
-                ARouter.getInstance().build(PathContainer.LOADING).navigation();
-                //ARouter.getInstance().build(PathContainer.ANALYSIS).navigation();
                 break;
             case R.id.btn_user_setting:
                 //设置界面

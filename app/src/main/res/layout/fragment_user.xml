@@ -62,14 +62,6 @@
                 android:text="@string/collect_text" />
 
             <Button
-                android:id="@+id/btn_user_analysis"
-                style="@style/ButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp30"
-                android:text="@string/analysis_text" />
-
-            <Button
                 android:id="@+id/btn_user_setting"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
