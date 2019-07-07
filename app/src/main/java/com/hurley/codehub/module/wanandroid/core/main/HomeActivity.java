@@ -45,7 +45,7 @@ public class HomeActivity extends BaseActivity<HomePresenter>
         implements HomeContract.View, BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     @BindView(R.id.dl_home)
     DrawerLayout mDrawerLayout;
-    @BindView(R.id.nv_home)
+//    @BindView(R.id.nv_home)
     NavigationView mNavigationView;
     @BindView(R.id.bnv_home)
     BottomNavigationView mBottomNavigationView;
@@ -100,8 +100,8 @@ public class HomeActivity extends BaseActivity<HomePresenter>
             mFragments[Constants.TYPE_USER] = findFragment(UserFragment.class);
         }
 
-        initNavigationHeaderView();
-        setNavigationViewListener();
+//        initNavigationHeaderView();
+//        setNavigationViewListener();
 
         //设置用户登录状态
         setUserStatus();
@@ -271,12 +271,12 @@ public class HomeActivity extends BaseActivity<HomePresenter>
      */
     public void setUserStatus() {
         isLogin = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS);
-        if (isLogin) {
-            //已登录
-            mTvLoginStatus.setText(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getString(Constants.USERNAME));
-        } else {
-            //未登录
-            mTvLoginStatus.setText(R.string.click_login);
-        }
+//        if (isLogin) {
+//            //已登录
+//            mTvLoginStatus.setText(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getString(Constants.USERNAME));
+//        } else {
+//            //未登录
+//            mTvLoginStatus.setText(R.string.click_login);
+//        }
     }
 }
