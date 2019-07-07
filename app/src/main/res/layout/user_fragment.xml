@@ -51,7 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp30"
-                android:text="@string/tag_text" />
+                android:text="@string/tag_text"
+                android:visibility="gone"/>
 
             <Button
                 android:id="@+id/btn_user_collect"
