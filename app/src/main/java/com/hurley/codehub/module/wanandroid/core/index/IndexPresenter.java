@@ -221,10 +221,10 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
         isRefresh = true;
         loadBanners();
         loadArticles();
-        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
-            List<Integer> list = new ArrayList<>();
-            getRecommendChapter(list);
-        }
+//        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
+//            List<Integer> list = new ArrayList<>();
+//            getRecommendChapter(list);
+//        }
     }
 
     @Override

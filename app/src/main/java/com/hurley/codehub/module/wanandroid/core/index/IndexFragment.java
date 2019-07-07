@@ -95,13 +95,13 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
         mArticleAdapter.addHeaderView(mBannerView);
 
         //设置推荐模块
-        mRecommendView = LayoutInflater.from(getContext()).inflate(R.layout.index_head_include, null);
-        RecyclerView rvRecommend = mRecommendView.findViewById(R.id.rv_recommend);
-        ImageView ivRefresh = mRecommendView.findViewById(R.id.iv_refresh);
-        ImageView ivClose = mRecommendView.findViewById(R.id.iv_close);
-        mArticleAdapter.addHeaderView(mRecommendView);
-        rvRecommend.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvRecommend.setAdapter(mRecommendAdapter);
+//        mRecommendView = LayoutInflater.from(getContext()).inflate(R.layout.index_head_include, null);
+//        RecyclerView rvRecommend = mRecommendView.findViewById(R.id.rv_recommend);
+//        ImageView ivRefresh = mRecommendView.findViewById(R.id.iv_refresh);
+//        ImageView ivClose = mRecommendView.findViewById(R.id.iv_close);
+//        mArticleAdapter.addHeaderView(mRecommendView);
+//        rvRecommend.setLayoutManager(new LinearLayoutManager(getContext()));
+//        rvRecommend.setAdapter(mRecommendAdapter);
 
         mArticleAdapter.setOnItemClickListener(this);
         mArticleAdapter.setOnItemChildClickListener(this);
@@ -120,8 +120,8 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
                 mRecommendAdapter.getItem(position).getNiceDate()));
 
         //刷新和关闭推荐文章的点击事件
-        ivRefresh.setOnClickListener(this);
-        ivClose.setOnClickListener(this);
+//        ivRefresh.setOnClickListener(this);
+//        ivClose.setOnClickListener(this);
 
         //加载置顶文章
         mPresenter.loadTopArticles();
@@ -222,17 +222,18 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
 
     @Override
     public void onRefresh() {
-        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
-            mPresenter.findSimilarUser(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID));
-            mPresenter.calcSimilar(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID));
-        }
+//        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
+//            // 计算相似度
+//            mPresenter.findSimilarUser(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID));
+//            mPresenter.calcSimilar(SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getInt(Constants.USER_ID));
+//        }
         mPresenter.refresh();
         //如果已登录用户
-        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
-            mRecommendView.setVisibility(View.VISIBLE);
-        } else {
-            mRecommendView.setVisibility(View.GONE);
-        }
+//        if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
+//            mRecommendView.setVisibility(View.VISIBLE);
+//        } else {
+//            mRecommendView.setVisibility(View.GONE);
+//        }
     }
 
     @Override
