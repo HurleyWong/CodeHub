@@ -7,6 +7,7 @@
         android:id="@+id/home_website"
         android:icon="@mipmap/ic_website"
         android:title="@string/home_website"
+        android:visible="false"
         app:showAsAction="ifRoom"/>
 
     <item
