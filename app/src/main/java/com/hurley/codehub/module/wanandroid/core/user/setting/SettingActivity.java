@@ -8,8 +8,8 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.blankj.utilcode.util.CacheUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
@@ -78,6 +78,8 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
 
     private File cacheFile;
 
+    String cache = CacheUtils.getInstance().getCacheSize() + "kb";
+
     /**
      * 语言种类
      */
@@ -96,8 +98,8 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
     @Override
     protected void initView() {
         cacheFile = new File(Constants.PATH_CACHE);
-        mTvCacheNum.setText(ACache.getCacheSize(cacheFile));
-        LogUtils.e("缓存大小：" + ACache.getCacheSize(cacheFile));
+        mTvCacheNum.setText(cache);
+        LogUtils.e("缓存大小：" + cache);
         mCbAutoCache.setChecked(mPresenter.getAutoCacheState());
         mCbNoImage.setChecked(mPresenter.getNoImageState());
         mCbNight.setChecked(mPresenter.getNightModeState());
@@ -126,12 +128,20 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         switch (buttonView.getId()) {
             case R.id.cb_setting_auto_cache:
+                assert mPresenter != null;
                 mPresenter.setAutoCacheState(isChecked);
                 break;
             case R.id.cb_setting_no_image:
+                assert mPresenter != null;
                 mPresenter.setNoImageState(isChecked);
+                if (isChecked) {
+                    toast("网页将不显示图片");
+                } else {
+                    toast("网页将显示图片");
+                }
                 break;
             case R.id.cb_setting_night:
+                assert mPresenter != null;
                 mPresenter.setNightModeState(isChecked);
                 RxBus.getInstance().post(new NightModeEvent(isChecked));
                 break;
@@ -160,11 +170,13 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
             case R.id.setting_clear_cache:
                 //清除缓存
                 clearCache();
-                mTvCacheNum.setText(ACache.getCacheSize(cacheFile));
+//                mTvCacheNum.setText(ACache.getCacheSize(cacheFile));
+                mTvCacheNum.setText(cache);
                 toast(R.string.setting_clear_cache_success);
                 break;
             case R.id.setting_feedback:
                 //意见反馈
+                assert mPresenter != null;
                 mPresenter.feedback(this, getString(R.string.choose_email));
                 break;
             default:
@@ -191,6 +203,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
      * 清除缓存
      */
     private void clearCache() {
-        ACache.deleteDir(cacheFile);
+//        ACache.deleteDir(cacheFile);
+        CacheUtils.getInstance().clear();
     }
 }

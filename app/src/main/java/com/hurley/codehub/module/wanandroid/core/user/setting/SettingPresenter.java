@@ -3,8 +3,10 @@ package com.hurley.codehub.module.wanandroid.core.user.setting;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.content.ContextCompat;
 
 import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.hurley.codehub.R;
 import com.hurley.codehub.app.App;
 import com.hurley.codehub.app.Constants;
