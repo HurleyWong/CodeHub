@@ -13,7 +13,6 @@ import com.blankj.utilcode.util.CacheUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
-import com.hurley.codehub.app.ACache;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseActivity;
 import com.hurley.codehub.module.wanandroid.event.NightModeEvent;
