@@ -56,19 +56,14 @@ public class CollectionPresenter extends BasePresenter<CollectionContract.View> 
                 .getCollectArticles(mPage)
                 .compose(RxSchedulers.applySchedulers())
                 .compose(mView.bindToLife())
-                .subscribe(new Consumer<BaseBean<ArticleBean>>() {
-                    @Override
-                    public void accept(BaseBean<ArticleBean> response) throws Exception {
-                        int loadType = isRefresh ? LoadType.TYPE_REFRESH_SUCCESS : LoadType.TYPE_LOAD_MORE_SUCCESS;
-                        mView.setCollectionArticle(response.getData(), loadType);
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        int loadType = isRefresh ? LoadType.TYPE_REFRESH_ERROR : LoadType.TYPE_LOAD_MORE_ERROR;
-                        mView.setCollectionArticle(new ArticleBean(), loadType);
-                        mView.showFailed(throwable.getMessage());
-                    }
+                .subscribe(response -> {
+                    int loadType = isRefresh ? LoadType.TYPE_REFRESH_SUCCESS : LoadType.TYPE_LOAD_MORE_SUCCESS;
+                    mView.setCollectionArticle(response.getData(), loadType);
+                }, throwable -> {
+                    int loadType = isRefresh ? LoadType.TYPE_REFRESH_ERROR : LoadType.TYPE_LOAD_MORE_ERROR;
+                    mView.setCollectionArticle(new ArticleBean(), loadType);
+                    mView.showFailed(throwable.getMessage());
+                    LogUtils.e(throwable.getMessage());
                 });
 
     }

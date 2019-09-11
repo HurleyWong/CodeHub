@@ -32,10 +32,10 @@ import butterknife.BindView;
 @Route(path = PathContainer.COLLECTION)
 public class CollectionActivity extends BaseActivity<CollectionPresenter>
         implements CollectionContract.View,
-                    ArticleAdapter.OnItemClickListener,
-                    ArticleAdapter.OnItemChildClickListener,
-                    ArticleAdapter.RequestLoadMoreListener,
-                    SwipeRefreshLayout.OnRefreshListener{
+        ArticleAdapter.OnItemClickListener,
+        ArticleAdapter.OnItemChildClickListener,
+        ArticleAdapter.RequestLoadMoreListener,
+        SwipeRefreshLayout.OnRefreshListener {
 
     private static final String TAG = "CollectionActivity";
 
@@ -72,11 +72,13 @@ public class CollectionActivity extends BaseActivity<CollectionPresenter>
         mArticleAdapter.isCollect(true);
 
         //加载数据
+        assert mPresenter != null;
         mPresenter.loadCollection();
     }
 
     /**
      * 显示返回键
+     *
      * @return
      */
     @Override

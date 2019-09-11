@@ -91,6 +91,11 @@
     <string name="tag_10">热门专题</string>
     <string name="tag_10_detail">项目架构 反编译 设计模式 插件化 模块化 组件化 热修复 性能优化 Xposed ANR</string>
 
+    <!-- 积分 -->
+    <string name="coin_text">积分</string>
+    <string name="coin_rank">积分排行榜</string>
+    <string name="coin_week">本期积分值</string>
+
     <!-- 收藏 -->
     <string name="collect_text">收藏</string>
     <string name="collect_success">收藏成功</string>

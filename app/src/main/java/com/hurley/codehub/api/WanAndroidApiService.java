@@ -5,6 +5,7 @@ import com.hurley.codehub.bean.local.Article;
 import com.hurley.codehub.bean.wanandroid.BaseBean;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
 import com.hurley.codehub.bean.wanandroid.BannerBean;
+import com.hurley.codehub.bean.wanandroid.CoinBean;
 import com.hurley.codehub.bean.wanandroid.CollectArticleBean;
 import com.hurley.codehub.bean.wanandroid.HotKeyBean;
 import com.hurley.codehub.bean.wanandroid.NaviBean;
@@ -352,4 +353,22 @@ public interface WanAndroidApiService {
                                                                       @Path("page") int page,
                                                                       @Query("k") String k);
 
+    /**
+     * 获取积分排行榜
+     * https://www.wanandroid.com/coin/rank/{page}/json
+     *
+     * @param page
+     * @return
+     */
+    @GET(WanAndroidUrlContainer.COIN_RANK)
+    Observable<BaseBean<CoinBean>> getCoinRank(@Path("page") int page);
+
+    /**
+     * 获取用户积分
+     * https://www.wanandroid.com/lg/coin/userinfo/json
+     *
+     * @return
+     */
+    @GET(WanAndroidUrlContainer.COIN_COUNT)
+    Observable<BaseBean<PageBean<CoinBean.DatasBean>>> getUserCoin();
 }

@@ -34,13 +34,11 @@ public class PathContainer {
 
     public static final String TAG = "/tag/TagActivity";
 
-    public static final String ANALYSIS = "/analysis/AnalysisActivity";
-
     public static final String SETTING = "/setting/SettingActivity";
 
     public static final String ABOUT = "/about/AboutActivity";
 
-    public static final String LOADING = "/main/LoadingDataActivity";
+    public static final String COIN = "/coin/CoinActivity";
 
     //ReadHub Activity
 

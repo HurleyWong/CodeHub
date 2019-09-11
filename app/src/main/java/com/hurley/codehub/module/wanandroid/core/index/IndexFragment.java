@@ -124,6 +124,7 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
 //        ivClose.setOnClickListener(this);
 
         //加载置顶文章
+        assert mPresenter != null;
         mPresenter.loadTopArticles();
         onRefresh();
         //根据后台返回的要推荐的体系，加载推荐文章

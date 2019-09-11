@@ -10,6 +10,7 @@ import com.hurley.codehub.di.scope.ContextLifeCycle;
 import com.hurley.codehub.module.readhub.core.main.MainActivity;
 import com.hurley.codehub.module.wanandroid.core.main.HomeActivity;
 import com.hurley.codehub.module.wanandroid.core.search.SearchActivity;
+import com.hurley.codehub.module.wanandroid.core.user.coin.CoinActivity;
 import com.hurley.codehub.module.wanandroid.core.user.tag.TagActivity;
 import com.hurley.codehub.module.wanandroid.core.web.WebActivity;
 import com.hurley.codehub.module.wanandroid.core.user.collect.CollectionActivity;
@@ -58,6 +59,8 @@ public interface ActivityComponent {
     void inject(SettingActivity activity);
 
     void inject(TagActivity activity);
+
+    void inject(CoinActivity activity);
 
     //ReadHub Activity
 

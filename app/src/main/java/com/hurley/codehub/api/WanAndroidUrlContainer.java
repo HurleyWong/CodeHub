@@ -213,4 +213,14 @@ public class WanAndroidUrlContainer {
      */
     public static final String WXARTICLE_SEARCH = "wxarticle/list/{id}/{page}/json?";
 
+    /**
+     * 积分排行榜
+     */
+    public static final String COIN_RANK = "coin/rank/{page}/json";
+
+    /**
+     * 获取用户积分
+     */
+    public static final String COIN_COUNT ="lg/coin/userinfo/json";
+
 }

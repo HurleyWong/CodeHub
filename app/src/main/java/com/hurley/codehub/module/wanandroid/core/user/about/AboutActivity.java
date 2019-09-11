@@ -136,6 +136,7 @@ public class AboutActivity extends BaseActivity {
 
     /**
      * 显示返回键
+     *
      * @return
      */
     @Override
@@ -145,6 +146,7 @@ public class AboutActivity extends BaseActivity {
 
     /**
      * 添加数据
+     *
      * @return
      */
     private List<OpenSourceBean> setListData(List<OpenSourceBean> list) {
