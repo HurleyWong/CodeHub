@@ -370,5 +370,5 @@ public interface WanAndroidApiService {
      * @return
      */
     @GET(WanAndroidUrlContainer.COIN_COUNT)
-    Observable<BaseBean<PageBean<CoinBean.DatasBean>>> getUserCoin();
+    Observable<BaseBean<CoinBean.DatasBean>> getUserCoin();
 }

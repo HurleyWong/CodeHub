@@ -94,7 +94,7 @@
     <!-- 积分 -->
     <string name="coin_text">积分</string>
     <string name="coin_rank">积分排行榜</string>
-    <string name="coin_week">本期积分值</string>
+    <string name="coin_user_rank">排名</string>
 
     <!-- 收藏 -->
     <string name="collect_text">收藏</string>

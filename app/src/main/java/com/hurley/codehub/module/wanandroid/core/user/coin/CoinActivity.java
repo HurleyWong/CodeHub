@@ -3,17 +3,17 @@ package com.hurley.codehub.module.wanandroid.core.user.coin;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.SPUtils;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
+import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseActivity;
 import com.hurley.codehub.bean.wanandroid.CoinBean;
 import com.hurley.codehub.module.wanandroid.core.adapter.CoinRankAdapter;
-import com.hurley.codehub.module.wanandroid.core.adapter.OpenSourceAdapter;
 
 import java.util.List;
 
@@ -34,8 +34,8 @@ public class CoinActivity extends BaseActivity<CoinPresenter> implements CoinCon
 
     @BindView(R.id.cv_user_coin)
     CardView mCvUserCoin;
-    @BindView(R.id.tv_coin_username)
-    TextView mTvCoinUsername;
+    @BindView(R.id.tv_coin_user_rank_value)
+    TextView mTvUserRank;
     @BindView(R.id.tv_coin_value)
     TextView mTvCoinValue;
     @BindView(R.id.rv_coin_rank)
@@ -43,6 +43,11 @@ public class CoinActivity extends BaseActivity<CoinPresenter> implements CoinCon
 
     @Inject
     CoinRankAdapter mAdapter;
+
+    /**
+     * 是否登录
+     */
+    private boolean isLogin;
 
     @Override
     protected int getLayoutId() {
@@ -56,6 +61,15 @@ public class CoinActivity extends BaseActivity<CoinPresenter> implements CoinCon
 
     @Override
     protected void initView() {
+        isLogin = SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS);
+        if (isLogin) {
+            // 已登录
+            mCvUserCoin.setVisibility(View.VISIBLE);
+        } else {
+            // 未登录
+            mCvUserCoin.setVisibility(View.GONE);
+        }
+
         mRvCoinRank.setLayoutManager(new LinearLayoutManager(this));
         mRvCoinRank.setAdapter(mAdapter);
 
@@ -75,13 +89,13 @@ public class CoinActivity extends BaseActivity<CoinPresenter> implements CoinCon
     }
 
     @Override
-    public void showUserCoin() {
-
+    public void showUserCoin(int count, int rank) {
+        mTvCoinValue.setText(String.valueOf(count));
+        mTvUserRank.setText(String.valueOf(rank));
     }
 
     @Override
     public void showCoinRank(List<CoinBean.DatasBean> datasBeans) {
         mAdapter.setNewData(datasBeans);
-        mAdapter.notifyDataSetChanged();
     }
 }

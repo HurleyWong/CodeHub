@@ -46,11 +46,9 @@ public class CoinPresenter extends BasePresenter<CoinContract.View> implements C
                 .compose(RxSchedulers.applySchedulers())
                 .compose(mView.bindToLife())
                 .subscribe(response -> {
-                    LogUtils.e(response.getData().getDatas().get(1).getCoinCount());
-                    mView.showUserCoin();
+                    mView.showUserCoin(response.getData().getCoinCount(), response.getData().getRank());
                 }, throwable -> {
-                    mView.showFailed(throwable.getMessage());
-                    LogUtils.e("失败1" + throwable.getMessage());
+                    LogUtils.e(throwable.getMessage());
                 });
     }
 
@@ -67,8 +65,7 @@ public class CoinPresenter extends BasePresenter<CoinContract.View> implements C
                 .subscribe(response -> {
                     mView.showCoinRank(response.getData().getDatas());
                 }, throwable -> {
-                    mView.showFailed(throwable.getMessage());
-                    LogUtils.e("失败2" + throwable.getMessage());
+                    LogUtils.e(throwable.getMessage());
                 });
 
     }

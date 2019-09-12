@@ -19,8 +19,11 @@ public interface CoinContract {
 
         /**
          * 显示当前用户的积分
+         *
+         * @param count
+         * @param rank
          */
-        void showUserCoin();
+        void showUserCoin(int count, int rank);
 
         /**
          * 显示用户积分排行榜
