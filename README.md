@@ -11,7 +11,6 @@
 * 基本遵循Google Material Design设计风格。
 * WanAndroid、Readhub与Gank.io的内容。
 * 基于MVP模式开发。
-* 使用RxBus代替EventBus进行组件之间的通讯。
 
 ## Issues
 如果有任何问题，请在该repository的[Issues](https://github.com/HurleyJames/CodeHub/issues)处发布issue，或者通过最底部的联系方式联系我，我会及时提供帮助或改进。
@@ -20,7 +19,7 @@
  - 最开始是只想根据[玩安卓](www.wanandroid.com)开发的api开发一个WanAndroid客户端，后来在完成之后又决定根据[Readhub](https://readhub.cn)以及[Gank.io](gank.io)的api共同组成一个获取移动端开发者技术的客户端CodeHub。
  - 图片来源：[iconfont](http://www.iconfont.cn/plus)
  - 主要数据来源：[wanandroid](https://www.wanandroid.com/blog/show/2)、Readhub、[Gank.io](http://gank.io/api)。
- - 使用到的开源库：[Retrofit]()、[RxJava]()、[Dagger]()等。
+ - 使用到的开源库：[Retrofit]()、[RxJava]()、[Glide]()等。
 
 ## About me
  * QQ: 1401682479
