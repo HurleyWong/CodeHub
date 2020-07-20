@@ -20,14 +20,14 @@
 如果有任何问题，请在该repository的[Issues](https://github.com/HurleyJames/CodeHub/issues)处发布issue，或者通过最底部的联系方式联系我，我会及时提供帮助或改进。
 
 ## Thanks
- - 最开始是只想根据[玩安卓](www.wanandroid.com)开发的api开发一个WanAndroid客户端，后来在完成之后又决定根据[Readhub](https://readhub.cn)以及[Gank.io](gank.io)的api共同组成一个获取移动端开发者技术的客户端CodeHub。
- - 图片来源：[iconfont](http://www.iconfont.cn/plus)
- - 主要数据来源：[wanandroid](https://www.wanandroid.com/blog/show/2)、Readhub、[Gank.io](http://gank.io/api)。
- - 使用到的开源库：[Retrofit]()、[RxJava]()、[Glide]()等。
+ - 最开始是只想根据[玩安卓](https://www.wanandroid.com/)开发的api开发一个WanAndroid客户端，后来在完成之后又决定根据[Readhub](https://readhub.cn)以及[Gank.io](https://gank.io)的api共同组成一个获取移动端开发者技术的客户端CodeHub。
+ - 图片来源：[iconfont](https://www.iconfont.cn/plus)
+ - 主要数据来源：[wanandroid](https://www.wanandroid.com/blog/show/2)、Readhub、[Gank.io](https://gank.io/api)。
+ - 使用到的开源库：[Retrofit](https://github.com/square/retrofit)、[RxJava](https://github.com/ReactiveX/RxJava)、[Glide](https://github.com/bumptech/glide)等。
 
 ## About me
  * QQ: 1401682479
- * Blog: [hurley.fun](hurley.fun)
+ * Blog: [hurley.fun](https://hurley.fun)
  * Email: hurleyhuang@hotmail.com
 
 ## License
