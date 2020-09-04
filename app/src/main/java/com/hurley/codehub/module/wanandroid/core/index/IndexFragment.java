@@ -24,6 +24,7 @@ import com.hurley.codehub.module.wanandroid.event.LoginEvent;
 import com.hurley.codehub.module.wanandroid.event.LogoutEvent;
 import com.hurley.codehub.module.wanandroid.event.TagEvent;
 import com.hurley.codehub.net.callback.RxBus;
+import com.hurley.codehub.util.ReplaceUtils;
 import com.hurley.codehub.widget.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -149,7 +150,7 @@ public class IndexFragment extends BaseFragment<IndexPresenter>
 
         for (BannerBean banner : banners) {
             images.add(banner.getImagePath());
-            titles.add(banner.getTitle());
+            titles.add(ReplaceUtils.replace(banner.getTitle()));
         }
 
         mBanner.setImages(images)

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- WanAndroid主界面Fragment -->
+    <string name="home_nav_index">Index</string>
+    <string name="home_nav_system">System</string>
+    <string name="home_nav_wechat">Official Account</string>
+    <string name="home_nav_project">Project</string>
+    <string name="home_nav_user">User</string>
+    <string name="home_hotkey">Hot Key</string>
+    <string name="home_website">常用网站</string>
+    <string name="home_search">搜索</string>
+</resources>

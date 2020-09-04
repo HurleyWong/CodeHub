@@ -10,6 +10,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
 
 import com.facebook.stetho.Stetho;
+import com.hjq.language.LanguagesManager;
 import com.hjq.toast.ToastUtils;
 import com.hurley.codehub.R;
 import com.hurley.codehub.dao.DaoSession;
@@ -61,6 +62,9 @@ public class App extends MultiDexApplication {
 
         //初始化LitePal
         LitePal.initialize(this);
+
+        //初始化国家化框架
+        LanguagesManager.init(this);
 
         /**
          * 必须在Application的onCreate方法中执行BGASwipeBackHelper.init来初始化滑动返回
@@ -143,7 +147,8 @@ public class App extends MultiDexApplication {
 
     @Override
     protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
+        // 国际化适配（绑定语种）
+        super.attachBaseContext(LanguagesManager.attach(base));
         MultiDex.install(this);
     }
 

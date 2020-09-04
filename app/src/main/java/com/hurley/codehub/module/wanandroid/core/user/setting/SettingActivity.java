@@ -1,5 +1,6 @@
 package com.hurley.codehub.module.wanandroid.core.user.setting;
 
+import android.content.Intent;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.CardView;
 import android.view.View;
@@ -11,18 +12,21 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.CacheUtils;
 import com.blankj.utilcode.util.LogUtils;
+import com.hjq.language.LanguagesManager;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseActivity;
 import com.hurley.codehub.module.wanandroid.event.NightModeEvent;
 import com.hurley.codehub.net.callback.RxBus;
+import com.kongzue.dialog.listener.OnMenuItemClickListener;
 import com.kongzue.dialog.v2.BottomMenu;
 import com.tencent.bugly.beta.Beta;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -77,6 +81,8 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
 
     private File cacheFile;
 
+    boolean restart;
+
     String cache = CacheUtils.getInstance().getCacheSize() + "kb";
 
     /**
@@ -111,6 +117,8 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
         languageList.add(getString(R.string.language_simplified));
         languageList.add(getString(R.string.language_traditional));
         languageList.add(getString(R.string.language_english));
+
+        Locale locale = LanguagesManager.getAppLanguage(this);
     }
 
     /**
@@ -153,10 +161,37 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.setting_language:
-                //多语言
-                BottomMenu.show(this, languageList, (text, index) -> {
-                    mTvLanguageType.setText(text);
-                    //TODO 切换语言
+                // 是否需要重启
+
+                // 多语言
+                BottomMenu.show(this, languageList, new OnMenuItemClickListener() {
+                    @Override
+                    public void onClick(String text, int index) {
+                        mTvLanguageType.setText(text);
+                        //TODO 切换语言
+                        switch (index) {
+                            case 0:
+                                restart = LanguagesManager.setSystemLanguage(getApplicationContext());
+                                break;
+                            case 1:
+                                restart = LanguagesManager.setAppLanguage(getApplicationContext(), Locale.CHINA);
+                                break;
+                            case 2:
+                                restart = LanguagesManager.setAppLanguage(getApplicationContext(), Locale.TAIWAN);
+                                break;
+                            case 3:
+                                restart = LanguagesManager.setAppLanguage(getApplicationContext(), Locale.ENGLISH);
+                                break;
+                            default:
+                                restart = false;
+                                break;
+                        }
+                        if (restart) {
+                            startActivity(new Intent(getApplicationContext(), SettingActivity.class));
+                            overridePendingTransition(R.anim.left_top_in, R.anim.right_top_out);
+                            finish();
+                        }
+                    }
                 });
                 break;
             case R.id.setting_theme_color:

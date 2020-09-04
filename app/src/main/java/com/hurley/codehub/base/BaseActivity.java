@@ -1,6 +1,7 @@
 package com.hurley.codehub.base;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +19,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import com.gyf.barlibrary.ImmersionBar;
+import com.hjq.language.LanguagesManager;
 import com.hurley.codehub.R;
 import com.hurley.codehub.app.App;
 import com.hurley.codehub.app.Constants;
@@ -265,6 +267,12 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
     @Override
     public void post(Runnable runnable) {
         mDelegate.post(runnable);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        // 国家化适配（绑定语种）
+        super.attachBaseContext(LanguagesManager.attach(newBase));
     }
 
     protected void setToolbarTitle(String title) {

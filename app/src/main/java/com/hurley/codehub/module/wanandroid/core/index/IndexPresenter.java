@@ -206,12 +206,7 @@ public class IndexPresenter extends BasePresenter<IndexContract.View> implements
                 .calcSimilar(userid)
                 .compose(RxSchedulers.applySchedulers())
                 .compose(mView.bindToLife())
-                .subscribe(new Consumer<BaseBean>() {
-                    @Override
-                    public void accept(BaseBean baseBean) throws Exception {
-                        LogUtils.e("计算相似度");
-                    }
-                }, throwable -> LogUtils.e(throwable.getMessage()));
+                .subscribe(baseBean -> LogUtils.e("计算相似度"), throwable -> LogUtils.e(throwable.getMessage()));
     }
 
     @Override

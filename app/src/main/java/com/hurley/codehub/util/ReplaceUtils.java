@@ -21,6 +21,7 @@ public class ReplaceUtils {
                     .replace("&amp;", "&")
                     .replace("&ldquo;", "“")
                     .replace("&rdquo", "”")
+                    .replace("&hellip;", "...")
                     .replace("<em class='highlight'>", "")
                     .replace("</em>", "");
         } else {
