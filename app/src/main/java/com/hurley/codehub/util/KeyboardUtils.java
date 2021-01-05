@@ -16,6 +16,7 @@ public class KeyboardUtils {
 
     /**
      * 显示软键盘
+     *
      * @param view
      */
     public static void showKeyboard(View view) {
@@ -31,6 +32,7 @@ public class KeyboardUtils {
 
     /**
      * 隐藏软键盘
+     *
      * @param view
      */
     public static void hideKeyboard(View view) {
@@ -46,6 +48,7 @@ public class KeyboardUtils {
 
     /**
      * 切换软键盘
+     *
      * @param view
      */
     public static void toggleSoftInput(View view) {
@@ -55,7 +58,7 @@ public class KeyboardUtils {
         InputMethodManager manager = (InputMethodManager) view.getContext()
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
         if (manager != null) {
-            manager.toggleSoftInput(0 ,0);
+            manager.toggleSoftInput(0, 0);
         }
     }
 }

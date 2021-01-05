@@ -44,7 +44,7 @@ public class App extends MultiDexApplication {
     private ApplicationComponent mApplicationComponent;
     private DaoSession mDaoSession;
 
-    //static代码段可以防止内存泄露, 全局设置刷新头部及尾部，优先级最低
+    // static代码段可以防止内存泄露, 全局设置刷新头部及尾部，优先级最低
     static {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
@@ -60,10 +60,10 @@ public class App extends MultiDexApplication {
         instance = this;
         initApplicationComponent();
 
-        //初始化LitePal
+        // 初始化LitePal
         LitePal.initialize(this);
 
-        //初始化国家化框架
+        // 初始化国家化框架
         LanguagesManager.init(this);
 
         /**
@@ -72,62 +72,62 @@ public class App extends MultiDexApplication {
          * 第二个参数：如果发现滑动返回后立即触摸界面时应用崩溃，则把该界面里比较特殊的View的class添加到该集合中，例如WebView和SurfaceView
          */
         BGASwipeBackHelper.init(this, null);
-        //初始化工具类
+        // 初始化工具类
         Utils.init(this);
-        //初始化Toast工具类
+        // 初始化Toast工具类
         ToastUtils.init(this);
-        //初始化路由
+        // 初始化路由
         initARouter();
 
-        //初始化Fragmentation
+        // 初始化Fragmentation
         Fragmentation.builder()
-                //BUBBLE：显示悬浮球 | SHAKE：摇一摇换出悬浮球 | NONE：隐藏悬浮球
+                // BUBBLE：显示悬浮球 | SHAKE：摇一摇换出悬浮球 | NONE：隐藏悬浮球
                 .stackViewMode(Fragmentation.NONE)
                 .debug(ConfigUtils.DEBUG)
                 .install();
 
-        //初始化Stetho
+        // 初始化Stetho
         if (ConfigUtils.DEBUG) {
             Stetho.initializeWithDefaults(this);
         }
 
-        //初始化全局Dialog风格样式
+        // 初始化全局Dialog风格样式
         DialogSettings.style = STYLE_IOS;
         DialogSettings.use_blur = true;
 
-        //自动初始化开关
-        //true表示app启动初始化升级模块，false不会自动初始化
+        // 自动初始化开关
+        // true表示app启动初始化升级模块，false不会自动初始化
         Beta.autoInit = true;
-        //自动检查更新开关
-        //true表示初始化时自动检查升级，false表示不会自动检查升级
+        // 自动检查更新开关
+        // true表示初始化时自动检查升级，false表示不会自动检查升级
         Beta.autoCheckUpgrade = true;
-        //升级检查周期设置
-        //设置升级检查周期为60s（默认检查周期为0s）
+        // 升级检查周期设置
+        // 设置升级检查周期为60s（默认检查周期为0s）
         Beta.upgradeCheckPeriod = 60 * 1000;
-        //延迟初始化
-        //设置启动延时为1s（默认延时为3s），APP启动1s后初始化SDK，避免影响APP启动速度
+        // 延迟初始化
+        // 设置启动延时为1s（默认延时为3s），APP启动1s后初始化SDK，避免影响APP启动速度
         Beta.initDelay = 1 * 1000;
-        //设置通知栏内大图标
+        // 设置通知栏内大图标
         Beta.largeIconId = R.mipmap.ic_launcher;
-        //设置更新弹窗默认展示的banner
+        // 设置更新弹窗默认展示的banner
         Beta.defaultBannerId = R.mipmap.ic_launcher;
-        //设置SD卡的Download为更新资源存储目录
+        // 设置SD卡的Download为更新资源存储目录
         Beta.storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        //设置开启显示打断策略
+        // 设置开启显示打断策略
         Beta.showInterruptedStrategy = true;
-        //添加可显示弹窗的Activity
+        // 添加可显示弹窗的Activity
         Beta.canShowUpgradeActs.add(HomeActivity.class);
-        //设置自定义升级对话框UI布局
-        //Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade;
-        //设置自定义tip弹窗UI布局
-        //Beta.tipsDialogLayoutId = R.layout.dialog_tips;
-        //设置是否显示消息通知
+        // 设置自定义升级对话框UI布局
+        // Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade;
+        // 设置自定义tip弹窗UI布局
+        // Beta.tipsDialogLayoutId = R.layout.dialog_tips;
+        // 设置是否显示消息通知
         Beta.enableNotification = true;
-        //设置Wifi下是否自动下载
+        // 设置Wifi下是否自动下载
         Beta.autoDownloadOnWifi = false;
-        //设置是否显示弹窗中的apk消息
+        // 设置是否显示弹窗中的apk消息
         Beta.canShowApkInfo = true;
-        //初始化统一接口
+        // 初始化统一接口
         Bugly.init(getAppContext(), Constants.APP_ID, false);
     }
 
@@ -136,12 +136,12 @@ public class App extends MultiDexApplication {
      */
     private void initARouter() {
         if (ConfigUtils.DEBUG) {
-            //打印日志
+            // 打印日志
             ARouter.openLog();
-            //开启调试模式（如果在InstantRun模式下运行，必须开启调试模式。线上版本需要关闭，否则有安全风险）
+            // 开启调试模式（如果在InstantRun模式下运行，必须开启调试模式。线上版本需要关闭，否则有安全风险）
             ARouter.openDebug();
         }
-        //推荐在Application中初始化
+        // 推荐在Application中初始化
         ARouter.init(this);
     }
 

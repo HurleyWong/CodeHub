@@ -42,7 +42,8 @@ public final class IntentUtils {
 
     /**
      * 跳转到Activity
-     * @param context       context对象
+     *
+     * @param context context对象
      */
     public void startActivity(Context context) {
         startActivity(context, false);
@@ -50,6 +51,7 @@ public final class IntentUtils {
 
     /**
      * 跳转到activity后再销毁当前Activity
+     *
      * @param activity
      */
     public void startActivityFinish(Activity activity) {
@@ -59,8 +61,9 @@ public final class IntentUtils {
 
     /**
      * 跳转到Activity
-     * @param context       context对象
-     * @param newTask       是否开启新的任务栈
+     *
+     * @param context context对象
+     * @param newTask 是否开启新的任务栈
      */
     public void startActivity(Context context, boolean newTask) {
         Intent intent = new Intent(context, sCurrentClass);
@@ -72,8 +75,9 @@ public final class IntentUtils {
 
     /**
      * 跳转到Activity
-     * @param activity      activity对象
-     * @param requestCode   请求码
+     *
+     * @param activity    activity对象
+     * @param requestCode 请求码
      */
     public void startActivity(Activity activity, int requestCode) {
         activity.startActivityForResult(new Intent(activity, sCurrentClass), requestCode);
@@ -81,8 +85,9 @@ public final class IntentUtils {
 
     /**
      * 设置结果码
-     * @param activity      activity对象
-     * @param resultCode    结果码
+     *
+     * @param activity   activity对象
+     * @param resultCode 结果码
      */
     public void setResult(Activity activity, int resultCode) {
         activity.setResult(resultCode);
@@ -90,7 +95,8 @@ public final class IntentUtils {
 
     /**
      * 销毁Activity
-     * @param activity      activity对象
+     *
+     * @param activity activity对象
      */
     public void finish(Activity activity) {
         activity.finish();

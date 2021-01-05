@@ -28,11 +28,11 @@ public class SaveCookieInterceptor implements Interceptor {
         Request request = chain.request();
         Response response = chain.proceed(request);
         List<String> mCookieList = response.headers("Set-Cookie");
-        //保存Cookie
+        // 保存Cookie
         if (!mCookieList.isEmpty() && request.url().toString().endsWith(WanAndroidUrlContainer.LOGIN)) {
             StringBuilder sb = new StringBuilder();
             for (String cookie : mCookieList) {
-                //注意Cookie请求头字段中的每个Cookie之间用逗号或分号分隔
+                // 注意Cookie请求头字段中的每个Cookie之间用逗号或分号分隔
                 sb.append(cookie).append(",");
             }
             SharedPreferencesUtils.put(response.request().url().host(), sb.toString());

@@ -19,7 +19,7 @@ import javax.inject.Inject;
  *      desc    : 数据库基本操作的实现细节类
  * </pre>
  */
-public class DbHelperImpl implements DbHelper{
+public class DbHelperImpl implements DbHelper {
 
     private static final int HISTORY_LIST_SIZE = 10;
 
@@ -65,12 +65,13 @@ public class DbHelperImpl implements DbHelper{
     /**
      * 历史数据前移
      * 如果输入查询的数据已经存在于历史记录中，则不会再添加该新历史记录，而是将已存在的历史记录移到第一条历史记录即可
+     *
      * @return
      */
     private boolean historyForward() {
-        //重复搜索时进行历史记录前移
+        // 重复搜索时进行历史记录前移
         Iterator<HistoryBean> iterator = mHistoryBeanList.iterator();
-        //不在foreach循环中进行元素的remove、add操作，使用Iterator模式操作
+        // 不在foreach循环中进行元素的remove、add操作，使用Iterator模式操作
         while (iterator.hasNext()) {
             HistoryBean historyBean = iterator.next();
             if (historyBean.getData().equals(data)) {

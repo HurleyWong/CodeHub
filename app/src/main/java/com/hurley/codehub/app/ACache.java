@@ -40,8 +40,10 @@ public class ACache {
 
     public static final int TIME_HOUR = 60 * 60;
     public static final int TIME_DAY = TIME_HOUR * 24;
-    private static final int MAX_SIZE = 1000 * 1000 * 50; // 50 mb
-    private static final int MAX_COUNT = Integer.MAX_VALUE; // 不限制存放数据的数量
+    // 50 mb
+    private static final int MAX_SIZE = 1000 * 1000 * 50;
+    // 不限制存放数据的数量
+    private static final int MAX_COUNT = Integer.MAX_VALUE;
     private static Map<String, ACache> mInstanceMap = new HashMap<String, ACache>();
     private ACacheManager mCache;
 
@@ -237,7 +239,9 @@ public class ACache {
                     e.printStackTrace();
                 }
             }
-            if (removeFile) remove(key);
+            if (removeFile) {
+                remove(key);
+            }
         }
     }
 
@@ -405,7 +409,9 @@ public class ACache {
                     e.printStackTrace();
                 }
             }
-            if (removeFile) remove(key);
+            if (removeFile) {
+                remove(key);
+            }
         }
     }
 
@@ -476,12 +482,16 @@ public class ACache {
                 return null;
             } finally {
                 try {
-                    if (bais != null) bais.close();
+                    if (bais != null) {
+                        bais.close();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 try {
-                    if (ois != null) ois.close();
+                    if (ois != null) {
+                        ois.close();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -578,7 +588,9 @@ public class ACache {
      */
     public File file(String key) {
         File f = mCache.newFile(key);
-        if (f.exists()) return f;
+        if (f.exists()) {
+            return f;
+        }
         return null;
     }
 

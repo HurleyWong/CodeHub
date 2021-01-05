@@ -41,12 +41,16 @@ public class FakeElementLoadingView extends View {
 
     private int mDuration = DEFAULT_DURATION;
 
-    //画笔
+    /**
+     * 画笔
+     */
     private Paint mBitmapPaint;
     private Paint mShadowPaint;
 
 
-    //建议图片大小相同
+    /**
+     * 建议图片大小相同
+     */
     private ArrayList<Bitmap> mBitmapList;
     private Bitmap mCurrentBitmap;
     private int mCurrentIndex;
@@ -95,42 +99,41 @@ public class FakeElementLoadingView extends View {
     }
 
 
-    public void addBitmap(int bitMapId){
+    public void addBitmap(int bitMapId) {
         try {
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(), bitMapId);
             addBitmap(bitmap);
-        }catch (Resources.NotFoundException e){
+        } catch (Resources.NotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    public void addBitmap(Bitmap bitmap){
-        if(bitmap != null) {
+    public void addBitmap(Bitmap bitmap) {
+        if (bitmap != null) {
             mBitmapList.add(bitmap);
         }
     }
 
-    public void addBitmaps(ArrayList<Bitmap> bitmaps){
-        if(bitmaps != null){
+    public void addBitmaps(ArrayList<Bitmap> bitmaps) {
+        if (bitmaps != null) {
             mBitmapList.addAll(bitmaps);
         }
     }
 
     /**
      * 设置每次跳起落下的时长
+     *
      * @param duration
      */
     public void setDuration(int duration) {
         this.mDuration = duration;
     }
 
-    public void start()
-    {
+    public void start() {
 
         stop();
 
-        if(animator == null)
-        {
+        if (animator == null) {
             animator = ValueAnimator.ofFloat(0f, 1f, 0f);
             animator.setInterpolator(new AccelerateDecelerateInterpolator());
             animator.setRepeatCount(ValueAnimator.INFINITE);
@@ -139,7 +142,7 @@ public class FakeElementLoadingView extends View {
                 public void onAnimationUpdate(ValueAnimator valueAnimator) {
                     float value = (float) valueAnimator.getAnimatedValue();
 
-                    if(value != mPercent){
+                    if (value != mPercent) {
                         mPercent = value;
                         postInvalidate();
                     }
@@ -150,16 +153,16 @@ public class FakeElementLoadingView extends View {
 
                 @Override
                 public void onAnimationStart(Animator animation) {
-                    //重置index
+                    // 重置index
                     mCurrentIndex = 0;
                     mCurrentBitmap = mBitmapList.get(mCurrentIndex);
                 }
 
                 @Override
                 public void onAnimationRepeat(Animator animation) {
-                    if(mBitmapList != null && mBitmapList.size() > 0){
-                        mCurrentIndex ++;
-                        if(mCurrentIndex >= mBitmapList.size()) {
+                    if (mBitmapList != null && mBitmapList.size() > 0) {
+                        mCurrentIndex++;
+                        if (mCurrentIndex >= mBitmapList.size()) {
                             mCurrentIndex = 0;
                         }
                         mCurrentBitmap = mBitmapList.get(mCurrentIndex);
@@ -173,8 +176,8 @@ public class FakeElementLoadingView extends View {
         animator.start();
     }
 
-    public void stop(){
-        if(animator != null){
+    public void stop() {
+        if (animator != null) {
             animator.cancel();
             animator = null;
         }
@@ -182,11 +185,12 @@ public class FakeElementLoadingView extends View {
 
     /**
      * 设置阴影的颜色
+     *
      * @param shadowColor
      */
-    public void setShadowColor(int shadowColor){
+    public void setShadowColor(int shadowColor) {
         this.mShadowColor = shadowColor;
-        if(mShadowPaint != null){
+        if (mShadowPaint != null) {
             mShadowPaint.setColor(mShadowColor);
             postInvalidate();
         }
@@ -194,8 +198,8 @@ public class FakeElementLoadingView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int width      = MeasureSpec.getSize(widthMeasureSpec);
-        int height     = MeasureSpec.getSize(heightMeasureSpec);
+        int width = MeasureSpec.getSize(widthMeasureSpec);
+        int height = MeasureSpec.getSize(heightMeasureSpec);
         setMeasuredDimension(width, 2 * width);
     }
 
@@ -212,7 +216,7 @@ public class FakeElementLoadingView extends View {
                 getHeight() * 7 / 8f + mHalfShadowHeight);
         canvas.drawOval(mShadowRectF, mShadowPaint);
 
-        if(mCurrentBitmap != null) {
+        if (mCurrentBitmap != null) {
             canvas.save();
             mTopMargin = (getHeight() * 0.9f - mCurrentBitmap.getHeight()) * mPercent;
             canvas.translate(getWidth() / 2f - mCurrentBitmap.getWidth() / 2f, mTopMargin);

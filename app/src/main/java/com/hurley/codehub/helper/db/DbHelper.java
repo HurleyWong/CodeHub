@@ -17,6 +17,7 @@ public interface DbHelper {
 
     /**
      * 添加历史记录
+     *
      * @param data
      * @return
      */
@@ -29,6 +30,7 @@ public interface DbHelper {
 
     /**
      * 加载所有历史记录
+     *
      * @return
      */
     List<HistoryBean> loadAllHistory();

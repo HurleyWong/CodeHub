@@ -70,7 +70,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
         ARouter.getInstance().inject(this);
         initInjector();
         attachView();
-        //如果无网络连接
+        // 如果无网络连接
         if (!NetworkUtils.isConnected()) {
             showNoNet();
         }

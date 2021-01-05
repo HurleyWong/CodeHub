@@ -73,7 +73,7 @@ public class RetrofitManager {
         }
         Response originalResponse = chain.proceed(request);
         if (NetworkUtils.isConnected()) {
-            //有网的时候读接口上的@Headers里的配置，可以在这里进行统一的设置
+            // 有网的时候读接口上的@Headers里的配置，可以在这里进行统一的设置
             String cacheControl = request.cacheControl().toString();
             return originalResponse.newBuilder()
                     .header("Cache-Control", cacheControl)
@@ -123,16 +123,16 @@ public class RetrofitManager {
                 if (mOkHttpClient == null) {
                     mOkHttpClient = new OkHttpClient.Builder()
                             .cache(cache)
-                            //链接超时
+                            // 链接超时
                             .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
-                            //读取超时
+                            // 读取超时
                             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
                             .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
                             .addInterceptor(mRewriteCacheControlInterceptor)
                             .addInterceptor(mLoggingInterceptor)
-                            //添加Cookie拦截器
-                            //.addInterceptor(new SaveCookieInterceptor())
-                            //.addInterceptor(new LoadCookieInterceptor())
+                            // 添加Cookie拦截器
+                            // .addInterceptor(new SaveCookieInterceptor())
+                            // .addInterceptor(new LoadCookieInterceptor())
                             .cookieJar(cookieJar)
                             .build();
                 }
@@ -160,11 +160,18 @@ public class RetrofitManager {
         return retrofit.create(clazz);
     }
 
+    /**
+     * 创建ReadHub的Retrofit
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     */
     public static <T> T createReadHub(Class<T> clazz) {
-        //指定baseUrl
+        // 指定baseUrl
         Retrofit retrofit = new Retrofit.Builder().baseUrl(ReadhubUrlContainer.baseUrl)
                 .client(getOkHttpClient())
-                //存储转化数据对象，设置返回的数据支持转换为Gson对象
+                // 存储转化数据对象，设置返回的数据支持转换为Gson对象
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();

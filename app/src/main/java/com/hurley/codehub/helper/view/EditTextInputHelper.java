@@ -38,8 +38,9 @@ public final class EditTextInputHelper implements TextWatcher {
 
     /**
      * 构造函数
-     * @param view              跟随EditText输入为空来判断启动或者禁用这个View
-     * @param alpha             是否需要设置透明度
+     *
+     * @param view  跟随EditText输入为空来判断启动或者禁用这个View
+     * @param alpha 是否需要设置透明度
      */
     public EditTextInputHelper(View view, boolean alpha) {
         if (view == null) {
@@ -51,7 +52,8 @@ public final class EditTextInputHelper implements TextWatcher {
 
     /**
      * 添加EditText
-     * @param views             传入单个或者多个EditText
+     *
+     * @param views 传入单个或者多个EditText
      */
     public void addViews(EditText... views) {
         if (views == null) {
@@ -89,10 +91,12 @@ public final class EditTextInputHelper implements TextWatcher {
      */
 
     @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+    }
 
     @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+    }
 
     @Override
     public void afterTextChanged(Editable s) {
@@ -112,7 +116,8 @@ public final class EditTextInputHelper implements TextWatcher {
 
     /**
      * 设置View的事件
-     * @param enabled           启用或者禁用View的事件
+     *
+     * @param enabled 启用或者禁用View的事件
      */
     public void setEnabled(boolean enabled) {
         if (enabled == mView.isEnabled()) {
@@ -120,17 +125,17 @@ public final class EditTextInputHelper implements TextWatcher {
         }
 
         if (enabled) {
-            //启用View的事件
+            // 启用View的事件
             mView.setEnabled(true);
             if (isAlpha) {
-                //设置不透明
+                // 设置不透明
                 mView.setAlpha(1f);
             }
-        }else {
-            //禁用View的事件
+        } else {
+            // 禁用View的事件
             mView.setEnabled(false);
             if (isAlpha) {
-                //设置半透明
+                // 设置半透明
                 mView.setAlpha(0.5f);
             }
         }

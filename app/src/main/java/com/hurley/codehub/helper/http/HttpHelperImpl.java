@@ -1,7 +1,6 @@
 package com.hurley.codehub.helper.http;
 
 
-
 import com.hurley.codehub.api.WanAndroidApiService;
 import com.hurley.codehub.bean.wanandroid.BaseBean;
 import com.hurley.codehub.bean.wanandroid.ArticleBean;
@@ -30,7 +29,7 @@ import io.reactivex.Observable;
  *      desc    : 网络请求的实现类
  * </pre>
  */
-public class HttpHelperImpl implements HttpHelper{
+public class HttpHelperImpl implements HttpHelper {
 
     private WanAndroidApiService mWanAndroidApiService;
 
@@ -41,8 +40,9 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 登录
-     * @param username      用户名
-     * @param password      密码
+     *
+     * @param username 用户名
+     * @param password 密码
      * @return
      */
     @Override
@@ -52,9 +52,10 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 注册
-     * @param username      用户名
-     * @param password      密码
-     * @param repassword    重复密码
+     *
+     * @param username   用户名
+     * @param password   密码
+     * @param repassword 重复密码
      * @return
      */
     @Override
@@ -64,6 +65,7 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 退出登录
+     *
      * @return
      */
     @Override
@@ -73,7 +75,8 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 首页文章列表
-     * @param page          页码
+     *
+     * @param page 页码
      * @return
      */
     @Override
@@ -83,6 +86,7 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 首页Banner
+     *
      * @return
      */
     @Override
@@ -92,6 +96,7 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 常用网站
+     *
      * @return
      */
     @Override
@@ -101,6 +106,7 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 搜索热词
+     *
      * @return
      */
     @Override
@@ -110,6 +116,7 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 体系数据
+     *
      * @return
      */
     @Override
@@ -119,8 +126,9 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 知识体系下的文章
-     * @param page          页码
-     * @param cid           分类的id
+     *
+     * @param page 页码
+     * @param cid  分类的id
      * @return
      */
     @Override
@@ -130,6 +138,7 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 导航数据
+     *
      * @return
      */
     @Override
@@ -139,6 +148,7 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 项目分类
+     *
      * @return
      */
     @Override
@@ -148,8 +158,9 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 项目列表数据（文章）
-     * @param page          页码
-     * @param cid           分类的id
+     *
+     * @param page 页码
+     * @param cid  分类的id
      * @return
      */
     @Override
@@ -159,7 +170,8 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 最新项目tab
-     * @param page          页码
+     *
+     * @param page 页码
      * @return
      */
     @Override
@@ -169,7 +181,8 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 收藏文章列表
-     * @param page          页码
+     *
+     * @param page 页码
      * @return
      */
     @Override
@@ -179,7 +192,8 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 收藏站内文章
-     * @param id            文章id
+     *
+     * @param id 文章id
      * @return
      */
     @Override
@@ -189,9 +203,10 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 收藏站外文章
-     * @param title         标题
-     * @param author        作者
-     * @param link          链接
+     *
+     * @param title  标题
+     * @param author 作者
+     * @param link   链接
      * @return
      */
     @Override
@@ -201,6 +216,7 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 从文章列表取消收藏
+     *
      * @param id
      * @param originId
      * @return
@@ -212,6 +228,7 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 从我的收藏页面取消收藏
+     *
      * @param id
      * @param originId
      * @return
@@ -223,8 +240,9 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 搜索
-     * @param page          页码
-     * @param k             关键字
+     *
+     * @param page 页码
+     * @param k    关键字
      * @return
      */
     @Override
@@ -234,6 +252,7 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 获取公众号列表
+     *
      * @return
      */
     @Override
@@ -243,8 +262,9 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 查看某个公众号历史数据
-     * @param id            公众号id
-     * @param page          页码
+     *
+     * @param id   公众号id
+     * @param page 页码
      * @return
      */
     @Override
@@ -254,9 +274,10 @@ public class HttpHelperImpl implements HttpHelper{
 
     /**
      * 在某个公众号中搜索历史文章
-     * @param id            公众号id
-     * @param page          页码
-     * @param k             关键字
+     *
+     * @param id   公众号id
+     * @param page 页码
+     * @param k    关键字
      * @return
      */
     @Override

@@ -20,25 +20,29 @@ public interface PreferenceHelper {
 
     /**
      * 设置登录状态
+     *
      * @param isLogin
      */
     void setLoginStatus(boolean isLogin);
 
     /**
      * 获取登录状态
+     *
      * @return
      */
     boolean getLoginStatus();
 
     /**
      * 设置缓存
-     * @param domain        域名
-     * @param cookie        缓存
+     *
+     * @param domain 域名
+     * @param cookie 缓存
      */
     void setCookie(String domain, String cookie);
 
     /**
      * 获得缓存
+     *
      * @param domain
      * @return
      */
@@ -48,28 +52,42 @@ public interface PreferenceHelper {
 
     /**
      * 获取当前页码
+     *
      * @return
      */
     int getCurrentPage();
 
+    /**
+     * 设置当前项目的页码
+     *
+     * @param position
+     */
     void setProjectCurrentPage(int position);
 
     /**
      * 获取当前项目的页码
+     *
      * @return
      */
     int getProjectCurrentPage();
 
     /**
-     * 是否开启自动缓存
+     * 获得是否开启自动缓存
+     *
      * @return
      */
     boolean getAutoCache();
 
+    /**
+     * 设置是否开启自动缓存
+     *
+     * @param b
+     */
     void setAutoCache(boolean b);
 
     /**
      * 是否开启无图模式
+     *
      * @return
      */
     boolean getNoImage();
@@ -78,10 +96,16 @@ public interface PreferenceHelper {
 
     /**
      * 是否开启夜间模式
+     *
      * @return
      */
     boolean getNightMode();
 
+    /**
+     * 设置是否开启夜间模式
+     *
+     * @param b
+     */
     void setNightMode(boolean b);
 
 }

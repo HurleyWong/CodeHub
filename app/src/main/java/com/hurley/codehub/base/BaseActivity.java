@@ -93,11 +93,11 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
             showNoNet();
         }
         ImmersionBar.with(this)
-                //与导航栏同色
+                // 与导航栏同色
                 .statusBarColor(R.color.colorPrimary)
-                //解决状态栏和布局重叠问题
+                // 解决状态栏和布局重叠问题
                 .fitsSystemWindows(true)
-                //初始化
+                // 初始化
                 .init();
 
     }
@@ -378,7 +378,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
     }
 
     /**
-     * 加载多个同级根Fragment,类似Wechat, QQ主页的场景
+     * 加载多个同级根Fragment,类似WeChat, QQ主页的场景
      */
     public void loadMultipleRootFragment(int containerId, int showPosition, ISupportFragment... toFragments) {
         mDelegate.loadMultipleRootFragment(containerId, showPosition, toFragments);

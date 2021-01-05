@@ -23,7 +23,7 @@ public interface BaseContract {
     interface BaseView {
 
         /**
-         * 显示进度中
+         * 显示进度
          */
         void showLoading();
 
@@ -34,12 +34,14 @@ public interface BaseContract {
 
         /**
          * 显示请求成功
+         *
          * @param message
          */
         void showSuccess(String message);
 
         /**
          * 失败重试
+         *
          * @param message
          */
         void showFailed(String message);
@@ -56,12 +58,14 @@ public interface BaseContract {
 
         /**
          * 设置夜间模式
+         *
          * @param isNight
          */
         void useNightMode(boolean isNight);
 
         /**
          * 绑定生命周期
+         *
          * @param <T>
          * @return
          */

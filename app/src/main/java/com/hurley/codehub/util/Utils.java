@@ -22,6 +22,7 @@ public class Utils {
 
     /**
      * 初始化utils
+     *
      * @param context
      */
     public static void init(final Context context) {
@@ -43,6 +44,7 @@ public class Utils {
 
     /**
      * 通过反射获得Application
+     *
      * @return
      */
     private static Application getApplicationByReflect() {

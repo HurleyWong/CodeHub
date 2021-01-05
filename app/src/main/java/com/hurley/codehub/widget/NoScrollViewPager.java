@@ -25,6 +25,7 @@ public class NoScrollViewPager extends ViewPager {
 
     /**
      * 不拦截这个事件
+     *
      * @param ev
      * @return
      */
@@ -35,6 +36,7 @@ public class NoScrollViewPager extends ViewPager {
 
     /**
      * 不处理这个事件
+     *
      * @param ev
      * @return
      */

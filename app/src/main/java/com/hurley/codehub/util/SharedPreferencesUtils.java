@@ -19,6 +19,7 @@ public class SharedPreferencesUtils {
     public static void init(Context context) {
         mContext = context;
     }
+
     /**
      * 存
      *
