@@ -104,7 +104,7 @@
     <string name="collect_failed">Failed</string>
     <string name="uncollect_success">Unlike Successfully</string>
     <string name="uncollect_failed">Unlike Failed</string>
-    <string name="collection">Collections</string>
+    <string name="collection">Like</string>
 
     <!-- 关于 -->
     <string name="about_text">About</string>
@@ -126,8 +126,8 @@
     <!-- 更多 -->
     <string name="more_refresh">Refresh</string>
     <string name="more_share">Share</string>
-    <string name="more_copy_links">Copy Links</string>
-    <string name="more_copy_links_success">Link Copied</string>
+    <string name="more_copy_links">Copy links</string>
+    <string name="more_copy_links_success">Link copied</string>
     <string name="more_open_by_browser">Open with browser</string>
 
     <!-- 开源协议名称 -->
@@ -194,7 +194,7 @@
     <string name="detail_AndroidUtilCode">🔥 Android developers should collect the following utils(updating).</string>
 
     <!-- 设置 -->
-    <string name="setting_text">Setting</string>
+    <string name="setting_text">Settings</string>
     <string name="setting_normal_text">Basic Settings</string>
     <string name="setting_other_text">Other Settings</string>
     <string name="setting_auto_cache">Auto Cache</string>
@@ -203,7 +203,7 @@
     <string name="setting_theme_color">Theme Color</string>
     <string name="setting_language">Multi Language</string>
     <string name="setting_check_update">Check Updates</string>
-    <string name="setting_clear_cache">Clear Cache</string>
+    <string name="setting_clear_cache">Clear cache</string>
     <string name="setting_clear_cache_success">Clear Cache Successfully</string>
     <string name="setting_cache_num">0KB</string>
     <string name="setting_feedback">Feedback</string>
