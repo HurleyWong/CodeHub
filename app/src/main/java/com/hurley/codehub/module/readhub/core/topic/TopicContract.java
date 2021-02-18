@@ -33,7 +33,7 @@ public interface TopicContract {
          * 加载更多热门话题
          * @param lastCursor
          */
-        void loadMore(String lastCursor);
+        void loadMore(int lastCursor);
 
         /**
          * 刷新

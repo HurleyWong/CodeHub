@@ -5,11 +5,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hurley.codehub.R;
 import com.hurley.codehub.base.BaseFragment;
 import com.hurley.codehub.bean.readhub.TopicBean;
 import com.hurley.codehub.module.readhub.core.adapter.ContentAdapter;
+import com.hurley.codehub.module.wanandroid.core.web.WebActivity;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.List;
@@ -70,12 +72,24 @@ public class TopicFragment extends BaseFragment<TopicPresenter>
 
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-
+        switch (view.getId()) {
+            case R.id.iv_web:
+                WebActivity.startWeb(mContentAdapter.getItem(position).getId(),
+                        mContentAdapter.getItem(position).getNewsArray().get(0).getUrl(),
+                        mContentAdapter.getItem(position).getTitle(),
+                        mContentAdapter.getItem(position).getNewsArray().get(0).getSiteName());
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+        WebActivity.startWeb(mContentAdapter.getItem(position).getId(),
+                mContentAdapter.getItem(position).getNewsArray().get(0).getUrl(),
+                mContentAdapter.getItem(position).getTitle(),
+                mContentAdapter.getItem(position).getNewsArray().get(0).getSiteName());
     }
 
     @Override

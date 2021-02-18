@@ -43,25 +43,9 @@
                 android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/article_title"
+                android:text="@string/article_date"
                 android:textSize="@dimen/sp15"/>
 
-            <ImageView
-                android:id="@+id/iv_link1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/iv_web"
-                android:layout_marginEnd="@dimen/dp50"
-                android:src="@mipmap/ic_link"
-                android:visibility="visible"/>
-
-            <ImageView
-                android:id="@+id/iv_link2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:src="@mipmap/ic_link"
-                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/iv_web"

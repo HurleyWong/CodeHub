@@ -26,7 +26,7 @@ public interface ReadhubApiService {
      * @return
      */
     @GET(ReadhubUrlContainer.TOPIC)
-    Observable<BaseBean<TopicBean>> getTopic(@Query("lastCursor") String lastCursor, @Query("pageSize") int pageSize);
+    Observable<BaseBean<TopicBean>> getTopic(@Query("lastCursor") int lastCursor, @Query("pageSize") int pageSize);
 
     /**
      * 获得热门话题细节

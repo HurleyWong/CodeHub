@@ -376,6 +376,24 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
     }
 
     /**
+     * 点击文章打开网页
+     *
+     * @param id     文章id
+     * @param url    文章链接
+     * @param title  文章标题
+     * @param author 文章作者
+     */
+    public static void startWeb(String id, String url, String title, String author) {
+        sStartTime = System.currentTimeMillis();
+        ARouter.getInstance().build(PathContainer.WEB)
+                .withString(Constants.CONTENT_ID_KEY, id)
+                .withString(Constants.CONTENT_URL_KEY, url)
+                .withString(Constants.CONTENT_TITLE_KEY, title)
+                .withString(Constants.CONTENT_AUTHOR_KEY, author)
+                .navigation();
+    }
+
+    /**
      * 直接打开网页
      *
      * @param url 网页链接
@@ -438,16 +456,16 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
      */
     private void saveArticle(int userId, String title, String author, int chapterId, String chapterName,
                              String superChapterName, String niceDate, String link, int duration) {
-        Article article = new Article();
-        article.setUserid(userId);
-        article.setTitle(title);
-        article.setAuthor(author);
-        article.setChapterid(chapterId);
-        article.setChaptername(chapterName);
-        article.setSuperchaptername(superChapterName);
-        article.setNicedate(niceDate);
-        article.setLink(link);
-        article.setDuration(duration);
-        mPresenter.saveArticles(article);
+//        Article article = new Article();
+//        article.setUserid(userId);
+//        article.setTitle(title);
+//        article.setAuthor(author);
+//        article.setChapterid(chapterId);
+//        article.setChaptername(chapterName);
+//        article.setSuperchaptername(superChapterName);
+//        article.setNicedate(niceDate);
+//        article.setLink(link);
+//        article.setDuration(duration);
+//        mPresenter.saveArticles(article);
     }
 }

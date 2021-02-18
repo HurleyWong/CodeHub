@@ -40,7 +40,7 @@ public class TopicPresenter extends BasePresenter<TopicContract.View> implements
     @Override
     public void loadTopicContent() {
         RetrofitManager.createReadHub(ReadhubApiService.class)
-                .getTopic(null, Constants.PAGE_SIZE)
+                .getTopic(0, Constants.PAGE_SIZE)
                 .compose(RxSchedulers.applySchedulers())
                 .compose(mView.bindToLife())
                 .subscribe(response -> {
@@ -53,7 +53,7 @@ public class TopicPresenter extends BasePresenter<TopicContract.View> implements
 
     @SuppressLint("CheckResult")
     @Override
-    public void loadMore(String lastCursor) {
+    public void loadMore(int lastCursor) {
         RetrofitManager.createReadHub(ReadhubApiService.class)
                 .getTopic(lastCursor, Constants.PAGE_SIZE)
                 .compose(RxSchedulers.applySchedulers())
