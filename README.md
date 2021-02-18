@@ -24,10 +24,17 @@
  - 主要数据来源：[wanandroid](https://www.wanandroid.com/blog/show/2)、ReadHub、[Gank.io](https://gank.io/api)。
  - 使用到的开源库：[Retrofit](https://github.com/square/retrofit)、[RxJava](https://github.com/ReactiveX/RxJava)、[Glide](https://github.com/bumptech/glide) 等。
 
+## TODO
+
+* 完善 ReadHub 页面功能
+* 添加 Gank.io 模块
+
 ## About me
  * QQ: 1401682479
- * Portfolio: [hurley.fun](https://hurley.fun)
- * Tech Site: https://tech.hurley.fun
+ * Homepage: [withh.life](https://withh.life)
+ * Article Blog: https://article.withh.life
+ * Portfolio: https://portfolio.withh.life
+ * Blog: https://blog.withh.life
  * Email: hurleyhuang@hotmail.com
 
 ## License
