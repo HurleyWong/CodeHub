@@ -12,11 +12,12 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.CacheUtils;
 import com.blankj.utilcode.util.LogUtils;
-import com.hjq.language.LanguagesManager;
+import com.hjq.language.MultiLanguages;
 import com.hurley.codehub.R;
 import com.hurley.codehub.api.PathContainer;
 import com.hurley.codehub.app.Constants;
 import com.hurley.codehub.base.BaseActivity;
+import com.hurley.codehub.module.wanandroid.core.main.HomeActivity;
 import com.hurley.codehub.module.wanandroid.event.NightModeEvent;
 import com.hurley.codehub.net.callback.RxBus;
 import com.kongzue.dialog.listener.OnMenuItemClickListener;
@@ -81,7 +82,10 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
 
     private File cacheFile;
 
-    boolean restart;
+    /**
+     * 是否重启
+     */
+    boolean isRestart;
 
     String cache = CacheUtils.getInstance().getCacheSize() + "kb";
 
@@ -105,9 +109,17 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
         cacheFile = new File(Constants.PATH_CACHE);
         mTvCacheNum.setText(cache);
         LogUtils.e("缓存大小：" + cache);
+        // 是否自动缓存
         mCbAutoCache.setChecked(mPresenter.getAutoCacheState());
+        // 是否无图模式
         mCbNoImage.setChecked(mPresenter.getNoImageState());
+        // 是否夜间模式
         mCbNight.setChecked(mPresenter.getNightModeState());
+        // 主题颜色
+
+        // 多语言
+        mTvLanguageType.setText(mPresenter.getMultiLanguage());
+
         //设置监听事件
         mCbAutoCache.setOnCheckedChangeListener(this);
         mCbNoImage.setOnCheckedChangeListener(this);
@@ -115,10 +127,10 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
 
         languageList.add(getString(R.string.language_auto));
         languageList.add(getString(R.string.language_simplified));
-        languageList.add(getString(R.string.language_traditional));
         languageList.add(getString(R.string.language_english));
 
-        Locale locale = LanguagesManager.getAppLanguage(this);
+        // 获取当前的语种
+        Locale locale = MultiLanguages.getAppLanguage();
     }
 
     /**
@@ -171,23 +183,27 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
                         //TODO 切换语言
                         switch (index) {
                             case 0:
-                                restart = LanguagesManager.setSystemLanguage(getApplicationContext());
+                                // 跟随系统
+                                isRestart = MultiLanguages.setSystemLanguage(getApplicationContext());
+                                mPresenter.setMultiLanguage(getString(R.string.language_auto));
                                 break;
                             case 1:
-                                restart = LanguagesManager.setAppLanguage(getApplicationContext(), Locale.CHINA);
+                                // 简体中文
+                                isRestart = MultiLanguages.setAppLanguage(getApplicationContext(), Locale.CHINA);
+                                mPresenter.setMultiLanguage(getString(R.string.language_simplified));
                                 break;
                             case 2:
-                                restart = LanguagesManager.setAppLanguage(getApplicationContext(), Locale.TAIWAN);
-                                break;
-                            case 3:
-                                restart = LanguagesManager.setAppLanguage(getApplicationContext(), Locale.ENGLISH);
+                                // 英文
+                                isRestart = MultiLanguages.setAppLanguage(getApplicationContext(), Locale.ENGLISH);
+                                mPresenter.setMultiLanguage(getString(R.string.language_english));
                                 break;
                             default:
-                                restart = false;
+                                isRestart = false;
                                 break;
                         }
-                        if (restart) {
-                            startActivity(new Intent(getApplicationContext(), SettingActivity.class));
+                        if (isRestart) {
+                            // 重启主界面，所以必须是 HomeActivity
+                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                             overridePendingTransition(R.anim.left_top_in, R.anim.right_top_out);
                             finish();
                         }

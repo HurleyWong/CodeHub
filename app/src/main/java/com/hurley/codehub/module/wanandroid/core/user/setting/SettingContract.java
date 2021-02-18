@@ -63,6 +63,20 @@ public interface SettingContract {
         boolean getNightModeState();
 
         /**
+         * 设置多语种
+         *
+         * @param language
+         */
+        void setMultiLanguage(String language);
+
+        /**
+         * 获取当前设置的多语种
+         *
+         * @return
+         */
+        String getMultiLanguage();
+
+        /**
          * 获得反馈
          *
          * @param context

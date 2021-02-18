@@ -119,7 +119,7 @@
     <string name="wan_android_address">https://www.wanandroid.com</string>
     <string name="github_address">https://github.com/HurleyJames</string>
     <string name="weibo_address">https://weibo.com/u/5628559861</string>
-    <string name="email_address">1401682479@qq.com</string>
+    <string name="email_address">hurleyhuang@hotmail.com</string>
 
     <!-- 更多 -->
     <string name="more_refresh">刷新</string>
@@ -212,7 +212,7 @@
     <string name="analysis_week">一周内</string>
     <string name="analysis_month">一月内</string>
     <string name="analysis_year">一年内</string>
-    
+
     <!-- 推荐 -->
     <string name="recommend_tips">热门推荐</string>
     <string name="recommend_end">没有多余的文章可以推荐了</string>
@@ -242,7 +242,6 @@
     <!-- 语言 -->
     <string name="language_auto">跟随系统</string>
     <string name="language_simplified">简体中文</string>
-    <string name="language_traditional">繁體中文</string>
     <string name="language_english">English</string>
 
 </resources>

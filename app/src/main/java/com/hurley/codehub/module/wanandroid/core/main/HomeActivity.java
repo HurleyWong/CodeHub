@@ -130,23 +130,23 @@ public class HomeActivity extends BaseActivity<HomePresenter>
         mNavigationView.setNavigationItemSelectedListener(
                 menuItem -> {
                     switch (menuItem.getItemId()) {
-                        //玩安卓页面
+                        // 玩安卓页面
                         case R.id.home_wan_android:
                             menuItem.setChecked(true);
                             mDrawerLayout.closeDrawers();
                             break;
-                        //ReadHub页面
+                        // ReadHub 页面
                         case R.id.home_readhub:
                             menuItem.setChecked(true);
                             ARouter.getInstance().build(PathContainer.MAIN).navigation();
                             mDrawerLayout.closeDrawers();
                             break;
-                        //DiyCode页面
+                        // DiyCode 页面
                         case R.id.home_diycode:
                             menuItem.setChecked(true);
                             mDrawerLayout.closeDrawers();
                             break;
-                        //Github Trending页面
+                        // Github Trending 页面
                         case R.id.home_github_trending:
                             menuItem.setChecked(true);
                             mDrawerLayout.closeDrawers();

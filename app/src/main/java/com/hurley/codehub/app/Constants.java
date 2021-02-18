@@ -118,6 +118,8 @@ public class Constants {
 
     public static final String NIGHT_MODE = "night_mode";
 
+    public static final String MULTI_LANG = "multi_lang";
+
     public static final String TAG_STATUS = "tag_status";
 
     public static final String SIMILAR_STATUS = "similar_status";

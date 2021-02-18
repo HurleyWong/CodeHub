@@ -149,6 +149,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
         return this.bindToLifecycle();
     }
 
+
     /**
      * 设置加载数据结果
      *

@@ -62,6 +62,16 @@ public class SettingPresenter extends BasePresenter<SettingContract.View> implem
     }
 
     @Override
+    public void setMultiLanguage(String language) {
+        SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).put(Constants.MULTI_LANG, language);
+    }
+
+    @Override
+    public String getMultiLanguage() {
+        return SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getString(Constants.MULTI_LANG);
+    }
+
+    @Override
     public void feedback(Context context, String title) {
         Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(
                 "mail to:" + App.getAppContext().getString(R.string.email_address)));

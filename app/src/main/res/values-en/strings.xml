@@ -1,13 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- WanAndroid主界面Fragment -->
+    <string name="app_name">CodeHub</string>
+    <string name="app_statement">一起来做个app吧！</string>
+    <string name="wan_android">WanAndroid</string>
+    <string name="readhub">ReadHub</string>
+    <string name="diycode">Diycode</string>
+    <string name="github_trending">Github Trending</string>
+
+    <!-- WanAndroid 主界面 Fragment -->
     <string name="home_nav_index">Index</string>
     <string name="home_nav_system">System</string>
-    <string name="home_nav_wechat">Official Account</string>
+    <string name="home_nav_wechat">WeChat</string>
     <string name="home_nav_project">Project</string>
     <string name="home_nav_user">User</string>
     <string name="home_hotkey">Hot Key</string>
-    <string name="home_website">常用网站</string>
-    <string name="home_search">搜索</string>
+    <string name="home_website">Websites</string>
+    <string name="home_search">Search</string>
+
+    <!-- ReadHub主界面Fragment -->
+    <string name="main_topic">Topic</string>
+    <string name="main_tech">Tech</string>
+    <string name="main_dev">Dev</string>
+    <string name="main_block">Blockchain</string>
+
+    <!-- 通用 -->
+    <string name="http_error">网络君乘404航班去追寻诗和远方了</string>
+    <string name="unknown_error">未知错误</string>
+    <string name="no_file_permission">没有权限访问文件，请手动授予权限</string>
+    <string name="grant_file_permission">请先授予文件读写权限</string>
+    <string name="click_skip">跳过</string>
+    <string name="click_enter">进入主界面</string>
+    <string name="choose_email">选择邮件客户端</string>
+    <string name="input_key">Please enter key words</string>
+    <string name="home_exit">再按一次退出</string>
+
+    <!-- 文章 -->
+    <string name="article_title">title</string>
+    <string name="article_author">author</string>
+    <string name="article_system">system</string>
+    <string name="article_date">date</string>
+    <string name="article_top">top</string>
+    <string name="article_new">new</string>
+
+    <!-- 登录 -->
+    <string name="login_text">Login</string>
+    <string name="click_login">Login</string>
+    <string name="login_username_input_hint">Username</string>
+    <string name="login_password_input_hint">Password</string>
+    <string name="login_forget">Forget Password?</string>
+    <string name="login_username_password_null">Username or password cannot be empty</string>
+    <string name="login_auto_success">Automatic login successfully</string>
+    <string name="login_success">Successfully</string>
+    <string name="login_fail">Failed</string>
+    <string name="logout_text">Logout</string>
+    <string name="login_please">Please login</string>
+
+    <!-- 注册 -->
+    <string name="register_text">Register</string>
+    <string name="register_username_input_hint">Username</string>
+    <string name="register_password_input_hint">Password</string>
+    <string name="register_confirm_password_input_hint">Confirm password</string>
+    <string name="confirm_password_input_error">Inconsistent, please re-enter</string>
+    <string name="register_success">Successfully</string>
+    <string name="register_fail">Failed</string>
+
+    <!-- 标签 -->
+    <string name="tag_text">标签</string>
+    <string name="all_tag">全部标签</string>
+    <string name="followed_tag">已关注标签</string>
+    <string name="recommend_tag">推荐标签</string>
+    <string name="follow"> + 关 注 </string>
+    <string name="followed"> 已 关 注 </string>
+    <string name="tag_1">基础知识</string>
+    <string name="tag_1_detail">开发环境 基础知识 四大组件 常用控件 用户交互</string>
+    <string name="tag_2">网络请求</string>
+    <string name="tag_2_detail">网络访问 图片加载</string>
+    <string name="tag_3">数据存储</string>
+    <string name="tag_3_detail">数据存储</string>
+    <string name="tag_4">自定义View</string>
+    <string name="tag_4_detail">动画效果 自定义控件</string>
+    <string name="tag_5">硬件相关</string>
+    <string name="tag_5_detail">硬件模块 JNI 常用SDK framework 多媒体技术 TV相关</string>
+    <string name="tag_6">项目必备</string>
+    <string name="tag_6_detail">项目必备 干货资源 完整开源项目 开源项目源码解析 开放API</string>
+    <string name="tag_7">高新技术</string>
+    <string name="tag_7_detail">高新技术 延伸技术 Jetpack</string>
+    <string name="tag_8">学习资源</string>
+    <string name="tag_8_detail">推荐网站 原创文章 速查知识表 公众号 问答 视频 内推</string>
+    <string name="tag_9">Java进阶</string>
+    <string name="tag_9_detail">Java深入 Kotlin 注解&amp;反射&amp;AOP 跨平台 项目管理</string>
+    <string name="tag_10">热门专题</string>
+    <string name="tag_10_detail">项目架构 反编译 设计模式 插件化 模块化 组件化 热修复 性能优化 Xposed ANR</string>
+
+    <!-- 积分 -->
+    <string name="coin_text">Coin</string>
+    <string name="coin_rank">Coin Rank</string>
+    <string name="coin_user_rank">Rank</string>
+
+    <!-- 收藏 -->
+    <string name="collect_text">Collections</string>
+    <string name="collect_success">Successfully</string>
+    <string name="collect_failed">Failed</string>
+    <string name="uncollect_success">Unlike Successfully</string>
+    <string name="uncollect_failed">Unlike Failed</string>
+    <string name="collection">Collections</string>
+
+    <!-- 关于 -->
+    <string name="about_text">About</string>
+    <string name="about_author">Developer</string>
+    <string name="about_wan_android">WanAndroid</string>
+    <string name="about_open_source">Open Source Framework</string>
+    <string name="about_open_source_name">Open Source Framework</string>
+    <string name="about_open_source_author">square</string>
+    <string name="about_open_source_detail">A memory leak detection library for Android and Java.</string>
+    <string name="about_github">Github</string>
+    <string name="about_weibo">Weibo</string>
+    <string name="about_thanks">Thanks</string>
+    <string name="about_support">Support</string>
+    <string name="wan_android_address">https://www.wanandroid.com</string>
+    <string name="github_address">https://github.com/HurleyJames</string>
+    <string name="weibo_address">https://weibo.com/u/5628559861</string>
+    <string name="email_address">hurleyhuang@hotmail.com</string>
+
+    <!-- 更多 -->
+    <string name="more_refresh">Refresh</string>
+    <string name="more_share">Share</string>
+    <string name="more_copy_links">Copy Links</string>
+    <string name="more_copy_links_success">Link Copied</string>
+    <string name="more_open_by_browser">Open with browser</string>
+
+    <!-- 开源协议名称 -->
+    <string name="license_ButterKnife">ButterKnife</string>
+    <string name="license_dagger">dagger</string>
+    <string name="license_OkHttp">OkHttp</string>
+    <string name="license_Retrofit">Retrofit</string>
+    <string name="license_RxJava">RxJava</string>
+    <string name="license_RxAndroid">RxAndroid</string>
+    <string name="license_RxBinding">RxBinding</string>
+    <string name="license_AgentWeb">AgentWeb</string>
+    <string name="license_ARouter">ARouter</string>
+    <string name="license_Glide">Glide</string>
+    <string name="license_BaseRecyclerViewAdapterHelper">BaseRecyclerViewAdapterHelper</string>
+    <string name="license_Fragmentation">Fragmentation</string>
+    <string name="license_FlowLayout">FlowLayout</string>
+    <string name="license_Banner">Banner</string>
+    <string name="license_OXChart">OXChart</string>
+    <string name="license_MaterialAbout">MaterialAbout</string>
+    <string name="license_ImmersionBar">ImmersionBar</string>
+    <string name="license_XXPermissions">XXPermissions</string>
+    <string name="license_AndroidUtilCode">AndroidUtilCode</string>
+
+    <!-- 开源协议作者 -->
+    <string name="author_ButterKnife">JakeWharton</string>
+    <string name="author_dagger">square</string>
+    <string name="author_OkHttp">square</string>
+    <string name="author_Retrofit">square</string>
+    <string name="author_RxJava">ReactiveX</string>
+    <string name="author_RxAndroid">ReactiveX</string>
+    <string name="author_RxBinding">JakeWharton</string>
+    <string name="author_AgentWeb">Justson</string>
+    <string name="author_ARouter">alibaba</string>
+    <string name="author_Glide">bumptech</string>
+    <string name="author_BaseRecyclerViewAdapterHelperr">CymChad</string>
+    <string name="author_Fragmentation">YoKeyword</string>
+    <string name="author_FlowLayout">hongyangAndroid</string>
+    <string name="author_Banner">youth5201314</string>
+    <string name="author_OXChart">openXu</string>
+    <string name="author_MaterialAbout">jrvansuita</string>
+    <string name="author_ImmersionBar">gyf-dev</string>
+    <string name="author_XXPermissions">getActivity</string>
+    <string name="author_AndroidUtilCode">Blankj</string>
+
+    <!-- 开源协议介绍 -->
+    <string name="detail_ButterKnife">Bind Android views and callbacks to fields and methods.</string>
+    <string name="detail_dagger">A fast dependency injector for Android and Java.</string>
+    <string name="detail_OkHttp">An HTTP+HTTP/2 client for Android and Java applications.</string>
+    <string name="detail_Retrofit">Type-safe HTTP client for Android and Java by Square, Inc.</string>
+    <string name="detail_RxJava">RxJava – Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM.</string>
+    <string name="detail_RxAndroid">RxJava bindings for Android</string>
+    <string name="detail_RxBinding">RxJava binding APIs for Android\'s UI widgets.</string>
+    <string name="detail_AgentWeb">AgentWeb is a powerful library based on Android WebView.</string>
+    <string name="detail_ARouter">💪 A framework for assisting in the renovation of Android componentization (帮助 Android App 进行组件化改造的路由框架)</string>
+    <string name="detail_Glide">An image loading and caching library for Android focused on smooth scrolling</string>
+    <string name="detail_BaseRecyclerViewAdapterHelper">BRVAH:Powerful and flexible RecyclerAdapter</string>
+    <string name="detail_Fragmentation">A powerful library that manage Fragment for Android!</string>
+    <string name="detail_FlowLayout">Android流式布局，支持单选、多选等，适合用于产品标签等。</string>
+    <string name="detail_Banner">Android广告图片轮播控件，支持无限循环和多种主题，可以灵活设置轮播样式、动画、轮播和切换时间、位置、图片加载框架等！</string>
+    <string name="detail_OXChart">各种自定义图表库，使用简单，支持扩展</string>
+    <string name="detail_MaterialAbout">It\'s a material-design about screen to use on your Android apps. A developer profile and application information easy to integrate. 🔖</string>
+    <string name="detail_ImmersionBar">android 4.4以上沉浸式状态栏和沉浸式导航栏管理，包括状态栏字体颜色，适用于Activity、Fragment、DialogFragment、Dialog，并且适配刘海屏，适配软键盘弹出等问题，一句代码轻松实现，以及对bar的其他设置，详见README</string>
+    <string name="detail_XXPermissions">Android 6.0 permissions adaptation framework</string>
+    <string name="detail_AndroidUtilCode">🔥 Android developers should collect the following utils(updating).</string>
+
+    <!-- 设置 -->
+    <string name="setting_text">Setting</string>
+    <string name="setting_normal_text">Basic Settings</string>
+    <string name="setting_other_text">Other Settings</string>
+    <string name="setting_auto_cache">Auto Cache</string>
+    <string name="setting_no_image">No Image Mode</string>
+    <string name="setting_night">Night Mode</string>
+    <string name="setting_theme_color">Theme Color</string>
+    <string name="setting_language">Multi Language</string>
+    <string name="setting_check_update">Check Updates</string>
+    <string name="setting_clear_cache">Clear Cache</string>
+    <string name="setting_clear_cache_success">Clear Cache Successfully</string>
+    <string name="setting_cache_num">0KB</string>
+    <string name="setting_feedback">Feedback</string>
+    <string name="support_text">Support</string>
+
+    <!-- 分析 -->
+    <string name="analysis_text">分析</string>
+    <string name="analysis_week">一周内</string>
+    <string name="analysis_month">一月内</string>
+    <string name="analysis_year">一年内</string>
+
+    <!-- 推荐 -->
+    <string name="recommend_tips">热门推荐</string>
+    <string name="recommend_end">没有多余的文章可以推荐了</string>
+
+    <!-- 体系 -->
+    <string name="dev_environment">开发环境</string>
+    <string name="basic_knowledge">基础知识</string>
+    <string name="android_components">四大组件</string>
+    <string name="common_ctrl">常用控件</string>
+    <string name="UI">用户交互</string>
+    <string name="network_access">网络访问</string>
+    <string name="image_loading">图片加载</string>
+    <string name="data_storage">数据存储</string>
+    <string name="animation_effect">动画效果</string>
+    <string name="customize_ctrl">自定义控件</string>
+    <string name="media_tech">多媒体技术</string>
+    <string name="hardware_module">硬件模块</string>
+    <string name="JNI">JNI</string>
+    <string name="common_SDK">常用SDK</string>
+    <string name="framework">framework</string>
+    <string name="Kotlin">Kotlin</string>
+    <string name="advanced_Java">Java深入</string>
+    <string name="cross_platform">跨平台</string>
+    <string name="project_manage">项目管理</string>
+    <string name="Jetpack">Jetpack</string>
+
+    <!-- 语言 -->
+    <string name="language_auto">Follow System</string>
+    <string name="language_simplified">Chinese</string>
+    <string name="language_english">English</string>
+
 </resources>

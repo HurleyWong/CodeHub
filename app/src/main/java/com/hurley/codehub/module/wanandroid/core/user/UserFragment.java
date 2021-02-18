@@ -76,6 +76,8 @@ public class UserFragment extends BaseFragment<UserPresenter> implements UserCon
     @SuppressLint("CheckResult")
     @Override
     protected void initView(View view) {
+        mBtnCollect.setText(R.string.collect_text);
+
         setUserStatus();
         //登录成功后需重新设置用户状态
         RxBus.getInstance().toFlowable(LoginEvent.class).subscribe(loginEvent -> setUserStatus());
