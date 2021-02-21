@@ -8,7 +8,7 @@
 **CodeHub** 是一款使用 WanAndroid、ReadHub 以及 Gank.io 三者 API 开发的技术阅读类的开源项目。项目是基于 MVP + RxJava + Retrofit + Dagger2 + Glide 等框架开发的。
 
 ## Screenshots
-![](https://raw.githubusercontent.com/HurleyJames/ImageHosting/master/IMG_3556.JPG)
+![](https://i.loli.net/2021/02/21/NYBLHakQyJsvRCO.jpg)
 
 
 ## Features
