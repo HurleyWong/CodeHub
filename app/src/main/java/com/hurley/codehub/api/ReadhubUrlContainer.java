@@ -5,7 +5,7 @@ package com.hurley.codehub.api;
  *      @author hurley
  *      date    : 2019/3/31 12:47 PM
  *      github  : https://github.com/HurleyJames
- *      desc    : Readhub Api接口地址类
+ *      desc    : Readhub Api 接口地址类
  * </pre>
  */
 public class ReadhubUrlContainer {

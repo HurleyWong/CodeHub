@@ -22,7 +22,7 @@ public class Constants {
     public static final String MY_SHARED_PREFERENCE = "my_shared_preference";
 
     /**
-     * 事件Action
+     * 事件 Action
      */
     public static final String EVENT_ACTION_REFRESH_DATA = "refresh_list_item";
 

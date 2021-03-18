@@ -22,7 +22,7 @@ public class NewsBean {
     private String publishDate;
 
     /**
-     * 以下为Topic的List<News>的属性
+     * 以下为 Topic 的 List<News> 的属性
      */
     private int statementType;
     private int duplicateId;

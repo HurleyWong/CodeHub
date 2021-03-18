@@ -27,7 +27,7 @@ android {
     }
     buildTypes {
         release {
-            //设置混淆代码，将false改为true
+            // 设置混淆代码，将 false 改为 true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -44,8 +44,8 @@ android {
 greendao {
     // 数据库版本号
     schemaVersion 1
-    // 设置DaoMaster、DaoSession、Dao目录
-    // 这行代码与高版本gradle冲突，会报API 'variant.getJavaCompiler()'的warn，将在2019年末移除
+    // 设置 DaoMaster、DaoSession、Dao 目录
+    // 这行代码与高版本 gradle 冲突，会报 API 'variant.getJavaCompiler()' 的 warn，将在 2019 年末移除
     targetGenDir 'src/main/java'
     // 设置DaoMaster、DaoSession、Dao包名
     daoPackage 'com.hurley.codehub.dao'
@@ -66,7 +66,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    //  ui框架
+    // ui框架
 
     // RecyclerView包
     implementation 'com.android.support:recyclerview-v7:28.0.0'

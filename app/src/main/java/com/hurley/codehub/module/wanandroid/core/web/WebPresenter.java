@@ -45,7 +45,7 @@ public class WebPresenter extends BasePresenter<WebContract.View> implements Web
     @SuppressLint("CheckResult")
     @Override
     public void collectInsideArticle(int id) {
-        //如果已登录
+        // 如果已登录
         if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
             RetrofitManager.create(WanAndroidApiService.class)
                     .collectInsideArticle(id)
@@ -59,7 +59,7 @@ public class WebPresenter extends BasePresenter<WebContract.View> implements Web
                         }
                     }, throwable -> LogUtils.e(throwable.getMessage()));
         } else {
-            //如果未登录，跳转至登录界面
+            // 如果未登录，跳转至登录界面
             ARouter.getInstance().build(PathContainer.LOGIN).navigation();
         }
     }
@@ -67,7 +67,7 @@ public class WebPresenter extends BasePresenter<WebContract.View> implements Web
     @SuppressLint("CheckResult")
     @Override
     public void collectOutsideArticle(String title, String author, String link) {
-        //如果已登录
+        // 如果已登录
         if (SPUtils.getInstance(Constants.MY_SHARED_PREFERENCE).getBoolean(Constants.LOGIN_STATUS)) {
             RetrofitManager.create(WanAndroidApiService.class)
                     .collectOutsideArticle(title, author, link)
@@ -81,7 +81,7 @@ public class WebPresenter extends BasePresenter<WebContract.View> implements Web
                         }
                     }, throwable -> LogUtils.e(throwable.getMessage()));
         } else {
-            //如果未登录，跳转至登录界面
+            // 如果未登录，跳转至登录界面
             ARouter.getInstance().build(PathContainer.LOGIN).navigation();
         }
     }

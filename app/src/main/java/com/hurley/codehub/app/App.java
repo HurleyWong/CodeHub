@@ -35,7 +35,7 @@ import static com.kongzue.dialog.v2.DialogSettings.STYLE_IOS;
  *      @author hurley
  *      date    : 2019/2/27 4:38 PM
  *      github  : https://github.com/HurleyJames
- *      desc    : 该项目的Application基类
+ *      desc    : 该项目的 Application 基类
  * </pre>
  */
 public class App extends MultiDexApplication {
@@ -44,7 +44,7 @@ public class App extends MultiDexApplication {
     private ApplicationComponent mApplicationComponent;
     private DaoSession mDaoSession;
 
-    // static代码段可以防止内存泄露, 全局设置刷新头部及尾部，优先级最低
+    // static 代码段可以防止内存泄露, 全局设置刷新头部及尾部，优先级最低
     static {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
@@ -60,72 +60,72 @@ public class App extends MultiDexApplication {
         instance = this;
         initApplicationComponent();
 
-        // 初始化LitePal
+        // 初始化 LitePal
         LitePal.initialize(this);
 
         // 初始化多语种框架（自动适配第三方库中 Activity 语种）
         MultiLanguages.init(this);
 
         /**
-         * 必须在Application的onCreate方法中执行BGASwipeBackHelper.init来初始化滑动返回
+         * 必须在 Application 的 onCreate 方法中执行 BGASwipeBackHelper.init 来初始化滑动返回
          * 第一个参数：应用程序上下文
-         * 第二个参数：如果发现滑动返回后立即触摸界面时应用崩溃，则把该界面里比较特殊的View的class添加到该集合中，例如WebView和SurfaceView
+         * 第二个参数：如果发现滑动返回后立即触摸界面时应用崩溃，则把该界面里比较特殊的 View 的 class 添加到该集合中，例如 WebView 和 SurfaceView
          */
         BGASwipeBackHelper.init(this, null);
         // 初始化工具类
         Utils.init(this);
-        // 初始化Toast工具类
+        // 初始化 Toast 工具类
         ToastUtils.init(this);
         // 初始化路由
         initARouter();
 
-        // 初始化Fragmentation
+        // 初始化 Fragmentation
         Fragmentation.builder()
                 // BUBBLE：显示悬浮球 | SHAKE：摇一摇换出悬浮球 | NONE：隐藏悬浮球
                 .stackViewMode(Fragmentation.NONE)
                 .debug(ConfigUtils.DEBUG)
                 .install();
 
-        // 初始化Stetho
+        // 初始化 Stetho
         if (ConfigUtils.DEBUG) {
             Stetho.initializeWithDefaults(this);
         }
 
-        // 初始化全局Dialog风格样式
+        // 初始化全局 Dialog 风格样式
         DialogSettings.style = STYLE_IOS;
         DialogSettings.use_blur = true;
 
         // 自动初始化开关
-        // true表示app启动初始化升级模块，false不会自动初始化
+        // true 表示 app 启动初始化升级模块，false 不会自动初始化
         Beta.autoInit = true;
         // 自动检查更新开关
-        // true表示初始化时自动检查升级，false表示不会自动检查升级
+        // true 表示初始化时自动检查升级，false 表示不会自动检查升级
         Beta.autoCheckUpgrade = true;
         // 升级检查周期设置
-        // 设置升级检查周期为60s（默认检查周期为0s）
+        // 设置升级检查周期为 60s（默认检查周期为 0s）
         Beta.upgradeCheckPeriod = 60 * 1000;
         // 延迟初始化
-        // 设置启动延时为1s（默认延时为3s），APP启动1s后初始化SDK，避免影响APP启动速度
+        // 设置启动延时为 1s（默认延时为 3s），APP 启动 1s 后初始化 SDK，避免影响 APP 启动速度
         Beta.initDelay = 1 * 1000;
         // 设置通知栏内大图标
         Beta.largeIconId = R.mipmap.ic_launcher;
-        // 设置更新弹窗默认展示的banner
+        // 设置更新弹窗默认展示的 banner
         Beta.defaultBannerId = R.mipmap.ic_launcher;
-        // 设置SD卡的Download为更新资源存储目录
+        // 设置 SD 卡的 Download 为更新资源存储目录
         Beta.storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         // 设置开启显示打断策略
         Beta.showInterruptedStrategy = true;
-        // 添加可显示弹窗的Activity
+        // 添加可显示弹窗的 Activity
         Beta.canShowUpgradeActs.add(HomeActivity.class);
-        // 设置自定义升级对话框UI布局
+        // 设置自定义升级对话框 UI 布局
         // Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade;
-        // 设置自定义tip弹窗UI布局
+        // 设置自定义 tip 弹窗 UI 布局
         // Beta.tipsDialogLayoutId = R.layout.dialog_tips;
         // 设置是否显示消息通知
         Beta.enableNotification = true;
         // 设置Wifi下是否自动下载
         Beta.autoDownloadOnWifi = false;
-        // 设置是否显示弹窗中的apk消息
+        // 设置是否显示弹窗中的 apk 消息
         Beta.canShowApkInfo = true;
         // 初始化统一接口
         Bugly.init(getAppContext(), Constants.APP_ID, false);
@@ -138,10 +138,10 @@ public class App extends MultiDexApplication {
         if (ConfigUtils.DEBUG) {
             // 打印日志
             ARouter.openLog();
-            // 开启调试模式（如果在InstantRun模式下运行，必须开启调试模式。线上版本需要关闭，否则有安全风险）
+            // 开启调试模式（如果在 InstantRun 模式下运行，必须开启调试模式。线上版本需要关闭，否则有安全风险）
             ARouter.openDebug();
         }
-        // 推荐在Application中初始化
+        // 推荐在 Application 中初始化
         ARouter.init(this);
     }
 

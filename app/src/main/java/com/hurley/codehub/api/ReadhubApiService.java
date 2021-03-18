@@ -15,7 +15,7 @@ import retrofit2.http.Query;
  *      @author hurley
  *      date    : 2019/3/31 12:45 PM
  *      github  : https://github.com/HurleyJames
- *      desc    : Readhub服务器接口类
+ *      desc    : Readhub 服务器接口类
  * </pre>
  */
 public interface ReadhubApiService {
