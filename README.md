@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/build-passing-42be1b?logoColor=white)
 ![](https://img.shields.io/badge/license-Apache2.0-434e52)
 
-> 鉴于目前 Kotlin 已经取代 Java 成为了 Android 开发的主流编程语言，所以新的版本 [CodeHub-Kotlin](https://github.com/HurleyJames/CodeHub-Kotlin) 已经上线。该版本使用了 Kotlin + Jetpack + ComposeUI + MVVM 等最新的官方推荐的开发模式和框架进行开发，请前往观赏~
+> 鉴于目前 Kotlin 已经取代 Java 成为了 Android 开发的主流编程语言，所以新的版本 [CodeHub-Kotlin](https://github.com/HurleyWong/CodeHub-Kotlin) 已经上线。该版本使用了 Kotlin + Jetpack + ComposeUI + MVVM 等最新的官方推荐的开发模式和框架进行开发，请前往观赏~
 
 ## Introduction
 
@@ -22,7 +22,7 @@
 
 ## Issues
 
-如果有任何问题，请在该 repository 的 [Issues](https://github.com/HurleyJames/CodeHub/issues) 处发布 issue，或者通过最底部的联系方式联系我，我会及时提供帮助或改进。
+如果有任何问题，请在该 repository 的 [Issues](https://github.com/HurleyWong/CodeHub/issues) 处发布 issue，或者通过最底部的联系方式联系我，我会及时提供帮助或改进。
 
 ## Thanks
 
@@ -40,8 +40,8 @@
 
  * QQ: 1401682479
  * Homepage: [withh.life](https://withh.life)
- * Portfolio: https://portfolio.withh.life
  * Blog: https://blog.withh.life
+ * Portfolio: https://portfolio.withh.life
  * Email: hurleyhuang@hotmail.com
 
 ## License
