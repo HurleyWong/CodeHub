@@ -35,7 +35,8 @@
         <!-- 启动界面 -->
         <activity
             android:name=".module.wanandroid.core.common.SplashActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:exported="true">
 
             <!-- 程序入口 -->
             <intent-filter>

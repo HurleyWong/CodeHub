@@ -10,7 +10,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.blankj.utilcode.util.CacheUtils;
+import com.blankj.utilcode.util.CacheDiskStaticUtils;
+import com.blankj.utilcode.util.CacheDoubleStaticUtils;
+import com.blankj.utilcode.util.CacheMemoryStaticUtils;
+import com.blankj.utilcode.util.CleanUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.hjq.language.MultiLanguages;
 import com.hurley.codehub.R;
@@ -87,7 +90,10 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
      */
     boolean isRestart;
 
-    String cache = CacheUtils.getInstance().getCacheSize() + "kb";
+    /**
+     * 缓存大小
+     */
+    String cache = CacheDiskStaticUtils.getCacheSize() + CacheDoubleStaticUtils.getCacheDiskSize() + "kb";
 
     /**
      * 语言种类
@@ -218,7 +224,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
                 Beta.checkUpgrade();
                 break;
             case R.id.setting_clear_cache:
-                //清除缓存
+                // 清除缓存
                 clearCache();
 //                mTvCacheNum.setText(ACache.getCacheSize(cacheFile));
                 mTvCacheNum.setText(cache);
@@ -254,6 +260,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
      */
     private void clearCache() {
 //        ACache.deleteDir(cacheFile);
-        CacheUtils.getInstance().clear();
+        CleanUtils.cleanInternalCache();
+        CleanUtils.cleanExternalCache();
     }
 }

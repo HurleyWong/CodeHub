@@ -455,7 +455,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
      */
     protected void toast(CharSequence text) {
         //设置 Toast 背景颜色
-        ToastUtils.setBgColor(ContextCompat.getColor(this, R.color.gray));
+        ToastUtils.make().setBgColor(ContextCompat.getColor(this, R.color.gray));
         ToastUtils.showShort(text);
     }
 
@@ -466,7 +466,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
      */
     protected void toast(int id) {
         //设置 Toast 背景颜色
-        ToastUtils.setBgColor(ContextCompat.getColor(this, R.color.gray));
+        ToastUtils.make().setBgColor(ContextCompat.getColor(this, R.color.gray));
         ToastUtils.showShort(id);
     }
 

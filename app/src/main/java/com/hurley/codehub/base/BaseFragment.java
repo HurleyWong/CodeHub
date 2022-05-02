@@ -589,7 +589,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
      */
     protected void toast(CharSequence text) {
         //设置Toast背景颜色
-        ToastUtils.setBgColor(ContextCompat.getColor(getContext(), R.color.gray));
+        ToastUtils.make().setBgColor(ContextCompat.getColor(getContext(), R.color.gray));
         ToastUtils.showShort(text);
     }
 
@@ -600,7 +600,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
      */
     protected void toast(int id) {
         //设置Toast背景颜色
-        ToastUtils.setBgColor(ContextCompat.getColor(getContext(), R.color.gray));
+        ToastUtils.make().setBgColor(ContextCompat.getColor(getContext(), R.color.gray));
         ToastUtils.showShort(id);
     }
 }
