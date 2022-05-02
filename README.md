@@ -39,9 +39,8 @@
 ## About me
 
  * QQ: 1401682479
- * Homepage: [withh.life](https://withh.life)
- * Blog: https://blog.withh.life
- * Portfolio: https://portfolio.withh.life
+ * Homepage: [hurleywong.com](https://hurleywong.com)
+ * Blog: https://blog.hurleywong.com
  * Email: hurleyhuang@hotmail.com
 
 ## License
