@@ -40,7 +40,7 @@
 
  * QQ: 1401682479
  * Homepage: [hurleywong.com](https://hurleywong.com)
- * Blog: https://blog.hurleywong.com
+ * Notes: [notes.hurleywong.com](https://notes.hurleywong.com)
  * Email: hurleyhuang@hotmail.com
 
 ## License
